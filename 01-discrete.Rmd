@@ -1,0 +1,145 @@
+# Discrete random variables
+
+## Introduction 
+
+In this module we are going to examine the properties of 
+distributions of random variables, we
+begin by defining what we mean by a random variable.
+
+The set of all possible elementary outcomes of an experiment is 
+called the *sample space*.
+A *random variable* is a mapping of a sample space to the real line.
+We will usually a random variable by a capital letter 
+(e.g. $Y$) and the value taken by a random
+variable by a lower case letter (e.g. $y$).
+
+A *discrete random variable* is a random variable that can 
+take only a finite or countably infinite
+number of values. 
+In this module discrete random variables will usually be 
+integer-valued.
+
+If the experiment consists of tossing a coin with outcomes 
+'head' or 'tail' and we toss the coin once,
+then clearly the sample space is {head, tail}. One possible
+random variable, $X$ say, is the number of
+heads obtained. $X$ can only take values $0$ or $1$ and so is a 
+discrete random variable.
+
+Suppose we are interested in monitoring the number of hits at 
+a web site in a year. Denote the
+number by $Y$. Clearly, $Y$ must be integer-valued and so is a
+discrete random variable, but there is no
+obvious upper bound to $Y$, so it may be convenient to take the
+set of possible values of $Y$ to be the
+countably infinite set $\{0, 1, 2, \ldots \}$.
+
+Associated with a discrete random variable is a *probability function* 
+(sometimes called the
+*probability mass function*), which gives the probability of each 
+possible value of the random
+variable.
+
+Let the random variable of interest be denoted by $X$ with a set of 
+possible values $D$. Then the
+probability function $p(.)$ is given by
+\[p(x) = P(X = x), \text{for $x \in D$}.\]
+
+It is important to include the domain $D$ when specifying a 
+probability function.
+Clearly $p(x) \geq 0$ for all $x \in D$, and
+$\sum_{x \in D} p(x) = 1$.
+
+If the experiment consists of tossing a coin with outcomes 
+'head' or 'tail' and we toss the coin once,
+then clearly the sample space is \{head, tail\}. Suppose $X$, 
+the number of heads obtained, is our
+random variable of interest. 
+Then, if the coin is fair, the probability function of $X$ is
+\[p(0) = p(1) = \frac{1}{2}.\]
+However, if the fairness of the coin is unknown the probability function of $X$ could be taken to be
+\[p(x) = \theta^x (1- \theta)^{1-x}, \quad x = 0, 1.\]
+Here $\theta$ is a parameter, i.e. a fixed but unknown constant. 
+Clearly, $\theta$ must lie between 0 and 1 in
+this case since it is a probability. 
+This is a common situation encountered in statistics: we might
+assume we know the form of a probability function but it contains 
+one or more unknown quantities
+(parameters) whose value(s) we need estimate from sample data.
+
+## Bernoulli random variables
+A *Bernoulli trial* is an experiment with just two possible 
+outcomes 'success' and 'failure' which
+occur with probabilities $\theta$ and $1– \theta$ respectively, 
+where $\theta$ is the success probability.
+A *Bernoulli random variable* $X$ has probability function
+\[p(x) = \theta^x (1- \theta)^{1-x}, \quad x = 0, 1,\]
+where $0 < \theta < 1$.
+
+This is a basic building block for some familiar but more complex discrete random variables.
+
+## Binomial random variables
+
+Suppose we undertake a fixed number, $n$, of independent Bernoulli 
+trials, each with success
+probability $\theta$. Let $X$ be the number of successes 
+in these $n$ trials. Then $X$ is a *Binomial random
+variable* with probability function
+\[\binom{n}{x} \theta^x (1 - \theta)^{n-x}, \quad x = 0, 1, \ldots, n,\]
+where $0 < \theta < 1$.
+
+We will often say in such circumstances “X is Binomially distributed” or “$X$ is $\text{Binomial}(n, \theta)$” or
+“$X \sim \text{Binomial}(n, \theta)$”. **TODO: Should introduce similar
+notations for other distributions**
+
+## Negative Binomial random variables (including Geometric random variables)
+
+Suppose we undertake a sequence of independent Bernoulli trials, 
+each with success probability $\theta$.
+Let $X$ be the number failures that occur before the $k$th success.
+Then $X$ is called a *Negative Binomial random variable*
+with probability function
+\[p(x) = \binom{k + x - 1}{x} (1 - \theta)^x \theta^k, \quad
+  x = 0, 1, \ldots,
+\]
+where $0 < \theta < 1$.
+
+In the special case with $k = 1$, $X$ is called a *Geometric
+random variable* with probability function
+\[p(x) = (1 - \theta)^x \theta , \quad x = 0, 1, \ldots.\]
+
+## Poisson random variables
+
+*Poisson random variables* arise in a variety of practical situations 
+where ‘events’ occur apparently at
+random with a rate of occurrence $\theta$ 
+per unit time, e.g. queuing theory. The random variable $Y$
+is defined as
+Y = ‘the number of events in an interval of fixed length $t$.’
+Provided that an event occurs instantaneously, the range of 
+possible values for $Y$ is $0, 1, \ldots$,
+showing that this is a discrete random variable defined over 
+the non-negative integers.
+
+Then the probability function for a Poisson random variable is given by
+\[p(y) = \frac{e^{-\theta t} (\theta t)^y}{y!}, \quad y = 0, 1, \ldots,\]
+  where $\theta > 0$.
+**CHECK: is Poisson derived this way in MATH1024??**
+  This result was obtained in detail in MATH1024.
+
+  Of course, by defining the time unit appropriately one can take
+  $t = 1$, giving the probability function
+\[p(y) = \frac{e^{-\theta} (\theta)^y}{y!}, \quad y = 0, 1, \ldots, \]
+  where $\theta > 0$. This is a useful form of the probability function
+  if one is aiming to model “count” data
+more generally, particularly when time is not the main focus.
+
+
+## A relationship between Poisson and Binomial random variables
+Suppose that $X \sim \text{Binomial}(n, \theta)$
+and let  $\mu = n \theta$.
+It can be shown that for fixed $x$, as $n \rightarrow \infty$
+\[p(x) = \binom{n}{x} \theta^x (1 - \theta)^{n - x}
+  \rightarrow \frac{e^{-\mu} \mu^x}{x!}.\]
+So for large $n$ and small $\theta$, Binomial probabilities can be 
+approximated by Poisson probabilities.
