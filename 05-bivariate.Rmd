@@ -1,0 +1,4 @@
+# Bivariate distributions
+
+- Chapter 8: bivariate
+- Chapter 10: bivariate transformations

@@ -1,0 +1,4 @@
+# Confidence intervals and hypothesis tests
+
+- Ideas of confidence interval, hypothesis test
+- parts of Chapter 11: Normal inference (as an example)

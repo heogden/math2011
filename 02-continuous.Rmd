@@ -85,6 +85,9 @@ pexp(200, rate = 0.01) - pexp(100, rate = 0.01)
 ```
 ## Normal random variables
 
+**TODO: refer to Normal distribution rather than Normal random 
+variables, and similarly for other examples.**
+
 The most important continuous probability model is the 
 **Normal distribution**. Two examples of
 Normal distributions superimposed on observed sets of data are given 

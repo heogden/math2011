@@ -1,0 +1,4 @@
+# Properties of distributions
+
+- Chapter 3: Moments
+- Chapter 4: generating functions

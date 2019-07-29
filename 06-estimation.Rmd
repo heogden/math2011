@@ -1,0 +1,6 @@
+# Parameter estimation
+
+- Chapter 12: Estimation 
+- Chapter 13: Method of Moments
+- Chapter 14: Maximum likelihood estimation
+- parts of Chapter 11: Normal inference (as an example)
