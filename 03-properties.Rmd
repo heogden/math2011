@@ -1,4 +1,189 @@
 # Properties of distributions
 
-- Chapter 3: Moments
-- Chapter 4: generating functions
+## Moments
+
+### Expected value
+
+Suppose we have a discrete rv $Y$ with probability function 
+$p(.)$ with domain $D$.
+Although $p(.)$ tells us everything about the properties of $Y$, 
+it is often useful to
+summarise the properties $Y$ using a few simple quantities.
+This is similar to the situation in applications where we collect
+a large amount of
+data and we use summary statistics (e.g. the sample mean, 
+the sample standard
+deviation) to help us to understand or interpret the data.
+
+A simple summary of the probabilistic properties of $Y$ is the 
+*expected value* or
+(population) *mean* of $Y$, denoted by $E(Y)$ or $\mu$,
+depending on the context.
+
+If we think of probability as mass distributed at various 
+discrete points on a
+numerical scale, then $E(Y)$ is simply the centre of mass of $p(.)$.
+\[E(Y) = \sum_{y \in D} y p(y).\]
+
+**TODO: add explanation in terms of sample mean**
+
+#### Bernoulli example
+
+If $Y$ is a continuous rv with probability density 
+function $f(.)$ and domain $D$, 
+ the expected value of Y is:
+\[E(Y) = \int_{-\infty}^\infty yf(y)dy = \int_D y f(y) dy.\]
+
+#### Exponential example
+
+We can find the expected value of new random variable $h(Y)$ with
+\[E[h(Y)] = \int_{-\infty}^{\infty} h(y) f(y) dy = \int_D h(y) f(y) dy\]
+  if $Y$ is a continous random variable with pdf $f(.)$. We may
+  obtain a similar expression in the discrete case.
+
+### Variance
+  
+We can define the (population) variance of $Y$ by
+\[ \text{Var}(Y) = E\left\{[Y - E(Y)]^2 \right\}.\]
+It is easy to show that
+\[ \text{Var}(Y) = E(Y^2) - [E(Y)]^2.\]
+$\text{Var}(Y)$ is a measure of spread. It is often denoted by $\sigma^2$.
+  
+We sometimes use the (population) standard
+deviation, which is just the square root of the variance, to return to the original
+scale of measurement of $Y$.
+
+#### Bernoulli example
+
+#### Exponential example
+
+### Higher-order moments
+
+So far we have summarised rvs using the mean and variance (or standard
+deviation), which measure the “location” and the “spread”.
+Why would we need anything more? 
+Consider the following two density functions of two different continuous
+distributions:
+
+```{r, echo = FALSE}
+par(mfrow = c(1, 2))
+curve(dnorm(x), from = -6, to = 6, xlab = "x", ylab = "f(x)", ylim = c(0, 0.5))
+curve(dunif(x, min = -sqrt(3), max = sqrt(3)), from = -6, to = 6,
+      xlab = "x", ylab = "f(x)", ylim = c(0, 0.5))
+```
+
+In fact, the plot on the left is the pdf of a $N(0, 1)$ distribution,
+and the plot on the right is the pdf of a $\text{Uniform}(-\sqrt{3}, \sqrt{3})$
+distribution. Both have mean $0$ and variance $1$, yet they look very different.
+They are both symmetric about $0$ (the mean) but differ in terms of “shape”.
+
+Consider two more density functions:
+
+```{r, echo = FALSE}
+par(mfrow = c(1, 2))
+curve(dgamma(x + 2, shape = 4, rate = 2),
+      from = -6, to = 6, xlab = "x", ylab = "f(x)", ylim = c(0, 0.5))
+b <- sqrt(7)/4
+curve(0.75 * dnorm(x, mean = 0.75, sd = b) + 0.25 * dnorm(x, mean = -2.25, sd = b),
+      from = -6, to = 6, xlab = "x", ylab = "f(x)", ylim = c(0, 0.5))
+```
+
+Again both have mean $0$ and variance $1$, yet they look very different.
+Neither is symmetric and they have different “shapes”.
+
+How can we capture something useful about “shape”?
+We use so-called *higher-order moments* --- particularly the third and fourth moments.
+So we need a general definition of moments and it will be useful to obtain
+relationships between them.
+
+In what follows, we will assume our rv $Y$ has continuous distribution. 
+The discrete case
+follows by replacing the pdf by the probability function and the integral by a
+sum.
+
+In general, we define the
+*$r$th moment about the origin*
+\[\mu_r^\prime = E(Y^r) = \int_{-\infty}^\infty y^r f(y) dy\]
+and the 
+*$r$th moment about the mean*
+\[\mu_r = E\left\{[Y – E(Y)]^r \right\} =\int_{-\infty}^\infty (y - \mu)^r f(y) dy.\]
+
+We have
+\begin{align*}
+\mu_1^\prime &= \mu = E(Y) \\
+\mu_1 &= 0 \\
+\mu_2 = \text{Var}(Y).
+\end{align*}
+
+How about the third and fourth moments about the mean?
+We have
+\[\mu_3 = E\left\{[Y - E(Y)]^3\right\} = \int_{-\infty}^\infty (y - \mu)^3 f(y) dy,\]
+and we can show that 
+\[\mu_3 = \mu_3^\prime - 3 \mu_2^\prime \mu + 2 \mu^3.\]
+This formula allows us to find the third moment about the mean from the first
+three moments about the origin.
+
+**TODO: add proof of this (or gap for this?)**
+
+
+Similarly
+\[\mu_4 =  E\left\{[Y - E(Y)]^4\right\} = \int_{-\infty}^\infty (y - \mu)^4 f(y) dy,\]
+and we can show that 
+\[\mu_4 = \mu_4^\prime - 4 \mu_3^\prime  \mu + 6 \mu_2^\prime \mu^2 - 3 \mu^4.\]
+This formula allows us to find the fourth moment about the mean from the first
+fourth moments about the origin.
+
+If $Y$ has symmetric distribution then $\mu_3 = 0$.
+If $Y$ has a heavier right tail than left tail then $\mu_3 > 0$,
+and conversely if $Y$ has a heavier left tail than right, then $\mu_3 < 0$.
+
+For symmetric distributions, roughly speaking
+thick tails lead to higher values of $\mu_4$ than light tails.
+
+### Standardised moments
+
+Remember that the basic idea is to describe location and spread via the mean and
+variance and the describe “shape” in terms of the third and fourth moments.
+So we don’t mix up spread with shape we usually use standardised third and fourth
+moments about the mean.
+
+**TODO: could add some examples of what goes wrong if we just use third
+and fourth moments about the mean directly**
+
+The **skewness** is the standardised third moment about the mean, defined
+as
+\[\gamma_1 = \frac{\mu_3}{\mu_2^{3/2}}.\]
+The **kurtosis** is the standardised fourth moment about the mean, defined
+as
+\[\gamma_2 = \frac{\mu_4}{\mu_2^2}.\]
+Is it obvious that these quantities are unchanged by linear transformations of $Y$?
+
+Of course we could consider yet higher order moments to fine tune our
+understanding of $Y$.
+However, we often stop at $r = 4$.
+Even so, if we just want to obtain the first four moments of a distribution, 
+that may involve a
+lot of (difficult!) integration.
+In Chapter **TODO ????** we will find a method that allows us to find as many moments as
+we like but with only one integration required.
+
+#### Example: Skewness and kurtosis of a Bernoulli distribution
+
+Let $Y \sim \text{Bernoulli}(\theta)$.
+It is easy to see that $\mu_r^\prime = \theta$.
+
+So we get:
+**TODO: finish/leave gap**
+
+#### Example: Skewness and kurtosis of an Exponential random variable
+
+Let $Y \sim \text{Exponential}(\theta)$, with pdf 
+$f (y) = \theta exp(- \theta y)$ for $y > 0$.
+We have seen **TODO ???** that $E(Y) = \theta^{-1}$
+and $E(Y^2) = 2 \theta^{-2}$.
+
+So we get:
+**TODO: finish/leave gap**.
+
+## Generating functions
+
