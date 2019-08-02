@@ -62,4 +62,70 @@ results for sums of independent rvs.
 
 Table: (\#tab:closure) Some distributions with closure properties under summation
 
+**TODO: fix formatting of this table (in PDF)**
 
+We shall illustrate two of these results and leave the others as exercises.
+
+### Example: sum of independent Binomial rvs with common success probability
+
+Suppose that $Y_1, \ldots, Y_n$
+are independent, with $Y_i \sim \text{Binomial}(n_i , \theta)$. Then
+$Z = \sum_{i=1}^n Y_i \sim \text{Binomial}(\sum_{i=1}^n n_i, \theta)$.
+
+**TODO: proof**
+
+
+As a corollary, note that if the 
+$Y_i$ are independent $\text{Bernoulli}(\theta)$ rvs, then 
+$Z \sim \text{Binomial}(n, \theta)$.
+
+### Example: Sum of independent normal rvs
+
+Suppose that $Y_1, \ldots, Y_n$
+are independent, with $Y_i \sim N(\mu, \sigma^2)$. Then
+$Z = \sum_{i=1}^n Y_i \sim N(\sum_{i=1}^n \mu_i, \sum_{i=1}^n \sigma^2)$.
+
+**TODO: proof**
+
+As a corollary, note that if the 
+$Y_i$ are independent $N(\mu, \sigma^2)$ rvs, then 
+$Z \sim N(n \mu, n \sigma^2)$.
+
+## Properties of the sample mean of normal observations
+
+Suppose that $Y_1, \ldots, Y_n$  are independent
+and identically distributed,
+with $Y_i \sim N(\mu, \sigma^2)$, and let
+\[\bar Y = \frac{\sum_{i=1}^n Y_i}{n}\]
+be the sample mean.
+
+What is the distribution of $\bar Y$?
+
+For each $Y_i$, the cgf is 
+$K_{Y_i}(t) = \mu t + \frac{1}{2} \sigma^2 t^2$
+(see Example **TODO: insert reference**).
+
+We use the properties of cgfs to derive the well-known result 
+$\bar Y \sim N(\mu, \sigma^2/n)$.
+
+**TODO: add proof**
+
+
+## The central limit theorem (CLT)
+
+Suppose that $Y_1, \ldots, Y_n$  are independent
+and identically distributed,
+each with finite variance and $r$th cumulant $\kappa_r$.
+Let
+\[Z = \frac{\bar Y - \kappa_1}{\sqrt{\kappa_2}/n}\]
+(here $\kappa_1 = E(Y)$ and $\kappa_2 = \text{Var}(Y)$
+**TODO: should we rephrase the CLT in terms of $\mu$
+and $\sigma^2$?**).
+Then $Z \rightarrow N(0, 1)$ as $n \rightarrow \infty$.
+
+Note that (see Example **TODO: add reference$) a
+$N(0, 1)$ rv has second cumulant $1$ and all other
+cumulants are $0$. So in our sketch proof, we aim to show that the
+cumulants of $Z$ have the same structure as $n \rightarrow \infty$.
+
+**TODO: add sketch proof**
