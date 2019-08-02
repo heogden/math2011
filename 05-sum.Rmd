@@ -1,0 +1,82 @@
+# (PART) Transformations of distributions {-}
+
+# Distribution of a sum of rvs
+
+## Motivation
+In many situations in Statistics we end up with situations 
+where we are interested in understanding the properties of 
+(possibly weighted) sums of random variables.
+For example, the sample mean is frequently used as a summary 
+measure for a set of observations and it is simply a weighted 
+sum of the observations (each observation has weight $1/n$, 
+where $n$ is the number of observations).
+Either through good fortune or by design the random variables 
+are often independent. In this chapter we consider sums of 
+independent random variables. 
+
+##  Mgf and cgf of a sum of independent rvs {#gensum}
+Suppose that $Y_1$ and $Y_2$ are independent random variables 
+with moment generating functions 
+$M_{Y_1}(t)$ and $M_{Y_2}$.
+Let $Z = Y_1 + Y_2.$
+Then $Z$ has mgf
+\[M_Z(t)  = M_{Y_1}(t) M_{Y_2}(t).\]
+
+**[TODO: add proof]**
+
+In general, for independent rvs
+$Y_1, Y_2, \ldots Y_n$ 
+with moment generating
+functions $M_{Y_i}(t)$ , $i = 1, 2, \ldots, n$,
+$Z = \sum_{i=1}^n Y_i$ 
+has moment generating function
+\[M_Z(t) = \prod_{i=1}^n M_{Y_i}(t).\]
+
+A special case of this is that if $Y_1, Y_2, \ldots Y_n$  all have
+the same distribution with moment generating function $M_Y(t)$,
+then
+$M_Z(t) = [M_Y(t)]^n$.
+
+Similarly, for independent rvs
+$Y_1, Y_2, \ldots Y_n$ 
+with cumulant generating
+functions $K_{Y_i}(t)$ , $i = 1, 2, \ldots, n$,
+$Z = \sum_{i=1}^n Y_i$ 
+has moment generating function
+\[K_Z(t) = \sum_{i=1}^n K_{Y_i}(t).\]
+
+**[TODO: add proof]**
+
+## Closure results for some standard types of random variables
+
+Using the results of Section \@ref(gensum)
+we get some very useful “closure”
+results for sums of independent rvs.
+
+<!-- | Distribution      | $Y_i$                          | $Z$                                              | -->
+<!-- |----|----|----| -->
+<!-- | Binomial          | $\text{Binomial}(n_i, \theta)$ | $\text{Binomial}(\sum_{i=1}^n n_i, \theta)$      | -->
+<!-- | Negative binomial | $\text{NegBin}(k_i, \theta)$   | $\text{NegBin}(\sum_{i=1}^n k_i, \theta)$        | -->
+<!-- | Poisson           | $\text{Poisson}(\theta_i)$     | $\text{Poisson}(\sum_{i=1}^n \theta_i)$          | -->
+<!-- | Normal            | $N(\mu_i, \sigma^2_i)$         | $N(\sum_{i=1}^n \mu_i, \sum_{i=1}^n \sigma^2_i)$ | -->
+
+<!-- Table: (\#tab:closure) Some distributions with closure properties under summation -->
+
+```{r sum_closure}
+out <- tibble::tibble(Distribution = c("Binomial", "Negative binomial",
+                                   "Poisson", "Normal"),
+                  "$Y_i$" = c("$\\text{Binomial}(n_i, \\theta)$",
+                              "$\\text{NegBin}(k_i, \\theta)$",
+                              "$\\text{Poisson}(\\theta_i)$",
+                              "$N(\\mu_i, \\sigma^2_i)$"),
+                  "$Z$" = c("$\\text{Binomial}(\\sum_{i=1}^n n_i, \\theta)$ ",
+                            "$\\text{NegBin}(\\sum_{i=1}^n k_i, \\theta)$",
+                            "$\\text{Poisson}(\\sum_{i=1}^n \\theta_i)$",
+                            "$N(\\sum_{i=1}^n \\mu_i, \\sum_{i=1}^n \\sigma^2_i)$"))
+                              
+knitr::kable(
+  out, booktabs = TRUE,
+  caption = 'Some distributions with closure properties under summation',
+  escape = FALSE
+)
+```

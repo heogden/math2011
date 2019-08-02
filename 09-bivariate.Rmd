@@ -1,3 +1,5 @@
+# (PART) Bivariate distributions {-}
+
 # Bivariate distributions
 
 - Chapter 8: bivariate

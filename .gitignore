@@ -3,3 +3,4 @@ _bookdown_files/*
 /.Rhistory
 *~
 *.log
+_deploy.sh

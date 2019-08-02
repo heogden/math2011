@@ -1,4 +1,4 @@
-# Continuous random variables
+# Continuous distributions
 
 We shall now look at random variables which may take any values
 within an interval, for example

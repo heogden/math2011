@@ -1,6 +1,0 @@
-# Transformations of random variables
-
-- Chapter 5: sums (inc CLT)
-- Chapter 6: max/min
-- Chapter 7: Gamma (as example)
-- Chapter 9: Univariate transofmations $Y = g(X)$.

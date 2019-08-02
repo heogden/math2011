@@ -1,3 +1,5 @@
+# (PART) Statistical inference {-}
+
 # Parameter estimation
 
 - Chapter 12: Estimation 

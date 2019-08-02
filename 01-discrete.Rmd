@@ -1,4 +1,6 @@
-# Discrete random variables
+# (PART) Distributions {-}
+
+# Discrete distributions
 
 ## Introduction 
 

@@ -1,8 +1,8 @@
-# Properties of distributions
+# (PART) Properties of distributions {-}
 
-## Moments
+# Moments
 
-### Expected value
+## Expected value
 
 Suppose we have a discrete rv $Y$ with probability function 
 $p(.)$ with domain $D$.
@@ -27,21 +27,21 @@ numerical scale, then $E(Y)$ is simply the centre of mass of $p(.)$.
 
 **TODO: add explanation in terms of sample mean**
 
-#### Bernoulli example
+### Bernoulli example
 
 If $Y$ is a continuous rv with probability density 
 function $f(.)$ and domain $D$, 
  the expected value of Y is:
 \[E(Y) = \int_{-\infty}^\infty yf(y)dy = \int_D y f(y) dy.\]
 
-#### Exponential example
+### Exponential example
 
 We can find the expected value of new random variable $h(Y)$ with
 \[E[h(Y)] = \int_{-\infty}^{\infty} h(y) f(y) dy = \int_D h(y) f(y) dy\]
   if $Y$ is a continous random variable with pdf $f(.)$. We may
   obtain a similar expression in the discrete case.
 
-### Variance
+## Variance
   
 We can define the (population) variance of $Y$ by
 \[ \text{Var}(Y) = E\left\{[Y - E(Y)]^2 \right\}.\]
@@ -53,11 +53,11 @@ We sometimes use the (population) standard
 deviation, which is just the square root of the variance, to return to the original
 scale of measurement of $Y$.
 
-#### Bernoulli example
+### Bernoulli example
 
-#### Exponential example
+### Exponential example
 
-### Higher-order moments
+## Higher-order moments
 
 So far we have summarised rvs using the mean and variance (or standard
 deviation), which measure the “location” and the “spread”.
@@ -140,7 +140,7 @@ and conversely if $Y$ has a heavier left tail than right, then $\mu_3 < 0$.
 For symmetric distributions, roughly speaking
 thick tails lead to higher values of $\mu_4$ than light tails.
 
-### Standardised moments
+## Standardised moments
 
 Remember that the basic idea is to describe location and spread via the mean and
 variance and the describe “shape” in terms of the third and fourth moments.
@@ -167,7 +167,7 @@ lot of (difficult!) integration.
 In Chapter **TODO ????** we will find a method that allows us to find as many moments as
 we like but with only one integration required.
 
-#### Example: Skewness and kurtosis of a Bernoulli distribution
+### Example: Skewness and kurtosis of a Bernoulli distribution
 
 Let $Y \sim \text{Bernoulli}(\theta)$.
 It is easy to see that $\mu_r^\prime = \theta$.
@@ -175,7 +175,7 @@ It is easy to see that $\mu_r^\prime = \theta$.
 So we get:
 **TODO: finish/leave gap**
 
-#### Example: Skewness and kurtosis of an Exponential random variable
+### Example: Skewness and kurtosis of an Exponential random variable
 
 Let $Y \sim \text{Exponential}(\theta)$, with pdf 
 $f (y) = \theta exp(- \theta y)$ for $y > 0$.
@@ -184,98 +184,3 @@ and $E(Y^2) = 2 \theta^{-2}$.
 
 So we get:
 **TODO: finish/leave gap**.
-
-## Generating functions
-
-### The moment generation function
-
-We now define an entity --- the *moment generating function* (*mgf*) ---
-that enables us to find as many moments as we wish using just a single 
-integral (or sum in the discrete case).
-
-
-
-We define the *moment generating function* for $Y$ as 
-\[M_Y(t) = E(e^{tY}) = \int_{-\infty}^\infty e^{ty} f(y) dy,\]
-if $Y$ has continuous distribution, or
-\[M_Y(t) = E(e^{tY}) = \sum_{y \in D} e^{ty} p(y)\]
-if $Y$ has discrete distribution.
-
-A problem with this definition is that in some cases the expectation $E(e^{tY})$
-might not be well-defined
-for some values of $t$. Provided that there is some value $h > 0$
-such that the expectation $E(e^{tY})$ exists for all $-h < t < h$,
-we say the mgf is well-defined.
-
-Consider $e^{yt}$ expanded as a power series in $t$:
-\[e^{ty} = 1 + ty + \frac{(ty)^2}{2!} + \frac{(ty)^3}{3!} + \ldots =
-  \sum_{r=0}^\infty \frac{(ty)^r}{r!}.\]
-We can use this power series expansion to see that:
-\[M_Y(t) = E(e^{tY}) = \sum_{r=0}^\infty \frac{t^r E(Y^r)}{r!}
-  =  \sum_{r=0}^\infty \frac{t^r \mu_r^\prime}{r!}.\]
-
-We can use this result and repeated differentiation to obtain as many moments as
-we wish.
-To find $\mu_r^\prime$,
-differentiate the mgf $r$ times with respect to $t$ and then let $t$
-tend to zero. 
-
-[**TODO: why does this work?**]
-
-#### Example: Normal mgf
-
-### The cumulant generating function
-
-Define the *cumulant generating function* (*cgf*) by
-\[K_Y(t) = \log M_Y(t).\]
-Define the $r$th cumulant $\kappa_r$ by
-\[\kappa_r = K_Y^{(r)}(t)|_{t = 0}.\]
-What are these cumulants in terms of the more familiar moments?
-We now obtain the first four cumulants:
-
-[**TODO: gap fill**]
-
-So we see that if we are just interested in finding the mean, 
-variance, skewness
-and kurtosis of a distribution,
-then the cgf is particularly useful.
-
-#### Example: Binomial cgf
-[**TODO: gap fill**]
-
-
-#### Example: Normal cgf
-[**TODO: gap fill**]
-
-### Generating functions under linear transformation
-
-Suppose we linearly transform a rv $Y$, i.e. we obtain a new rv $Z$,
-defined as $Z = a + bY$, where $a$ and $b$ are constants.
-
-Then
-\[M_Z(t) = e^{at} M_Y(bt)\]
-and
-\[K_Z(t) = at + K_Y(bt).\]
-
-[**TODO: proof**]
-
-Using this result, we see that some types of rv are “closed” under certain types of
-linear transformation.
-
-Clearly, if two rvs have the same distribution, then they have the same mgf (cgf).
-We also state without proof that if two rvs have the same mgf (cgf), then
-they have the same distribution.
-
-#### Example: Exponential distribution
-
-Suppose $Y \sim \text{Exponential}(\theta)$. Let $Z = bY$ where $b > 0$.
-Then $Z \sim \text{Exponential}(\theta / b)$.
-
-[**TODO: proof**]
-
-#### Example: Normal distribution 
-
-Suppose $Y \sim N(\mu, \sigma^2)$. Let $Z = a + bY$ where $a \in \mathbb{R}$ and $b > 0$.
-Then $Z \sim N(a + b \mu, b^2 \sigma^2)$.
-
-[**TODO: proof**]
