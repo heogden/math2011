@@ -53,30 +53,13 @@ Using the results of Section \@ref(gensum)
 we get some very useful “closure”
 results for sums of independent rvs.
 
-<!-- | Distribution      | $Y_i$                          | $Z$                                              | -->
-<!-- |----|----|----| -->
-<!-- | Binomial          | $\text{Binomial}(n_i, \theta)$ | $\text{Binomial}(\sum_{i=1}^n n_i, \theta)$      | -->
-<!-- | Negative binomial | $\text{NegBin}(k_i, \theta)$   | $\text{NegBin}(\sum_{i=1}^n k_i, \theta)$        | -->
-<!-- | Poisson           | $\text{Poisson}(\theta_i)$     | $\text{Poisson}(\sum_{i=1}^n \theta_i)$          | -->
-<!-- | Normal            | $N(\mu_i, \sigma^2_i)$         | $N(\sum_{i=1}^n \mu_i, \sum_{i=1}^n \sigma^2_i)$ | -->
+| Distribution      | $Y_i$                          | $Z$                                              |
+|----|----|----|
+| Binomial          | $\text{Binomial}(n_i, \theta)$ | $\text{Binomial}(\sum_{i=1}^n n_i, \theta)$      |
+| Negative binomial | $\text{NegBin}(k_i, \theta)$   | $\text{NegBin}(\sum_{i=1}^n k_i, \theta)$        |
+| Poisson           | $\text{Poisson}(\theta_i)$     | $\text{Poisson}(\sum_{i=1}^n \theta_i)$          |
+| Normal            | $N(\mu_i, \sigma^2_i)$         | $N(\sum_{i=1}^n \mu_i, \sum_{i=1}^n \sigma^2_i)$ |
 
-<!-- Table: (\#tab:closure) Some distributions with closure properties under summation -->
+Table: (\#tab:closure) Some distributions with closure properties under summation
 
-```{r sum_closure}
-out <- tibble::tibble(Distribution = c("Binomial", "Negative binomial",
-                                   "Poisson", "Normal"),
-                  "$Y_i$" = c("$\\text{Binomial}(n_i, \\theta)$",
-                              "$\\text{NegBin}(k_i, \\theta)$",
-                              "$\\text{Poisson}(\\theta_i)$",
-                              "$N(\\mu_i, \\sigma^2_i)$"),
-                  "$Z$" = c("$\\text{Binomial}(\\sum_{i=1}^n n_i, \\theta)$ ",
-                            "$\\text{NegBin}(\\sum_{i=1}^n k_i, \\theta)$",
-                            "$\\text{Poisson}(\\sum_{i=1}^n \\theta_i)$",
-                            "$N(\\sum_{i=1}^n \\mu_i, \\sum_{i=1}^n \\sigma^2_i)$"))
-                              
-knitr::kable(
-  out, booktabs = TRUE,
-  caption = 'Some distributions with closure properties under summation',
-  escape = FALSE
-)
-```
+
