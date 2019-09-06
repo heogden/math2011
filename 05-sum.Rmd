@@ -22,7 +22,9 @@ Let $Z = Y_1 + Y_2.$
 Then $Z$ has mgf
 \[M_Z(t)  = M_{Y_1}(t) M_{Y_2}(t).\]
 
+```{proof}
 **[TODO: add proof]**
+```
 
 In general, for independent rvs
 $Y_1, Y_2, \ldots Y_n$ 
@@ -45,7 +47,9 @@ $Z = \sum_{i=1}^n Y_i$
 has moment generating function
 \[K_Z(t) = \sum_{i=1}^n K_{Y_i}(t).\]
 
+```{proof}
 **[TODO: add proof]**
+```
 
 ## Closure results for some standard types of random variables
 
@@ -66,7 +70,7 @@ Table: (\#tab:closure) Some distributions with closure properties under summatio
 
 We shall illustrate two of these results and leave the others as exercises.
 
-### Example: sum of independent Binomial rvs with common success probability
+```{example, name = "Sum of independent Binomial rvs with common success probability"}
 
 Suppose that $Y_1, \ldots, Y_n$
 are independent, with $Y_i \sim \text{Binomial}(n_i , \theta)$. Then
@@ -78,8 +82,9 @@ $Z = \sum_{i=1}^n Y_i \sim \text{Binomial}(\sum_{i=1}^n n_i, \theta)$.
 As a corollary, note that if the 
 $Y_i$ are independent $\text{Bernoulli}(\theta)$ rvs, then 
 $Z \sim \text{Binomial}(n, \theta)$.
+```
 
-### Example: Sum of independent normal rvs
+```{example, name = "Sum of independent normal rvs"}
 
 Suppose that $Y_1, \ldots, Y_n$
 are independent, with $Y_i \sim N(\mu, \sigma^2)$. Then
@@ -90,6 +95,7 @@ $Z = \sum_{i=1}^n Y_i \sim N(\sum_{i=1}^n \mu_i, \sum_{i=1}^n \sigma^2)$.
 As a corollary, note that if the 
 $Y_i$ are independent $N(\mu, \sigma^2)$ rvs, then 
 $Z \sim N(n \mu, n \sigma^2)$.
+```
 
 ## Properties of the sample mean of normal observations
 
@@ -113,6 +119,7 @@ $\bar Y \sim N(\mu, \sigma^2/n)$.
 
 ## The central limit theorem (CLT)
 
+```{theorem}
 Suppose that $Y_1, \ldots, Y_n$  are independent
 and identically distributed,
 each with finite variance and $r$th cumulant $\kappa_r$.
@@ -122,10 +129,14 @@ Let
 **TODO: should we rephrase the CLT in terms of $\mu$
 and $\sigma^2$?**).
 Then $Z \rightarrow N(0, 1)$ as $n \rightarrow \infty$.
+```
 
-Note that (see Example **TODO: add reference$) a
+```{remark}
+Note that (see Example **TODO: add reference**) a
 $N(0, 1)$ rv has second cumulant $1$ and all other
 cumulants are $0$. So in our sketch proof, we aim to show that the
 cumulants of $Z$ have the same structure as $n \rightarrow \infty$.
-
+```
+```{proof}
 **TODO: add sketch proof**
+```

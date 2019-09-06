@@ -27,19 +27,23 @@ numerical scale, then $E(Y)$ is simply the centre of mass of $p(.)$.
 
 **TODO: add explanation in terms of sample mean**
 
-### Bernoulli example
+```{example, name = "Expected value of the Bernoulli distribution"}
+```
 
 If $Y$ is a continuous rv with probability density 
 function $f(.)$ and domain $D$, 
  the expected value of Y is:
 \[E(Y) = \int_{-\infty}^\infty yf(y)dy = \int_D y f(y) dy.\]
 
-### Exponential example
+
+```{example, name = "Expected value of the exponential distribution"}
+```
 
 We can find the expected value of new random variable $h(Y)$ with
 \[E[h(Y)] = \int_{-\infty}^{\infty} h(y) f(y) dy = \int_D h(y) f(y) dy\]
   if $Y$ is a continous random variable with pdf $f(.)$. We may
   obtain a similar expression in the discrete case.
+
 
 ## Variance
   
@@ -53,9 +57,11 @@ We sometimes use the (population) standard
 deviation, which is just the square root of the variance, to return to the original
 scale of measurement of $Y$.
 
-### Bernoulli example
+```{example, name = "Variance of the Bernoulli distribution"}
+```
 
-### Exponential example
+```{example, name = "Variance of the exponential distribution"}
+```
 
 ## Higher-order moments
 
@@ -117,21 +123,30 @@ We have
 
 How about the third and fourth moments about the mean?
 We have
-\[\mu_3 = E\left\{[Y - E(Y)]^3\right\} = \int_{-\infty}^\infty (y - \mu)^3 f(y) dy,\]
-and we can show that 
+\[\mu_3 = E\left\{[Y - E(Y)]^3\right\} = \int_{-\infty}^\infty (y - \mu)^3 f(y) dy.\]
+
+```{theorem}
+We have
 \[\mu_3 = \mu_3^\prime - 3 \mu_2^\prime \mu + 2 \mu^3.\]
+```
+```{remark}
 This formula allows us to find the third moment about the mean from the first
 three moments about the origin.
-
+````
+```{proof}
 **TODO: add proof of this (or gap for this?)**
-
+```
 
 Similarly
-\[\mu_4 =  E\left\{[Y - E(Y)]^4\right\} = \int_{-\infty}^\infty (y - \mu)^4 f(y) dy,\]
-and we can show that 
+\[\mu_4 =  E\left\{[Y - E(Y)]^4\right\} = \int_{-\infty}^\infty (y - \mu)^4 f(y) dy.\]
+```{theorem}
+We have
 \[\mu_4 = \mu_4^\prime - 4 \mu_3^\prime  \mu + 6 \mu_2^\prime \mu^2 - 3 \mu^4.\]
+```
+```{remark}
 This formula allows us to find the fourth moment about the mean from the first
 fourth moments about the origin.
+```
 
 If $Y$ has symmetric distribution then $\mu_3 = 0$.
 If $Y$ has a heavier right tail than left tail then $\mu_3 > 0$,
@@ -167,15 +182,16 @@ lot of (difficult!) integration.
 In Chapter **TODO ????** we will find a method that allows us to find as many moments as
 we like but with only one integration required.
 
-### Example: Skewness and kurtosis of a Bernoulli distribution
+```{example, name = "Skewness and kurtosis of the Bernoulli distribution"}
 
 Let $Y \sim \text{Bernoulli}(\theta)$.
 It is easy to see that $\mu_r^\prime = \theta$.
 
 So we get:
 **TODO: finish/leave gap**
+```
 
-### Example: Skewness and kurtosis of an Exponential random variable
+```{example, name = "Skewness and kurtosis of the Exponential distribution"}
 
 Let $Y \sim \text{Exponential}(\theta)$, with pdf 
 $f (y) = \theta exp(- \theta y)$ for $y > 0$.
@@ -184,3 +200,4 @@ and $E(Y^2) = 2 \theta^{-2}$.
 
 So we get:
 **TODO: finish/leave gap**.
+```

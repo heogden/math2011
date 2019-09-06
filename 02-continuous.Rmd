@@ -55,18 +55,18 @@ or, if we have f(y), we may find
 Typically, in many situations of practical interest, the pdf 
 is more convenient to use than the cdf.
 
-## Example: Probability density function of an exponential random variable
-
 For the example concerning the time interval between events in a 
 Poisson process,
 $F(y) = 1 – e^{-\theta y}.$
-Differentiation, we find that
+By differentiation, we find that
 \[f(y) = \frac{dF}{dy} = \theta e^{-\theta y}, \quad y>0,\] is the
   density function of the Exponential distribution.
   [**TODO: justify the domain**].
 
 
-  For example, suppose the lifetime in hours of a certain type of 
+```{example}
+
+ Suppose the lifetime in hours of a certain type of 
   electronic component is described by an Exponential
 random variable with rate parameter $\theta = 0.01$. 
 What is the probability such a component will
@@ -83,6 +83,8 @@ We could find this in `R` with
 ```{r}
 pexp(200, rate = 0.01) - pexp(100, rate = 0.01)
 ```
+```
+
 ## Normal random variables
 
 **TODO: refer to Normal distribution rather than Normal random 
@@ -125,8 +127,7 @@ curve(dnorm(x, mean = 0, sd = 1), from = -5, to = 5,
 and other normal distributions. Linear combinations
 of normal remain normal.**
 
-## Example of Normal probability calculations
-
+```{example}
 Suppose that daily water use at a factory varies about a mean of 
 $77500$ litres with standard
 deviation $5700$ litres. If demand is Normally distributed
@@ -170,6 +171,7 @@ This idea of surprise at an extreme result of
 low probability, as predicted by a statistical model, 
 will be important later in this
 module and also in modules such as MATH2010 Statistical Modelling I.
+``` 
  
 ## The use of a Normal approximation to Binomial probabilities
 

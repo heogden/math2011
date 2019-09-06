@@ -36,7 +36,8 @@ tend to zero.
 
 [**TODO: why does this work?**]
 
-### Example: Normal mgf
+```{example, name = "Normal mgf"}
+```
 
 ## The cumulant generating function
 
@@ -54,15 +55,18 @@ variance, skewness
 and kurtosis of a distribution,
 then the cgf is particularly useful.
 
-### Example: Binomial cgf
+```{example, name = "Binomial cgf"}
 [**TODO: gap fill**]
+```
 
-
-### Example: Normal cgf
+```{example, name =  "Normal cgf"}
 [**TODO: gap fill**]
+```
 
 ## Generating functions under linear transformation
 
+
+```{theorem}
 Suppose we linearly transform a rv $Y$, i.e. we obtain a new rv $Z$,
 defined as $Z = a + bY$, where $a$ and $b$ are constants.
 
@@ -70,8 +74,11 @@ Then
 \[M_Z(t) = e^{at} M_Y(bt)\]
 and
 \[K_Z(t) = at + K_Y(bt).\]
+```
 
+```{proof}
 [**TODO: proof**]
+```
 
 Using this result, we see that some types of rv are “closed” under certain types of
 linear transformation.
@@ -80,16 +87,18 @@ Clearly, if two rvs have the same distribution, then they have the same mgf (cgf
 We also state without proof that if two rvs have the same mgf (cgf), then
 they have the same distribution.
 
-### Example: Exponential distribution
+```{example, name = "Linear transformation of an Exponential distribution"}
 
 Suppose $Y \sim \text{Exponential}(\theta)$. Let $Z = bY$ where $b > 0$.
 Then $Z \sim \text{Exponential}(\theta / b)$.
 
 [**TODO: proof**]
+```
 
-### Example: Normal distribution 
+```{example, name = "Linear transformation of a Normal distribution"}
 
 Suppose $Y \sim N(\mu, \sigma^2)$. Let $Z = a + bY$ where $a \in \mathbb{R}$ and $b > 0$.
 Then $Z \sim N(a + b \mu, b^2 \sigma^2)$.
 
 [**TODO: proof**]
+```
