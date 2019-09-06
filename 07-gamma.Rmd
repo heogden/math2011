@@ -1,1 +1,264 @@
 # The Gamma distribution
+
+## Introduction
+
+In this chapter we will introduce a family of random variables 
+known as the Gamma family.
+We will see that this family contains several sub-families of random
+variabless that arise in practical problems.
+These include the Exponential, the Chi-squared and the Erlang 
+distributions as special cases.
+They are also related to normal, $t$ and $F$ distributions.
+
+In practice we are often interested in modelling data which 
+is positive, such as the time to the occurrence
+of an event of interest.
+We have seen that an Exponential distribution is one possibility
+to model such data, but it lacks flexibility --- it
+only has a single parameter and we have seen that all exponential pdfs 
+have the same shape (**TODO: add reference for this**).
+So it is natural to try to generalise the exponential to a 
+more flexible family of distributions. The
+Gamma family is one way of achieving this.
+
+In theoretical statistics the Gamma distribution often arises 
+naturally, either as a sum of
+independent exponential random variables or as a sum of squares 
+of normal random variables (the latter
+property is particularly relevant to Analysis of 
+Variance problems that you will meet in MATH2010).
+
+## The Gamma function
+
+```{definition, name = "Gamma function"}
+The *Gamma function* is defined by
+\[\Gamma(\alpha) = \int_0^\infty x^{\alpha - 1} e^{-x} dx.\]
+```
+
+When $\alpha = 1$, we have
+\[\Gamma(1) = \int_0^\infty e^{-x} dx = 1.\]
+
+Next, let's prove a useful property about the Gamma function.
+```{proposition, gammarecursion}
+For any $\alpha > 1$, 
+$\Gamma(\alpha) = (\alpha - 1) \Gamma(\alpha - 1).$
+```
+```{proof}
+**TODO: complete this**
+```
+
+As a consequence of Proposition \@ref(prp:gammarecursion) and 
+the fact that $\Gamma(1) = 1$, if $\alpha$ is any
+positive integer then
+\[\Gamma(\alpha) = (\alpha - 1)!,\]
+so the Gamma function can be thought of as a continuous
+version of the factorial function.
+
+It is also useful to know what happens to the Gamma function
+at half integer points, $\Gamma(1/2)$, $\Gamma(3/2)$ and
+so on. It can be shown that 
+\[\Gamma(1/2) = \sqrt{\pi},\]
+and this may be used along with the recurrence relationship  
+(Proposition \@ref(prp:gammarecursion)) to compute any other
+$\Gamma(n/2)$.
+
+## The gamma distribution
+
+```{definition, name = "Gamma distribution"}
+We say a random variable $Y$ has *gamma distribution*
+with *shape* parameter $\alpha > 0$ and *scale* parameter 
+$\beta > 0$ 
+if it has pdf 
+\[f(y) = \frac{1}{\Gamma(\alpha) 
+\beta^\alpha} y^{\alpha - 1} e^{-y/\beta}, \quad y > 0.\]
+We write this as $Y \sim \gamma(\beta, \alpha)$.
+```
+
+Note that the exponential distribution with rate parameter
+$\theta$ is a special case of the gamma distribution,
+with $\alpha = 1$ and $\beta = 1/ \theta$.
+
+## A practical problem leading to the gamma distribution
+
+Suppose we have a Poisson process with events arriving
+at rate $\lambda$ per unit time.
+Let $Y$ be the time to the $k$th event.
+                            
+We shall show that $Y \sim \gamma(1/\theta, \alpha)$.
+
+**TODO: complete**
+
+If $\alpha$ is an integer, the 
+$\gamma(\beta, \alpha)$ distribution is also
+known as the *Erlang* distribution.
+
+## Moment generating function
+
+```{proposition, mgfgamma}
+The moment generating function of the $\gamma(\beta, \alpha)$
+distribution is
+\[M_y(t) = (1 - \beta t)^{-\alpha}, \quad \text{for $t < 1/\beta$}\]
+```
+```{proof}
+**TODO: complete proof**
+```
+
+## Moments
+
+Suppose $Y \sim \gamma(\beta, \alpha)$
+Using the moment generating function, we find
+\[\mu = E(Y) = \alpha \beta,\]
+\[\mu_2^\prime  = E(Y^2) = \alpha (\alpha + 1) \beta^2,\]
+\[\mu_3 ^\prime = E(Y^3) = \alpha (\alpha + 1) (\alpha + 2) \beta^3\]
+and so on.
+
+So
+\[\mu_2 = \text{Var}(Y) = E(Y^2) - E(Y)^2 = \alpha (\alpha + 1) \beta^2
+  - \alpha^2 \beta^2 = \alpha \beta^2.\]
+
+The following proposition tells us that the gamma
+distribution is always positively skewed.
+
+```{proposition, gammaskew}
+Suppose $Y \sim \gamma(\beta, \alpha)$.
+Then $\mu_3 > 0$.
+```
+```{proof}
+**TODO: add proof**
+```
+
+## Some closure results
+
+The gamma distribution is closed under certain operations.
+
+```{proposition}
+If $Y \sim \gamma(\beta, \alpha)$, then $X = bY$ (with $b > 0$) is also a Gamma random variable. **TODO: distribution?**
+```
+```{proof}
+**TODO: add this**
+```
+
+```{proposition, gammasum}
+If $Y_1 \sim \gamma(\beta, \alpha_1)$ and 
+$Y_2 \sim \gamma(\beta, \alpha_2)$ with $Y_1$ and $Y_2$
+independent,
+then $Z = Y 1 + Y 2 \sim \gamma(\beta, \alpha_1 + \alpha_2)$.
+```
+```{proof}
+**TODO: add this**
+```
+
+## The chi-squared distribution
+
+The chi-squared distribution is a useful special case of the
+gamma distribution.
+
+```{definition, chisquared}
+We say a random variable $Y$ has *chi-squared* distribution
+with $n$ degrees of freedom if $Y \sim \gamma(2, n/2)$.
+We write $Y \sim \chi^2_n$.
+```
+We can write down the properties of the chi-squared distribution
+by using results we have already proved
+about the gamma distribution.
+
+If $Y \sim \chi^2_n$, we have $E(Y) = n/2 \times 2 = n$
+and $\text{Var}(Y) = n/2 \times 2^2 = 2n$
+
+By Proposition \@ref(prp:gammasum), if $Y_1 \sim \chi^2_{n_1}$
+and $Y_2 \sim \chi^2_{n_2}$, and if $Y_1$ and $Y_2$ are
+independent, then $Y_1 + Y_2 \sim \chi^2_{n_1 + n_2}$.
+
+In general, the *sum of independent chi-squared random variables*
+has chi-squared distribution
+with degrees of freedom given by the *sum of the individual 
+degrees of freedom*.
+
+## Relationship between Chi-squared and Normal random variables
+
+```{proposition}
+Let $Z \sim N(0, 1)$, and let $Y = Z^2$. Then $Y \sim \chi^2_1$.
+```
+
+```{proof}
+**TODO: add this**
+```
+
+## Cochran's Theorem
+
+
+
+## Distribution of the sample variance
+
+Suppose $Y_1, Y_2, \ldots, Y_n$ are independent identically distributed 
+$N(\mu, \sigma^2)$ random variables.
+We can use observations of $y_1, y_2, \ldots, y_n$
+of $Y_1, \ldots, Y_n$ 
+to estimate $\mu$ and $\sigma^2$.
+We can use the sample mean
+\[\bar y = \frac{1}{n} \sum_{i=1}^n y_i\]
+to estimate $\mu$, and the sample variance
+\[s^2 = \frac{\sum_{i=1}^n (y_i - \bar y)^2}{(n-1)}\]
+to estimate $\sigma^2$.
+
+For any specific sample of observations,
+$\bar y$ and $s^2$ will take specific numerical
+values, but when they are defined in terms of the random variables
+$Y_1 , Y_2 , \ldots, Y_n$,
+they too are random variables and will have distributions.
+
+We have already seen [**TODO: add ref**] that
+$\bar Y \sim N(\mu, \sigma^2/n)$.
+
+We would like to also know the distribution of
+the random version of the sample variance
+\begin{equation}
+S^2 = \frac{\sum_{i=1}^n (y_i - \bar y)^2}{(n-1)}.
+(\#eq:S2)
+\end{equation}
+
+```{theorem, S2dist}
+$Y_1, Y_2, \ldots, Y_n$ are independent identically distributed 
+$N(\mu, \sigma^2)$ random variables, and let
+$S^2$ be as defined in Equation \@ref(eq:S2).
+Then 
+\[\frac{(n-1)S^2}{\sigma^2} \sim \chi^2_{n-1}.\]
+```
+
+In order to prove this important result, we will
+need to use Cochran's theorem, which we state here without
+proof.
+
+```{theorem, cochran, name = "Cochran's Theorem"}
+Suppose that $U \sim \gamma(\beta, \alpha_1)$
+and $W \sim \gamma(\beta, \alpha_1 + \alpha_2)$.
+If $V = W – U$, then any one of the following implies the other two:
+
+i) $V \sim \gamma(\beta, \alpha_2)$.
+ii) $V$ is independent of $U$
+iii) $V$ is non-negative.
+
+```
+
+We use Cochran's theorem to prove \@ref(thm:S2dist):
+
+```{proof}
+**TODO: add proof**
+```
+
+## Summary
+
+We have introduced the class of Gamma distributions, 
+which includes
+Exponential, Erlang and Chi-squared distributions, and derived various 
+properties of these distributions.
+
+Gamma and Erlang distributions have applications in many areas such 
+as the study of queues, reliability engineering and time-to-event 
+analysis more generally. We have also considered the Chi-squared 
+distribution and linked this to the normal distribution and the
+sample variance of a set of independent normal random variables. 
+These links are important in a
+whole range of areas of Statistics (e.g. MATH2010 Statistical 
+Modelling I and the
+second half of this module).
