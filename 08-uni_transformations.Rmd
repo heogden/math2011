@@ -1,1 +1,84 @@
 # Univariate transformations
+
+## Motivation
+
+In this chapter, we will start with a continuous random variable 
+$Y$ with probability density function $f(y)$ or cumulative distribution
+function $F(y)$ and then define a function $U = U(Y)$, 
+a new random variable.
+
+We need to be able to determine the pdf and/or cdf of $U$.
+
+We have already seen a simple case (in Section **TODO:check ref**)
+where the transformation is
+linear, i.e. $U = a + bY$ for suitable constants $a$ and $b$.
+However, frequently we will be interested in non-linear transformations.
+For example, we have seen (in Section **TODO: check ref**)
+an example where we squared a $N(0, 1)$ random variables 
+to obtain a new random variable with $\chi^2_1$ distribution,
+i.e. we had a
+transformation of the form $U = Y^2$.
+
+We begin with two simple examples.
+
+```{example, trans1}
+Suppose $Y$ has pdf
+\[f(y) = 2y, \quad \text{for $0 < y < 1$}.\]
+Let $U = Y^2$.
+What is the pdf of $U$?
+
+**TODO: finish this**
+``` 
+
+```{example, trans2}
+Suppose $Y \sim U(0, 1)$. Let $U = -\log{Y}$.
+What is the pdf of $U$?
+
+**TODO: finish this**
+```
+## A general result for one-to-one transformations
+
+```{theorem, unitrans}
+If $U$ is a one-to-one transformation of a continuous
+random variable $Y$, the pdf of $U$ is
+\[g(u) = f(w(u)) \left|\frac{dy}{du} \right|\]
+where Y = w(U) is the inverse transformation.
+```
+
+For instance, in Example \@ref(exm:trans1), $U = Y^2$, so 
+the inverse transformation is $Y = U^{1/2} = w(U)$.
+In Example \@ref(exm:trans2), $U = -\log Y$, so the inverse
+transformation is $Y = exp(-U) = w(U)$.
+
+```{proof}
+**TODO: add this**
+```
+
+```{example, name = "Kinetic energy of gas molecules"}
+Gas molecules move about with varying velocity which has, 
+according to the
+Maxwell-Boltzmann law, a pdf given by
+\[f(v) = c v^2 e^{-\beta v^2}, \quad v > 0,\]
+where $c$ is a constant to ensure the pdf integrates to $1$.
+The kinetic energy is given by $U = \frac{1}{2} m V^2$, 
+where $m$ is the mass of the molecule.
+What is the pdf of $U$, the kinetic energy
+of the molecule?
+
+**TODO: finish this**
+```
+
+## Generating samples from any continuous distribution
+
+We can use Theorem \@ref(thm:unitrans) to use a sample
+from a $U(0, 1)$ distribution to generate a sample
+from any other continuous distribution.
+
+```{corollary}
+**TODO: add this**
+```
+
+**TODO: add example?**
+**TODO: add R code to do this in practice?**
+
+**TODO: add discrete case too?**
