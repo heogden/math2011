@@ -2,5 +2,364 @@
 
 # Bivariate distributions
 
-- Chapter 8: bivariate
-- Chapter 10: bivariate transformations
+## Motivation
+
+There are many situations where random variables vary simultaneously,
+for example:
+
+- height and weight of individuals in a population
+- systolic and diastolic blood pressure of individuals in a population
+- value of Sterling and the Euro in US\$ today at 12.00 GMT
+
+In these cases and in many other situations, the variables
+are not independent so
+we need to consider their *joint behaviour*.
+
+Under some circumstances it might be possible to assume or to 
+deduce that the variables do not depend on each other, i.e. that 
+they are independent. We need to define the joint probabilistic
+behaviour of two random variables. We could define these terms for 
+either discrete or continuous random variables.
+However, we give the definitions in terms of continuous random
+variables with obvious extensions to the discrete or other cases.
+
+We could generalise these results when we have several random
+variables (giving so-called multivariate models) but here we shall
+concentrate on the simplest case
+of two random variables (the bivariate case).
+
+## Joint probability density function
+
+Suppose $Y_1$ and $Y_2$ vary together with joint probability
+density function $f(y_1 , y_2)$.
+The function $f$ has the following properties:
+
+1. $f(y_1, y_2) \geq 0$ for all $y_1, y_2$.
+1. $\int_{a_1}^{b_1} \int_{a_2}^{b_2} f(y_1, y_2) dy_1 dy_2
+    = P(a_1 < Y_1 \leq b_1 \text{ and } a_2 < Y_2 \leq b_2)$.
+
+An immediate corollary is that
+$\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(y_1, y_2) dy_1 dy_2 = 1$.
+
+We will give some examples shortly, but first we set up some 
+more functions of interest.
+
+## Marginal and conditional probability density functions
+
+The *marginal* probability density function of $Y_1$ is given by 
+integrating out $Y_2$ ,
+i.e.
+\[f_1(y_1) = \int_{-\infty}^\infty f(y_1, y_2) dy_2.\]
+This essentially gives the probabilistic behaviour of $Y_1$ 
+ignoring $Y_2$.
+Similarly, the marginal pdf of $Y_2$ is 
+\[f_2(y_2) = \int_{-\infty}^\infty f(y_1, y_2) dy_1.\]
+
+We define the *conditional* probability density function of
+$Y_2$ given that $Y_1 = y_1$ as
+\[f(y_2 | y_1) = \frac{f(y_1, y_2)}{f_1(y_1)},\]
+assuming that $f_1(y_1) > 0$.
+
+
+
+If $f(y_1 ,y_2) = f_1(y_1) f_2(y_2)$ for all $y_1$ and
+$y_2$, then $Y_1$ and $Y_2$ 
+are said to be *independent*. In that case,
+If $f(y_2 | y_1) = f_2(y_2)$, for all $y_2$,
+and all $y_1$ with $f_1(y_1) > 0$, which is an equivalent
+definition of independence.
+
+## Some examples
+
+```{example, bv1}
+Suppose that $Y_1$ and $Y_2$ have joint pdf
+\[f(y_1 , y_2) = 1⁄4, \quad \text{for $-1< y_1 <1$
+and $-1 < y_2 < 1$.
+
+What does this look like?
+
+We now derive the marginal and conditional pdfs.
+
+**TODO: finish this**
+```
+
+```{example, bv2}
+Suppose that $Y_1$ and $Y_2$ have joint pdf
+\[f(y_1 , y_2) = 1⁄\pi, \quad \text{for $y_1^2 + y_2^2 < 1$.}\]
+
+What does this look like?
+
+We now derive the marginal and conditional pdfs.
+
+**TODO: finish this**
+```
+
+## Moments of jointly distributed random variables
+
+For any general function $g(Y_1, Y_2)$ of $Y_1$ and $Y_2$, 
+the expectation of $g(Y_1, Y_2)$ is defined as
+  \[E\left\{g(Y_1, Y_2)\right\}
+= \int_{-\infty}^\infty \int_{-\infty}^\infty g(y_1, y_2) f(y_1, y_2) dy_1 dy_2. \]
+
+Applying this with $g(Y_1, Y_2) = Y_1$, we have
+\[E(Y_1) = \int_{-\infty}^\infty \int_{-\infty}^\infty y_1 f(y_1, y_2) dy_1 dy_2,\]
+  and similarly
+\[E(Y_2) = \int_{-\infty}^\infty \int_{-\infty}^\infty y_2 f(y_1, y_2) dy_1 dy_2.\]
+
+Since $f(y_1, y_2) = f_1(y_1) f(y_2 | y_1)$, 
+\begin{align*}
+E(Y_1) &= \int_{-\infty}^\infty y_1 f(y_1) \left\{\int_{-\infty}^\infty  f(y_2 | y_1) dy_2 \right\} dy_1 \\
+&= \int_{-\infty}^\infty y_1 f_1(y_1)  dy_1,
+\end{align*}
+which is our usual definition of the expected value of a single
+random variable with (marginal) pdf $f_1(.)$.
+
+In general
+\[E\left\{g(Y_1)\right\} = \int_{-\infty}^\infty g(y_1) f_1(y_1)  dy_1,\]
+and
+\[E\left\{g(Y_2)\right\} = \int_{-\infty}^\infty g(y_2) f_2(y_2)  dy_2.\]
+
+Letting $g(Y_1, Y_2) = Y_1 Y_2$, we have
+\begin{align*}
+E(Y_1 Y_2) &= \int_{-\infty}^\infty \int_{-\infty}^\infty y_1 y_2 f(y_1, y_2) dy_1 dy_2 \\
+&= \int_{-\infty}^\infty \int_{-\infty}^\infty y_1 y_2 f_1(y_1) f(y_2| y_1) dy_1 dy_2 \\
+&= \int_{-\infty}^\infty y_1 f_1(y_1) \int_{-\infty}^\infty y_2 f(y_2 | y_1) dy_2 dy_1.
+\end{align*}
+This involves the *conditional expectation* of $Y_2 | Y_1 = y_1$,
+\[E(Y_2 | Y_1 = y_1) = \int_{-\infty}^\infty y_2 f(y_2 | y_1) dy_2 .\]
+
+If $Y_1$ and $Y_2$ are *independent*,
+\begin{align*}
+E(Y_1 Y_2) &= \int_{-\infty}^\infty \int_{-\infty}^\infty y_1 y_2 f_1(y_1) f_2(y_2) dy_1 dy_2 \\
+&= \int_{-\infty}^\infty y_1 f_1(y_1)  dy_1 \int_{-\infty}^\infty y_2 f_2(y_2)  dy_2 \\
+&= E(Y_1) E(Y_2).
+\end{align*}
+If $Y_1$ and $Y_2$ are independent, then this relationship holds.
+It might also hold in
+special circumstances even when the variables are not independent,
+for example
+when both $E(Y_1 Y_2) and $E(Y_1)$ are zero.
+
+
+
+```{definition}
+The *covariance* of $Y_1$ and $Y_2$ is
+\[\text{Cov}(Y_1, Y_2) = E\left\{ [Y_1 - E(Y_1)][Y_2 - E(Y_2)] \right\}.\]
+```
+
+We may rewrite the expression for the covariance as
+\begin{align*}
+\text{Cov}(Y_1, Y_2) &= E\left\{[Y_1 - E(Y_1)][Y_2 - E(Y_2)] \right\} \\
+&= E\left\{ Y_1 Y_2 - E(Y_1) Y_2 - E(Y_2) Y_1 + E(Y_1) E(Y_2) \right\} \\
+&= E(Y_1 Y_2) - E(Y_1) E(Y_2) - E(Y_2) E(Y_1) + E(Y_1) E(Y_2) \\
+&= E(Y_1 Y_2) - E(Y_1) E(Y_2).
+\end{align*}
+
+The covariance of a variable with itself is
+\[\text{Cov}(Y_1, Y_1) = E \left\{[Y_1 - E(Y_1)]^2 \right\} = \text{Var}(Y_1).\]
+
+```{definition}
+The *correlation* of $Y_1$ and $Y_2$ is
+\[\text{Corr}(Y_1, Y_2) = \frac{\text{Cov}(Y_1, Y_2)}{\sqrt{\text{Var}(Y_1) \text{Var}(Y_2)}}.\]
+```
+
+## Revisiting our examples
+
+```{example}
+Returning to Example \@ref(exm:bv1), we see that
+$Y_1$ and $Y_2$ are independent, as
+\[f(y_1, y_2) = \frac{1}{4} = \frac{1}{2} \times \frac{1}{2}
+= f_1(y_1) f_2(y_2),\]
+for $-1 < y_1 < 1$ and $-1 < y_2 < 1$.
+```
+
+```{example}
+Returning to Example \@ref(exm:bv2), $Y_1$ and
+$Y_2$ are not independent.
+**TODO: finish this**
+```
+
+## Variance of a sum
+
+```{proposition}
+For any two random variables $Y_1$ and $Y_2$
+\[\text{Var}(Y_1 + Y_2) = \text{Var}(Y_1) + \text{Var}(Y_2) + 
+2 \text{Cov}(Y_1, Y_2).\]
+```
+```{proof}
+We have
+\[\text{Var}(Y_1 + Y_2) = E\left[(Y_1 + Y_2)^2\right] - 
+\left[E(Y_1 + Y_2)\right]^2,\]
+where
+\begin{align*}
+E\left[(Y_1 + Y_2)^2\right] &= \int_{-\infty}^\infty \int_{-\infty}^\infty (y_1 + y_2)^2
+f(y_1, y_2) dy_1 dy_2 \\
+&= E(Y_1^2) + 2 E(Y_1 Y_2) + E(Y_2^2)
+\end{align*}
+and
+\[E(Y_1 + Y_2) = E(Y_1) + E(Y_2).\]
+So
+\begin{align*}
+\text{Var}(Y_1 + Y_2) &= E(Y_1^2) + 2 E(Y_1 Y_2) + E(Y_2^2) 
+- \left[E(Y_1) + E(Y_2)\right]^2 \\
+&= E(Y_1^2) - E(Y_1)^2 + E(Y_2^2) - E(Y_2)^2 + 2 \left[E(Y_1 Y_2) - E(Y_1)E(Y_2)\right] \\
+&= \text{Var}(Y_1) + \text{Var}(Y_2) + 2 \text{Cov}(Y_1, Y_2)
+\end{align*}
+as claimed.
+```
+
+## The bivariate normal distribution
+
+```{definition}
+The random variables $Y_1$ and $Y_2$ are said to have a 
+*bivariate normal distribution*
+if they have joint probability density function 
+\[f(y_1, y_2) = (2 \pi)^{-1} {\det(\bm \Sigma)}^{-1/2} \exp\{ - \frac{1}{2}(\bm y - \bm \mu)^T \bm \Sigma^{-1}(\bm y - \bm \mu)\},
+\quad \text{for $y_1, y_2 \in \mathbb{R}$},\]
+where we write $\bm y = (y_1, y_2)^T$, and where
+$\bm \mu = (\mu_1, \mu_2)^T$
+is a vector of means, and $\bm \Sigma$ is a $2 \times 2$
+symmetric positive
+definite matrix.
+We write $\bm Y = (Y_1, Y_2)^T \sim N_2(\bm \mu, \bm \Sigma)$.
+```
+
+We often write out the elements of the $2 \times 2$ matrix $\bm \Sigma$
+as 
+\begin{equation}
+\bm \Sigma = \begin{pmatrix}
+  \sigma_1^2 & \rho \sigma_1 \sigma_2 \\
+  \rho \sigma_1 \sigma_2 & \sigma_2^2
+  \end{pmatrix}.
+(\#eq:sigma)
+\end{equation}
+
+The marginal pdf of $Y_1$ is
+\[f_1(y_1) = \int_{-\infty}^\infty f(y_1, y_2) dy_2,\]
+which reduces to (**TODO: add reference to exercises?**)
+\[f_1(y_1) = \frac{1}{\sqrt{2 \pi \sigma_1^2}} \exp\left\{- \frac{1}{2 \sigma_1^2} (y_1 - \mu_1)^2\right\},\]
+so marginally $Y_1 \sim N(\mu_1, \sigma_1^2)$.
+Similarly $Y_2 \sim N(\mu_2, \sigma_2^2)$.
+
+We may interpret the parameters of the bivariate normal distribution,
+as $\mu_1 = E(Y_1)$, $\mu_2 = E(Y_2)$, $\sigma_1^2 = \text{Var}(Y_1)$,
+$\sigma_2^2 = \text{Var}(Y_2)$.
+We may also show that $\text{Cov}(Y_1, Y_2) = \rho \sigma_1 \sigma_2$, 
+so $\rho = \text{Corr}(Y_1, Y_2)$.
+(**TODO: add reference to exercises?**)
+
+The conditional distribution of $Y_1$ given $Y_2 = y_2$
+is
+\begin{align*}
+f(y_1 | y_2) &= \frac{f(y_1, y_2)}{f_2(y_2)} \\
+&= \ldots \\
+&= \frac{1}{\sqrt{2 \pi \sigma_1^2 (1 - \rho)^2}}
+\exp\left\{ - \frac{1}{2 \sigma_1^2 (1 - \rho)^2} 
+\left(y_1 - \mu_1 - 
+\frac{\rho \sigma_1(y_2 - \mu_2)}{\sigma_2}\right)^2\right\}.
+\end{align*}
+**TODO:: fill in details**
+
+This means that
+\[Y_1 | Y_2 = y_2 \sim N(\mu_1 + \rho \sigma_1(y_2 - \mu_2)/\sigma_2,
+  \sigma_1^2 (1 - \rho)^2).\]
+If $Y_1$ and $Y_2$ are uncorrelated ($\rho = 0$),
+knowing the value of $Y_2$ does not change the distribution
+of $Y_1$. However, if $Y_1$ and $Y_2$ are correlated ($\rho \not = 0$),
+the distribution of $Y_1 | Y_2 = y_2$ is different
+from the distribution of $Y_1$.
+
+## Bivariate moment generating functions
+
+```{definition}
+The moment generating function of the bivariate
+distribution of $Y_1, Y_2$ is
+\[M_{Y_1, Y_2}(t_1, t_2) = E\left\{\exp(t_1 Y_1 + t_2 Y_2 \right\}\]
+```
+As in the univariate case, the moment generating function
+is useful for proving properties about what happens
+to the distribution of random variables under linear transformations.
+
+```{example, bvnmgf}
+If $\bm Y = (Y_1, Y_2)^T \sim N_2(\bm \mu, \bm \Sigma)$,
+then
+\[M_{Y_1, Y_2}(t_1, t_2) = \exp(\bm \mu^T \bm t + \frac{1}{2} \bm t^T \bm \Sigma \bm t),\]
+where $\bm t = (t_1, t_2)^T$.
+
+Now let $X_1 = a Y_1 + b Y_2$, where $a$ and $b$ are given
+constants. Then
+\begin{align*}
+M_{X_1}(t) &= E \left\{ t(a Y_1 + b Y_2) \right\} \\
+&= M_{Y_1, Y_2}(at, bt) \\
+&= \exp((a \mu_1 + b \mu_2) t + \frac{1}{2} (a^2 \sigma_1^2 + 2 a b \rho \sigma_1\sigma_2 + b^2 \sigma_2^2) t^2,
+\end{align*}
+where we have used the components of $\bm \Sigma$ 
+as in Equation \@ref(eq:sigma).
+So
+\[X_1 \sim N(\mu_1 + \mu_2, a^2 \sigma_1^2 + 2 a b \rho\sigma_1 \sigma_2 + b^2 \sigma_2^2).\]
+
+With $a = 1$ and $b = 1$, 
+\[Y_1 + Y_2 \sim  N(\mu_1 + \mu_2, \sigma_1^2 + 2 \rho\sigma_1 \sigma_2 + \sigma_2^2).\]
+
+With $a = 1$ and $b = -1$,
+\[Y_1 - Y_2 \sim N(\mu_1 - \mu_2, \sigma_1^2 - 2 \rho \sigma_1 \sigma_2 + \sigma_2^2).\]
+```
+
+## A useful property of covariances
+
+```{theorem, covsums}
+Suppose $V_i$, $i = 1,\ldots, m$ and
+$W_j$, $j = 1, \ldots, n$ are 
+random variables, and $a_i$, $i = 1, \ldots, m$
+and $j = 1, \ldots, n$ are constants. Then
+\[\text{Cov}\left(\sum_{i=1}^m a_i V_i, \sum_{j=1}^n b_j W_j \right)
+= \sum_{i=1}^m \sum_{j=1}^n a_i b_j \text{Cov}(V_i, W_j).\]
+```
+
+```{proof}
+\begin{align*}
+\text{Cov}\left(\sum_{i=1}^m a_i V_i, \sum_{j=1}^n b_j W_j \right)
+&= E \left\{\left[ \sum_{i=1}^m a_i V_i - E\left(\sum_{i=1}^m a_i V_i\right) \right] \left[ \sum_{j=1}^n b_j W_j - E\left(\sum_{j=1}^n b_j W_j\right) \right] \right\} \\
+&= E \left\{\left[ \sum_{i=1}^m a_i \left(V_i -  E(V_i)\right)\right] \left[ \sum_{j=1}^n b_j \left(W_j - E(W_j)\right) \right] \right\} \\
+&= \sum_{i=1}^m \sum_{j=1}^n a_i b_j E\left\{\left[V_i - E(V_i)\right]\left[W_j - E(W_j)\right] \right\} \\
+&= \sum_{i=1}^m \sum_{j=1}^n a_i b_j \text{Cov}(V_i, W_j),
+\end{align*}
+as required.
+```
+
+```{example}
+Continuing from Example \@ref(exm:bvnmgf), we consider
+$X_1 = Y_1 + Y_2$ and $X_2 = Y_1 - Y_2$. Under what
+conditions are $X_1$ and $X_2$ independent? 
+Since $X_1$ and $X_2$ are normally distributed
+[**TODO: need to show this jointly**], we 
+know that $X_1$ and $X_2$ are independent if 
+$\text{Cov}(X_1, X_2) = 0$.
+Applying Theorem \@ref(thm:covsums) with
+$m = n =  2$, $V_i = W_i = Y_i$,
+$a_1 = a_2 = 1$, $b_1 = 1$ and
+$b_2 = -1$, we get
+\[\text{Cov}(X_1, X_2) = \text{Cov}(Y_1, Y_1) - \text{Cov}(Y_1, Y_2) + \text{Cov}(Y_1, Y_2) - \text{Cov}(Y_2, Y_2) = \sigma_1^2 - \sigma_2^2.\]
+So $X_1$ and $X_2$ are independent if $\sigma_1^2 = \sigma_2^2$.
+```
+
+## Summary
+
+In this chapter we have considered some jointly 
+distributed random variables and
+obtained marginal and conditional properties. We have derived some
+properties of bivariate normal distributions.
+
+The results, especially these to do with conditional pdfs, 
+are particularly important
+in statistical modelling (e.g. in MATH2010) where we use the 
+value of one variable
+to predict or explain the behaviour of another variable.
+
+For example, in medicine we use a prognostic variable $Y_1$ to
+model a surgical
+outcome $Y_2$ for a patient.
+In finance, we might use a credit score $Y_1$ to inform us about
+a default outcome $Y_2$ for a loan customer.
+In both cases, we are interested 
+in $Y_2 | Y_1 = y_1$.
