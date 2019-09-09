@@ -2,7 +2,493 @@
 
 # Parameter estimation
 
-- Chapter 12: Estimation 
-- Chapter 13: Method of Moments
-- Chapter 14: Maximum likelihood estimation
-- parts of Chapter 11: Normal inference (as an example)
+## Introduction
+
+Suppose that $Y_1, \ldots, Y_n$ are independent identically distributed 
+random variables, each with a distribution depending on 
+unknown parameter(s) $\theta$.
+
+In the continuous case, we know the density function $f(y_i; \theta)$
+up to the unknown $\theta$, and in the discrete case we have probability function
+$p(y_i; \theta)$.
+
+We might be interested in estimating $\theta$ based on $Y_1, \ldots, Y_n$.
+
+For example, in a Bernoulli model with 
+	\[p(y; \theta) = \theta^y (1- \theta)^{(1-y)}, \quad y = 0, 1,\]
+we may wish to estimate $\theta$ based on a sample $Y_1, Y_2, \ldots,Y_n$.
+
+For example, in an Exponential model with
+\[f(y; \theta) = \theta e^{-\theta y}, y > 0,\]
+we may wish to estimate $\theta$ based on a sample $Y_1, Y_2, \ldots, Y_n.$
+
+What might be good choices of ways to estimate the parameter $\theta$
+in these two situations?
+
+An *estimator* $T = T(Y_1, ...,Y_n)$ is just some suitable function 
+(a "statistic") of $Y_1, Y_2, \ldots, Y_n$. 
+It must not contain any unknown parameters or any unobservable quantities. 
+Examples are the sample mean and the sample variance. 
+
+Typically an estimator is used to estimate a parameter. 
+For example, the sample mean is an obvious estimator for the population mean.
+Note that an estimator is a function of random variables and hence 
+can itself be treated as a random variable.
+Once a set of data has been collected (i.e. the observed values $y_1, y_2, \ldots ,y_n$ of 
+$Y_1, Y_2, \ldots, Y_n$ are available), then $T(y_1, ...,y_n)$ 
+is the corresponding *estimate*. 
+
+When deriving properties of $T$, one should always work with the estimator. 
+What properties might it be desirable for an estimator to have?
+
+- Unbiasedness ("gets the right answer on average")
+- Consistency ("gets closer and closer to the correct value as $n$ increases")
+- Small variance
+- Small mean squared error
+
+
+## Bias
+
+```{definition}
+The *bias* of an estimator $T = T(Y_1, \ldots, Y_n)$ of a parameter $\theta$ is:
+\[B(T; \theta) = E(T) - \theta.\]
+$T$ is said to be an *unbiased* estimator of $\theta$ if 
+\[E(T) - \theta = 0\]
+for all possible values of $\theta$.
+```
+
+
+```{example}
+Let $Y_1, Y_2, \ldots, Y_n$ be independent and identically distributed,
+where each $Y_i \sim \text{Bernoulli}(\theta)$.
+
+We know that $E(Y_i) = \theta$, so a natural estimator of $\theta$ is $T = \bar Y = \frac{1}{n} \sum_{i=1}^n Y_i$, the sample mean.
+
+Here $T$ is an unbiased estimator of $\theta$, as
+\[E(T) = E(\bar Y) = \frac{1}{n} \sum_{i=1}^n E(Y_i) = \frac{1}{n} n \theta = \theta.\]
+
+To see what this means in practice, 
+we can find many datasets $y_1, \ldots, y_{10}$ 
+from $\text{Bernoulli}(\theta = 0.5)$, and compute
+$\bar y$ for each:
+```
+
+```{r}
+N <- 10000
+n <- 10
+theta <- 0.5
+datasets <- replicate(N, rbinom(n, 1, theta))
+estimates <- apply(datasets, 2, mean)
+barplot(table(estimates))
+```
+The mean of the estimates is `r mean(estimates)`, 
+which is close to the true value of $\theta = 0.5$.
+
+```{example}
+Let $Y_1, Y_2, \ldots, Y_n$ be independent and identically distributed,
+where each $Y_i \sim \text{exponential}(\theta)$.
+
+We know that $E(Y_i) = 1/\theta,$ 
+so one possible estimator for $\theta$ is $T = 1 / \bar Y$. 
+Is $T$ an unbiased estimator of $\theta$?
+
+Using the results from Chapter 7 (in particular the closure results of 7.7), we see that 
+\[\bar Y \sim \gamma((n \theta)^{-1}, n).\]
+
+Now $\bar Y$ is an unbiased estimator of $1/\theta$
+**TODO: gap fill**
+
+But $E(T) = E(1 / \bar Y) \not = \theta$, so $T$  is not an unbiased estimator of $\theta$.
+
+Proof:
+**TODO: gap fill**
+
+We can find many datasets $y_1, \ldots, y_{10}$
+from $\text{exponential}(\theta = 0.5)$, and compute
+$1 / \bar y$ for each:
+```
+
+```{r}
+N <- 10000
+n <- 10
+theta <- 0.5
+datasets <- replicate(N, rexp(n, theta))
+y_bar <- apply(datasets, 2, mean)
+estimates <- 1/y_bar
+hist(estimates, breaks = 20)
+abline(v = theta)
+```
+
+The mean of the estimates is `r mean(estimates)`, and
+the variance is `r var(estimates)`.
+
+## Consistency
+
+```{definition}
+An estimator $T = T(Y_1, \ldots,Y_n)$ of a parameter $\theta$ is said to be a 
+*consistent* estimator of $\theta$ if:
+
+a) $\lim_{n \rightarrow \infty} E(T) = \theta$; and
+b) $\lim_{n \rightarrow \infty} \text{Var}(T) = 0$.
+
+for all possible values of $\theta$.
+```
+
+Note that a consistent estimator can be biased, and an unbiased estimator can be inconsistent	(i.e. not consistent). So consistency and unbiasedness are different types of property.
+
+```{example}
+**TODO: add Bernoulli example**
+```
+
+```{example}
+**TODO: add exponential example**
+
+We return to our simulations for the exponential example
+(**TODO: add reference to earlier**), but with $n=100$
+instead of $n=10$.
+
+We can find many datasets $y_1, \ldots, y_{100}$
+from $\textrm{Exp}(\theta = 0.5)$, and compute
+$1 / \bar y$ for each:
+```
+
+```{r}
+N <- 10000
+n <- 100
+theta <- 0.5
+datasets <- replicate(N, rexp(n, theta))
+y_bar <- apply(datasets, 2, mean)
+estimates <- 1/y_bar
+hist(estimates, breaks = 20)
+abline(v = theta)
+```
+The mean of the estimates is `r mean(estimates)` and
+the variance is `r var(estimates)`.
+**TODO: make comparison with earlier**
+
+## Variance
+
+Suppose we have two competing estimators for a parameter. Which is better?
+
+If we have two unbiased estimators, $T_1$ and $T_2$,
+of $\theta$ then typically we prefer the one with the smaller variance.
+
+Why?
+**TODO:gap fill**
+
+However, having a small variance on its own is not sufficient if the estimator is biased.
+
+Suppose you have two estimators $T_1$ and $T_2$ for a parameter $\theta$, where
+$T_1 \sim N(\theta, 1)$ and $T_2 \sim N(\theta - 0.5, 0.5)$.
+
+```{r, echo = FALSE}
+curve(dnorm(x, -0.5, sqrt(0.5)), from = -4, to = 4, axes = FALSE,
+      xlab = "", ylab = "")
+curve(dnorm(x, 0, 1), add = TRUE)
+axis(1, labels = FALSE)
+abline(v = 0, lty = 2)
+```
+
+Do you think $T_1$ or $T_2$ is a better estimator of $\theta$?
+
+## Mean squared error
+
+```{definition}
+The *mean squared error* (or *MSE*) of an estimator $T$ of $\theta$ is 
+\[\text{MSE}(T) = E\{(T - \theta)^2\},\] the mean of the squared distance of the $T$ from
+its target value $\theta.$
+```
+
+We can use the MSE to choose between competing estimators whether they are unbiased or not.
+
+```{proposition}
+The MSE can be decomposed into a term involving variance and a term involving bias:
+**TODO: gap fill*
+```
+
+```{corollary}
+If $T$ is an unbiased estimator of $\theta$, then
+$\text{MSE}(T) = \text{Var}(T)$.
+```
+
+```{example}
+Returning to our two estimators $T_1 \sim N(\theta, 1)$ and $T_2 \sim N(\theta - 0.5, 0.5)$,
+which has the lower MSE?
+
+**TODO: gap fill**
+```
+
+Note that it is not possible to find a uniformly minimum MSE estimator. 
+**TODO: gap fill**
+
+It is sometimes possible to find a uniformly minimum MSE estimator within a class of 
+"sensible" estimators.
+
+```{example}
+Suppose that $Y_1, Y_2, \ldots, Y_n$ are independent, with each $Y_i \sim N(\mu, \sigma^2)$,
+and that we wish to estimate $\sigma^2$. 
+Two possible choices are:
+$\frac{1}{n-1} \sum_{i=1}^n (Y_i - \bar Y)^2$ and $\frac{1}{n} \sum_{i=1}^n (Y_i - \bar Y)^2.$
+
+You can think of these as special cases of estimators of the form \[T_c = c \sum_{i=1}^n (Y_i - \bar Y)^2,\] where $c$ is some positive constant.
+
+Can we find a value of $c$ such that $\text{MSE}(T_c)$ is minimised for all $\sigma^2 > 0$?
+We can use the fact that $\frac{(n-1) S^2}{\sigma^2} \sim \chi^2_{n-1}$, i.e.
+$\frac{\sum_{i=1}^n (Y_i - \bar Y)^2}{\sigma^2} \sim \chi^2_{n-1}$
+to obtain $\text{MSE}(T_c)$ and then minimise it with respect to $c$.
+
+**TODO: gap fill**
+```
+
+## Methods of parameter estimation
+
+Once we have come up with an estimator, we can find its properties 
+(e.g. is it consistent? What is its MSE?).
+If we have more than one candidate to be our estimator of choice,
+we can compare their properties (e.g. using MSE).
+
+However, in some situations it may be difficult to start this process. 
+So it would be useful to have some general methods that will produce estimators.
+We will consider two general recipes for finding estimators, the
+method of moments, and maximum likelihood estimation.
+
+## Method of Moments estimation
+
+This approach essentially formalises an argument we have met before --
+"if I have data from a population with mean $\mu$, it is natural to estimate 
+$\mu$ by the corresponding sample mean".
+
+Suppose we have a sample of independent and identically distributed
+random variables $Y_1, Y_2, \ldots,Y_n$, whose probability function or 
+probability density function depends on $k$ unknown parameters 
+($\theta_1, \theta_2, \ldots, \theta_k$)
+and whose moments about the origin  are functions of the parameters:
+\[\mu_r^\prime = g_r(\theta_1, \theta_2, \ldots, \theta_k), \quad \text{for $r = 1, 2, 3, \ldots$}\]
+
+Let $\tilde \theta_1, \ldots \tilde \theta_k$ be the 
+method of moments estimators of the parameters and
+write $m_r^\prime$ for the $r$th sample moment,
+for $r = 1, 2, 3, \ldots$.
+
+Then (assuming each of the first $k$ moments involves at least one parameter) we solve
+\[m_r^\prime = g_r(\tilde \theta_1, \tilde \theta_2, \ldots, \tilde \theta_k) \textrm{ for $r = 1, 2, \ldots$, k}\]
+to give the method of moments estimators.
+
+Sometimes one of the first $k$ expressions does not involve any parameters, in which case use 
+\[m_{k+1}^\prime = g_{k+1}(\tilde \theta_1, \tilde \theta_2, \ldots, \tilde \theta_k)\]
+as well.
+
+This will become clearer with some examples.
+We first begin with some simple one-parameter examples to illustrate the method.
+
+
+```{example, name = "Bernoulli"}
+Suppose $Y_i \sim \text{Bernoulli}(\theta)$.
+We have $\mu_1^\prime = g_1(\theta) = \theta$.
+and $m_1 = \frac{1}{n}\sum_{i=1}^n Y_i = \bar Y$.
+So the method of moments estimator is $\tilde \theta = \bar Y$.
+```
+    
+```{example, name = "Normal, known variance"}
+Suppose $Y_i \sim N(\theta, 1)$.
+We have $\mu_1^\prime = g_1(\theta) = \theta$, and
+$m_1 = \frac{1}{n}\sum_{i=1}^n Y_i = \bar Y$.
+So the method of moments estimator is $\tilde \theta = \bar Y$.
+```
+
+```{example, name = "Exponential"}
+Suppose $Y_i \sim \text{exponential}(\theta)$.
+We have $\mu_1^\prime = g_1(\theta) = 1/\theta,$ 
+and $m_1 = \frac{1}{n}\sum_{i=1}^n Y_i = \bar Y$.
+So the method of moments estimator is $\tilde \theta = 1/ \bar Y$.
+```
+	
+```{example, name = "Normal, known mean"}
+Suppose $Y_i \sim N(0, \theta)$.
+We know that $\mu_1^\prime = g_1(\theta) = 0$,
+which does not involve the parameter of interest.
+
+But $\mu_2^\prime = g_2(\theta) = \theta$,
+and $m_2^\prime = \frac{1}{n}\sum_{i=1}^n Y_i^2,$
+so
+ $\tilde \theta = \frac{1}{n} \sum_{i=1}^n Y_i^2.$
+```
+
+We can also use method of moment estimation for models 
+with more than one unknown parameter.
+
+
+```{example, name = "Normal, unknown mean and variance"}
+Suppose $Y_i \sim N(\theta_1, \theta_2)$ 
+(i.e. $\theta_1 = \mu$, $\theta_2 = \sigma^2$ in the usual notation)
+**TODO: gap fill**
+```
+
+```{example, name = "Gamma"}
+Suppose $Y_i \sim \gamma(\theta_1, \theta_2)$
+Recall that in this notation the gamma scale parameter is $\theta_1$ and the gamma
+shape parameter is $\theta_2$.
+**TODO: gap fill**
+```
+
+## Maximum likelihood estimation
+
+
+Maximum likelihood estimation is a 
+versatile method -- it is the standard method in modern (frequentist)
+statistics -- and it can be shown (see MATH3044) that maximum likelihood
+Estimators (MLEs) have some nice optimality properties.
+
+Maximum likelihood estimation can be applied in complex situations,
+but in this module we will stick
+to the situation where our $Y_1, Y_2, \ldots, Y_n$ random variables are independent and
+identically distributed.
+
+Suppose that $Y_1, \ldots, Y_n$ is a random sample of observations from a distribution
+with probability density function $f(y; \theta)$ (continuous variables) or probability
+function $p(y; \theta)$ (discrete variables), where $\theta$ is a set of unknown 
+parameters. 
+
+The
+*likelihood function* $L(\theta; y_1, \ldots ,y_n)$ is defined as
+\[L(\theta; y_1, \ldots, y_n) = f(y_1 ; \theta) \times f(y_2 ; \theta) \times \ldots \times  f(y_n ; \theta),\]
+for continuous rvs
+and
+\[L(\theta; y_1, \ldots, y_n) = p(y_1 ; \theta) \times p(y_2 ; \theta) \times \ldots \times p(y_n ; \theta),\]
+ for discrete rvs.
+
+In these expressions, the values of the observations $y_1, \ldots, y_n$ have been observed,
+so these are known.
+This means that $L(\cdot)$ may be regarded as a function of the unknown $\theta$.
+
+If $L(\theta_1 ; y_1 , \ldots, y_n) > L(\theta_2 ; y_1 , \ldots, y_n )$, we should prefer
+$\theta_1$ to $\theta_2$ because there is a
+greater likelihood that the observed data would occur with this value of $\theta_1$ than
+with $\theta_2$.
+
+It follows that we should try to maximise the likelihood to find the value of $\theta$
+which is most likely to have given rise to the data that were actually observed.
+Following this procedure for our observed data gives the maximum likelihood
+estimate of $\theta$.
+
+The corresponding Maximum Likelihood Estimator of $\theta$ can then be found by
+replacing the observations by the corresponding random variables.
+For many common types of random variables, the MLE can be found by basic
+calculus methods.
+
+**TODO: gap fill?**
+
+Note that the likelihood (in the simple cases considered in this module) is just a
+product of pdf or probability function terms.
+
+Maximising a sum is usually easier than maximising a product, so we often work
+with the log-likelihood $\log L(\theta; y_1, \ldots, y_n)$.
+
+It is easy to see that the value of $\theta$ that maximises $L(\cdot)$ 
+is the same as that which
+maximises $\log L(\cdot)$.
+
+We will usually denote the MLE for $\theta$ by $\hat \theta$.
+
+In all the examples, we assume that $Y_1, Y_2, \ldots, Y_n$ are independent random
+variables, each with probability density function $f(y; \theta)$ (continuous variables) or
+probability function $p(y; \theta)$ (discrete variables), where $\theta$ is a set of unknown
+parameters. The corresponding observed values are $y_1, y_2, \ldots, y_n$.
+
+```{example, name = "Bernoulli"}
+Suppose the $Y_i \sim \text{Bernoulli}(\theta)$.
+We now show that $\hat \theta = \frac{r}{n}$, where $r$ is the number of successes.
+Alternatively, $\hat \theta = \frac{1}{n} \sum_{i=1}^n y_i = \bar y$.
+
+Now $p(y; \theta) = \theta^y (1 - \theta)^{1 - y}$ for $y = 0, 1$.
+
+So the likelihood is
+**TODO: gap fill**
+
+Hence the log-likelihood is
+**TODO: gap fill**
+
+For example, with $n = 5$ and $r = 2$ the log-likelihood looks like
+```
+
+```{r}
+curve(3*log(1-x) + 2*log(x), from = 0.1, to = 0.9,
+      xlab = "theta", ylab = "log L(theta)")
+```
+
+We now maximise $\log L(\cdot)$ as a function of $\theta$.
+
+**TODO: gap fill**
+
+We can check that this is indeed a maximum.
+
+**TODO: gap fill**
+
+By considering the corresponding estimator, we can derive some
+properties of $\hat \theta$. In particular, we see that it is an unbiased estimator of $\theta$ 
+
+**TODO: gap fill**
+
+and has variance
+
+**TODO: gap fill**
+
+Clearly $\hat \theta$ is also a consistent estimator of $\theta$.
+
+**TODO: gap fill**
+
+Note that $\hat \theta$ is the same as the method of moments estimate of $\theta$.
+
+```{example, name = "Exponential"}
+Suppose the $Y_i \sim \text{exponential}(\theta)$.
+**TODO: gap fill**
+```
+
+```{example, name = "One-parameter gamma"}
+Suppose the $Y_i \sim \gamma(1, \theta)$.
+
+The MoM estimate of $\theta$ is 
+**TODO: gap fill**
+
+We now work through the MLE calculations (as far as we can) for this case.
+**TODO: gap fill**
+```
+
+```{example, name = "Normal"}
+**TODO: gap fill**
+```
+
+```{example, name = "Two-parameter gamma"}
+
+Suppose the $Y_i \sim \gamma(\beta, \alpha)$.
+**TODO: gap fill**
+```
+
+```{r, echo = FALSE}
+set.seed(1)
+n <- 100
+alpha0 <- 1
+beta0 <- 3
+y <- rgamma(n, scale = alpha0, shape = beta0)
+y_bar <- mean(y)
+log_y_bar <- mean(log(y))
+```
+
+For example, with $n = 100$, $\bar y = 2.92$ and $\frac{1}{n} \sum_{i=1}^n \log y_i = 0.93$
+$\log L(\hat \beta(\alpha), \alpha; y_1, \ldots, y_n)$ looks like
+
+```{r, echo = FALSE}
+b <- function(alpha) {y_bar/alpha}
+l <- function(x) {
+  sum(dgamma(y, shape = x, scale = b(x), log = TRUE))
+}
+l_vec <- function(x) {
+  sapply(x, l)
+}
+curve(l_vec, from = 0, 10, xlab = "", ylab = "log-likelihood")
+est <- optimize(l_vec, c(0, 10), maximum = TRUE)$maximum
+abline(v = est, lty = 2)
+```
+
+
+**TODO: add parts of Chapter 11: Normal inference (as an example)**
