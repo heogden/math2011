@@ -69,72 +69,85 @@ assume we know the form of a probability function but it contains
 one or more unknown quantities
 (parameters) whose value(s) we need estimate from sample data.
 
-## Bernoulli random variables
+## The Bernoulli distribution
+
 A *Bernoulli trial* is an experiment with just two possible 
 outcomes 'success' and 'failure' which
 occur with probabilities $\theta$ and $1– \theta$ respectively, 
-where $\theta$ is the success probability.
-A *Bernoulli random variable* $X$ has probability function
-\[p(x) = \theta^x (1- \theta)^{1-x}, \quad x = 0, 1,\]
-where $0 < \theta < 1$.
+where $\theta$ is the success probability. The indicator of success
+in a Bernoulli trial has Bernoulli distribution.
 
-This is a basic building block for some familiar but more complex discrete random variables.
+```{definition}
+A discrete random variables $Y$ has *Bernoulli* distribution 
+if it has probability function of the form
+\[p(y) = \theta^y (1- \theta)^{1-y}, \quad y = 0, 1,\]
+for some $0 < \theta < 1$. We write $Y \sim \text{Bernoulli}(\theta)$.
+```
 
-## Binomial random variables
+## The binomial distribution
 
 Suppose we undertake a fixed number, $n$, of independent Bernoulli 
 trials, each with success
-probability $\theta$. Let $X$ be the number of successes 
-in these $n$ trials. Then $X$ is a *Binomial random
-variable* with probability function
-\[\binom{n}{x} \theta^x (1 - \theta)^{n-x}, \quad x = 0, 1, \ldots, n,\]
-where $0 < \theta < 1$.
+probability $\theta$. Let $Y$ be the number of successes 
+in these $n$ trials. Then $Y$ has *binomial*
+distribution.
 
-We will often say in such circumstances “X is Binomially distributed” or “$X$ is $\text{Binomial}(n, \theta)$” or
-“$X \sim \text{Binomial}(n, \theta)$”. **TODO: Should introduce similar
-notations for other distributions**
+```{definition}
+A discrete random variables $Y$ has *binomial* distribution 
+if it has probability function of the form
+\[p(y) = \binom{n}{y} \theta^x (1 - \theta)^{n-y}, \quad y = 0, 1, \ldots, n,\]
+for some $n \in \mathbb{N}$ and $0 < \theta < 1$. We write
+$Y \sim \text{binomial}(n, \theta)$.
+```
 
-## Negative Binomial random variables (including Geometric random variables)
+## The negative binomial distribution
 
 Suppose we undertake a sequence of independent Bernoulli trials, 
 each with success probability $\theta$.
 Let $X$ be the number failures that occur before the $k$th success.
-Then $X$ is called a *Negative Binomial random variable*
-with probability function
-\[p(x) = \binom{k + x - 1}{x} (1 - \theta)^x \theta^k, \quad
-  x = 0, 1, \ldots,
+Then $X$ has *negative binomial* distribution.
+```{definition}
+A discrete random variables $Y$ has *negative binomial* distribution 
+if it has probability function of the form
+\[p(y) = \binom{k + y - 1}{y} (1 - \theta)^y \theta^k, \quad
+  y = 0, 1, \ldots,
 \]
-where $0 < \theta < 1$.
+for some $k \in \mathbb{N}$, and $0 < \theta < 1$.
+We write $Y \sim \text{negbin}(k, \theta)$.
+``
 
-In the special case with $k = 1$, $X$ is called a *Geometric
-random variable* with probability function
-\[p(x) = (1 - \theta)^x \theta , \quad x = 0, 1, \ldots.\]
+The *geometric* distribution is the special case of the negative
+binomial distribution with $k = 1$: the number
+of failures that occur before the first success.
 
-## Poisson random variables
+```{definition}
+A discrete random variables $Y$ has *geometric* distribution 
+if it has probability function of the form
+\[p(y) = (1 - \theta)^y \theta, \quad
+  y = 0, 1, \ldots,
+\]
+for some $0 < \theta < 1$.
+We write $Y \sim \text{geometric}(\theta)$.
+``
 
-*Poisson random variables* arise in a variety of practical situations 
-where ‘events’ occur apparently at
-random with a rate of occurrence $\theta$ 
-per unit time, e.g. queuing theory. The random variable $Y$
-is defined as
-Y = ‘the number of events in an interval of fixed length $t$.’
-Provided that an event occurs instantaneously, the range of 
-possible values for $Y$ is $0, 1, \ldots$,
-showing that this is a discrete random variable defined over 
-the non-negative integers.
+## The Poisson distribution
 
-Then the probability function for a Poisson random variable is given by
-\[p(y) = \frac{e^{-\theta t} (\theta t)^y}{y!}, \quad y = 0, 1, \ldots,\]
-  where $\theta > 0$.
-**CHECK: is Poisson derived this way in MATH1024??**
-  This result was obtained in detail in MATH1024.
+The *Poisson* distribution arises in a variety of practical situations 
+where we are interested in modelling counts of how often
+an 'event' occurs.
 
-  Of course, by defining the time unit appropriately one can take
-  $t = 1$, giving the probability function
-\[p(y) = \frac{e^{-\theta} (\theta)^y}{y!}, \quad y = 0, 1, \ldots, \]
-  where $\theta > 0$. This is a useful form of the probability function
-  if one is aiming to model “count” data
-more generally, particularly when time is not the main focus.
+```{definition}
+A discrete random variable $Y$ has *Poisson* distribution 
+if it has probability function of the form
+\[p(y) = \frac{e^{-\theta} (\theta)^y}{y!}, \quad y = 0, 1, \ldots,\]
+  for some *rate parameter* $\theta > 0$.
+We write $Y \sim \text{Poisson}(\theta)$.
+```
+
+If events occur at random at constant rate $\theta$ 
+per unit time, independent of all other events, then
+if we define $Y$ as 'the number of events in an interval of fixed length $t$.',
+$Y \sim \text{Poisson}(t \theta)$.
 
 
 ## A relationship between Poisson and Binomial random variables
