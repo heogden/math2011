@@ -128,9 +128,9 @@ if it has probability function of the form
 \]
 for some $0 < \theta < 1$.
 We write $Y \sim \text{geometric}(\theta)$.
-``
+```
 
-## The Poisson distribution
+## The Poisson distribution {#poisson}
 
 The *Poisson* distribution arises in a variety of practical situations 
 where we are interested in modelling counts of how often
