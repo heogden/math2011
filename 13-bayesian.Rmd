@@ -1,3 +1,175 @@
 # Bayesian inference
 
-- Chapter 15
+## Introduction
+
+We have already seen how to estimate a parameter
+$\theta$ from data $y_1, \ldots, y_n$, using either the method of moments,
+or maximum likelihood estimation.
+
+We have also seen how to find confidence intervals and
+test hypotheses, in the case of Normal data.
+It is also possible
+to construct confidence intervals and hypothesis tests about parameters
+for models with other types of distribution (see MATH3044
+for some general methods to do this).
+
+In frequentist inference, uncertainty about a parameter value is usually
+expressed through a confidence interval for that parameter: **TODO: expand meaning**
+The idea of Bayesian inference is to construct a probability
+distribution which summarises our belief about the likely
+value of a parameter $\theta$.
+
+In Bayesian inference, we treat $\theta$ as a random variable. 
+Our belief about which values of $\theta$ are likely (the "posterior" distribution
+for $\theta$)
+is influenced by two factors:
+
+1. How likely the observed data $y_1, \ldots, y_n$ were to be generated using that value of $\theta$ (the likelihood
+$L(\theta; y_1, \ldots, y_n)$)
+2. How likely we thought each value $\theta$ was before conducting the experiment (the "prior" distribution for $\theta$)
+
+## Prior distributions
+
+The first step of Bayesian inference is to
+express our beliefs about $\theta$ before conducting the experiment. 
+We specify these beliefs through a probability distribution,
+which is called
+the prior distribution. 
+
+Typically $\theta$ is a continuous random variable,
+so we specify the distribution through a density $\pi(\theta)$.
+
+This idea will become clearer later on, when we consider an example.
+
+## Bayes' Theorem
+The posterior
+distribution is the probability distribution for a parameter $\theta$,
+conditional on the event $\{Y_1 = y_1, Y_2 = y_2, \ldots, Y_n = y_n\}.$
+
+To find
+this distribution, we will use Bayes' Theorem, which is a simple result
+about conditional probabilities.
+
+```{theorem, name = "Bayes' Theorem"}
+For two events $A$ and $B$, such that $P(B) > 0$,
+\[P(A | B) = \frac{P(B | A) P(A)}{P(B)}\]
+```
+
+```{proof}
+**TODO: gap fill**
+```
+
+```{example}
+A patient is given a test for a disease, D, which is present in 
+$1\%$ of the population.
+$95\%$ of people with disease D will test positive, and $1\%$ of 
+people who do not have
+disease D will also test positive. 
+
+What is the probability that a
+patient who tests positive has disease D?
+
+**TODO: gap fill**
+```
+
+## The posterior distribution
+
+We use (a continuous version of) Bayes' Theorem to construct
+the probability distribution for the parameters $\theta$,
+given $Y_1 = y_1, \ldots, Y_n = y_n$.
+
+If $Y_1, \ldots, Y_n$ have discrete distribution
+\begin{align*}
+\pi(\theta| y_1, \ldots, y_n) &= \frac{P(Y_1 = y_1, \ldots, Y_n = y_n| \theta) \pi(\theta)}{P(Y_1 = y_1, \ldots, Y_n = y_n)} \\
+&= \frac{L(\theta; y_1, \ldots, y_n) \pi(\theta)}{P(Y_1 = y_1, \ldots, Y_n = y_n)}
+\end{align*}
+where
+\[P(Y_1, \ldots, Y_n) = \int L(\theta; y_1, \ldots, y_n) \pi(\theta) d \theta.\]
+
+The denominator $P(Y_1 = y_1, \ldots Y_n = y_n)$ does not depend on $\theta$, so usually
+we write
+\[\pi(\theta| y_1, \ldots, y_n) \propto L(\theta; y_1, \ldots, y_n) \pi(\theta),\]
+and if necessary find the constant of proportionality to make sure that
+$\pi(\theta|y_1, \ldots y_n)$ integrates to $1$.
+
+**TODO: gap fill**
+
+If $Y_1, \ldots Y_n$ have continuous distribution,
+with p.d.f. $f(y; \theta)$, the posterior density has the same form
+\[\pi(\theta | y_1, \ldots, y_n) \propto L(\theta; y_1, \ldots, y_n) \pi(\theta). \]
+
+```{example}
+**TODO: write this in more general form**
+
+Suppose that you are asked to predict the outcome
+of tennis match, played between two friends Alex and Bob.
+
+If there are $n$ matches played, you decide to model the outcome
+of the matches $Y_1, \ldots Y_n$ as a random sample from a 
+$\text{Bernoulli}(\theta)$
+distribution, where $\theta$ is an unknown parameter, 
+where $Y_i = 1$ denotes a victory
+for Alex, and $Y_i = 0$ a victory for Bob.
+
+Suppose that Alex is 25 and healthy, whereas Bob is 52 and slightly overweight.
+Before the matches are played, you have some prior belief about $\theta$,
+the probability that Alex will win a game of tennis against Bob.
+
+What would your prior distribution for $\theta$ look like?
+The prior distribution reflects your personal beliefs:
+your prior may well look quite different to someone elses prior.
+
+For the rest of this example, suppose your prior distribution for
+$\theta$ is $\theta \sim \text{beta}(3, 2)$:
+
+```{r}
+curve(dbeta(x, 3, 2), 0, 1, ylab = "", xlab = "", yaxt = "n")
+```
+
+Now suppose that Alex and Bob play two games of tennis, and Bob wins both.
+The MLE for $\theta = r/ n = 0$.
+The likelihood function for $\theta$ is
+**TODO: gap fill**
+
+The posterior distribution is
+
+**TODO: gap fill**
+
+In this case, the smaller values of $\theta$ are
+given a higher probability in the posterior than in the prior, because of the what we have learnt from the data.
+
+```{r}
+curve(dbeta(x, 3, 4), 0, 1, ylab = "", xlab = "", yaxt = "n")
+curve(dbeta(x, 3, 2), 0, 1, ylab = "", xlab = "", yaxt = "n", lty = 2, add = TRUE)
+```
+
+
+## The posterior predictive distribution
+
+Suppose we wanted to predict the outcome of another match $Y_3$ between Alex and Bob.
+
+If the $Y_i$ are discrete random variables, the posterior predictive distribution
+is
+\[P(Y_{n+1} = y) = \int_\theta p(y; \theta) \pi(\theta | y_1, \ldots, y_n) d \theta. \]
+
+In our Bernoulli example, what is our predicted probability that Alex would win a third
+match played against Bob?
+
+**TODO: gap fill**
+ 
+## Summary
+The aim of Bayesian inference is to find a probability distribution
+which summarises your belief about a parameter value, updating your
+prior beliefs given the evidence provided by data.
+
+Bayesian inference is particularly useful when the aim is to predict new outcomes
+of a process.
+
+The material covered here is a very brief overview of Bayesian inference:
+see MATH3044 for more details.
+
+
+
+
+
+
