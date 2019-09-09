@@ -149,12 +149,3 @@ per unit time, independent of all other events, then
 if we define $Y$ as 'the number of events in an interval of fixed length $t$.',
 $Y \sim \text{Poisson}(t \theta)$.
 
-
-## A relationship between Poisson and Binomial random variables
-Suppose that $X \sim \text{Binomial}(n, \theta)$
-and let  $\mu = n \theta$.
-It can be shown that for fixed $x$, as $n \rightarrow \infty$
-\[p(x) = \binom{n}{x} \theta^x (1 - \theta)^{n - x}
-  \rightarrow \frac{e^{-\mu} \mu^x}{x!}.\]
-So for large $n$ and small $\theta$, Binomial probabilities can be 
-approximated by Poisson probabilities.
