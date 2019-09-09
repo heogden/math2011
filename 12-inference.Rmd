@@ -1,4 +1,160 @@
 # Confidence intervals and hypothesis tests
 
-- Ideas of confidence interval, hypothesis test
-- parts of Chapter 11: Normal inference (as an example)
+## Introduction
+
+Suppose that $Y_1, \ldots, Y_n$ are independent identically distributed 
+random variables, each with a distribution depending on 
+unknown parameter(s) $\theta$, and 
+let $y_1, \ldots, y_n$ be corresponding observed values.
+
+In Chapter \@ref(estimation), we have seen how to find an
+estimate of $\theta$ given $y_1, \ldots, y_n$.
+However, an important part of statistical inference is to 
+express our level of uncertainty in this estimate.
+This could be done by writing down an interval containing 
+a range of values of $\theta$ which could plausibly have generated
+the data. Alternatively, we might be interested in
+testing if some particular value of $\theta$ could
+plausibly have generated the observed data.
+
+## Confidence intervals
+
+```{example, cinormmean, name = "Normal mean, known variance"}
+Suppose that $Y_1, \ldots, Y_n$ are independent and identically
+distributed, with each $Y_i \sim N(\mu, \sigma^2)$,
+where $\mu$  is an unknown parameter, but the value of $\sigma^2$
+is known.
+Suppose that we require a $95 \%$ confidence interval (CI)
+for $\mu$.
+
+Then
+\[P(-1.96 < \frac{\bar Y - \mu}{\sigma/\sqrt{n}} < 1.96) = 0.95.\]
+
+By "making $\mu$ the subject of the inequality" we can rearrange
+this probability statement to give
+
+**TODO: gap fill**
+
+If we replace the end-points of the inequality with their sample equivalents,
+we get a $95 \%$ confidence interval 
+
+**TODO: gap fill**
+
+for $\mu$.
+```
+
+```{example, name = "Normal mean, unknown variance"}
+Suppose that $Y_1, \ldots, Y_n$ are independent and identically
+distributed, with each $Y_i \sim N(\mu, \sigma^2)$,
+where $\mu$ and $\sigma^2$ are both unknown parameters.
+Suppose that we require a $95 \%$ confidence interval (CI)
+for $\mu$.
+
+We estimate $\sigma^2$ by $S^2$ and then proceed as in 
+Example \@ref(exm:cinormmean), taking care
+to replace the Normal value ($1.96$ in the above example)
+with a corresponding value from the $t$ distribution.
+
+**TODO: gap fill / expand argument**
+```
+
+```{example, name = "Normal variance"}
+We estimate $\sigma^2$ by $S^2$ and use the result 
+$\frac{n-1}{\sigma^2} S^2 \sim \chi^2_{n-1}$ (**TODO: add reference**)
+to construct a CI for $\sigma^2$.
+
+**TODO: gap fill**
+
+From this we can obtain a corresponding CI for $\sigma$ if we prefer.
+
+**TODO: gap fill**
+```
+
+## Hypothesis testing
+
+In classical hypothesis testing we aim to choose between two competing
+hypotheses about a parameter of interest.
+The hypotheses are called the null hypothesis ($H_0$) and the 
+alternative hypothesis ($H_1$).
+The null and alternative hypotheses are regarded somewhat differently -- the
+null hypothesis will be rejected in favour of the alternative hypothesis
+only if there is strong evidence against it.
+
+For now we will only consider a **simple** null hypothesis, which is one which
+specifies a single value for the parameter of interest.
+
+We either reject $H_0$ in favour of $H_1$, or we do not reject $H_0$.
+There are two types of error we can make:
+
+- We reject $H_0$ when $H_0$ is true (Type I error)
+- We do not reject $H_0$ when $H_1$ is true (Type II error)
+
+In classical hypothesis testing we choose the Type I error probability
+we work at (the **significance level**) and design our test so that the
+Type II error probability is suitably small (i.e. choose a large enough sample
+size $n$.)
+
+
+In any given situation we need a **test statistic** -- a quantity whose distribution
+is known when $H_0$ is true. 
+For certain values of the test statistic we will reject $H_0$. For all other values
+we do not reject $H_0$.
+
+```{example, name = "Normal mean, known variance"}
+Suppose that we will work at a $5\%$ significance level and that the value
+of $\sigma^2$ is known.
+
+Our null hypothesis is $H_0: \mu = \mu_0$, where $\mu_0$ is a fixed
+value chosen in advance of collecting the data.
+
+For simplicity, take $H_1$ to be the complement of $H_0$.
+
+If $H_0$ is true then 
+\[Z_0 = \frac{\bar Y - \mu_0}{\sigma / \sqrt{n}} \sim N(0, 1).\]
+For our observed data set the observed value of $Z_0$ is 
+\[z_0 =  \frac{\bar y - \mu_0}{\sigma / \sqrt{n}}.\]
+
+So to construct a hypothesis test with $5\%$ significance probability 
+we should only reject $H_0$ if $|z_0| > 1.96$.
+So if $z_0 > 1.96$ or $z_0 < -1.96$, we reject $H_0$. Otherwise, we do not
+reject $H_0$.
+
+
+```{example, name = "Normal mean, unknown variance"}
+We estimate $\sigma^2$ by $S^2$ and use the $t$ distribution
+result to give the one-sample $t$-test.
+**TODO: gap fill**
+```
+
+```{example, name = "Normal variance"}
+
+We use that
+$\frac{(n-1)}{\sigma^2} S^2 \sim \chi^2_{n-1}$. (**TODO:: add ref**)
+**TODO: gap fill**
+```
+
+## Two-sample hypothesis testing
+
+In many practical situations, such as clinical trials, we have two independent
+groups of subjects under study and wish to understand the relative effects
+of two "treatments" on some response of interest.
+
+In a classical two-armed clinical trial, there are two treatments of interest,
+such as an active treatment and a placebo, or old and new treatments.
+
+Typically, subjects are first randomly assigned to treatment arms. Why
+is randomisation important?
+
+```{example, name = "The classical two-sample $t$-test"}
+**TODO: gap fill**
+```
+
+```{example, name = "Testing for equality of variances"}
+In the classical two-sample $t$-test, an assumption is made that the 
+(population) variances are equal. This can be tested
+using the result obtained in Chapter 10
+(**TODO: update ref**) concerning the $F$ distribution.
+**TODO: gap fill**
+```
+
+

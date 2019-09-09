@@ -1,6 +1,6 @@
 # (PART) Statistical inference {-}
 
-# Parameter estimation
+# Parameter estimation {#estimation}
 
 ## Introduction
 
@@ -81,6 +81,7 @@ datasets <- replicate(N, rbinom(n, 1, theta))
 estimates <- apply(datasets, 2, mean)
 barplot(table(estimates))
 ```
+
 The mean of the estimates is `r mean(estimates)`, 
 which is close to the true value of $\theta = 0.5$.
 
@@ -162,6 +163,7 @@ estimates <- 1/y_bar
 hist(estimates, breaks = 20)
 abline(v = theta)
 ```
+
 The mean of the estimates is `r mean(estimates)` and
 the variance is `r var(estimates)`.
 **TODO: make comparison with earlier**
