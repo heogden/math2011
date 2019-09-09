@@ -1,4 +1,4 @@
-# The Gamma distribution
+# The Gamma distribution {#gamma}
 
 ## Introduction
 
@@ -148,7 +148,7 @@ then $Z = Y 1 + Y 2 \sim \gamma(\beta, \alpha_1 + \alpha_2)$.
 **TODO: add this**
 ```
 
-## The chi-squared distribution
+## The chi-squared distribution {#chisquared}
 
 The chi-squared distribution is a useful special case of the
 gamma distribution.

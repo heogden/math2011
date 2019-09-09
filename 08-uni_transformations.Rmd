@@ -1,4 +1,4 @@
-# Univariate transformations
+# Univariate transformations {#unitransform}
 
 ## Motivation
 

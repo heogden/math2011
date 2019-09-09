@@ -1,0 +1,310 @@
+# Bivariate transformations
+
+## Motivation
+
+In Chapter \@ref(unitransform) we considered transformations 
+of a single random variable. In this
+chapter we will generalise to the case of transforming two
+random variables.
+
+As examples we will derive two distributions -- the
+Beta and Cauchy distributions. These are of interest in 
+themselves: the Beta distribution plays an important
+role in Bayesian statistics (see, in particular MATH3044 
+Statistical Inference),
+while the Cauchy distribution has unusual properties.
+
+In addition we will derive two distributions
+that play a major role in statistical inference
+about the normal distribution: the $t$ and $F$ 
+distributions. You have already met the $t$ distribution in
+MATH1024
+(**TODO: check that this is true**)
+and the $F$ distribution occurs frequently in MATH2010.
+
+## The transformation theorem
+
+We have already seen in Theorem \@ref(thm:unitrans)
+how to find the pdf of a one-to-one transformation
+of a random variable. We extend this result to find
+the pdf for a transformation of two random variables.
+
+```{theorem, bvtrans}
+Suppose $Y_1$ and $Y_2$ have joint probability density function 
+$f(y_1, y_2)$, and that we transform to two new variables 
+$U_1 = U_1(Y_1, Y_2)$ and $U_2 = U_2(Y_1, Y_2)$ using a one-to-one
+transformation of $(Y_1 , Y_2)$ to $(U_1, U_2)$. 
+Then the joint probability density function
+of $(U_1, U_2)$ is given by
+\[g(u_1 , u_2)  = f[w_1(u_1, u_2), w_2(u_1 , u_2)] \times \big|\det (\bm J)\big|,\]
+where
+\[ \bm J = 
+\begin{pmatrix}
+\frac{\partial y_1}{\partial u_1} & \frac{\partial y_1}{\partial u_2} \\
+\frac{\partial y_2}{\partial u_1} & \frac{\partial y_2}{\partial u_2}
+\end{pmatrix}
+\]
+is the *Jacobian* matrix,
+and $Y_1 = w_1(U_1, U_2)$ and $Y_2 = w_2(U_1, U_2)$ are the 
+inverse transformations.
+```
+
+The key in any example is to:
+
+- Find the inverse transformations
+- Find the domain of the transformed random variables.
+
+We will work through several examples to see how this works.
+
+## The beta distribution
+
+```{definition}
+A random variables $Y$ has a *beta* distribution
+if it has pdf of the form
+\[f(y) = \frac{1}{B(m, n)} y^{m - 1} (1 - y)^{n-1}, \quad 0 < y < 1,\]
+for some parameters $n$ and $m$, where
+\[B(m, n) = \int_{0}^1 u^{m-1} (1 - u)^{n-1} du = \frac{\Gamma(m) \Gamma(n)}{\Gamma(m + n)}\]
+is the *Beta function*. We write $Y \sim \text{beta}(m, n)$.
+```
+
+
+Suppose that $Y_1 \sim \gamma(\beta, m)$, $Y_2 \sim \gamma(\beta, n)$,
+and that $Y_1$ and $Y_2$ are independent.
+Then we claim that 
+\[U_1 = \frac{Y_1}{Y_1 + Y_2} \sim \text{beta}(m, n).\]
+To show this, we would like to use Theorem \@ref(thm:bvtrans).
+In order to do this, we first need to define another random variable
+$U_2$, which is another transformation of $Y_1$ and $Y_2$.
+Here we will choose $U_2 = Y_1 + Y_2$, but many other choices
+would work too (**TODO: set exercise doing the same with
+$U_2 = Y_1, does it still work?**). We will
+ derive the joint pdf of $U_1$ and $U_2$,
+ then integrate this to find the marginal pdf of $U_1$,
+ which we hope will be a $\text{beta}(m, n)$ pdf.
+ 
+ The inverse transformation are
+**TODO: gap fill**
+
+The Jacobian is
+\[ \bm J = 
+\begin{pmatrix}
+\frac{\partial y_1}{\partial u_1} & \frac{\partial y_1}{\partial u_2} \\
+\frac{\partial y_2}{\partial u_1} & \frac{\partial y_2}{\partial u_2}
+   \end{pmatrix}
+   = 
+\]
+**TODO: complete**
+
+Therefore, by Theorem \@ref(thm:bvtrans), the joint pdf
+of $U_1$ and $U_2$ is
+\begin{align*}
+g(u_1, u_2) &= f(y_1, y_2) \times \big |\det J \big| \\
+&= \ldots
+\end{align*}
+**TODO: complete**
+
+
+But this only partially specifies the joint density 
+--- we need to give the domain in
+order to complete the description of the joint pdf.
+
+**TODO: complete**
+
+The fully defined joint density function of $U_1$ and $U_2$ is
+\[g(u_1, u_2) = \]
+**TODO: complete**
+
+We can then find the marginal pdf of $U_1$ by integrating 
+$g(u_1, u_2)$ over $u_2$.
+In this case we can
+see that $U_1$ and $U_2$ are independent, so the marginal 
+pdf of $U_1$ can be obtained
+more simply.
+
+**TODO: complete**
+
+## The Cauchy distribution
+
+```{definition}
+A random variables $Y$ has *Cauchy* distribution
+if it has pdf
+\[f(y) = \frac{1}{\pi(1 + y^2)}.\]
+```
+
+Suppose that $Y_1 \sim N(0, 1)$ and $Y_2 \sim N(0, 1)$
+are independent standard normal random variables.
+Then we claim that $U_1 = Y_1 / Y_2$ has Cauchy
+distribution.
+
+Again, in order to use Theorem \@ref(thm:bvtrans) to 
+show this, we need to first define a second random
+variable $U_2$. We will choose $U_2 = Y_2$.
+
+By independence, the joint pdf of $Y_1$ and $Y_2$ is
+\begin{align*}
+f(y_1, y_2) &= \frac{1}{\sqrt{2 \pi}} \exp\left(-\frac{y_1^2}{2}\right)
+  \frac{1}{\sqrt{2 \pi}} \exp\left(-\frac{y_2^2}{2}\right) \\
+  &= \frac{1}{2 \pi} \exp \left(-\frac{y_1^2 + y_2^2}{2} \right),
+  \quad y_1, y_2 \in \mathbb{R}.
+\end{align*}
+
+The inverse transformations are
+\[Y_1 = U_1 U_2, \quad Y_2 = U_2,\]
+so the Jacobian matrix is
+\[J = .\]
+**TODO: complete**
+
+The domain of $U_1$ and $U_2$ is clearly $U_1 \in \mathbb{R}$,
+$U_2 \in \mathbb{R}$.
+
+So the joint pdf of $U_1$ and $U_2$ is
+**TODO: complete**
+
+We integrate out $u_2$ in order to obtain the marginal
+pdf of $U_1$
+**TODO: complete**
+
+
+While the Cauchy distribution looks relatively innocuous 
+--- it is symmetric around zero, just
+like a standard Normal distribution --- the thickness of its 
+tails means that its moments do
+not exist (the required integrals do not converge).
+
+```{r}
+curve(dnorm(x), from = -10, to = 10, xlab = "x", ylab = "f(x)")
+curve(1/(pi*(1 + x^2)), add = TRUE, lty = 2)
+legend("topleft", lty = c(1, 2),
+       legend = c("N(0, 1) pdf", "Cauchy pdf"))
+```
+
+## The $t$ distribution
+
+```{definition}
+A random variable $Y$ has $t$ distribution with $k$ degrees
+of freedom if it has pdf
+\[f(y) = \frac{\Gamma\left[(k + 1)/2\right]}{\sqrt{k \pi} \, \Gamma(k/2)} 
+\left(1 + \frac{y^2}{k} \right), \quad y \in \mathbb{R}.\]
+We write $Y \sim t_k$.
+```
+
+Suppose that $Y_1 \sim N(0, 1)$ and $Y_2 \sim \chi^2_k$,
+and that $Y_1$ and $Y_2$ are independent.
+Then we claim that 
+\[U_1 = \frac{Y_1}{\sqrt{Y_k/k}} \sim t_k.\]
+In order to use Theorem \@ref(thm:bvtrans) to 
+show this, we need to first define a second random
+variable $U_2$. We will choose $U_2 = Y_2$.
+
+The pdfs of $Y_1$ and $Y_2$ are 
+\[f_1(y_1) = \frac{1}{\sqrt{2 \pi}} \exp\left(\frac{-y_1^2}{2} \right),
+  \quad y_1 \in \mathbb{R}\]
+and
+\[f_2(y_2) = \frac{y_2^{k/2 - 1}}{\Gamma(k/2) 2^{k/2}} \exp\left(\frac{-y_2}{2}\right),
+  \quad y_2 > 0.\]
+So, by independence, the joint pdf of $Y_1$ and $Y_2$ is
+\[f(y_1, y_2) =  \frac{1}{\sqrt{2 \pi}} \exp\left(\frac{-y_1^2}{2} \right)
+  \frac{y_2^{k/2 - 1}}{\Gamma(k/2) 2^{k/2}} \exp\left(\frac{-y_2}{2}\right),
+  \quad y_1 \in \mathbb{R}, y_2 > 0.\]
+
+**TODO: finish**
+
+We can plot the pdfs of the $t$ distribution with $2$, and $5$ degrees
+of freedom, compared with the $N(0, 1)$ pdf.
+```{r}
+curve(dnorm(x), from = -5, to = 5, xlab = "x", ylab = "f(x)")
+curve(dt(x, df = 2), add = TRUE, lty = 2)
+curve(dt(x, df = 5), add = TRUE, lty = 3)
+legend("topleft", lty = c(1, 2, 3),
+       legend = c("N(0, 1) pdf", "t_2 pdf", "t_5 pdf"))
+```
+
+The $t_k$ distribution has heavier tails than the $N(0, 1)$
+distribution, but as 
+$k \rightarrow \infty$, $t_k \rightarrow N(0, 1)$.
+When $k=1$, the $t_1$ distribution is the Cauchy distribution.
+
+```{corollary}
+Suppose that $Y_1, Y_2, \ldots, Y_n$, are independent and identically
+distributed, with each $Y_i \sim N(0, 1)$.
+Let $\bar Y$ and $S^2$ be the usual sample mean and sample variance.
+Then
+\[\frac{\sqrt{n}(\bar Y - \mu)}{S} \sim t_{n-1}.\]
+```
+
+```{proof}
+We know $\bar Y \sim N(\mu, \sigma^2/2)$, so 
+\[A = \frac{\sqrt{n}(\bar Y - \mu)}{\sigma} \sim N(0, 1).\]
+We also know **TODO: add reference**
+\[B = \frac{(n - 1) S^2}{\sigma^2} \sim \chi^2_{n-1}.\]
+So, by Proposition **TODO: put this into formal prop**,
+\[\frac{A}{\sqrt{B/(n-1)}} \sim t_{n-1}.\]
+Simplifying,
+\begin{align*}
+\frac{A}{\sqrt{B/(n-1)}} &=  A \sqrt{n-1} \frac{1}{\sqrt{B}} \\
+&= \frac{\sqrt{n}(\bar Y - \mu)}{\sigma} \sqrt{n-1} \frac{\sigma}{\sqrt{n-1} S} \\
+&= \frac{\sqrt{n}(\bar Y - \mu)}{S},
+\end{align*}
+so 
+\[\frac{\sqrt{n}(\bar Y - \mu)}{S} \sim t_{n-1}\]
+as required.
+```
+
+## The $F$ distribution
+
+```{definition}
+A random variable $Y$ has $F$ distribution with $m$ and $n$ degrees
+of freedom if it has pdf
+\[f(y) = \frac{m^{n/2} n^{m/2}}{B(m/2, n/2)} 
+\frac{y^{\frac{m}{2} - 1}}{(n + my)^{\frac{m + 2}{2}}}, \quad y > 0.\]
+We write $Y \sim F_{m, n}$.
+```
+
+```{proposition, fconstruct}
+Suppose that $Y_1 \sim \chi^2_m$ and $Y_2 \sim \chi^2_n$,
+and that $Y_1$ and $Y_2$ are independent.
+Then
+\[U_1 = \frac{Y_1 / m}{Y_2 / n} \sim F_{m, n}.\]
+```
+
+```{proof}
+In order to use Theorem \@ref(thm:bvtrans),
+we first need to define a second random
+variable $U_2$. We will choose $U_2 = Y_2 / n$.
+
+Write $Y_1^* = \frac{Y_1}{m}$ and
+$Y_2^* = \frac{Y_2}{n}$.
+
+**TODO: finish this**
+```
+
+```{corollary}
+Suppose $Y^{(1)}_1, \ldots, Y^{(1)}_m$
+and $Y^{(2)}_1, \ldots, Y^{(2)}_n$
+are two sets of independent
+random variables, with each $Y^{(1)}_i \sim N(\mu_1, \sigma^2)$
+and each $Y^{(2)}_i \sim N(\mu_2, \sigma^2)$.
+Let $S_1^2$ be the sample variance of  $Y^{(1)}_1, \ldots, Y^{(1)}_m$
+and $S_2^2$ be the sample variance of $Y^{(2)}_1, \ldots, Y^{(2)}_n$.
+Then
+\[\frac{S_1^2}{S_2^2} \sim F_{m-1, n-1}.\]
+```
+
+```{proof}
+We know (**TODO: add ref**) that $(m-1) S_1^2/ \sigma^2 \sim \chi^2_{m-1}$
+and $(n-1) S_2^2 / \sigma^2 \sim \chi^2_{n-1}$, and $S_1^2$ and $S_2^2$ are
+independent. So by Proposition \@ref(prp:fconstruct)
+\[\frac{S_1^2 / \sigma^2}{S_2^2 / \sigma^2}
+= \frac{S_1^2}{S_2^2} \sim F_{m-1, n-1}\]
+as required.
+```
+
+## Summary
+
+Two-variable transformation techniques can be useful in a variety of practical and
+theoretical situations. They can be generalised to many-variable situations.
+The $t$ and $F$ distributions (along with the Chi-squared distribution
+we met in Section \@ref(chisquared)) are central to statistical methods for 
+analysing Normally distributed data. We
+will revise some of these methods in Chapter [**TODO: add ref**] and will
+meet many more in MATH2010.
