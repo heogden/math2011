@@ -7,12 +7,23 @@ called *continuous random variables*.
 
 In this chapter we revise three well-known types of continuous random variables.
 
-## Exponential random variables
-Suppose that we have a Poisson process [**TODO: formally introduce
-the Poisson process in previous chapter**]
-with events occurring at 
-random at rate $\theta$ per
-unit time, but this time we consider the random variable 
+## The exponential distribution
+
+In Section \@ref(poisson), we considered a situation in which
+events occur at random, at a rate $\theta$ per unit time.
+The actual number of events which take place in any given
+unit of time has $\text{Poisson}(\theta)$ distribution.
+The *exponential* distribution represents
+the time between consecutive events in this process.
+
+```{definition}
+A random variable $Y$ has *exponential* distribution if it has
+pdf of the form
+\[f(y) = \theta e^{-\theta y}, \quad y > 0,\]
+for some *rate parameter* $\theta > 0$.
+We write $Y \sim \text{exponential}(\theta)$.
+```
+
 $Y = \text{the time interval between two events}$.
 Clearly this variable cannot be negative, but can take any
 positive value.
