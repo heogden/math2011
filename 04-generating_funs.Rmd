@@ -1,7 +1,7 @@
 
-# Generating functions
+# Generating functions {#genfuns}
 
-## The moment generation function
+## The moment generating function
 
 We now define an entity --- the *moment generating function* (*mgf*) ---
 that enables us to find as many moments as we wish using just a single 
