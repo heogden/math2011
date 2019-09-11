@@ -25,14 +25,13 @@ We define the corresponding random variables
 $Y_{(1)} = \min\{Y_1, \ldots, Y_n\}$ and
 $Y_{(n)} = \max\{Y_1 , \ldots, Y_n \}$.
 
-## Applications where maxima and/or minima are of interest
-
-There are many areas of application. For example:
+There are many applications for which maxima or
+minima are of interest. For example:
 
 - Understanding outliers in statistical data: 
 an outlier will often be the largest or
 smallest data point.
-- In reliability engineering a system will tend to fail at 
+- In reliability engineering, a system will tend to fail at 
 its weakest point (which might
 be thought of as the point with the minimum "strength").
 - In designing coastal defences one needs to understand the
@@ -40,7 +39,7 @@ distribution of the wave heights of the highest tides.
 - In insurance the behaviour of the largest claims is important.
 
 There is a whole area of statistics devoted to the study of 
-extremes (Extreme value theory). 
+extremes, called extreme value theory. 
 In this short chapter we just give a brief introduction to the subject.
 
 ## The cdf of $Y_{(n)}$, the largest value in a random sample of size $n$
@@ -57,7 +56,7 @@ So
 Thus, by independence
 \[G_n(y) = P(Y_1 \leq y)P(Y_2 \leq y) \ldots P(Y_n \leq y) = [F(y)]^n.\]
 
-```{example, name = "A simple discrete experiment"}
+```{example}
 Suppose I roll a fair die twice. What is the probability function
 of the maximum of the two scores?
 
@@ -67,9 +66,6 @@ So the distribution function of the maximum
 of the two scores is
 \[G_2(y) = \left(\frac{y}{6}\right)^2, \quad
 \text{for $y = 1, 2, \ldots, 6$}.\]
-
-**TODO** what about distribution function between
-discrete values?
 
 Hence
 \[P(Y_{(2)} = y) = 
