@@ -23,20 +23,130 @@ we say the mgf is well-defined.
 
 Consider $e^{yt}$ expanded as a power series in $t$:
 \[e^{ty} = 1 + ty + \frac{(ty)^2}{2!} + \frac{(ty)^3}{3!} + \ldots =
-  \sum_{r=0}^\infty \frac{(ty)^r}{r!}.\]
-We can use this power series expansion to see that:
-\[M_Y(t) = E(e^{tY}) = \sum_{r=0}^\infty \frac{t^r E(Y^r)}{r!}
-  =  \sum_{r=0}^\infty \frac{t^r \mu_r^\prime}{r!}.\]
+  \sum_{k=0}^\infty \frac{(ty)^k}{k!}.\]
+We can use this power series expansion to see that
+\begin{equation}
+M_Y(t) = E(e^{tY}) 
+= E\left\{ \sum_{k=0}^\infty \frac{t^k Y^k}{k!} \right\}
+= \sum_{k=0}^\infty \frac{t^k E(Y^k)}{k!}
+  =  \sum_{k=0}^\infty \frac{t^k \mu_k^\prime}{k!}.
+(\#eq:mgfpower)
+\end{equation}
 
-We can use this result and repeated differentiation to obtain as many moments as
-we wish.
-To find $\mu_r^\prime$,
-differentiate the mgf $r$ times with respect to $t$ and then let $t$
-tend to zero. 
+The moment generating function allows us to easily find
+any moment $\mu_r^\prime$, by using the following result.
 
-[**TODO: why does this work?**]
+```{theorem, momentsmgf}
+If a random variable $Y$ has moment generating function $M_Y(t)$,
+for $-h < t < h$, then
+\[\mu_r^\prime = E(Y^r) = M_Y^{(r)}(0),\]
+where $M_Y^{(r)}(.)$ is the $r$th derivative of the moment generating
+function, for any $r = 0, 1, 2, \ldots$.
+```
+```{proof}
+We first claim that 
+\begin{equation}
+M_Y^{(r)}(t) = \sum_{k=0}^\infty \frac{t^{k} \mu_{k + r}^\prime}{k!}.
+(\#eq:mgfderiv)
+\end{equation}
+for $r = 0, 1, 2, \ldots$. To show \@ref(eq:mgfderiv), we proceed by induction. 
+For $r = 0$,
+this is just the power series \@ref(eq:mgfpower).
+Now, assuming  \@ref(eq:mgfderiv) holds for $r - 1$, 
+\begin{align*}
+M_Y^{(r)}(t) &= \frac{d}{dt} M_Y^{(r-1)}(t) \\
+&= \frac{d}{dt} \sum_{k=0}^\infty \frac{t^{k} \mu_{k + r - 1}^\prime}{k!} \\
+&= \frac{d}{dt} \mu_{k + r - 1}^\prime 
++ \sum_{k=1}^\infty \frac{d}{dt} \frac{t^{k} \mu_{k + r - 1}^\prime}{k!} \\
+&= 0 + \sum_{k=1}^\infty \frac{t^{k-1} \mu_{k - 1 + r}^\prime}{(k - 1)!} \\
+&= \sum_{l=0}^\infty \frac{t^l \mu_{l + r}^\prime}{l!},
+\end{align*}
+so \@ref(eq:mgfderiv) is proved. 
+So 
+\[M_Y^{(r)}(0) =  \lim_{t \rightarrow 0}\sum_{k=0}^\infty \frac{t^{k} \mu_{k + r}^\prime}{k!} = \mu_r,\]
+as required.
+```
 
-```{example, name = "Normal mgf"}
+```{example, binmgf, name = "Binomial mgf"}
+Suppose that $Y \sim \text{binomial}(n, \theta)$, with probability function
+\[p(y) = \binom{n}{y} \theta^y (1 - \theta)^{n-y}, \quad y = 0, \ldots n.\]
+Then the moment generating function is
+\begin{align*}
+M_Y(t) &= E(e^{Yt}) = \sum_{y=0}^n e^{yt} \binom{n}{y} \theta^y (1 - \theta)^{n-y} \\
+&= \sum_{y=0}^n  \binom{n}{y} (\theta e^t)^y (1 - \theta)^{n-y} \\
+&= (\theta e^t + 1 - \theta)^n,
+\end{align*}
+by the binomial theorem.
+
+To find $E(Y)$, we first differentiate $M_Y(t)$, to find
+\[M_Y^{(1)}(t) = \frac{d}{dt} M_Y(t) = \frac{d}{dt} (\theta e^t + 1 - \theta)^n
+= n (\theta e^t + 1 - \theta)^{n-1} \theta e^t.\]
+We get
+\[E(Y) = M_Y^{(1)}(0) = n(\theta + 1 - \theta)^{n-1} \theta = n \theta,\]
+as expected.
+
+To find $\text{Var}(Y)$, we first find $E(Y^2)$ by differentiating
+the mgf a section time. We have
+\begin{align*}
+M_Y^{(2)}(t) &= \frac{d}{dt} n (\theta e^t + 1 - \theta)^{n-1} \theta e^t \\
+& = n (n - 1) (\theta e^t + 1 - \theta)^{n-2} (\theta e^t)^2 
++  n (\theta e^t + 1 - \theta)^{n-1} \theta e^t.
+\end{align*}
+We get
+\[E(Y^2) = M_Y^{(2)}(0) = n (n - 1) \theta^2 +  n \theta,\]
+so 
+\begin{align*}
+\text{Var}(Y) &= E(Y^2) - [E(Y)]^2 \\
+&=  n (n - 1) \theta^2 +  n \theta - (n \theta)^2 \\
+&= -n \theta^2 + n \theta = n \theta(1 - \theta),
+\end{align*}
+as expected.
+```
+
+```{example, normalmgf, name = "Normal mgf"}
+Suppose that $Y \sim N(\mu, \sigma^2)$, with pdf
+\[f(y) = \frac{1}{\sqrt{2 \pi \sigma^2}}
+\exp \left\{ -\frac{(y - \mu)^2}{2 \sigma^2} \right\},
+\quad y \in \mathbb{R}.\]
+The moment generating function is
+\begin{align*}
+M_Y(t) &= E(e^{Yt}) = \int_{-\infty}^\infty e^{ty}  
+\frac{1}{\sqrt{2 \pi \sigma^2}}
+\exp \left\{ -\frac{ (y - \mu)^2}{2 \sigma^2}\right\} dy \\
+&= \int_{-\infty}^\infty  \frac{1}{\sqrt{2 \pi \sigma^2}}
+\exp \left\{ -\frac{y^2 - 2 \mu y + \mu^2}{2 \sigma^2} + ty \right\} dy \\
+&= \int_{-\infty}^\infty  \frac{1}{\sqrt{2 \pi \sigma^2}}
+\exp \left\{ -\frac{y^2 - 2 (\mu + \sigma^2 t) y + \mu^2}{2 \sigma^2} \right\} dy \\
+&= \int_{-\infty}^\infty  \frac{1}{\sqrt{2 \pi \sigma^2}}
+\exp \left\{ -\frac{\left[y - (\mu + \sigma^2 t)\right]^2 -
+(\mu - \sigma^2 t)^2 + \mu^2}{2 \sigma^2} \right\} dy \\
+&= \exp \left\{ \frac{(\mu + \sigma^2 t)^2 - \mu^2}{2 \sigma^2} \right\}
+\int_{-\infty}^\infty  \frac{1}{\sqrt{2 \pi \sigma^2}}
+\exp \left\{ -\frac{\left[y - (\mu + \sigma^2 t)\right]^2}{2 \sigma^2} \right\} dy \\
+&= \exp \left\{ \frac{\mu^2 + 2 \mu \sigma^2 t + \sigma^4 t^2 - \mu^2}{2 \sigma^2} \right\}  \times 1 \\
+&= \exp \left\{\mu t + \frac{\sigma^2 t^2}{2} \right\}.
+\end{align*}
+where we have used the fact that the integral of a 
+$N(\mu + \sigma^2 t, \sigma^2)$ pdf over the whole real line is one.
+
+To find $E(Y)$, we first differentiate $M_Y(t)$, to find
+\begin{align*}
+M_Y^{(1)}(t) &= \frac{d}{dt} \exp \left\{\mu t + \frac{\sigma^2 t^2}{2} \right\} \\
+&= (\mu + \sigma^2 t) \exp \left\{\mu t + \frac{\sigma^2 t^2}{2} \right\}.
+\end{align*}
+So $E(Y) = M_Y^{(1)}(0) = \mu$, as expected.
+
+To find $\text{Var}(Y)$, we first find $E(Y^2)$ by differentiating
+the mgf a section time. We have
+\begin{align*}
+M_Y^{(2)}(t) &= \frac{d}{dt} (\mu + \sigma^2 t) \exp \left\{\mu t + \frac{\sigma^2 t^2}{2} \right\} \\
+&= \sigma^2  \exp \left\{\mu t + \frac{\sigma^2 t^2}{2} \right\}
++ (\mu + \sigma^2 t)^2 \exp \left\{\mu t + \frac{\sigma^2 t^2}{2} \right\}
+\end{align*}
+We get $E(Y^2) = M_Y^{(2)}(0) = \sigma^2 + \mu^2,$
+so 
+\[\text{Var}(Y) = E(Y^2) - [E(Y)]^2 = \sigma^2 + \mu^2 - \mu^2 = \sigma^2,\]
+as expected.
 ```
 
 ## The cumulant generating function
@@ -44,11 +154,34 @@ tend to zero.
 Define the *cumulant generating function* (*cgf*) by
 \[K_Y(t) = \log M_Y(t).\]
 Define the $r$th cumulant $\kappa_r$ by
-\[\kappa_r = K_Y^{(r)}(t)|_{t = 0}.\]
+\[\kappa_r = K_Y^{(r)}(0).\]
 What are these cumulants in terms of the more familiar moments?
-We now obtain the first four cumulants:
 
-[**TODO: gap fill**]
+We have 
+\[K_Y^{(1)}(t) = \frac{d}{dt} \log M_Y(t) = \frac{M_Y^{(1)}(t)}{M_Y(t)},\]
+so 
+\[\kappa_1 = K_Y^{(1)}(0) = \frac{M_Y^{(1)}(0)}{M_Y(0)} = \frac{\mu_1^\prime}{1},\]
+so $\kappa_1 = \mu_1^\prime = \mu$.
+
+We have
+\[K_2^{(1)}(t) = \frac{d}{dt}\frac{M_Y^{(1)}(t)}{M_Y(t)} =
+  \frac{M_Y^{(2)}(t)}{M_Y(t)} -
+  \frac{\left[M_Y^{(1)}(t)\right]^2}{\left[M_Y(t)\right]^2},\]
+so
+\[\kappa_2 = K_Y^{(2)}(0)
+  = \frac{\mu_2^\prime}{1} - \frac{\left(\mu_1^\prime\right)^2}{1^2}
+  = \mu_2^\prime - \mu^2 = \mu_2 = \text{Var}(Y).\]
+  So we can find $\text{Var}(Y)$ directly by differentiating the 
+  cumulant generating function.
+  
+In a similar manner, we can show that $\kappa_3 = \mu_3$, 
+so we can find the third central moment directly from
+the cgf. 
+
+It is tempting to assume that $\kappa_4 = \mu_4$, but this is **not**
+the case. In fact, we can show that
+\[\kappa_4 = \mu_4 - 3 \mu_2^2,\]
+so $\mu_4 = \kappa_4 + 3 \mu_2^2 = \kappa_4 + 3 \kappa_2^2$.
 
 So we see that if we are just interested in finding the mean, 
 variance, skewness
@@ -56,49 +189,107 @@ and kurtosis of a distribution,
 then the cgf is particularly useful.
 
 ```{example, name = "Binomial cgf"}
-[**TODO: gap fill**]
+Suppose that $Y \sim \text{binomial}(n, \theta)$.
+From Example \@ref(exm:binmgf), we know that
+$M_Y(t) = (\theta e^t + 1 - \theta)^n$, so
+$K_Y(t) = n \log(\theta e^t + 1 - \theta)$.
 ```
 
-```{example, name =  "Normal cgf"}
-[**TODO: gap fill**]
+```{example, cgfnormal, name =  "Normal cgf"}
+Suppose that $Y \sim N(\mu, \sigma^2)$. From Example
+\@ref(exm:normalmgf), we know that 
+$M_Y(t) = \exp\{\mu t + \frac{1}{2} \sigma^2 t^2\}$,
+so $K_Y(t) = \mu t + \frac{1}{2} \sigma^2 t^2$.
+
+By differentiating this, 
+we get $\kappa_1 = \mu$, $\kappa_2 = \sigma^2$, and
+$\kappa_r = 0$ for $r = 3, 4, 5, \ldots$.
+
+The third moment about the mean is $\mu_3 = 0$, so the 
+skewness is $\gamma_1 = 0$ for all normal random variables.
+
+The fourth moment about the mean is 
+$\mu_4 = \kappa_4 + 3 \kappa_2^2 = 0 + 3 \sigma^2$,
+so the kurtosis is $\gamma_2 = 3$ for all normal random variables.
+
+**TODO: link back to previous chapter**
 ```
 
 ## Generating functions under linear transformation
 
 
-```{theorem}
-Suppose we linearly transform a rv $Y$, i.e. we obtain a new rv $Z$,
-defined as $Z = a + bY$, where $a$ and $b$ are constants.
-
-Then
-\[M_Z(t) = e^{at} M_Y(bt)\]
-and
-\[K_Z(t) = at + K_Y(bt).\]
+```{theorem, gflinear}
+Let $Y$ be a random variable with mgf $M_Y(t)$ and cgf $K_Y(t)$,
+and let $Z = a + bY$, where $a$ and $b$ are constants.
+Then $Z$ has mgf $M_Z(t) = e^{at} M_Y(bt)$
+and cgf $K_Z(t) = at + K_Y(bt).$
 ```
 
 ```{proof}
-[**TODO: proof**]
+The moment generating function of $Z$ is
+\begin{align*}
+M_Z(t) &= E(e^{tZ}) 
+= E(e^{t (a + bY)})
+= E(e^{at} e^{btY})\\
+&= e^{at} E(e^{(bt)Y})
+= e^{at} M_Y(t).
+\end{align*}
+So the cumulant generating function of $Z$ is
+\[K_Z(t) = \log M_Z(t) 
+= \log \left\{e^{at} M_Y(t)\right\}
+= at + \log M_Y(t)
+= at + K_Y(bt)\]
+as required.
 ```
 
-Using this result, we see that some types of rv are “closed” under certain types of
+Using this result, we see that some distributions are "closed" under certain types of
 linear transformation.
 
-Clearly, if two rvs have the same distribution, then they have the same mgf (cgf).
-We also state without proof that if two rvs have the same mgf (cgf), then
-they have the same distribution.
+Clearly, if two random variables have the same distribution,
+then they have the same mgf (cgf).
+We also state without proof that if two random variables have the same mgf (cgf), 
+then they have the same distribution. 
+We say that the mgf and cgf *characterise* the distribution:
+if we find the mgf (cgf) of
+a random variable, and find that it matches the mgf (cgf) of a known distribution,
+we can immediately conclude that the random variable has that distribution.
 
-```{example, name = "Linear transformation of an Exponential distribution"}
+```{example, name = "Scaling an exponential distribution"}
 
-Suppose $Y \sim \text{Exponential}(\theta)$. Let $Z = bY$ where $b > 0$.
-Then $Z \sim \text{Exponential}(\theta / b)$.
+Suppose $Y \sim \text{exponential}(\theta)$. Let $Z = bY$ where $b > 0$.
+Then we claim that $Z \sim \text{exponential}(\theta / b)$.
 
-[**TODO: proof**]
+The mgf of $Y$ is 
+\begin{align*}
+M_Y(t) = E(e^{tY}) &= \int_{0}^\infty e^ty \theta e^{-\theta y} \\
+&= \theta \int_0^\infty e^{-(\theta - t)y} dy \\
+&= \frac{\theta}{\theta - t} \text{if $\theta - t > 0$, 
+i.e. if $t < \theta$.}
+\end{align*}
+
+By Theorem \@ref(thm:gflinear) with $a = 0$, we have
+\[M_Z(t) = M_Y(bt) = \frac{\theta}{\theta - bt} = \frac{\theta/ b}{\theta/b - t},\]
+which is the $\text{exponential}(\theta/b)$ mgf.
+Since the mgf characterises the distribution, we concude
+$Z \sim \text{exponential}(\theta / b)$.
+A scale change of any exponential random variable gives another
+exponential random variable.
 ```
 
 ```{example, name = "Linear transformation of a Normal distribution"}
 
-Suppose $Y \sim N(\mu, \sigma^2)$. Let $Z = a + bY$ where $a \in \mathbb{R}$ and $b > 0$.
-Then $Z \sim N(a + b \mu, b^2 \sigma^2)$.
+Suppose $Y \sim N(\mu, \sigma^2)$. 
+Let $Z = a + bY$ where $a \in \mathbb{R}$ and $b > 0$.
+Then we claim that $Z \sim N(a + b \mu, b^2 \sigma^2)$.
 
-[**TODO: proof**]
+From Example \@ref(exm:cgfnormal), we know that
+$K_Y(t) = \mu t + \frac{1}{2} \sigma^2 t^2$. 
+By Theorem \@ref(thm:gflinear), we have
+\[K_Z(t) = at + K_Y(bt) = at + \mu b t + \frac{1}{2} \sigma^2 (b t)^2
+= (a + b \mu) t + \frac{1}{2}(b \sigma)^2 t^2,\]
+which is the $N(a + b\mu, b^2 \sigma^2)$ cgf. 
+Since the cgf characterises the distribution, we concude
+$Z \sim N(a + b\mu, b^2 \sigma^2)$.
+A linear transformation of any normal random variable 
+gives another normal random variable.
 ```
