@@ -1,9 +1,9 @@
 # (PART) Transformations of distributions {-}
 
-# Distribution of a sum of rvs
+# Sums of random variables
 
 ## Motivation
-In many situations in Statistics we end up with situations 
+In many situations in statistics we end up with situations 
 where we are interested in understanding the properties of 
 (possibly weighted) sums of random variables.
 For example, the sample mean is frequently used as a summary 
@@ -14,87 +14,125 @@ Either through good fortune or by design the random variables
 are often independent. In this chapter we consider sums of 
 independent random variables. 
 
-##  Mgf and cgf of a sum of independent rvs {#gensum}
-Suppose that $Y_1$ and $Y_2$ are independent random variables 
-with moment generating functions 
-$M_{Y_1}(t)$ and $M_{Y_2}$.
-Let $Z = Y_1 + Y_2.$
-Then $Z$ has mgf
-\[M_Z(t)  = M_{Y_1}(t) M_{Y_2}(t).\]
+## Generating functions of a sum
 
-```{proof}
-**[TODO: add proof]**
-```
+It is very easy to find the moment generating function
+of a sum of independent random variables, given the 
+moment generating function
+for each of those random variables, by using the following
+result:
 
-In general, for independent rvs
-$Y_1, Y_2, \ldots Y_n$ 
-with moment generating
-functions $M_{Y_i}(t)$ , $i = 1, 2, \ldots, n$,
-$Z = \sum_{i=1}^n Y_i$ 
+```{theorem, mgfsum}
+Suppose $Y_1, Y_2, \ldots Y_n$ are independent random variables,
+where $Y_i$ has moment generating
+function $M_{Y_i}(t)$, for $i = 1, 2, \ldots, n$.
+Then $Z = \sum_{i=1}^n Y_i$ 
 has moment generating function
 \[M_Z(t) = \prod_{i=1}^n M_{Y_i}(t).\]
-
+```
+```{remark}
 A special case of this is that if $Y_1, Y_2, \ldots Y_n$  all have
 the same distribution with moment generating function $M_Y(t)$,
 then
 $M_Z(t) = [M_Y(t)]^n$.
+```
+```{proof}
+We have
+\begin{align*}
+M_Z(t) &= E(e^{tZ}) \\
+&= E\left[\exp\left(t \sum_{i=1}^n Y_i \right)\right] \\
+&= E\left[\prod_{i=1}^n \exp(t Y_i)\right] \\
+&= \prod_{i=1}^n E\left[\exp(t Y_i)\right], \quad \text{by independence of the $Y_i$} \\
+&= \prod_{i=1}^n M_{Y_i}(t)
+\end{align*}
+as required.
+```
 
-Similarly, for independent rvs
-$Y_1, Y_2, \ldots Y_n$ 
-with cumulant generating
-functions $K_{Y_i}(t)$ , $i = 1, 2, \ldots, n$,
-$Z = \sum_{i=1}^n Y_i$ 
+A corollary of Theorem \@ref(thm:mgfsum) gives 
+a similar result for cumulant generating functions:
+```{theorem, cgfsum}
+Suppose $Y_1, Y_2, \ldots Y_n$ are independent random variables,
+where $Y_i$ has cumulant generating
+function $K_{Y_i}(t)$, for $i = 1, 2, \ldots, n$.
+Then $Z = \sum_{i=1}^n Y_i$ 
 has moment generating function
 \[K_Z(t) = \sum_{i=1}^n K_{Y_i}(t).\]
-
+```
 ```{proof}
-**[TODO: add proof]**
+We have
+\[K_Z(t) = \log M_Y(t) = \log \left(\prod_{i=1}^n M_{Y_i}(t) \right)\]
+by Theorem \@ref(thm:mgfsum).
+Simplifying, we get
+\[K_Z(t) = \sum_{i=1}^n \log M_{Y_i}(t) = \sum_{i=1}^n K_{Y_i}(t)\]
+as required.
 ```
 
-## Closure results for some standard types of random variables
+## Closure results for some standard distributions
 
-Using the results of Section \@ref(gensum)
-we get some very useful “closure”
-results for sums of independent rvs.
+We can use Theorems \@ref(thm:mgfsum) and \@ref(thm:cgfsum)
+to prove some useful "closure"
+results for sums of independent random variables.
 
-| Distribution      | $Y_i$                          | $Z$                                              |
-|----|----|----|
-| Binomial          | $\text{Binomial}(n_i, \theta)$ | $\text{Binomial}(\sum_{i=1}^n n_i, \theta)$      |
-| Negative binomial | $\text{NegBin}(k_i, \theta)$   | $\text{NegBin}(\sum_{i=1}^n k_i, \theta)$        |
-| Poisson           | $\text{Poisson}(\theta_i)$     | $\text{Poisson}(\sum_{i=1}^n \theta_i)$          |
-| Normal            | $N(\mu_i, \sigma^2_i)$         | $N(\sum_{i=1}^n \mu_i, \sum_{i=1}^n \sigma^2_i)$ |
 
-Table: (\#tab:closure) Some distributions with closure properties under summation
-
-**TODO: fix formatting of this table (in PDF)**
-
-We shall illustrate two of these results and leave the others as exercises.
-
-```{example, name = "Sum of independent Binomial rvs with common success probability"}
-
+```{example}
 Suppose that $Y_1, \ldots, Y_n$
-are independent, with $Y_i \sim \text{Binomial}(n_i , \theta)$. Then
-$Z = \sum_{i=1}^n Y_i \sim \text{Binomial}(\sum_{i=1}^n n_i, \theta)$.
+are independent, with $Y_i \sim \text{binomial}(n_i , \theta)$. Then
+we claim that
+$Z = \sum_{i=1}^n Y_i \sim \text{binomial}(\sum_{i=1}^n n_i, \theta)$.
 
-**TODO: proof**
-
+From Example \@ref(exm:binmgf), the mgf of each $Y_i$ is
+\[M_{Y_i}(t) = (\theta e^t + 1 - \theta)^{n_i}.\]
+By Theorem \@ref(thm:mgfsum),
+\[M_Z(t) = \prod_{i=1}^n M_{Y_i}(t) = \prod_{i=1}^n (\theta e^t + 1 - \theta)^{n_i}
+= (\theta e^t + 1 - \theta)^{\sum_{i=1}^n n_i},\]
+which is the $\text{binomial}(\sum_{i=1}^n n_i, \theta)$ mgf.
+Since the mgf characterises the distribution, we concude that
+$Z \sim \text{binomial}(\sum_{i=1}^n n_i, \theta)$.
 
 As a corollary, note that if the 
-$Y_i$ are independent $\text{Bernoulli}(\theta)$ rvs, then 
-$Z \sim \text{Binomial}(n, \theta)$.
+$Y_i$ are independent $\text{Bernoulli}(\theta)$ random variables
+(in which case $Y_i \sim \text{binomial}(1, \theta)$),
+then $Z \sim \text{binomial}(n, \theta)$.
 ```
 
-```{example, name = "Sum of independent normal rvs"}
-
+```{example, normalsum}
 Suppose that $Y_1, \ldots, Y_n$
-are independent, with $Y_i \sim N(\mu, \sigma^2)$. Then
-$Z = \sum_{i=1}^n Y_i \sim N(\sum_{i=1}^n \mu_i, \sum_{i=1}^n \sigma^2)$.
+are independent, with $Y_i \sim N(\mu_i, \sigma_i^2)$. Then
+we claim that
+$Z = \sum_{i=1}^n Y_i \sim N(\sum_{i=1}^n \mu_i, \sum_{i=1}^n \sigma_i^2)$.
 
-**TODO: proof**
+From Example \@ref(exm:cgfnormal), we know that
+$K_{Y_i}(t) = \mu_i t + \frac{1}{2} \sigma_i^2 t^2$. 
+By Theorem \@ref(thm:cgfsum), we have
+\begin{align*}
+K_Z(t) &= \sum_{i=1}^n K_{Y_i}(t)  \\
+&= \sum_{i=1}^n \left\{\mu_i t + \frac{1}{2} \sigma_i^2 t^2\right\} \\
+& = \left(\sum_{i=1}^n \mu_i\right) t 
++ \frac{1}{2} \left(\sum_{i=1}^n \sigma_i^2\right) t^2
+\end{align*}
+which is the $N(\sum_{i=1}^n \mu_i, \sum_{i=1}^n \sigma_i^2)$ cgf.
+Since the cgf characterises the distribution, we concude that
+$Z \sim N(\sum_{i=1}^n \mu_i, \sum_{i=1}^n \sigma_i^2)$.
 
 As a corollary, note that if the 
 $Y_i$ are independent $N(\mu, \sigma^2)$ rvs, then 
 $Z \sim N(n \mu, n \sigma^2)$.
+```
+
+```{example}
+Suppose that $Y_1, \ldots, Y_n$
+are independent, with $Y_i \sim \text{negbin}(k_i, \theta)$. Then
+$Z = \sum_{i=1}^n Y_i \sim \text{negbin}(\sum_{i=1}^n k_i, \theta)$.
+The proof of this is left as an exercise.
+**TODO: put specific reference?**
+```
+
+```{example}
+Suppose that $Y_1, \ldots, Y_n$
+are independent, with $Y_i \sim \text{Poisson}(\theta_i)$. Then
+$Z = \sum_{i=1}^n Y_i \sim \text{Poisson}(\sum_{i=1}^n \theta_i)$.
+The proof of this is left as an exercise.
+**TODO: put specific reference?**
 ```
 
 ## Properties of the sample mean of normal observations
@@ -105,38 +143,107 @@ with $Y_i \sim N(\mu, \sigma^2)$, and let
 \[\bar Y = \frac{\sum_{i=1}^n Y_i}{n}\]
 be the sample mean.
 
-What is the distribution of $\bar Y$?
-
-For each $Y_i$, the cgf is 
-$K_{Y_i}(t) = \mu t + \frac{1}{2} \sigma^2 t^2$
-(see Example **TODO: insert reference**).
-
 We use the properties of cgfs to derive the well-known result 
 $\bar Y \sim N(\mu, \sigma^2/n)$.
 
-**TODO: add proof**
+Let $Z = \sum_{i=1}^n Y_i$. We have seen in Example \@ref(exm:normalsum)
+that the cgf of $Z$ is 
+\[K_Z(t) = n\mu t 
++ \frac{1}{2} n \sigma^2 t^2.\]
+We have $\bar Y = \frac{1}{n} Z$. By Theorem \@ref(gflinear)
+with $a = 0$ and $b = 1/n$, $\bar Y$ has cgf 
+\begin{align*}
+K_{\bar Y}(t) &= K_Z(\frac{1}{n} t) \\
+&=  n\mu (\frac{1}{n} t)
++ \frac{1}{2} n \sigma^2 (\frac{1}{n} t)^2 \\
+&= \mu t + \frac{1}{2} \frac{\sigma^2}{n} t^2,
+\end{align*}
+which is the $N(\mu, \sigma^2/n)$ cgf.
+Since the cgf characterises the distribution, we concude that
+$\bar Y \sim N(\mu, \sigma^2/n)$.
 
+## The central limit theorem
 
-## The central limit theorem (CLT)
+If we have $n$ independent and identically distributed
+$N(\mu, \sigma^2)$ random variables, we have just shown that the sample
+mean has $N(\mu, \sigma^2/n)$ distribution. 
+The central limit theorem says
+that if $n$ is large, the sample mean has approximately this distribution 
+even if the $Y_i$ are not normally distributed.
 
-```{theorem}
+```{theorem, clt, name = "Central limit theorem"}
 Suppose that $Y_1, \ldots, Y_n$  are independent
-and identically distributed,
-each with finite variance and $r$th cumulant $\kappa_r$.
+and identically distributed, with $E(Y_i) = \mu$ and
+$\text{Var}(Y_i) = \sigma^2 < \infty$, and with
+cumulants $\kappa_r < \infty$ for all $r = 1, 2, \ldots$.
 Let
-\[Z = \frac{\bar Y - \kappa_1}{\sqrt{\kappa_2}/n}\]
-(here $\kappa_1 = E(Y)$ and $\kappa_2 = \text{Var}(Y)$
-**TODO: should we rephrase the CLT in terms of $\mu$
-and $\sigma^2$?**).
+\[Z = \frac{\sqrt{n}(\bar Y - \mu)}{\sigma}\]
 Then $Z \rightarrow N(0, 1)$ as $n \rightarrow \infty$.
 ```
-
 ```{remark}
-Note that (see Example **TODO: add reference**) a
-$N(0, 1)$ rv has second cumulant $1$ and all other
-cumulants are $0$. So in our sketch proof, we aim to show that the
-cumulants of $Z$ have the same structure as $n \rightarrow \infty$.
+If $n$ is large, 
+the limiting distribution may be used as an approximation.
+If $n$ is large, then
+$Z$ has approximately $N(0, 1)$ distribution, or equivalently
+$\bar Y$ has approximately $N(\mu, \sigma^2/n)$ distribution.
 ```
 ```{proof}
-**TODO: add sketch proof**
+From Example \@ref(exm:cgfnormal), a
+$N(0, 1)$ random variable has second cumulant $1$ and all other
+cumulants are $0$. So in our sketch proof, we aim to show that the
+cumulants of $Z$ have the same structure as $n \rightarrow \infty$.
+Let the $r$th cumulant of $Z$ be $\kappa_r^*$. We will show that
+$\kappa_1^* = 0$, $\kappa_2^* = 1$, and $\kappa_r^* \rightarrow 0$
+as $n \rightarrow \infty$.
+
+Since the $Y_i$ are identically distributed, we write $K_{Y_i}(t) = K_Y(t)$.
+Then, by Theorem \@ref(thm:cgfsum), we have 
+\[K_{\sum_{i=1}^n Y_i}(t) = n K_Y(t).\]
+By Theorem \@ref(thm:gflinear) with $a =0$, $b = 1/n$,
+\[K_{\bar Y}(t) = K_{\sum_{i=1}^n Y_i}\left(\frac{t}{n}\right) 
+= n K_Y\left(\frac{t}{n}\right).\]
+
+Now let $c = \sqrt{n} / \sigma$ and $d = - \sqrt{n} \mu / \sigma$, so that
+$Z = d + c \bar Y$. By Theorem \@ref(thm:gflinear), we have
+\[K_Z(t) = K\bar Y(ct) + dt = n K_Y(ct/n) + dt,\]
+and we have written the cgf of $Z$ in terms of the cgf of the original
+random variables.
+
+Differentiating with repsect to $t$, we get
+\[K_Z^{(1)}(t) = n K_Y^{(1)}\left(\frac{ct}{n}\right) \frac{c}{n} + d\]
+and
+\[K_Z^{(2)}(t) = n K_Y^{(2)}\left(\frac{ct}{n}\right) \frac{c^2}{n^2}.\]
+So the first cumulant of $Z$ is
+\begin{align*}
+\kappa_1^* &= K_Z^{(1)}(0) = n K_Y^{(1)}(0) \frac{c}{n} + d \\
+& = n \kappa_1 \frac{c}{n} + d = \kappa_1 c + d \\
+&= \frac{\mu \sqrt{n}}{\sigma} - \frac{\sqrt{n} \mu}{\sigma} = 0,
+\end{align*}
+where we have used that $\kappa_1 = E(Y) = \mu$.
+
+The second cumulant of $Z$ is
+\begin{align*}
+\kappa_2^* &= K_Z^{(2)}(0) = n K_Y^{(2)}(0) \frac{c^2}{n^2} \\
+&= \kappa_2 \frac{c^2}{n} \\
+&= \sigma^2 \frac{n}{\sigma^2 n} = 1, 
+\end{align*}
+where we have used that $\kappa_2 = \text{Var}(Y) = \sigma^2$.
+
+For $r \geq 3$ we have
+\[K_Z^{(r)}(t) = n K^{(r)}\left(\frac{ct}{n}\right) \frac{c^r}{n^r},\]
+so the $r$th cumulant of $Z$ is
+\begin{align*}
+\kappa_r^* &= K_Z^{(r)}(0) = n \kappa_r \frac{c^r}{n^r} \\
+&= n \kappa_r \frac{n^{r/2}}{n^r \sigma^r} \\
+&= \frac{\kappa_r}{n^{r/2 - 1} \sigma^r} \rightarrow 0
+\end{align*}
+as $r \geq 3$, so $r/2 - 1 > 0$.
+
+Hence $Z \rightarrow N(0, 1)$ as $n \rightarrow \infty$.
+
+In order to make the proof fully rigorous, we would
+need to define what we mean by "convergence in distribution" more
+carefully, and to show that convergence of all cumulants of $Z$
+to the cumulants of the limiting distribution implies this 
+convergence in distribution.
 ```
