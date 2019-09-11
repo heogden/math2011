@@ -1,14 +1,15 @@
-# The Gamma distribution {#gamma}
+# The gamma distribution {#gamma}
 
 ## Introduction
 
-In this chapter we will introduce a family of random variables 
-known as the Gamma family.
-We will see that this family contains several sub-families of random
-variabless that arise in practical problems.
-These include the Exponential, the Chi-squared and the Erlang 
-distributions as special cases.
-They are also related to normal, $t$ and $F$ distributions.
+In this chapter we will introduce a family of distributions
+known as the gamma distribution.
+We will see that this family contains several sub-families of 
+distributions that arise in practical problems, including
+the exponential, chi-squared and Erlang 
+distributions.
+The gamma distribution is 
+also related to normal, $t$ and $F$ distributions.
 
 In practice we are often interested in modelling data which 
 is positive, such as the time to the occurrence
@@ -17,18 +18,16 @@ We have seen that an Exponential distribution is one possibility
 to model such data, but it lacks flexibility --- it
 only has a single parameter and we have seen that all exponential pdfs 
 have the same shape (**TODO: add reference for this**).
-So it is natural to try to generalise the exponential to a 
-more flexible family of distributions. The
-Gamma family is one way of achieving this.
-
-In theoretical statistics the Gamma distribution often arises 
-naturally, either as a sum of
-independent exponential random variables or as a sum of squares 
-of normal random variables (the latter
-property is particularly relevant to Analysis of 
-Variance problems that you will meet in MATH2010).
+It is natural to try to generalise the exponential to a 
+more flexible family of distributions, and the gamma distribution
+ is one way of achieving this.
 
 ## The Gamma function
+
+Before we introduce the gamma distribution, we first
+need to introduce a function which is used in the pdf
+of the gamma distribution, to make sure that the pdf
+integrates to one.
 
 ```{definition, name = "Gamma function"}
 The *Gamma function* is defined by
@@ -58,7 +57,7 @@ It is also useful to know what happens to the Gamma function
 at half integer points, $\Gamma(1/2)$, $\Gamma(3/2)$ and
 so on. It can be shown that 
 \[\Gamma(1/2) = \sqrt{\pi},\]
-and this may be used along with the recurrence relationship  
+and this may be used along with the recurrence relationship 
 (Proposition \@ref(prp:gammarecursion)) to compute any other
 $\Gamma(n/2)$.
 
@@ -81,18 +80,39 @@ with $\alpha = 1$ and $\beta = 1/ \theta$.
 ## A practical problem leading to the gamma distribution
 
 Suppose we have a Poisson process with events arriving
-at rate $\lambda$ per unit time.
-Let $Y$ be the time to the $k$th event.
-                            
-We shall show that $Y \sim \gamma(1/\theta, \alpha)$.
+at rate $\theta$ per unit time, so that the number of events
+occuring in a time interval of length $t$ has $\text{Poisson}(\theta t)$
+distribution. Let $Y$ be the time until the $k$th event occurs.
+We claim that $Y \sim \gamma(1/\theta, k)$.
 
-**TODO: complete**
+Let $N_y$ be the number of events in the time interval
+$(0, y]$. Then $N_y \sim \text{Poisson}(\theta y)$.
+We have
+\[P(Y > y) = P(N_y \leq k - 1) = \sum_{n=0}^{k-1} \frac{(\theta y)^n e^{-\theta y}}{n!},\]
+so
+\begin{align*}
+F(y) = P(Y \leq y) &= 1- P(Y > y) \\
+&= 1 - \sum_{n=0}^{k-1} \frac{(\theta y)^n e^{-\theta y}}{n!} \\
+&= 1 - e^{-\theta y} -  \sum_{n=1}^{k-1} \frac{(\theta y)^n e^{-\theta y}}{n!}.
+\end{align*}
+So
+\begin{align*}
+f(y) &= \frac{dF}{dy} = \theta e^{-\theta y} - 
+\sum_{n=1}^{k-1} \left\{ \frac{\theta^n y^{n-1} e^{-\theta y}}{(n-1)!} 
+- \theta \frac{(\theta y)^n}{n!} e^{-\theta y} \right\} \\
+&= \theta e^{-\theta y} - \theta e^{-\theta y} 
++ \theta^2 y e^{-\theta y} - \theta^2 y e^{-\theta y}
++ \frac{\theta^3 y^2}{2!} e^{-\theta y} - \ldots + \frac{\theta (\theta y)^{k-1}}{(k-1)!} e^{-\theta y} \\
+&= \frac{\theta^k y^{k-1} e^{-\theta y}}{\Gamma(k)},
+\end{align*}
+which is the pdf of a $\gamma(1/\theta, k)$ random variable.
 
-If $\alpha$ is an integer, the 
+If $\alpha$ is an integer, as in this example, the 
 $\gamma(\beta, \alpha)$ distribution is also
-known as the *Erlang* distribution.
+known as the *Erlang* distribution. The exponential distribution
+(with $\alpha= 1$) is a particular example of an Erlang distribution.
 
-## Moment generating function
+## Properties of the gamma distribution
 
 ```{proposition, mgfgamma}
 The moment generating function of the $\gamma(\beta, \alpha)$
@@ -100,10 +120,16 @@ distribution is
 \[M_y(t) = (1 - \beta t)^{-\alpha}, \quad \text{for $t < 1/\beta$}\]
 ```
 ```{proof}
-**TODO: complete proof**
+We have
+\begin{align*}
+M_y(t) = E(e^{tY}) &= \int_0^\infty e^{ty} 
+\frac{1}{\Gamma(\alpha) \beta^\alpha} y^{\alpha - 1} e^{-\frac{y}{\beta}} dy \\
+&= \int_0^\infty \frac{1}{\Gamma(\alpha) \beta^\alpha} y^{\alpha - 1} e^{-y \left(\frac{1}{\beta} -t\right)} dy
+&= \frac{\theta^\alpha}{\beta^\alpha} 
+\int_0^\infty \frac{1}{\Gamma(\alpha) \theta^\alpha} y^{\alpha - 1} e^{-\frac{y}{\theta}} dy, \quad \text{where $\theta = (\beta^{-1} - t)^{-1})$} \\
+\end{align*}
+**TODO: finish this**
 ```
-
-## Moments
 
 Suppose $Y \sim \gamma(\beta, \alpha)$
 Using the moment generating function, we find
@@ -126,8 +152,6 @@ Then $\mu_3 > 0$.
 ```{proof}
 **TODO: add proof**
 ```
-
-## Some closure results
 
 The gamma distribution is closed under certain operations.
 
