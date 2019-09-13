@@ -55,7 +55,7 @@ Suppose $Y_1, Y_2, \ldots Y_n$ are independent random variables,
 where $Y_i$ has cumulant generating
 function $K_{Y_i}(t)$, for $i = 1, 2, \ldots, n$.
 Then $Z = \sum_{i=1}^n Y_i$ 
-has moment generating function
+has cumulant generating function
 \[K_Z(t) = \sum_{i=1}^n K_{Y_i}(t).\]
 ```
 ```{proof}
@@ -137,20 +137,23 @@ The proof of this is left as an exercise.
 
 ## Properties of the sample mean of normal observations
 
+We may use cumulant generating functions to derive
+a well-known result about the distribution of the sample
+mean of normal observations:
+
+```{proposition, ybarnormal}
 Suppose that $Y_1, \ldots, Y_n$  are independent
 and identically distributed,
 with $Y_i \sim N(\mu, \sigma^2)$, and let
 \[\bar Y = \frac{\sum_{i=1}^n Y_i}{n}\]
-be the sample mean.
-
-We use the properties of cgfs to derive the well-known result 
-$\bar Y \sim N(\mu, \sigma^2/n)$.
-
+be the sample mean. Then $\bar Y \sim N(\mu, \sigma^2/n)$.
+```
+```{proof}
 Let $Z = \sum_{i=1}^n Y_i$. We have seen in Example \@ref(exm:normalsum)
 that the cgf of $Z$ is 
 \[K_Z(t) = n\mu t 
 + \frac{1}{2} n \sigma^2 t^2.\]
-We have $\bar Y = \frac{1}{n} Z$. By Theorem \@ref(gflinear)
+We have $\bar Y = \frac{1}{n} Z$. By Theorem \@ref(thm:gflinear)
 with $a = 0$ and $b = 1/n$, $\bar Y$ has cgf 
 \begin{align*}
 K_{\bar Y}(t) &= K_Z(\frac{1}{n} t) \\
@@ -161,6 +164,7 @@ K_{\bar Y}(t) &= K_Z(\frac{1}{n} t) \\
 which is the $N(\mu, \sigma^2/n)$ cgf.
 Since the cgf characterises the distribution, we concude that
 $\bar Y \sim N(\mu, \sigma^2/n)$.
+```
 
 ## The central limit theorem
 

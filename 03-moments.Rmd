@@ -256,7 +256,7 @@ Note that $\gamma_2 = 1$ for $\theta = 0.5$.
 ```
 
 
-```{example, name = "Skewness and kurtosis of the Exponential distribution"}
+```{example, homexp, name = "Skewness and kurtosis of the Exponential distribution"}
 
 Let $Y \sim \text{exponential}(\theta)$, with pdf 
 $f (y) = \theta \exp(- \theta y)$ for $y > 0$.
