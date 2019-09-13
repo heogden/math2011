@@ -3,39 +3,68 @@
 ## Motivation
 
 In this chapter, we will start with a continuous random variable 
-$Y$ with probability density function $f(y)$ or cumulative distribution
-function $F(y)$ and then define a function $U = U(Y)$, 
-a new random variable.
+$Y$ with probability density function $f(y)$ and cumulative distribution
+function $F(y)$ and then define a new random variable $U = U(Y)$.
+We need to be able to determine the distribution of $U$.
+In particular, in this Chapter, we will consider how to find
+the cdf or pdf of $U$. **TODO: here, don't be specific about
+continuous distribution**.
 
-We need to be able to determine the pdf and/or cdf of $U$.
+We have already studied one method for finding the distribution
+of a tranformed random variable, when that transformation is linear
+($U = a + bY$ for suitable constants $a$ and $b$).
+In that case, if we have the moment generating function of $Y$,
+we can use Theorem \@ref(thm:gflinear) to find the moment
+generating function of $U$.
 
-We have already seen a simple case (in Section **TODO:check ref**)
-where the transformation is
-linear, i.e. $U = a + bY$ for suitable constants $a$ and $b$.
-However, frequently we will be interested in non-linear transformations.
-For example, we have seen (in Section **TODO: check ref**)
+However, we are often interested in non-linear transformations.
+For example, we have seen (in Proposition \@ref(prp:chisquarednormal))
 an example where we squared a $N(0, 1)$ random variables 
 to obtain a new random variable with $\chi^2_1$ distribution,
-i.e. we had a
-transformation of the form $U = Y^2$.
+i.e. we had a transformation of the form $U = Y^2$.
 
 We begin with two simple examples.
 
 ```{example, trans1}
 Suppose $Y$ has pdf
 \[f(y) = 2y, \quad \text{for $0 < y < 1$}.\]
-Let $U = Y^2$.
-What is the pdf of $U$?
+Let $U = Y^2$. What is the distribution of $U$?
 
-**TODO: finish this**
+Let $G(.)$ and $g(.)$ be the cdf and pdf of $U$.
+We have
+\[G(u) = P(U \leq u) = P(Y^2 \leq u) 
+= P(Y \leq \sqrt{u}) = F(\sqrt{u}).\]
+So
+\begin{align*}
+g(u) &= \frac{dG(u)}{du} = \frac{dF(\sqrt{u})}{du} 
+= f(\sqrt{u}) \frac{1}{2 \sqrt{u}} \\
+&= 2 \sqrt{u} \frac{1}{2 \sqrt{u}} 
+= 1 \quad \text{for $0 < u < 1$,}
+\end{align*}
+which is the pdf of a $U(0, 1)$ distibution.
+So $U \sim U(0, 1)$.
+**TODO: check definition of uniform distribution**
 ``` 
 
 ```{example, trans2}
 Suppose $Y \sim U(0, 1)$. Let $U = -\log{Y}$.
-What is the pdf of $U$?
+What is the distribution of $U$?
 
-**TODO: finish this**
+Let $G(.)$ and $g(.)$ be the cdf and pdf of $U$.
+We have
+\begin{align*}
+G(u) &= P(U \leq u) = P(\log Y \leq u) \\
+&= P(\log Y \geq -u) = P(Y \geq e^{-u}) \\
+&= 1 - P(Y < e^{-u}) = 1 - F(e^{-u}) \\
+&= 1 - e^{-u}, \quad \text{for $0 < u < \infty$.}
+\end{align*}
+So
+\[g(u) = \frac{dG(u)}{du} = e^{-u}, \quad \text{for $u > 0$},\]
+which we recognise as the pdf of an exponential distribution
+with rate parameter $1$, so
+$U \sim \text{exponential}(1)$.
 ```
+
 ## A general result for one-to-one transformations
 
 ```{theorem, unitrans}
@@ -44,15 +73,50 @@ random variable $Y$, the pdf of $U$ is
 \[g(u) = f(w(u)) \left|\frac{dy}{du} \right|\]
 where Y = w(U) is the inverse transformation.
 ```
-
-For instance, in Example \@ref(exm:trans1), $U = Y^2$, so 
+```{remark}
+In Example \@ref(exm:trans1), $U = Y^2$, so 
 the inverse transformation is $Y = U^{1/2} = w(U)$.
 In Example \@ref(exm:trans2), $U = -\log Y$, so the inverse
-transformation is $Y = exp(-U) = w(U)$.
-
-```{proof}
-**TODO: add this**
+transformation is $Y = \exp(-U) = w(U)$.
 ```
+```{remark}
+If the domain of $Y$ is $(a, b)$, then the
+domain of $U$ is all values of $u$ such that
+$a < w(u) < b$ (where $a$ and $b$ might be infinite).
+```
+```{proof, name = "Theorem \\@ref(thm:unitrans)"}
+Let $F(.)$ and $f(.)$ be the cdf and pdf of $Y$, and
+let $G(.)$ and $g(.)$ be the cdf and pdf of $U$.
+Suppose $U = h(Y)$ is a one-to-one function
+with inverse $Y = w(U)$.
+Since $h(.)$ is one-to-one, we may conclude that is is
+either an increasing or a decreasing function, and
+we split the proof into two cases.
+
+**Case 1**: $h(.)$ is an increasing function.
+Then
+\[G(u) = P(U \leq u) = P(h(Y) \leq u) 
+= P(Y \leq w(u)),\]
+since $h(.)$ is increasing.
+So $G(u) = F(w(u))$, and 
+\[g(u) = f\left(w(u)\right) \frac{dw(u)}{du}
+= f\left(w(u)\right) \frac{dy}{du}
+= f\left(w(u)\right) \left|\frac{dy}{du}\right|,\]
+since $\frac{dy}{du} > 0$.
+
+
+**Case 2**: $h(.)$ is a decreasing function.
+Then
+\[G(u) = P(U \leq u) = P(h(Y) \leq u) 
+= P(Y \geq w(u)),\]
+since $h(.)$ is decreasing.
+So $G(u) = 1 - F(w(u))$, and 
+\[g(u) = - f\left(w(u)\right) \frac{dw(u)}{du}
+= f\left(w(u)\right) \left(- \frac{dy}{du}\right)
+= f\left(w(u)\right) \left|\frac{dy}{du}\right|,\]
+since $\frac{dy}{du} < 0$.
+```
+
 
 ```{example, name = "Kinetic energy of gas molecules"}
 Gas molecules move about with varying velocity which has, 
@@ -65,20 +129,130 @@ where $m$ is the mass of the molecule.
 What is the pdf of $U$, the kinetic energy
 of the molecule?
 
-**TODO: finish this**
+The domain of $U$ is $0 < u < \infty$.
+For $v > 0$, $h(v) = \frac{1}{2} m v^2$ is
+a one-to-one function, as it is increasing with $v$.
+So we may apply Theorem \@ref(thm:unitrans)
+to find the pdf $g(.)$ of $U$.
+
+We have $u = \frac{1}{2} m v^2$, so the inverse
+transformation is $v = \sqrt{\frac{2u}{m}}$, and
+\[\frac{dv}{du} = \frac{\sqrt{2}}{2 \sqrt{um}} = \frac{1}{\sqrt{2 u m}} > 0
+\quad \text{for $u > 0$}.\]
+So $U$ has pdf
+\begin{align*}
+g(u) &= f \left(\sqrt{\frac{2u}{m}} \right) \frac{1}{\sqrt{2um}} \\
+&= c \cdot \frac{2u}{m} e^{-\beta\frac{2u}{m}} \frac{1}{\sqrt{2um}} \\
+&= c \sqrt{2u} m^{-\frac{3}{2}}e^{-\beta\frac{2u}{m}}
+\quad \text{for $u > 0$.}
+\end{align*}
+We see that
+\[g(u) \propto u^{\frac{1}{2}} e^{-\beta\frac{2u}{m}} 
+= u^{\frac{3}{2} - 1} e^{-\theta u}\]
+with $\theta = 2\beta / m$. So, by comparison with Equation \@ref(eq:gamma),
+$U \sim \text{gamma}(3/2, 2 \beta/m)$.
 ```
 
-## Generating samples from any continuous distribution
+## Generating samples from any distribution
 
-We can use Theorem \@ref(thm:unitrans) to use a sample
+```{proposition, cdfconttrans}
+Suppose that $Y$ is a continuous random variable
+with cumulative distribution function $F(.)$.
+Let $U = F(Y)$. Then $U \sim U(0, 1)$.
+```
+```{proof}
+$U$ has cdf
+\begin{align*}
+G(u) &= P(U \leq u) = P(F(Y) \leq u) \\
+&= P(Y \leq F^{-1}(u)) \quad \text{since $F(.)$ is increasing} \\
+&= F\left(F^{-1}(u)\right) = u \quad \text{for $0 < u < 1$},
+\end{align*}
+which is the cdf of a $U(0, 1)$ distribution. 
+So $U \sim U(0, 1)$, as required.
+```
+
+An immediate corollary of Proposition \@ref(prp:cdfconttrans) 
+allows us to use a sample
 from a $U(0, 1)$ distribution to generate a sample
-from any other continuous distribution.
+from any other continuous distribution:
 
-```{corollary}
-**TODO: add this**
+```{corollary, inversetranscont}
+Let $F(.)$ be the cumulative distribution function
+of a continuous distribution,
+with inverse $F^{-1}(.)$.
+Suppose that $U \sim U(0, 1)$. Then
+$Y = F^{-1}(U)$ has cumulative distribution function
+$F(.)$.
 ```
 
-**TODO: add example?**
-**TODO: add R code to do this in practice?**
+```{example}
+Suppose that you are given $U \sim N(0, 1)$, and
+would like to generate $Y \sim \text{exponential}(2)$.
+The $\text{exponential}(2)$ distribution has cdf
+\[F(y) = 1 - e^{-2y}, \quad \text{for $y > 0$,}\]
+and inverting (solving $u = F(y)$ for $y$) gives
+\[F^{-1}(u) = -\frac{1}{2} \log(1 - u).\]
+So \[Y = -\frac{1}{2} \log(1 - u) \sim \text{exponential}(2).\]
+```
 
-**TODO: add discrete case too?**
+In fact, we can use the same method to find samples from
+a discrete distribution. To do this, we first need
+to define what we mean by $F^{-1}(.)$, as the cdf $F(.)$
+is constant between points in the domain, and so is
+not an invertible function. 
+
+For instance, if $Y \sim \text{binomial}(2, 0.5)$, then
+we can plot the cdf of $Y$:
+```{r}
+curve(pbinom(x, 2, 0.5), from = -1, to = 3,
+      xlab = "y", ylab = "cdf F(y)", n = 1001)
+```
+
+In this example, if we ask for $F^{-1}(0.25)$, 
+then it is not immediately clear what
+this means, as $F(y) = 0.25$ for all $0 \leq y < 1$.
+
+We define
+$F^{-1}(.)$ by the *quantile* function
+\begin{equation}
+F^{-1}(u) = \inf\{y \in \mathbb{R}: F(y) \geq u\},
+(\#eq:quantile)
+\end{equation}
+for $u \in (0, 1)$.
+In our example, we now have $F^{-1}(0.25) = 0$.
+If $F(.)$ is an invertible function, then this
+definition agrees with the usual inverse we saw before.
+
+Equipped with this definition of $F^{-1}(.)$, we may
+now rewrite Corollary \@ref(cor:inversetranscont)
+to apply to any distribution:
+```{corollary}
+Let $F(.)$ be a cumulative distribution function,
+and let $F^{-1}(.)$ be the corresponding quantile function,
+defined by \@ref(eq:quantile).
+Suppose that $U \sim U(0, 1)$. Then
+$Y = F^{-1}(U)$ has cumulative distribution function
+$F(.)$.
+```
+
+```{example}
+Suppose that you are given $U \sim N(0, 1)$, and
+would like to generate $Y \sim \text{binomial}(2, 0.5)$.
+The $\text{binomial}(2)$ distribution has cdf
+\[F(y) = \begin{cases} 
+0 & \text{for $y < 0$} \\
+0.25 & \text{for $0 \leq y < 1$} \\
+0.75 & \text{for $1 \leq y < 2$} \\
+1 & \text{for $y > 1$.}
+\end{cases}\]
+The corresponding quantile function is
+\[F^{-1}(u) = \begin{cases} 
+-\infty & \text{for $u \leq 0$} \\
+0 & \text{for $0 < u \leq 0.25$} \\
+1 & \text{for $0.25 < u \leq 0.75$} \\
+2 & \text{for $0.75 < u \leq 1$} \\
+\infty & \text{for $u > 1$.}
+\end{cases}\]
+So 
+$Y = F^{-1}(U) \sim \text{binomial}(2, 0.5)$.
+```
