@@ -9,7 +9,7 @@ for example:
 
 - height and weight of individuals in a population
 - systolic and diastolic blood pressure of individuals in a population
-- value of Sterling and the Euro in US\$ today at 12.00 GMT
+- value of Sterling and the Euro in US Dollars today at 12.00 GMT
 
 In these cases and in many other situations, the variables
 are not independent so
@@ -60,8 +60,6 @@ $Y_2$ given that $Y_1 = y_1$ as
 \[f(y_2 | y_1) = \frac{f(y_1, y_2)}{f_1(y_1)},\]
 assuming that $f_1(y_1) > 0$.
 
-
-
 If $f(y_1 ,y_2) = f_1(y_1) f_2(y_2)$ for all $y_1$ and
 $y_2$, then $Y_1$ and $Y_2$ 
 are said to be *independent*. In that case,
@@ -69,29 +67,52 @@ If $f(y_2 | y_1) = f_2(y_2)$, for all $y_2$,
 and all $y_1$ with $f_1(y_1) > 0$, which is an equivalent
 definition of independence.
 
-## Some examples
-
 ```{example, bv1}
 Suppose that $Y_1$ and $Y_2$ have joint pdf
 \[f(y_1 , y_2) = 1⁄4, \quad \text{for $-1< y_1 <1$
 and $-1 < y_2 < 1$.
-
-What does this look like?
-
 We now derive the marginal and conditional pdfs.
 
-**TODO: finish this**
+The marginal pdf of $Y_1$ is
+\[f_1(y_1) = \int_{-\infty}^\infty f(y_1, y_2) dy_2 
+= \int_-1^1 \frac{1}{4} dy_2 = \frac{1}{2} \quad \text{for $-1 < y_1 < 1$},\]
+so $Y_1 \sim U(-1, 1)$.
+By symmetry, $Y_2 \sim U(-1, 1)$.
+
+The conditional pdf of $Y_2 | Y_1 = y_1$ is
+\begin{align*}
+f(y_2 | y_1) &= \frac{f(y_1, y_2)}{f_1(y_1)} \quad 
+\text{for $-1 < y_1 < 1$, $-1 < y_2 < 1$} \\
+&= \frac{1/4}{1/2} = \frac{1}{2}.
+\end{align*}
+Hence if $-1 < y_1 < 1$, then $Y_2 | Y_1 = y_1 \sim U(-1, 1)$.
+Knowing the value of $Y_1$ does not change the distribution of
+$Y_2$. This means that $Y_1$ and $Y_2$ are independent.
 ```
 
 ```{example, bv2}
 Suppose that $Y_1$ and $Y_2$ have joint pdf
 \[f(y_1 , y_2) = 1⁄\pi, \quad \text{for $y_1^2 + y_2^2 < 1$.}\]
-
-What does this look like?
-
 We now derive the marginal and conditional pdfs.
 
-**TODO: finish this**
+The marginal pdf of $Y_1$ is
+\begin{align*}
+f_1(y_1) &= \int_{-\infty}^\infty f(y_1, y_2) dy_2 \\
+&= \int_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}} \frac{1}{\pi} dy_2 \\
+&= \frac{2}{\pi} \sqrt{1 - y_1^2}, \quad \text{for $-1 < y_1 < 1$.}
+\end{align*}
+Similarly, the marginal pdf of $Y_2$ is
+\[f_2(y_2) = \frac{2}{\pi} \sqrt{1 - y_2^2}, \quad \text{for $-1 < y_2 < 1$.}\]
+
+The conditional pdf of $Y_2 | Y_1 = y_1$ is 
+\[f(y_2 | y_1) = \frac{1/\pi}{2\sqrt{1 - y_1^2}/\pi} 
+= \frac{1}{2\sqrt{1 - y_1^2}} \quad 
+\text{for $-\sqrt{1 - y_1^2} < y_2 < \sqrt{1 - y_1^2}$},\]
+provided that $-1 < y_1 < 1$, so 
+$Y_2 | Y_1 = y_1 \sim U(-\sqrt{1 - y_1^2}, \sqrt{1 - y_1^2}).$
+Knowing that $Y_1 = y_1$ gives us information about the behaviour
+of $Y_2$. This means that $Y_1$ and $Y_2$ are not independent, as
+$f(y_2 | y_1) \not = f(y_2).$
 ```
 
 ## Moments of jointly distributed random variables
@@ -141,7 +162,6 @@ for example
 when both $E(Y_1 Y_2) and $E(Y_1)$ are zero.
 
 
-
 ```{definition}
 The *covariance* of $Y_1$ and $Y_2$ is
 \[\text{Cov}(Y_1, Y_2) = E\left\{ [Y_1 - E(Y_1)][Y_2 - E(Y_2)] \right\}.\]
@@ -163,20 +183,31 @@ The *correlation* of $Y_1$ and $Y_2$ is
 \[\text{Corr}(Y_1, Y_2) = \frac{\text{Cov}(Y_1, Y_2)}{\sqrt{\text{Var}(Y_1) \text{Var}(Y_2)}}.\]
 ```
 
-## Revisiting our examples
-
 ```{example}
-Returning to Example \@ref(exm:bv1), we see that
-$Y_1$ and $Y_2$ are independent, as
-\[f(y_1, y_2) = \frac{1}{4} = \frac{1}{2} \times \frac{1}{2}
-= f_1(y_1) f_2(y_2),\]
-for $-1 < y_1 < 1$ and $-1 < y_2 < 1$.
-```
-
-```{example}
-Returning to Example \@ref(exm:bv2), $Y_1$ and
+Returning to Example \@ref(exm:bv2)
+with $f(y_1, y_2) = 1/\pi$ for $y_1^2 + y_2^2 < 1$, 
+we already showed that $Y_1$ and
 $Y_2$ are not independent.
-**TODO: finish this**
+By symmetry, we have $E(Y_1) = E(Y_2) = E(Y_2 | Y_1 = y_1) = 0,
+so
+\[\text{Cov}(Y_1, Y_2) = E(Y_1 Y_2) - E(Y_1)E(Y_2) = E(Y_1 Y_2).\]
+Now
+\begin{align*}
+E(Y_1 Y_2) &= \int_{-\infty}^\infty \int_{-\infty}^\infty
+y_1 y_2 f(y_1, y_2) dy_2 dy_1 \\
+&= \frac{1}{\pi} \int_{-1}^1 \int_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}}
+y_1 y_2 dy_2 dy_1 \\
+&= \frac{1}{\pi} y_1 \left(\int_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}}\right) y_2 dy_2 \\
+&= \frac{1}{\pi} y_1 \left[\frac{y_2^2}{2}\right]_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}} y_2 dy_2 \\
+&= 0,
+\end{align*}
+so $\text{Cov}(Y_1, Y_2) = 0$, even though $Y_1$ and $Y_2$ are **not**
+independent.
+
+This example shows that even though
+\[\text{$Y_1$ and $Y_2$ independent} \; \Rightarrow \; \text{Cov}(Y_1, Y_2) = 0,\]
+in general the reverse does not hold, so
+\[\text{Cov}(Y_1, Y_2) = 0  \; \not\Rightarrow \; \text{$Y_1$ and $Y_2$ independent.}\]
 ```
 
 ## Variance of a sum
@@ -214,7 +245,7 @@ as claimed.
 The random variables $Y_1$ and $Y_2$ are said to have a 
 *bivariate normal distribution*
 if they have joint probability density function 
-\[f(y_1, y_2) = (2 \pi)^{-1} {\det(\bm \Sigma)}^{-1/2} \exp\{ - \frac{1}{2}(\bm y - \bm \mu)^T \bm \Sigma^{-1}(\bm y - \bm \mu)\},
+\[f(y_1, y_2) = (2 \pi)^{-1} {\det(\bm \Sigma)}^{-1/2} \exp\left\{ - \frac{1}{2}(\bm y - \bm \mu)^T \bm \Sigma^{-1}(\bm y - \bm \mu)\right\},
 \quad \text{for $y_1, y_2 \in \mathbb{R}$},\]
 where we write $\bm y = (y_1, y_2)^T$, and where
 $\bm \mu = (\mu_1, \mu_2)^T$
@@ -236,7 +267,7 @@ as
 
 The marginal pdf of $Y_1$ is
 \[f_1(y_1) = \int_{-\infty}^\infty f(y_1, y_2) dy_2,\]
-which reduces to (**TODO: add reference to exercises?**)
+which reduces to
 \[f_1(y_1) = \frac{1}{\sqrt{2 \pi \sigma_1^2}} \exp\left\{- \frac{1}{2 \sigma_1^2} (y_1 - \mu_1)^2\right\},\]
 so marginally $Y_1 \sim N(\mu_1, \sigma_1^2)$.
 Similarly $Y_2 \sim N(\mu_2, \sigma_2^2)$.
@@ -246,26 +277,23 @@ as $\mu_1 = E(Y_1)$, $\mu_2 = E(Y_2)$, $\sigma_1^2 = \text{Var}(Y_1)$,
 $\sigma_2^2 = \text{Var}(Y_2)$.
 We may also show that $\text{Cov}(Y_1, Y_2) = \rho \sigma_1 \sigma_2$, 
 so $\rho = \text{Corr}(Y_1, Y_2)$.
-(**TODO: add reference to exercises?**)
 
 The conditional distribution of $Y_1$ given $Y_2 = y_2$
 is
-\begin{align*}
-f(y_1 | y_2) &= \frac{f(y_1, y_2)}{f_2(y_2)} \\
-&= \ldots \\
-&= \frac{1}{\sqrt{2 \pi \sigma_1^2 (1 - \rho)^2}}
+\[f(y_1 | y_2) = \frac{f(y_1, y_2)}{f_2(y_2)},\]
+which reduces to 
+\[f(y_1 | y_2) =  \frac{1}{\sqrt{2 \pi \sigma_1^2 (1 - \rho)^2}}
 \exp\left\{ - \frac{1}{2 \sigma_1^2 (1 - \rho)^2} 
 \left(y_1 - \mu_1 - 
-\frac{\rho \sigma_1(y_2 - \mu_2)}{\sigma_2}\right)^2\right\}.
-\end{align*}
-**TODO:: fill in details**
+\frac{\rho \sigma_1(y_2 - \mu_2)}{\sigma_2}\right)^2\right\}\]
 
 This means that
-\[Y_1 | Y_2 = y_2 \sim N(\mu_1 + \rho \sigma_1(y_2 - \mu_2)/\sigma_2,
-  \sigma_1^2 (1 - \rho)^2).\]
+\[Y_1 | Y_2 = y_2 \sim N\left(\mu_1 + \frac{\rho \sigma_1(y_2 - \mu_2)}{\sigma_2},
+  \sigma_1^2 (1 - \rho)^2\right).\]
 If $Y_1$ and $Y_2$ are uncorrelated ($\rho = 0$),
 knowing the value of $Y_2$ does not change the distribution
-of $Y_1$. However, if $Y_1$ and $Y_2$ are correlated ($\rho \not = 0$),
+of $Y_1$, so $Y_1$ and $Y_2$ are independent.
+If $Y_1$ and $Y_2$ are correlated ($\rho \not = 0$),
 the distribution of $Y_1 | Y_2 = y_2$ is different
 from the distribution of $Y_1$.
 
@@ -274,7 +302,7 @@ from the distribution of $Y_1$.
 ```{definition}
 The moment generating function of the bivariate
 distribution of $Y_1, Y_2$ is
-\[M_{Y_1, Y_2}(t_1, t_2) = E\left\{\exp(t_1 Y_1 + t_2 Y_2 \right\}\]
+\[M_{Y_1, Y_2}(t_1, t_2) = E\left\{\exp(t_1 Y_1 + t_2 Y_2) \right\}\]
 ```
 As in the univariate case, the moment generating function
 is useful for proving properties about what happens
@@ -291,7 +319,7 @@ constants. Then
 \begin{align*}
 M_{X_1}(t) &= E \left\{ t(a Y_1 + b Y_2) \right\} \\
 &= M_{Y_1, Y_2}(at, bt) \\
-&= \exp((a \mu_1 + b \mu_2) t + \frac{1}{2} (a^2 \sigma_1^2 + 2 a b \rho \sigma_1\sigma_2 + b^2 \sigma_2^2) t^2,
+&= \exp\left\{(a \mu_1 + b \mu_2) t + \frac{1}{2} (a^2 \sigma_1^2 + 2 a b \rho \sigma_1\sigma_2 + b^2 \sigma_2^2) t^2\right\},
 \end{align*}
 where we have used the components of $\bm \Sigma$ 
 as in Equation \@ref(eq:sigma).
@@ -329,10 +357,8 @@ as required.
 
 ```{example}
 Continuing from Example \@ref(exm:bvnmgf), we consider
-$X_1 = Y_1 + Y_2$ and $X_2 = Y_1 - Y_2$. Under what
-conditions are $X_1$ and $X_2$ independent? 
-Since $X_1$ and $X_2$ are normally distributed
-[**TODO: need to show this jointly**], we 
+$X_1 = Y_1 + Y_2$ and $X_2 = Y_1 - Y_2$. 
+Since $X_1$ and $X_2$ are normally distributed, we 
 know that $X_1$ and $X_2$ are independent if 
 $\text{Cov}(X_1, X_2) = 0$.
 Applying Theorem \@ref(thm:covsums) with
@@ -342,24 +368,3 @@ $b_2 = -1$, we get
 \[\text{Cov}(X_1, X_2) = \text{Cov}(Y_1, Y_1) - \text{Cov}(Y_1, Y_2) + \text{Cov}(Y_1, Y_2) - \text{Cov}(Y_2, Y_2) = \sigma_1^2 - \sigma_2^2.\]
 So $X_1$ and $X_2$ are independent if $\sigma_1^2 = \sigma_2^2$.
 ```
-
-## Summary
-
-In this chapter we have considered some jointly 
-distributed random variables and
-obtained marginal and conditional properties. We have derived some
-properties of bivariate normal distributions.
-
-The results, especially these to do with conditional pdfs, 
-are particularly important
-in statistical modelling (e.g. in MATH2010) where we use the 
-value of one variable
-to predict or explain the behaviour of another variable.
-
-For example, in medicine we use a prognostic variable $Y_1$ to
-model a surgical
-outcome $Y_2$ for a patient.
-In finance, we might use a credit score $Y_1$ to inform us about
-a default outcome $Y_2$ for a loan customer.
-In both cases, we are interested 
-in $Y_2 | Y_1 = y_1$.
