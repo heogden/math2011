@@ -194,7 +194,7 @@ as claimed.
 The gamma distribution is closed under scaling, and under summation
 of independent gamma distributions with a common rate parameter.
 
-```{proposition}
+```{proposition, gammascale}
 Suppose $Y \sim \text{gamma}(\alpha, \beta)$, and let $Z = bY$, for
 some constant $b > 0$. Then
 $Z \sim \text{gamma}(\alpha, \beta / b)$.

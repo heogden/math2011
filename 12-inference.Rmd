@@ -1,4 +1,4 @@
-# Confidence intervals and hypothesis tests
+# Confidence intervals and hypothesis tests {#inference}
 
 ## Introduction
 

@@ -1,4 +1,4 @@
-# Bayesian inference
+# Bayesian inference {#bayesian}
 
 ## Introduction
 
