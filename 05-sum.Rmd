@@ -1,5 +1,3 @@
-# (PART) Transformations of distributions {-}
-
 # Sums of random variables
 
 ## Motivation

@@ -1,4 +1,3 @@
-
 # Generating functions {#genfuns}
 
 ## The moment generating function

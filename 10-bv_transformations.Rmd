@@ -1,6 +1,5 @@
 # Bivariate transformations
 
-
 ## The transformation theorem
 
 In Chapter \@ref(unitransform) we considered transformations 

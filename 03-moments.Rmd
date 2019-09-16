@@ -1,5 +1,3 @@
-# (PART) Properties of distributions {-}
-
 # Moments
 
 ## Expected value

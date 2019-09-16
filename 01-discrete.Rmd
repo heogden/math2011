@@ -1,4 +1,4 @@
-# (PART) Distributions {-}
+# (PART) Distributions and their properties {-}
 
 # Discrete distributions
 

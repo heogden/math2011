@@ -1,5 +1,3 @@
-# (PART) Bivariate distributions {-}
-
 # Bivariate distributions
 
 ## Motivation
