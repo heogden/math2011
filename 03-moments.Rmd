@@ -220,7 +220,7 @@ lot of (difficult!) integration.
 In Chapter \@ref(genfuns) we will find a method that allows us to find as many moments as
 we like but with only one integration required.
 
-We will see in Example \@ref(exm:cgfnormal), that
+We will see in Example \@ref(exm:cgfnormal) that
 any $N(\mu, \sigma^2)$ distribution has skewness $\gamma_1 = 0$ and kurtosis
 $\gamma_2 = 3$. The kurtosis of other distributions is often compared with
 that of a normal distribution: if $\gamma_2 < 3$, a distribution has 
