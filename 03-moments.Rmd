@@ -7,32 +7,26 @@ $p(.)$ with domain $D$.
 Although $p(.)$ tells us everything about the properties of $Y$, 
 it is often useful to
 summarise the properties $Y$ using a few simple quantities.
-This is similar to the situation in applications where we collect
-a large amount of
-data and we use summary statistics (e.g. the sample mean, 
-the sample standard
-deviation) to help us to understand or interpret the data.
 
 A simple summary of the probabilistic properties of $Y$ is the 
 *expected value* or
 (population) *mean* of $Y$, denoted by $E(Y)$ or $\mu$,
 depending on the context.
 
-If we think of probability as mass distributed at various 
-discrete points on a
-numerical scale, then $E(Y)$ is simply the centre of mass of $p(.)$.
-\[E(Y) = \sum_{y \in D} y p(y).\]
+```{definition}
+If $Y$ is a discrete random variable with probability function $p(.)$
+and domain $D$, the expected value of $Y$ is
+\[\mu = E(Y) = \sum_{y \in D} y p(y).\]
+If $Y$ is a continuous random variable with probability density 
+function $f(.)$ and domain $D$, 
+ the expected value of Y is:
+\[\mu = E(Y) = \int_{-\infty}^\infty yf(y)dy = \int_D y f(y) dy.\]
+```
 
 ```{example, bernoullimean, name = "Expected value of the Bernoulli distribution"}
 Suppose $Y \sim \text{Bernoulli}(\theta)$. Then
 \[E(Y) = \sum_{y \in \{0, 1\}} y p(y) = 0 \times (1- \theta) + 1 \times \theta = \theta.\]
 ```
-
-If $Y$ is a continuous random variable with probability density 
-function $f(.)$ and domain $D$, 
- the expected value of Y is:
-\[E(Y) = \int_{-\infty}^\infty yf(y)dy = \int_D y f(y) dy.\]
-
 
 ```{example, expmean, name = "Expected value of the exponential distribution"}
 Suppose $Y \sim \text{exponential}(\theta)$. Then
@@ -54,11 +48,14 @@ We can find the expected value of new random variable $h(Y)$ with
 
 ## Variance
   
-We can define the (population) variance of $Y$ by
+```{definition}
+The (population) variance of $Y$ is
 \[ \text{Var}(Y) = E\left\{[Y - E(Y)]^2 \right\}.\]
+```
+
 It is easy to show that
 \[ \text{Var}(Y) = E(Y^2) - [E(Y)]^2.\]
-$\text{Var}(Y)$ is a measure of spread. It is often denoted by $\sigma^2$.
+$\text{Var}(Y)$ is a measure of spread, and is often denoted by $\sigma^2$.
   
 We sometimes use the (population) standard
 deviation, which is just the square root of the variance, to return to the original
@@ -107,7 +104,7 @@ curve(dunif(x, min = -sqrt(3), max = sqrt(3)), from = -6, to = 6,
 In fact, the plot on the left is the pdf of a $N(0, 1)$ distribution,
 and the plot on the right is the pdf of a $\text{Uniform}(-\sqrt{3}, \sqrt{3})$
 distribution. Both have mean $0$ and variance $1$, yet they look very different.
-They are both symmetric about $0$ (the mean) but differ in terms of “shape”.
+They are both symmetric about $0$ (the mean) but differ in terms of "shape".
 
 Consider two more density functions:
 
@@ -133,12 +130,13 @@ The discrete case
 follows by replacing the pdf by the probability function and the integral by a
 sum.
 
-In general, we define the
-*$r$th moment about the origin*
+```{definition}
+The *$r$th moment about the origin* is
 \[\mu_r^\prime = E(Y^r) = \int_{-\infty}^\infty y^r f(y) dy\]
 and the 
-*$r$th moment about the mean*
+*$r$th moment about the mean* is
 \[\mu_r = E\left\{[Y – E(Y)]^r \right\} =\int_{-\infty}^\infty (y - \mu)^r f(y) dy.\]
+```
 
 We have
 \begin{align*}
@@ -177,7 +175,7 @@ If $Y$ has symmetric distribution then $\mu_3 = 0$.
 If $Y$ has a heavier right tail than left tail then $\mu_3 > 0$,
 and conversely if $Y$ has a heavier left tail than right, then $\mu_3 < 0$.
 
-Similarly, we define the fourth moment about the mean
+Similarly, the fourth moment about the mean is
 \[\mu_4 =  E\left\{[Y - E(Y)]^4\right\} = \int_{-\infty}^\infty (y - \mu)^4 f(y) dy.\]
 ```{theorem, mu4}
 We have
@@ -197,20 +195,21 @@ thick tails lead to higher values of $\mu_4$ than light tails.
 
 Remember that the basic idea is to describe location and spread via the mean and
 variance and the describe "shape" in terms of the third and fourth moments.
-So we don’t mix up spread with shape we usually use standardised third and fourth
+So we don't mix up spread with shape we usually use standardised third and fourth
 moments about the mean.
 
-**TODO: could add some examples of what goes wrong if we just use third
-and fourth moments about the mean directly**
+```{definition}
+The *skewness* is 
+\[\gamma_1 = \frac{\mu_3}{\mu_2^{3/2}},\]
+the standardised third moment about the mean.
+```
+```{definition}
+The *kurtosis* is
+\[\gamma_2 = \frac{\mu_4}{\mu_2^2}\]
+the standardised fourth moment about the mean
+```
 
-The **skewness** is the standardised third moment about the mean, defined
-as
-\[\gamma_1 = \frac{\mu_3}{\mu_2^{3/2}}.\]
-The **kurtosis** is the standardised fourth moment about the mean, defined
-as
-\[\gamma_2 = \frac{\mu_4}{\mu_2^2}.\]
-These quantities are unchanged by linear transformations of $Y$.
-[**TODO: add further justification, or link to exercise**]
+The skewness and kurtosis are unchanged by linear transformations of $Y$.
 
 Of course we could consider yet higher order moments to fine tune our
 understanding of $Y$.
@@ -221,8 +220,14 @@ lot of (difficult!) integration.
 In Chapter \@ref(genfuns) we will find a method that allows us to find as many moments as
 we like but with only one integration required.
 
-```{example, name = "Skewness and kurtosis of the Bernoulli distribution"}
+We will see in Example \@ref(exm:cgfnormal), that
+any $N(\mu, \sigma^2)$ distribution has skewness $\gamma_1 = 0$ and kurtosis
+$\gamma_2 = 3$. The kurtosis of other distributions is often compared with
+that of a normal distribution: if $\gamma_2 < 3$, a distribution has 
+lighter tails than the normal distribution, while if $\gamma_2 > 3$, a distribution
+has heavier tails than the normal distribution.
 
+```{example}
 Let $Y \sim \text{Bernoulli}(\theta)$.
 It is easy to see that $\mu_r^\prime = \theta$, for 
 $r = 1, 2, 3, \ldots$.
@@ -254,7 +259,7 @@ Note that $\gamma_2 = 1$ for $\theta = 0.5$.
 ```
 
 
-```{example, homexp, name = "Skewness and kurtosis of the Exponential distribution"}
+```{example, homexp}
 
 Let $Y \sim \text{exponential}(\theta)$, with pdf 
 $f (y) = \theta \exp(- \theta y)$ for $y > 0$.
@@ -303,8 +308,7 @@ the fourth moment about the mean is
  So the kurtosis is
  \[\gamma_2 = \frac{9/\theta^4}{(1/\theta^2)^2} =  9,\]
  which does not depend on $\theta$. All exponential random variables
- are highly positively skewed ($\gamma_1 = 2$), with a high
- kurtosis ($\gamma_2 = 4$).
+ are positively skewed ($\gamma_1 = 2$), with a high
+ kurtosis ($\gamma_2 = 4$), meaning the exponential distribution
+ has heavier tails than the normal distribution.
 ```
-
-**TODO: add skewness and kurtosis of normal distribution, for comparison**?
