@@ -1,6 +1,6 @@
 # Bayesian inference {#bayesian}
 
-## Introduction
+## Frequentist and Bayesian inference
 
 In frequentist inference, uncertainty about a parameter value is usually
 expressed through a confidence interval for that parameter: 

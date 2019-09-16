@@ -105,7 +105,7 @@ for all possible values of $\theta$.
 
 Note that a consistent estimator can be biased, and an unbiased estimator can be inconsistent	(i.e. not consistent). So consistency and unbiasedness are different types of property.
 
-```{example, bernconsist, name = "Consistency of esimator of Bernoulli success probability"}
+```{example, bernconsist, name = "Consistency of estimator of Bernoulli success probability"}
 Continue example \@ref(exm:bernbias), with 
 $Y_i \sim \text{Bernoulli}(\theta)$ and $T = \bar Y$.
 $T$ is a consistent estimator of $\theta$, as:
@@ -199,7 +199,7 @@ as required.
 ```
 
 An immediate consequence of Proposition \@ref(prp:biasvardecomp)
-is that isf $T$ is an unbiased estimator of $\theta$, then
+is that if $T$ is an unbiased estimator of $\theta$, then
 $\text{MSE}(T; \theta) = \text{Var}(T)$.
 
 Note that it is not possible to find a *uniformly* minimum MSE 
@@ -296,7 +296,7 @@ for the $r$th sample moment,
 for $r = 1, 2, 3, \ldots$.
 
 Then (assuming each of the first $k$ moments involves at least one parameter) we find values $\tilde \theta_1, \ldots, \tilde \theta_k$ such that the first $k$ sample moments match the first $k$ population moments
-\[m_r^\prime = \mu_r^\prime(\tilde \theta_1, \tilde \theta_2, \ldots, \tilde \theta_k) \textrm{ for $r = 1, 2, \ldots$, k}.\]
+\[m_r^\prime = \mu_r^\prime(\tilde \theta_1, \tilde \theta_2, \ldots, \tilde \theta_k) \text{ for $r = 1, 2, \ldots$, k}.\]
 We call  $\tilde \theta_1, \ldots, \tilde \theta_k$ 
 the *method of moments estimators* of
 of $\theta_1, \ldots, \theta_k$.
@@ -490,7 +490,7 @@ Hence the log-likelihood is
 
 We now maximise $\log L(\cdot)$ as a function of $\theta$.
 We attempt to find a stationary point of $\log L(\cdot)$ by
-differentiating and seeting to zero. We have
+differentiating and setting to zero. We have
 \[\frac{d}{d \theta}\log L(\theta; y_1, \ldots, y_n)
 = \frac{\sum_{i=1}^n y_i}{\theta} - 
 \frac{n - \sum_{i=1}^n y_i}{1 - \theta},\]
@@ -562,7 +562,7 @@ satisfies
 Rearranging this, we get
 \[\hat \theta = \frac{n}{\sum_{i=1}^n y_i} = \frac{1}{\bar y}.\]
 
-Diffrentiating again, we have
+Differentiating again, we have
 \[\frac{d^2}{d \theta^2} \log L(\theta; y_1, \ldots, y_n) = - \frac{n}{\hat \theta} < 0 \quad \text{for all $\theta$},\]
 so $\hat \theta$ is a maximum of $\log L(\cdot)$, and hence $\hat \theta$
 is the MLE. 

@@ -159,17 +159,9 @@ is also an Exponential random variable but
 with rate parameter $n \theta$ (i.e. with mean value $1/(n\theta)$).
 ```
 
-## Conclusions
-
-We have only given a taster here of an interesting area of statistics.
-We have only looked at the marginal behaviour of the minimum and 
-the maximum,
-and we have only considered the extreme order statistics. 
-The results can be extended to include other order statistics.
-
-The "closure" result in Example \@ref(exm:expmin)  hints at 
+This hints at 
 some interesting structure in the probabilistic
-behaviour of maxima and minima. The central limit theorem basically 
+behaviour of maxima and minima. The central limit theorem essentially
 says that under certain conditions the sum of $n$ independent, 
 identically distributed random variables
 is approximately normal as $n$ grows large. There are 

@@ -20,7 +20,7 @@ and domain $D$, the expected value of $Y$ is
 If $Y$ is a continuous random variable with probability density 
 function $f(.)$ and domain $D$, 
  the expected value of Y is:
-\[\mu = E(Y) = \int_{-\infty}^\infty yf(y)dy = \int_D y f(y) dy.\]
+\[\mu = E(Y) = \int_{-\infty}^\infty y f(y)dy = \int_D y f(y) dy.\]
 ```
 
 ```{example, bernoullimean, name = "Expected value of the Bernoulli distribution"}
@@ -42,7 +42,7 @@ be useful later on.
 
 We can find the expected value of new random variable $h(Y)$ with
 \[E[h(Y)] = \int_{-\infty}^{\infty} h(y) f(y) dy = \int_D h(y) f(y) dy\]
-  if $Y$ is a continous random variable with pdf $f(.)$. We may
+  if $Y$ is a continuous random variable with pdf $f(.)$. We may
   obtain a similar expression in the discrete case.
 
 

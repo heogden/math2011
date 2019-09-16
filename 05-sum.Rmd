@@ -1,6 +1,7 @@
 # Sums of random variables
 
-## Motivation
+## Generating functions of a sum
+
 In many situations in statistics we end up with situations 
 where we are interested in understanding the properties of 
 (possibly weighted) sums of random variables.
@@ -8,11 +9,6 @@ For example, the sample mean is frequently used as a summary
 measure for a set of observations and it is simply a weighted 
 sum of the observations (each observation has weight $1/n$, 
 where $n$ is the number of observations).
-Either through good fortune or by design the random variables 
-are often independent. In this chapter we consider sums of 
-independent random variables. 
-
-## Generating functions of a sum
 
 It is very easy to find the moment generating function
 of a sum of independent random variables, given the 
@@ -84,7 +80,7 @@ By Theorem \@ref(thm:mgfsum),
 \[M_Z(t) = \prod_{i=1}^n M_{Y_i}(t) = \prod_{i=1}^n (\theta e^t + 1 - \theta)^{n_i}
 = (\theta e^t + 1 - \theta)^{\sum_{i=1}^n n_i},\]
 which is the $\text{binomial}(\sum_{i=1}^n n_i, \theta)$ mgf.
-Since the mgf characterises the distribution, we concude that
+Since the mgf characterises the distribution, we conclude that
 $Z \sim \text{binomial}(\sum_{i=1}^n n_i, \theta)$.
 
 As a corollary, note that if the 
@@ -109,11 +105,11 @@ K_Z(t) &= \sum_{i=1}^n K_{Y_i}(t)  \\
 + \frac{1}{2} \left(\sum_{i=1}^n \sigma_i^2\right) t^2
 \end{align*}
 which is the $N(\sum_{i=1}^n \mu_i, \sum_{i=1}^n \sigma_i^2)$ cgf.
-Since the cgf characterises the distribution, we concude that
+Since the cgf characterises the distribution, we conclude that
 $Z \sim N(\sum_{i=1}^n \mu_i, \sum_{i=1}^n \sigma_i^2)$.
 
 As a corollary, note that if the 
-$Y_i$ are independent $N(\mu, \sigma^2)$ rvs, then 
+$Y_i$ are independent $N(\mu, \sigma^2)$ random variables, then 
 $Z \sim N(n \mu, n \sigma^2)$.
 ```
 
@@ -158,7 +154,7 @@ K_{\bar Y}(t) &= K_Z(\frac{1}{n} t) \\
 &= \mu t + \frac{1}{2} \frac{\sigma^2}{n} t^2,
 \end{align*}
 which is the $N(\mu, \sigma^2/n)$ cgf.
-Since the cgf characterises the distribution, we concude that
+Since the cgf characterises the distribution, we conclude that
 $\bar Y \sim N(\mu, \sigma^2/n)$.
 ```
 
@@ -209,7 +205,7 @@ $Z = d + c \bar Y$. By Theorem \@ref(thm:gflinear), we have
 and we have written the cgf of $Z$ in terms of the cgf of the original
 random variables.
 
-Differentiating with repsect to $t$, we get
+Differentiating with respect to $t$, we get
 \[K_Z^{(1)}(t) = n K_Y^{(1)}\left(\frac{ct}{n}\right) \frac{c}{n} + d\]
 and
 \[K_Z^{(2)}(t) = n K_Y^{(2)}\left(\frac{ct}{n}\right) \frac{c^2}{n^2}.\]

@@ -38,6 +38,7 @@ In addition to finding the inverse transformation, and using this
 in Theorem \@ref(thm:bvtrans), we need to identify the domain of $U_1$ and $U_2$.
 We identify constraints on $U_1$ and $U_2$ in two passes, to double check
 we haven't missed any constraints:
+
 - **forward** pass: plug in constraints on $Y_1$ and $Y_2$ directly
 into the definition of $U_1$ and $U_2$.
 - **backward** pass: rewrite the constraints on $Y_1$ and $Y_2$ in 
@@ -58,7 +59,7 @@ is the *Beta function*. We write $Y \sim \text{beta}(m, n)$.
 ```
 We will see one use of the beta distribution in Chapter \@ref(bayesian).
 We may obtain the beta distribution by transforming a pair of gamma random
-variables with the same rate paramater:
+variables with the same rate parameter:
 ```{proposition}
 Suppose that $Y_1 \sim \text{gamma}(m, \beta)$, $Y_2 \sim \gamma(n, \beta)$,
 and that $Y_1$ and $Y_2$ are independent.
@@ -377,7 +378,7 @@ We write $Y \sim F_{m, n}$.
 ```
 
 We may obtain the $F$ distribution as the ratio of two independent chi-squared
-random varaibles, each divided by their degrees of freedom.
+random variables, each divided by their degrees of freedom.
 As with the $t$ distribution, this makes the $F$ distribution
 important in statistics:
 ```{proposition, fconstruct}

@@ -1,17 +1,14 @@
 # Univariate transformations {#unitransform}
 
-## Motivation
+## Transformed random variables
 
-In this chapter, we will start with a continuous random variable 
-$Y$ with probability density function $f(y)$ and cumulative distribution
-function $F(y)$ and then define a new random variable $U = U(Y)$.
-We need to be able to determine the distribution of $U$.
-In particular, in this Chapter, we will consider how to find
-the cdf or pdf of $U$. **TODO: here, don't be specific about
-continuous distribution**.
+In this chapter, starting with a random variable 
+$Y$, we define a new random variable $U = U(Y)$.
+We want to be able to determine the distribution of 
+the transformed random variable $U$.
 
 We have already studied one method for finding the distribution
-of a tranformed random variable, when that transformation is linear
+of a transformed random variable, when that transformation is linear
 ($U = a + bY$ for suitable constants $a$ and $b$).
 In that case, if we have the moment generating function of $Y$,
 we can use Theorem \@ref(thm:gflinear) to find the moment
@@ -41,9 +38,8 @@ g(u) &= \frac{dG(u)}{du} = \frac{dF(\sqrt{u})}{du}
 &= 2 \sqrt{u} \frac{1}{2 \sqrt{u}} 
 = 1 \quad \text{for $0 < u < 1$,}
 \end{align*}
-which is the pdf of a $U(0, 1)$ distibution.
+which is the pdf of a $U(0, 1)$ distribution.
 So $U \sim U(0, 1)$.
-**TODO: check definition of uniform distribution**
 ``` 
 
 ```{example, trans2}
@@ -65,7 +61,7 @@ with rate parameter $1$, so
 $U \sim \text{exponential}(1)$.
 ```
 
-## A general result for one-to-one transformations
+## One-to-one transformations of continuous random variables
 
 ```{theorem, unitrans}
 If $U$ is a one-to-one transformation of a continuous

@@ -20,7 +20,7 @@ for some values of $t$. Provided that there is some value $h > 0$
 such that the expectation $E(e^{tY})$ exists for all $-h < t < h$,
 we say the mgf is well-defined.
 
-Consider $e^{yt}$ expanded as a power series in $t$:
+Consider $e^{ty}$ expanded as a power series in $t$:
 \[e^{ty} = 1 + ty + \frac{(ty)^2}{2!} + \frac{(ty)^3}{3!} + \ldots =
   \sum_{k=0}^\infty \frac{(ty)^k}{k!}.\]
 We can use this power series expansion to see that
@@ -71,7 +71,7 @@ Suppose that $Y \sim \text{binomial}(n, \theta)$, with probability function
 \[p(y) = \binom{n}{y} \theta^y (1 - \theta)^{n-y}, \quad y = 0, \ldots n.\]
 Then the moment generating function is
 \begin{align*}
-M_Y(t) &= E(e^{Yt}) = \sum_{y=0}^n e^{yt} \binom{n}{y} \theta^y (1 - \theta)^{n-y} \\
+M_Y(t) &= E(e^{tY}) = \sum_{y=0}^n e^{ty} \binom{n}{y} \theta^y (1 - \theta)^{n-y} \\
 &= \sum_{y=0}^n  \binom{n}{y} (\theta e^t)^y (1 - \theta)^{n-y} \\
 &= (\theta e^t + 1 - \theta)^n,
 \end{align*}
@@ -109,7 +109,7 @@ Suppose that $Y \sim N(\mu, \sigma^2)$, with pdf
 \quad y \in \mathbb{R}.\]
 The moment generating function is
 \begin{align*}
-M_Y(t) &= E(e^{Yt}) = \int_{-\infty}^\infty e^{ty}  
+M_Y(t) &= E(e^{tY}) = \int_{-\infty}^\infty e^{ty}  
 \frac{1}{\sqrt{2 \pi \sigma^2}}
 \exp \left\{ -\frac{ (y - \mu)^2}{2 \sigma^2}\right\} dy \\
 &= \int_{-\infty}^\infty  \frac{1}{\sqrt{2 \pi \sigma^2}}
@@ -267,7 +267,7 @@ i.e. if $t < \theta$.}
 By Theorem \@ref(thm:gflinear) with $a = 0$, we have
 \[M_Z(t) = M_Y(bt) = \frac{\theta}{\theta - bt} = \frac{\theta/ b}{\theta/b - t},\]
 which is the $\text{exponential}(\theta/b)$ mgf.
-Since the mgf characterises the distribution, we concude
+Since the mgf characterises the distribution, we conclude
 $Z \sim \text{exponential}(\theta / b)$.
 A scale change of any exponential random variable gives another
 exponential random variable.
@@ -285,7 +285,7 @@ By Theorem \@ref(thm:gflinear), we have
 \[K_Z(t) = at + K_Y(bt) = at + \mu b t + \frac{1}{2} \sigma^2 (b t)^2
 = (a + b \mu) t + \frac{1}{2}(b \sigma)^2 t^2,\]
 which is the $N(a + b\mu, b^2 \sigma^2)$ cgf. 
-Since the cgf characterises the distribution, we concude
+Since the cgf characterises the distribution, we conclude
 $Z \sim N(a + b\mu, b^2 \sigma^2)$.
 A linear transformation of any normal random variable 
 gives another normal random variable.

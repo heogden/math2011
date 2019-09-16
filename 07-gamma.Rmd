@@ -1,6 +1,6 @@
 # The gamma distribution {#gamma}
 
-## Introduction
+## The gamma distribution
 
 In this chapter we will introduce a family of distributions
 known as the gamma distribution.
@@ -21,8 +21,6 @@ have the same shape (see Example \@ref(exm:homexp)).
 It is natural to try to generalise the exponential to a 
 more flexible family of distributions, and the gamma distribution
  is one way of achieving this.
-
-## The Gamma function
 
 Before we introduce the gamma distribution, we first
 need to introduce a function which is used in the pdf
@@ -70,9 +68,7 @@ and this may be used along with the recurrence relationship
 (Proposition \@ref(prp:gammarecursion)) to compute any other
 $\Gamma(n/2)$.
 
-## The gamma distribution
-
-```{definition, name = "Gamma distribution"}
+```{definition}
 We say a random variable $Y$ has *gamma distribution*
 with *shape* parameter $\alpha > 0$ and *rate* parameter 
 $\beta > 0$ 
@@ -88,11 +84,10 @@ Note that the exponential distribution with rate parameter
 $\beta$ is a special case of the gamma distribution,
 with $\alpha = 1$.
 
-## A practical problem leading to the gamma distribution
-
+```{example, name = "Time until the $k$th event in a Poisson process"}
 Suppose we have a Poisson process with events arriving
 at rate $\beta$ per unit time, so that the number of events
-occuring in a time interval of length $t$ has $\text{Poisson}(\beta t)$
+occurring in a time interval of length $t$ has $\text{Poisson}(\beta t)$
 distribution. Let $Y$ be the time until the $k$th event occurs.
 We claim that $Y \sim \text{gamma}(k, \beta)$.
 
@@ -122,6 +117,7 @@ If $\alpha$ is an integer, as in this example, the
 $\text{gamma}(\alpha, \beta)$ distribution is also
 known as the *Erlang* distribution. The exponential distribution
 (with $\alpha= 1$) is a special case of the Erlang distribution.
+```
 
 ## Properties of the gamma distribution
 
@@ -261,7 +257,7 @@ Let $Z \sim N(0, 1)$, and let $Y = Z^2$. Then $Y \sim \chi^2_1$.
 ```
 
 ```{proof}
-Wite $\Phi(.)$ for the cumulative distribution function of $Z$,
+Write $\Phi(.)$ for the cumulative distribution function of $Z$,
 and $\phi(.)$ for the pdf of $Z$, so that
 \[\phi(z) = \frac{1}{\sqrt{2 \pi}} \exp\left(-\frac{z^2}{2}\right).\]
 Let $Y$ have cdf $F(.)$ and pdf $f(.)$.
@@ -288,7 +284,7 @@ distribution, as claimed.
 Putting together Proposition \@ref(prp:chisquarednormal) and
 Equation \@ref(eq:chisquaredsum) gives us a way to construct
 a random variable with any chi-squared distribution, given 
-a supply of independent and indentically distributed standard normal
+a supply of independent and identically distributed standard normal
 random variables:
 ```{proposition, chisquaredsumnormal}
 Let $Z_1, Z_2, \ldots Z_n$ be independent and identically distributed, with

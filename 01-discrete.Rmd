@@ -16,7 +16,7 @@ function
 where
 \[\sum_{y\in D} p(y) =1.\]
 The distribution function $F(\cdot)$ is defined for all $y \in \mathbb{R}$ by
-\[F(y)\equiv P(Y \leq y) = \sum_{x\in D: \, x\le y} p(x).\]
+\[F(y)\equiv P(Y \leq y) = \sum_{x\in D: \, x\leq y} p(x).\]
 
 **Continuous** probability distributions are defined by a probability density
 function (pdf) $f(\cdot)$ where
