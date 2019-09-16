@@ -108,8 +108,9 @@ if it has probability function of the form
 We write $Y \sim \text{Poisson}(\theta)$.
 ```
 
-If events occur at random at constant rate $\theta$ 
-per unit time, independent of all other events, then
-if we define $Y$ as 'the number of events in an interval of fixed length $t$.',
+In a *Poisson process*, events occur at random at constant rate $\theta$ 
+per unit time, independent of all other events. If we define $Y$ as
+the number of events of a Poisson process in an interval of fixed length $t$,
+then
 $Y \sim \text{Poisson}(t \theta)$.
 
