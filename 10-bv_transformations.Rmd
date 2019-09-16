@@ -335,11 +335,11 @@ g_1(u_1) &= \frac{\Gamma(\frac{k+1}{2})}{\Gamma(\frac{k}{2}) \Gamma(\frac{1}{2})
 which is the pdf of a $t_k$ distribution, so $U_1 \sim t_k$.
 ```
 
-The importance of the $t$ distribution in practice comes from the following corollary,
+The importance of the $t$ distribution in practice comes from the following proposition,
 which we will use to construct confidence interval and hypothesis tests
 for the mean of normal random variables in Chapter \@ref(inference):
 
-```{corollary}
+```{proposition, ybart}
 Suppose that $Y_1, Y_2, \ldots, Y_n$, are independent and identically
 distributed, with each $Y_i \sim N(0, 1)$.
 Let $\bar Y$ and $S^2$ be the usual sample mean and sample variance.
@@ -462,10 +462,10 @@ which is the pdf of a $F_{m, n}$ distribution,
 so $U_1 \sim F_{m, n}$.
 ```
 
-The importance of the $F$ distribution in practice comes from the following corollary,
+The importance of the $F$ distribution in practice comes from the following proposition,
 which we will use in Chapter \@ref(inference) to test whether two sets 
 of normal random variables have the same variance:
-```{corollary}
+```{proposition, ftest}
 Suppose $Y^{(1)}_1, \ldots, Y^{(1)}_m$
 and $Y^{(2)}_1, \ldots, Y^{(2)}_n$
 are two sets of independent

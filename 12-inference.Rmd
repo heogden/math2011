@@ -1,10 +1,10 @@
-# Confidence intervals and hypothesis tests {#inference}
+# Confidence intervals and hypothesis testing {#inference}
 
-## Introduction
+## Expressing uncertainty in parameter estimates
 
 Suppose that $Y_1, \ldots, Y_n$ are independent identically distributed 
 random variables, each with a distribution depending on 
-unknown parameter(s) $\theta$, and 
+unknown parameter $\theta$, and 
 let $y_1, \ldots, y_n$ be corresponding observed values.
 
 In Chapter \@ref(estimation), we have seen how to find an
@@ -19,56 +19,151 @@ plausibly have generated the observed data.
 
 ## Confidence intervals
 
-```{example, cinormmean, name = "Normal mean, known variance"}
+Write $\bm Y = (Y_1, \ldots, Y_n)^T$ and $\bm y = (y_1, \ldots, y_n)^T$.
+
+```{definition}
+A $100(1- \alpha)\%$
+*confidence interval* for $\theta$ 
+is an interval $[L(\bm y), U(\bm y)]$
+such that
+\[P\left(L(\bm Y) \leq \theta \leq U(\bm Y)\right) = 1 - \alpha.\]
+```
+
+Often, we take $\alpha = 0.05$, and obtain a $95\%$ confidence interval.
+This means that if we were to generate a large number of datasets from the model
+with some fixed value of $\theta$, and find a $95\%$ confidence interval
+for each dataset, approximately $95\%$ of those intervals would
+contain the true value of $\theta$.
+
+```{example, cinormmean}
 Suppose that $Y_1, \ldots, Y_n$ are independent and identically
 distributed, with each $Y_i \sim N(\mu, \sigma^2)$,
 where $\mu$  is an unknown parameter, but the value of $\sigma^2$
 is known.
-Suppose that we require a $95 \%$ confidence interval (CI)
+Suppose that we require a $95 \%$ confidence interval
 for $\mu$.
 
-Then
-\[P(-1.96 < \frac{\bar Y - \mu}{\sigma/\sqrt{n}} < 1.96) = 0.95.\]
+We know 
+(by Proposition \@ref(prp:ybarnormal)) that
+$\bar Y \sim N(\mu, \sigma^2 / n)$, so 
+$\frac{\sqrt{n}(\bar Y - \mu)}{\sigma} \sim N(0, 1)$, so 
+\[P\left(z_{0.025} \leq \frac{\sqrt{n}(\bar Y - \mu)}{\sigma} \leq z_{0.975}\right) = 0.95.\]
+where $z_{p}$ is the $p$-quantile of the standard normal distribution, 
+so that $P(X \leq z_p) = p$ if $X \sim N(0, 1)$.
+We can find these quantiles in `R`:
+```
+```{r}
+qnorm(0.025)
+qnorm(0.975)
+```
+Notice that $z_{p} = - z_{1 - p}$, because the standard normal distribution
+is symmetric about zero.
 
 By "making $\mu$ the subject of the inequality" we can rearrange
 this probability statement to give
-
-**TODO: gap fill**
-
+\[P\left(\bar Y - \frac{1.96 \sigma}{\sqrt{n}} \leq 
+\mu \leq \bar Y + \frac{1.96 \sigma}{\sqrt{n}} \right) = 0.95.\]
 If we replace the end-points of the inequality with their sample equivalents,
 we get a $95 \%$ confidence interval 
-
-**TODO: gap fill**
-
+\[\left[\bar y - \frac{1.96 \sigma}{\sqrt{n}}, 
+\bar y + \frac{1.96 \sigma}{\sqrt{n}} \right]\]
 for $\mu$.
-```
 
-```{example, name = "Normal mean, unknown variance"}
+```{example, cinormmeanunknownsigma}
 Suppose that $Y_1, \ldots, Y_n$ are independent and identically
 distributed, with each $Y_i \sim N(\mu, \sigma^2)$,
 where $\mu$ and $\sigma^2$ are both unknown parameters.
-Suppose that we require a $95 \%$ confidence interval (CI)
+Suppose that we require a $95 \%$ confidence interval
 for $\mu$.
 
-We estimate $\sigma^2$ by $S^2$ and then proceed as in 
+We estimate $\sigma^2$ by $S^2 =  \frac{1}{n-1} \sum_{i=1}^n (Y_i - \bar Y)^2$ 
+and then proceed as in 
 Example \@ref(exm:cinormmean), taking care
-to replace the Normal value ($1.96$ in the above example)
-with a corresponding value from the $t$ distribution.
-
-**TODO: gap fill / expand argument**
+to replace the normal quantile
+with a corresponding quantile from the relevant $t$ distribution,
+as we know (by Proposition \@ref(prp:ybart)) that 
+\[\frac{\sqrt{n}(\bar Y - \mu)}{S} \sim t_{n-1}.\]
+We have
+\[P(t_{n-1, 0.025} \leq \frac{\sqrt{n}(\bar Y - \mu)}{\sigma} \leq t_{n-1, 0.975}) = 0.95.\]
+where $t_{n-1, p}$ is the $p$-quantile of the $t_{n-1}$ distribution,
+so that $P(X \leq t_{n-1, p}) = p$ if $X \sim t_{n-1}$.
+We can find these quantiles in `R`, e.g. if $n = 10$:
 ```
-
-```{example, name = "Normal variance"}
-We estimate $\sigma^2$ by $S^2$ and use the result 
-$\frac{n-1}{\sigma^2} S^2 \sim \chi^2_{n-1}$ (**TODO: add reference**)
-to construct a CI for $\sigma^2$.
-
-**TODO: gap fill**
-
-From this we can obtain a corresponding CI for $\sigma$ if we prefer.
-
-**TODO: gap fill**
+```{r}
+qt(0.025, df = 9)
+qt(0.975, df = 9)
 ```
+Again, $t_{p, n-1} = - t_{1 - p, n-1}$, because the $t$ distribution
+is symmetric about zero. So we have
+\[P\left(-t_{n-1, 0.975} \leq \frac{\sqrt{n}(\bar Y - \mu)}{\sigma} \leq t_{n-1, 0.975}\right) = 0.95.\]
+and rearranging this to "make $\mu$ the subject" gives
+\[P\left(\bar Y - \frac{t_{n-1, 0.975} S}{\sqrt{n}} \leq 
+\mu \leq \bar Y + \frac{t_{n-1, 0.975} S}{\sqrt{n}} \right) = 0.95.\]
+Replacing the end points with their sample versions
+\[\left[\bar y - \frac{t_{n-1, 0.975} s}{\sqrt{n}},
+\bar y + \frac{t_{n-1, 0.975} s}{\sqrt{n}} \right]\]
+is a $95\%$ confidence interval for $\mu$.
+
+We always have $t_{n-1, 0.975} > z_{0.975} = 1.96$, so the confidence interval
+when $\sigma^2$ is unknown will be wider than it would be if
+$\sigma^2$ was known: this makes sense, as we have
+to account for some additional uncertainty.
+For large $n$, $t_{n-1, 0.975} \approx 1.96$, as the $t_{n-1}$ approaches
+a standard normal distribution as $n$ increases.
+
+
+```{example, cinormvariance}
+Suppose that $Y_1, \ldots, Y_n$ are independent and identically
+distributed, with each $Y_i \sim N(\mu, \sigma^2)$,
+where $\mu$ and $\sigma^2$ are both unknown parameters.
+Suppose that we require a $95 \%$ confidence interval
+for $\sigma^2$.
+
+We may estimate $\sigma^2$ by $S^2$. By  Theorem \@ref(thm:S2dist),
+we know
+\[\frac{n-1}{\sigma^2} S^2 \sim \chi^2_{n-1},\]
+so
+\[P\left(c_{n-1, 0.025} \leq \frac{n-1}{\sigma^2} S^2 
+\leq c_{n-1, 0.975}\right) = 0.95,\]
+where $c_{n-1, p}$ is the $p$-quantile of the $\chi^2_{n-1}$
+distribution, so that $P(X \leq c_{n-1, p}) = p$ if $X \sim \chi^2_{n-1}$.
+We can find these quantiles in `R`, e.g. if $n = 10$:
+```
+```{r}
+qchisq(0.025, df = 9)
+qchisq(0.975, df = 9)
+```
+Since chi-squared distribution has positive domain, all quantiles are
+positive, and $c_{p, n-1} \not = - c_{1 - p, n-1}$.
+Rearranging to "make $\sigma^2$ the subject" gives
+\[P\left(\frac{(n-1) S^2}{c_{n-1, 0.975}} \leq \sigma^2
+  \leq \frac{(n-1) S^2}{c_{n-1, 0.025}}\right) = 0.95\]
+so
+\[\left[\frac{(n-1) s^2}{c_{n-1, 0.975}}, \frac{(n-1) s^2}{c_{n-1, 0.025}}\right]\]
+is a $95\%$ confidence interval for $\sigma^2$.
+
+From this we can obtain a corresponding confidence interval
+for $\sigma$ if we prefer, as
+\[P\left(\frac{\sqrt{n-1} S}{\sqrt{c_{n-1, 0.975}}} \leq \sigma
+  \leq \frac{\sqrt{n-1} S}{\sqrt{c_{n-1, 0.025}}}\right) = 0.95\]
+so
+\[\left[\frac{\sqrt{n-1} s}{\sqrt{c_{n-1, 0.975}}},
+  \frac{\sqrt{n-1} s}{\sqrt{c_{n-1, 0.025}}}\right]\]
+is a $95\%$ confidence interval for $\sigma$.
+
+All of our examples of confidence intervals have been for unknown
+parameters of a normal distribution. We have been able to find
+these confidence intervals because of the results we have
+proved earlier about the distributions of $\bar Y$ and $S^2$,
+which are natural estimators of $\mu$ and $\sigma^2$.
+For other distributions, the distribution of an estimator of $\theta$ (such as the
+maximum likelihood estimator $\hat \theta$) may be more complicated,
+which makes constructing confidence intervals more challenging.
+It turns out that for large $n$, the distribution of the
+maximum likelihood estimator is close to a normal distribution
+(see MATH3044), which is very useful in practice to construct confidence intervals
+for a wide range of models.
+
 
 ## Hypothesis testing
 
@@ -97,40 +192,75 @@ size $n$.)
 
 In any given situation we need a **test statistic** -- a quantity whose distribution
 is known when $H_0$ is true. 
-For certain values of the test statistic we will reject $H_0$. For all other values
-we do not reject $H_0$.
+We reject $H_0$ if the value of the test statistic is "extreme" relative to the
+distribution of the test statistic under $H_0$, otherwise we do not reject $H_0$.
+The threshold for what counts as "extreme" depends on the specified significance
+level of the test.
 
-```{example, name = "Normal mean, known variance"}
-Suppose that we will work at a $5\%$ significance level and that the value
-of $\sigma^2$ is known.
+```{example}
+As in Example \@ref(exm:cinormmean), 
+suppose that $Y_1, \ldots, Y_n$ are independent and identically
+distributed, with each $Y_i \sim N(\mu, \sigma^2)$,
+where $\mu$  is an unknown parameter, but the value of $\sigma^2$
+is known.
 
-Our null hypothesis is $H_0: \mu = \mu_0$, where $\mu_0$ is a fixed
+Suppose that we wish to test that null hypothesis
+$H_0: \mu = \mu_0$, where $\mu_0$ is a fixed
 value chosen in advance of collecting the data.
+We take $H_1$ to be the complement of $H_0$, so
+$H_1: \mu \not = \mu_0$.
 
-For simplicity, take $H_1$ to be the complement of $H_0$.
-
-If $H_0$ is true then 
-\[Z_0 = \frac{\bar Y - \mu_0}{\sigma / \sqrt{n}} \sim N(0, 1).\]
-For our observed data set the observed value of $Z_0$ is 
-\[z_0 =  \frac{\bar y - \mu_0}{\sigma / \sqrt{n}}.\]
-
-So to construct a hypothesis test with $5\%$ significance probability 
-we should only reject $H_0$ if $|z_0| > 1.96$.
-So if $z_0 > 1.96$ or $z_0 < -1.96$, we reject $H_0$. Otherwise, we do not
+We construct the test statistic
+\[Z = \frac{\sqrt{n}(\bar Y - \mu_0)}{\sigma}.\]
+If $H_0$ is true then $Z \sim N(0, 1)$.
+For our observed data the observed value of $Z$ is 
+\[z =  \frac{\sqrt{n}(\bar y - \mu_0)}{\sigma}.\]
+To construct a hypothesis test at significance level $\alpha = 0.05$
+we should only reject $H_0$ if $|z| > z_{0.975} = 1.96$.
+So if $z > 1.96$ or $z < -1.96$, we reject $H_0$. Otherwise, we do not
 reject $H_0$.
-
-
-```{example, name = "Normal mean, unknown variance"}
-We estimate $\sigma^2$ by $S^2$ and use the $t$ distribution
-result to give the one-sample $t$-test.
-**TODO: gap fill**
 ```
 
-```{example, name = "Normal variance"}
+```{example}
+As in Example \@ref(exm:cinormmeanunknownsigma), 
+suppose that $Y_1, \ldots, Y_n$ are independent and identically
+distributed, with each $Y_i \sim N(\mu, \sigma^2)$,
+where $\mu$ and $\sigma^2$ are both unknown parameters.
+Suppose we are interested in testing the null $H_0: \mu = \mu_0$ against
+the alternative
+$H_1: \mu \not = \mu_0$.
 
-We use that
-$\frac{(n-1)}{\sigma^2} S^2 \sim \chi^2_{n-1}$. (**TODO:: add ref**)
-**TODO: gap fill**
+We estimate $\sigma^2$ by $S^2$, and construct the test statistic
+\[T = \frac{\sqrt{n}(\bar Y - \mu_0)}{S}.\]
+If $H_0$ is true then $T \sim t_{n-1}$.
+For our observed data the observed value of $T$ is 
+\[t =  \frac{\sqrt{n}(\bar y - \mu_0)}{s}.\]
+To construct a hypothesis test at significance level $\alpha = 0.05$
+we should only reject $H_0$ if $|t| > t_{n-1, 0.975} = 1.96$.
+So if $t > t_{n-1, 0.975}$ or $z < -t_{n-1, 0.975}$,
+we reject $H_0$. Otherwise, we do not
+reject $H_0$.
+```
+
+```{example}
+As in Example \@ref(exm:cinormvariance), 
+suppose that $Y_1, \ldots, Y_n$ are independent and identically
+distributed, with each $Y_i \sim N(\mu, \sigma^2)$,
+where $\mu$ and $\sigma^2$ are both unknown parameters.
+Suppose we are interested in testing the null $H_0: \sigma^2 = \sigma^2_0$ against
+the alternative
+$H_1: \sigma^2 \not = \sigma^2_0$.
+
+
+We estimate $\sigma^2$ by $S^2$, and construct the test statistic
+\[C = \frac{(n-1) S^2}{\sigma_0^2}.\]
+If $H_0$ is true then $C \sim \chi^2_{n-1}$.
+For our observed data the observed value of $C$ is 
+\[c =  \frac{(n-1) s^2}{\sigma_0^2}.\]
+To construct a hypothesis test at significance level $\alpha = 0.05$
+we should only reject $H_0$ if $c < c_{n-1, 0.025}$
+or $c > c_{n-1, 0.975}$. Otherwise, we do not
+reject $H_0$.
 ```
 
 ## Two-sample hypothesis testing
@@ -138,23 +268,98 @@ $\frac{(n-1)}{\sigma^2} S^2 \sim \chi^2_{n-1}$. (**TODO:: add ref**)
 In many practical situations, such as clinical trials, we have two independent
 groups of subjects under study and wish to understand the relative effects
 of two "treatments" on some response of interest.
+For instance, in a classical two-armed clinical trial, 
+there are two treatments of interest,
+such as an active treatment and a placebo, or old and new treatments,
+and we wish to know whether there is a difference in responses
+between the two treatment groups.
 
-In a classical two-armed clinical trial, there are two treatments of interest,
-such as an active treatment and a placebo, or old and new treatments.
 
-Typically, subjects are first randomly assigned to treatment arms. Why
-is randomisation important?
+```{example, twosamplet, name = "Classical two-sample $t$-test"}
+Suppose we have two sets of samples
+\[X_1, \ldots, X_{m} \sim N(\mu_1, \sigma^2) \quad \text{and} \quad
+Y_1, \ldots, Y_{n} \sim N(\mu_2, \sigma^2),\]
+where all the random variables are independent.
 
-```{example, name = "The classical two-sample $t$-test"}
-**TODO: gap fill**
+Write $\delta = \mu_1 - \mu_2$. We would like to 
+test the null $H_0: \delta = \delta_0$, for some prespecified
+value of the difference between treatments,
+against the alternative $H_1: \delta \not = \delta_0$).
+Often $\delta_0 = 0$, in which case we are testing if there
+is any difference in distribution of the response between the two
+treatment groups.
+
+
+
+We know that $\bar X \sim N(\mu_1, \sigma^2/m)$ and
+$\bar Y \sim N(\mu_2, \sigma^2/n)$, and $\bar X$ and $\bar Y$
+are independent, so 
+\[\bar X - \bar Y \sim N\left(\mu_1 - \mu_2, 
+\frac{\sigma^2}{m}+ \frac{\sigma^2}{n}\right).\]
+Under $H_0$, 
+$\bar X - \bar Y \sim N(\delta_0, \sigma^2/m+ \sigma^2/n),$
+or
+\begin{equation}
+\frac{\bar X - \bar Y - \delta_0}{\sigma^2/m+ \sigma^2/n}
+\sim N(0, 1),
+(\#eq:twosampleknownsigma)
+\end{equation}
+but we cannot use this as a test statistic, because it depends
+on the unknown $\sigma^2$.
+
+We estimate $\sigma^2$ based on all the samples combined,
+by
+\[S_c^2 = \frac{\sum_{i=1}^{m} (X_i - \bar X)^2 + 
+\sum_{i=1}^{n}(Y_i - \bar Y)^2}{m + n - 2}.\]
+We choose the denominator $m + n - 2$ to make this an unbiased
+estimator of $\sigma^2$: since 
+$\sum_{i=1}^{m} (X_i - \bar X)^2 \sim \sigma^2 \chi^2_{m - 1}$ and 
+$\sum_{i=1}^{n} (Y_i - \bar Y)^2 \sim \sigma^2 \chi^2_{n - 1}$,
+and these two quantities are independent, their sum has
+$\sigma^2 \chi^2_{m + n - 2}$ distribution. So
+\[\frac{(m + n - 2)S_c^2}{\sigma^2} \sim \chi^2_{m + n - 2}.\]
+
+Replacing $\sigma^2$ by $S_c^2$ in Equation \@ref(eq:twosampleknownsigma),
+we get
+\[T = \frac{\bar X - \bar Y - \delta_0}{S_c^2 / m+ S_c^2 / n}
+\sim t_{m + n - 2}\]
+under $H_0$.
+For our observed data the observed value of $T$ is 
+\[t = \frac{\bar x - \bar y - \delta_0}{s_c^2 / m+ s_c^2 / n}.\]
+
+To construct a hypothesis test at significance level $\alpha = 0.05$
+we should only reject $H_0$ if $|t| > t_{n-1, 0.975} = 1.96$.
+So if $t > t_{n-1, 0.975}$ or $z < -t_{n-1, 0.975}$,
+we reject $H_0$. Otherwise, we do not
+reject $H_0$.
 ```
 
 ```{example, name = "Testing for equality of variances"}
-In the classical two-sample $t$-test, an assumption is made that the 
-(population) variances are equal. This can be tested
-using the result obtained in Chapter 10
-(**TODO: update ref**) concerning the $F$ distribution.
-**TODO: gap fill**
+In the classical two-sample $t$-test 
+(Example \@ref(exm:twosamplet)), an assumption is made that the 
+(population) variances of the two groups are equal. 
+We might want to test whether this assumption appears to be
+reasonable, given the data. To do this, we now assume
+that each $X_i \sim N(\mu_1, \sigma_1^2)$ and each 
+$Y_i \sim N(\mu_2, \sigma_2^2)$, and test the null
+hypothesis $H_0: \sigma_1^2 = \sigma_2^2$ against
+the alternative $H_1: \sigma_1^2 \not = \sigma_2^2$.
+
+We estimate $\sigma_1^2$ by
+\[S_1^2 = \frac{1}{m - 1} \sum_{i=1}^{m} (X_i - \bar X)^2\]
+and $\sigma_2^2$ by 
+\[S_2^2 = \frac{1}{m - 1} \sum_{i=1}^{m} (Y_i - \bar Y)^2.\]
+Let \[F = \frac{S_1^2}{S_2^2}\]
+Under $H_0$, by Proposition \@ref(prp:ftest),  we know that
+$F \sim F_{m-1, n-1}.$
+For our observed data the observed value of $F$ is 
+\[f = \frac{s_1^2}{s_2^2}.\]
+To construct a hypothesis test at significance level $\alpha = 0.05$
+we should only reject $H_0$ if $f < f_{m-1, n-1, 0.025}$
+or $f > f_{m-1, n-1, 0.975}$, where
+$f_{m-1, n-1, p}$ is the $p$-quantile of an $F_{m-1, n-1}$ 
+distribution. Otherwise, we do not
+reject $H_0$.
 ```
 
 
