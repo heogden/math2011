@@ -39,7 +39,7 @@ $T$ is said to be an *unbiased* estimator of $\theta$ if
 for all possible values of $\theta$.
 ```
 
-```{example, bernbias}
+```{example, bernbias, name = "Bias of estimator of Bernoulli success probability"}
 Let $Y_1, Y_2, \ldots, Y_n$ be independent and identically distributed,
 where each $Y_i \sim \text{Bernoulli}(\theta)$.
 
@@ -49,7 +49,7 @@ Here $T$ is an unbiased estimator of $\theta$, as
 \[E(T) = E(\bar Y) = \frac{1}{n} \sum_{i=1}^n E(Y_i) = \frac{1}{n} n \theta = \theta.\]
 ```
 
-```{example, expbias}
+```{example, expbias, name = "Bias of estimator of exponential rate parameter"}
 Let $Y_1, Y_2, \ldots, Y_n$ be independent and identically distributed,
 where each $Y_i \sim \text{exponential}(\theta)$.
 
@@ -105,7 +105,7 @@ for all possible values of $\theta$.
 
 Note that a consistent estimator can be biased, and an unbiased estimator can be inconsistent	(i.e. not consistent). So consistency and unbiasedness are different types of property.
 
-```{example, bernconsist}
+```{example, bernconsist, name = "Consistency of esimator of Bernoulli success probability"}
 Continue example \@ref(exm:bernbias), with 
 $Y_i \sim \text{Bernoulli}(\theta)$ and $T = \bar Y$.
 $T$ is a consistent estimator of $\theta$, as:
@@ -127,7 +127,7 @@ for all $\theta \in [0, 1]$.}
 
 ```
 
-```{example}
+```{example, name = "Consistency of estimator of exponential rate parameter"}
 Continue example \@ref(exm:expbias), with
 $Y_i \sim \text{exponential}(\theta)$ and $T = \frac{1}{\bar Y}$.
 $T$ is a consistent estimator of $\theta$, as:
@@ -217,7 +217,7 @@ It is sometimes possible to find a uniformly minimum MSE estimator
 within a class of 
 "sensible" estimators.
 
-```{example}
+```{example, name = "Comparing estimators of the normal variance parameter"}
 Suppose that $Y_1, Y_2, \ldots, Y_n$ are independent, with each $Y_i \sim N(\mu, \sigma^2)$,
 and that we wish to estimate $\sigma^2$. 
 Two possible choices are:
@@ -317,28 +317,28 @@ This will become clearer with some examples.
 We first begin with some simple one-parameter examples to illustrate the method.
 
 
-```{example, bernmom}
+```{example, bernmom, name = "Bernoulli"}
 Suppose $Y_i \sim \text{Bernoulli}(\theta)$.
 We have $\mu_1^\prime = \mu_1^\prime(\theta) = \theta$.
 and $m_1 = \frac{1}{n}\sum_{i=1}^n Y_i = \bar Y$.
 So the method of moments estimator is $\tilde \theta = \bar Y$.
 ```
     
-```{example}
+```{example, name = "Normal mean"}
 Suppose $Y_i \sim N(\theta, 1)$.
 We have $\mu_1^\prime = \mu_1^\prime(\theta) = \theta$, and
 $m_1 = \frac{1}{n}\sum_{i=1}^n Y_i = \bar Y$.
 So the method of moments estimator is $\tilde \theta = \bar Y$.
 ```
 
-```{example, expmom}
+```{example, expmom, name = "Exponential"}
 Suppose $Y_i \sim \text{exponential}(\theta)$.
 We have $\mu_1^\prime = \mu_1^\prime(\theta) = 1/\theta,$ 
 and $m_1 = \frac{1}{n}\sum_{i=1}^n Y_i = \bar Y$.
 So the method of moments estimator is $\tilde \theta = 1/ \bar Y$.
 ```
 	
-```{example}
+```{example, name = "Normal variance"}
 Suppose $Y_i \sim N(0, \theta)$.
 We know that $\mu_1^\prime = \mu_1^\prime(\theta) = 0$,
 which does not involve the parameter of interest.
@@ -352,7 +352,7 @@ We can also use method of moment estimation for models
 with more than one unknown parameter.
 
 
-```{example}
+```{example, name = "Normal mean and variance"}
 Suppose $Y_i \sim N(\theta_1, \theta_2)$ 
 (i.e. $\theta_1 = \mu$, $\theta_2 = \sigma^2$ in the usual notation).
 The first two population moments are
@@ -472,7 +472,7 @@ So we may find the MLE as by maximising $\log L(\cdot)$:
 \[\hat \theta = \arg \max_{\theta}\left\{\log L(\theta; y_1, \ldots, y_n)\right\}.\]
 
 
-```{example}
+```{example, name = "Bernoulli"}
 Suppose $Y_i \sim \text{Bernoulli}(\theta)$.
 The likelihood is
 \[L(\theta; y_1, \ldots, y_n) = \prod_{i=1}^n p(y_i; \theta)
@@ -536,7 +536,7 @@ and consistent (see Example \@ref(exm:bernconsist))
 estimator of $\theta$.
 ```
 
-```{example}
+```{example, name = "Exponential"}
 Suppose the $Y_i \sim \text{exponential}(\theta)$, so 
 that each $Y_i$ has pdf $f(y; \theta) = \theta e^{- \theta y}$
 for $y > 0$.
@@ -572,7 +572,7 @@ method of moments
 estimate $\tilde \theta$ we found in Example \@ref(exm:expmom).
 ```
 
-```{example}
+```{example, name = "Gamma"}
 Suppose $Y_i \sim \text{gamma}(\theta, 1)$.
 
 To find the method of moments estimate of $\theta$, we 
@@ -618,7 +618,7 @@ possible to write down a closed-form
 expression for the MLE, so we must use numerical methods.
 ```
 
-```{example}
+```{example, name = "Normal mean and variance"}
 Suppose $Y_i \sim N(\mu, \sigma^2)$, where
 $\mu$ and $\sigma^2$ are both unknown parameters.
 We have
@@ -656,5 +656,3 @@ and
   so $\hat \sigma^2 = \frac{1}{n} \sum_{i=1}^n (y_i - \bar y)^2$.
 In the exercises, you can check that $(\hat \mu, \hat \sigma^2)$
 is a maximum of the log-likelihood, so is the MLE.
-
-**TODO: add parts of Chapter 11: Normal inference (as an example)**

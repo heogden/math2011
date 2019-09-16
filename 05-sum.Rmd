@@ -72,7 +72,7 @@ to prove some useful "closure"
 results for sums of independent random variables.
 
 
-```{example}
+```{example, name = "Sum of binomial random variables"}
 Suppose that $Y_1, \ldots, Y_n$
 are independent, with $Y_i \sim \text{binomial}(n_i , \theta)$. Then
 we claim that
@@ -93,7 +93,7 @@ $Y_i$ are independent $\text{Bernoulli}(\theta)$ random variables
 then $Z \sim \text{binomial}(n, \theta)$.
 ```
 
-```{example, normalsum}
+```{example, normalsum, name = "Sum of normal random variables"}
 Suppose that $Y_1, \ldots, Y_n$
 are independent, with $Y_i \sim N(\mu_i, \sigma_i^2)$. Then
 we claim that
@@ -117,20 +117,18 @@ $Y_i$ are independent $N(\mu, \sigma^2)$ rvs, then
 $Z \sim N(n \mu, n \sigma^2)$.
 ```
 
-```{example}
+```{example, name = "Sum of negative binomial random variables"}
 Suppose that $Y_1, \ldots, Y_n$
 are independent, with $Y_i \sim \text{negbin}(k_i, \theta)$. Then
 $Z = \sum_{i=1}^n Y_i \sim \text{negbin}(\sum_{i=1}^n k_i, \theta)$.
 The proof of this is left as an exercise.
-**TODO: put specific reference?**
 ```
 
-```{example}
+```{example, name = "Sum of Poisson random variables"}
 Suppose that $Y_1, \ldots, Y_n$
 are independent, with $Y_i \sim \text{Poisson}(\theta_i)$. Then
 $Z = \sum_{i=1}^n Y_i \sim \text{Poisson}(\sum_{i=1}^n \theta_i)$.
 The proof of this is left as an exercise.
-**TODO: put specific reference?**
 ```
 
 ## Properties of the sample mean of normal observations

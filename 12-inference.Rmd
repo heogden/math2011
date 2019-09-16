@@ -35,7 +35,7 @@ with some fixed value of $\theta$, and find a $95\%$ confidence interval
 for each dataset, approximately $95\%$ of those intervals would
 contain the true value of $\theta$.
 
-```{example, cinormmean}
+```{example, cinormmean, name = "Normal mean, known variance"}
 Suppose that $Y_1, \ldots, Y_n$ are independent and identically
 distributed, with each $Y_i \sim N(\mu, \sigma^2)$,
 where $\mu$  is an unknown parameter, but the value of $\sigma^2$
@@ -69,7 +69,7 @@ we get a $95 \%$ confidence interval
 \bar y + \frac{1.96 \sigma}{\sqrt{n}} \right]\]
 for $\mu$.
 
-```{example, cinormmeanunknownsigma}
+```{example, cinormmeanunknownsigma, name = "Normal mean, unknown variance"}
 Suppose that $Y_1, \ldots, Y_n$ are independent and identically
 distributed, with each $Y_i \sim N(\mu, \sigma^2)$,
 where $\mu$ and $\sigma^2$ are both unknown parameters.
@@ -112,7 +112,7 @@ For large $n$, $t_{n-1, 0.975} \approx 1.96$, as the $t_{n-1}$ approaches
 a standard normal distribution as $n$ increases.
 
 
-```{example, cinormvariance}
+```{example, cinormvariance, name = "Normal variance"}
 Suppose that $Y_1, \ldots, Y_n$ are independent and identically
 distributed, with each $Y_i \sim N(\mu, \sigma^2)$,
 where $\mu$ and $\sigma^2$ are both unknown parameters.
@@ -197,7 +197,7 @@ distribution of the test statistic under $H_0$, otherwise we do not reject $H_0$
 The threshold for what counts as "extreme" depends on the specified significance
 level of the test.
 
-```{example}
+```{example, name = "Normal mean, known variance"}
 As in Example \@ref(exm:cinormmean), 
 suppose that $Y_1, \ldots, Y_n$ are independent and identically
 distributed, with each $Y_i \sim N(\mu, \sigma^2)$,
@@ -221,7 +221,7 @@ So if $z > 1.96$ or $z < -1.96$, we reject $H_0$. Otherwise, we do not
 reject $H_0$.
 ```
 
-```{example}
+```{example, name = "Normal mean, unknown variance"}
 As in Example \@ref(exm:cinormmeanunknownsigma), 
 suppose that $Y_1, \ldots, Y_n$ are independent and identically
 distributed, with each $Y_i \sim N(\mu, \sigma^2)$,
@@ -242,7 +242,7 @@ we reject $H_0$. Otherwise, we do not
 reject $H_0$.
 ```
 
-```{example}
+```{example, name = "Normal variance"}
 As in Example \@ref(exm:cinormvariance), 
 suppose that $Y_1, \ldots, Y_n$ are independent and identically
 distributed, with each $Y_i \sim N(\mu, \sigma^2)$,
@@ -334,7 +334,7 @@ we reject $H_0$. Otherwise, we do not
 reject $H_0$.
 ```
 
-```{example, name = "Testing for equality of variances"}
+```{example, name = "$F$-test for equality of variances"}
 In the classical two-sample $t$-test 
 (Example \@ref(exm:twosamplet)), an assumption is made that the 
 (population) variances of the two groups are equal. 

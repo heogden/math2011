@@ -95,7 +95,7 @@ with p.d.f. $f(y; \theta)$, the posterior density has the same form
 \[\pi(\theta | y_1, \ldots, y_n) \propto L(\theta; y_1, \ldots, y_n) \pi(\theta). \]
 
 
-```{example, bayesbern}
+```{example, bayesbern, name = "Bernoulli"}
 Suppose that $Y_1, \ldots Y_n$ are independent and identically
 distributed, with each
 $Y_i \sim \text{Bernoulli}(\theta)$ where $\theta$ is an unknown parameter.
@@ -166,7 +166,7 @@ If the $Y_i$ are discrete random variables, the posterior predictive distributio
 is
 \[P(Y_{n+1} = y | y_1, \ldots, y_n) = \int_\theta p(y; \theta) \pi(\theta | y_1, \ldots, y_n) d \theta. \]
 
-```{example}
+```{example, name = "Bernoulli"}
 Continuing Example \@ref(exm:bayesbern), with $Y_i \sim \text{Bernoulli}(\theta)$
 and prior $\theta \sim \text{beta}(m_0, n_0)$, recall that
 $\theta|y_1, \ldots, y_n \sim \text{beta}(s + m_0, f + n_0),$ 

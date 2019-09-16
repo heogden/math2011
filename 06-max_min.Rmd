@@ -56,7 +56,7 @@ So
 Thus, by independence
 \[G_n(y) = P(Y_1 \leq y)P(Y_2 \leq y) \ldots P(Y_n \leq y) = [F(y)]^n.\]
 
-```{example}
+```{example, name = "Maximum of dice rolls"}
 Suppose I roll a fair die twice. What is the probability function
 of the maximum of the two scores?
 

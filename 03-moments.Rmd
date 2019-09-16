@@ -227,7 +227,7 @@ that of a normal distribution: if $\gamma_2 < 3$, a distribution has
 lighter tails than the normal distribution, while if $\gamma_2 > 3$, a distribution
 has heavier tails than the normal distribution.
 
-```{example}
+```{example, name = "Higher order Bernoulli moments"}
 Let $Y \sim \text{Bernoulli}(\theta)$.
 It is easy to see that $\mu_r^\prime = \theta$, for 
 $r = 1, 2, 3, \ldots$.
@@ -259,7 +259,7 @@ Note that $\gamma_2 = 1$ for $\theta = 0.5$.
 ```
 
 
-```{example, homexp}
+```{example, homexp, name = "Higher order exponential moments"}
 
 Let $Y \sim \text{exponential}(\theta)$, with pdf 
 $f (y) = \theta \exp(- \theta y)$ for $y > 0$.

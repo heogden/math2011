@@ -235,7 +235,7 @@ $Y = F^{-1}(U)$ has cumulative distribution function
 $F(.)$.
 ```
 
-```{example}
+```{example, name = "Generating a binomial random variable"}
 Suppose that you are given $U \sim N(0, 1)$, and
 would like to generate $Y \sim \text{binomial}(2, 0.5)$.
 The $\text{binomial}(2)$ distribution has cdf

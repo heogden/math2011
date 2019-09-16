@@ -306,7 +306,7 @@ As in the univariate case, the moment generating function
 is useful for proving properties about what happens
 to the distribution of random variables under linear transformations.
 
-```{example, bvnmgf}
+```{example, bvnmgf, name = "Bivariate normal mgf"}
 If $\bm Y = (Y_1, Y_2)^T \sim N_2(\bm \mu, \bm \Sigma)$,
 then
 \[M_{Y_1, Y_2}(t_1, t_2) = \exp(\bm \mu^T \bm t + \frac{1}{2} \bm t^T \bm \Sigma \bm t),\]
