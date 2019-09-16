@@ -1,75 +1,39 @@
 # (PART) Distributions and their properties {-}
 
-# Discrete distributions
+# Probability distributions 
 
-## Introduction 
+## Random variables
 
-In this module we are going to examine the properties of 
-distributions of random variables, we
-begin by defining what we mean by a random variable.
+A random variable $Y$ is described by its domain (or sample space) $D$
+together with the probabilities assigned to subsets of the domain.
+These define the *probability distribution* of the random variable.
+We distinguish between discrete and
+continuous random variables.
 
-The set of all possible elementary outcomes of an experiment is 
-called the *sample space*.
-A *random variable* is a mapping of a sample space to the real line.
-We will usually a random variable by a capital letter 
-(e.g. $Y$) and the value taken by a random
-variable by a lower case letter (e.g. $y$).
+**Discrete** probability distributions are defined by a probability (mass)
+function
+\[p(y)\equiv P(Y=y), \quad \text{for $y \in D$}\]
+where
+\[\sum_{y\in D} p(y) =1.\]
+The distribution function $F(\cdot)$ is defined for all $y \in \mathbb{R}$ by
+\[F(y)\equiv P(Y \leq y) = \sum_{x\in D: \, x\le y} p(x).\]
 
-A *discrete random variable* is a random variable that can 
-take only a finite or countably infinite
-number of values. 
-In this module discrete random variables will usually be 
-integer-valued.
+**Continuous** probability distributions are defined by a probability density
+function (pdf) $f(\cdot)$ where
+\[P(y_1< Y \leq y_2) = \int_{y_1}^{y_2} f(y) dy.\]
+The domain of $Y$ is the set $D = \{y \in \mathbb{R}: f(y) > 0\}$
+Hence
+\[\int_{-\infty}^\infty f(y) dy = \int_D f(y) dy = 1.\]
+The distribution function $F(\cdot)$ is then given by
+\[F(y)\equiv P(Y \leq y) = \int_{-\infty}^y f(x) dx.\]
+Therefore
+\[P(y_1< Y \leq y_2) = F(y_2) - F(y_1)\]
+and
+\[f(y) = \frac{d}{dy} F(y).\]
 
-If the experiment consists of tossing a coin with outcomes 
-'head' or 'tail' and we toss the coin once,
-then clearly the sample space is {head, tail}. One possible
-random variable, $X$ say, is the number of
-heads obtained. $X$ can only take values $0$ or $1$ and so is a 
-discrete random variable.
+## Examples of discrete distributions
 
-Suppose we are interested in monitoring the number of hits at 
-a web site in a year. Denote the
-number by $Y$. Clearly, $Y$ must be integer-valued and so is a
-discrete random variable, but there is no
-obvious upper bound to $Y$, so it may be convenient to take the
-set of possible values of $Y$ to be the
-countably infinite set $\{0, 1, 2, \ldots \}$.
-
-Associated with a discrete random variable is a *probability function* 
-(sometimes called the
-*probability mass function*), which gives the probability of each 
-possible value of the random
-variable.
-
-Let the random variable of interest be denoted by $X$ with a set of 
-possible values $D$. Then the
-probability function $p(.)$ is given by
-\[p(x) = P(X = x), \text{for $x \in D$}.\]
-
-It is important to include the domain $D$ when specifying a 
-probability function.
-Clearly $p(x) \geq 0$ for all $x \in D$, and
-$\sum_{x \in D} p(x) = 1$.
-
-If the experiment consists of tossing a coin with outcomes 
-'head' or 'tail' and we toss the coin once,
-then clearly the sample space is \{head, tail\}. Suppose $X$, 
-the number of heads obtained, is our
-random variable of interest. 
-Then, if the coin is fair, the probability function of $X$ is
-\[p(0) = p(1) = \frac{1}{2}.\]
-However, if the fairness of the coin is unknown the probability function of $X$ could be taken to be
-\[p(x) = \theta^x (1- \theta)^{1-x}, \quad x = 0, 1.\]
-Here $\theta$ is a parameter, i.e. a fixed but unknown constant. 
-Clearly, $\theta$ must lie between 0 and 1 in
-this case since it is a probability. 
-This is a common situation encountered in statistics: we might
-assume we know the form of a probability function but it contains 
-one or more unknown quantities
-(parameters) whose value(s) we need estimate from sample data.
-
-## The Bernoulli distribution
+### The Bernoulli distribution
 
 A *Bernoulli trial* is an experiment with just two possible 
 outcomes 'success' and 'failure' which
@@ -84,7 +48,7 @@ if it has probability function of the form
 for some $0 < \theta < 1$. We write $Y \sim \text{Bernoulli}(\theta)$.
 ```
 
-## The binomial distribution
+### The binomial distribution
 
 Suppose we undertake a fixed number, $n$, of independent Bernoulli 
 trials, each with success
@@ -100,7 +64,7 @@ for some $n \in \mathbb{N}$ and $0 < \theta < 1$. We write
 $Y \sim \text{binomial}(n, \theta)$.
 ```
 
-## The negative binomial distribution
+### The negative binomial distribution
 
 Suppose we undertake a sequence of independent Bernoulli trials, 
 each with success probability $\theta$.
@@ -114,7 +78,7 @@ if it has probability function of the form
 \]
 for some $k \in \mathbb{N}$, and $0 < \theta < 1$.
 We write $Y \sim \text{negbin}(k, \theta)$.
-``
+```
 
 The *geometric* distribution is the special case of the negative
 binomial distribution with $k = 1$: the number
@@ -130,7 +94,7 @@ for some $0 < \theta < 1$.
 We write $Y \sim \text{geometric}(\theta)$.
 ```
 
-## The Poisson distribution {#poisson}
+### The Poisson distribution {#poisson}
 
 The *Poisson* distribution arises in a variety of practical situations 
 where we are interested in modelling counts of how often

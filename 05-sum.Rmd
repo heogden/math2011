@@ -164,7 +164,7 @@ Since the cgf characterises the distribution, we concude that
 $\bar Y \sim N(\mu, \sigma^2/n)$.
 ```
 
-## The central limit theorem
+## The central limit theorem {#clt}
 
 If we have $n$ independent and identically distributed
 $N(\mu, \sigma^2)$ random variables, we have just shown that the sample

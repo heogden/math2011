@@ -1,20 +1,28 @@
-# Continuous distributions
+## Examples of  continuous distributions
 
-We shall now look at random variables which may take any values
-within an interval, for example
-in the range from zero to infinity. Such random variables are 
-called *continuous random variables*.
+### The exponential distribution
 
-In this chapter we revise three well-known types of continuous random variables.
-
-## The exponential distribution
-
-In Section \@ref(poisson), we considered a situation in which
+In Section \@ref(poisson), we considered the Poisson process, in which
 events occur at random, at a rate $\theta$ per unit time.
 The actual number of events which take place in any given
 unit of time has $\text{Poisson}(\theta)$ distribution.
 The *exponential* distribution represents
 the time between consecutive events in this process.
+
+Let $Y$ represent the time interval between two events.
+Clearly this variable cannot be negative, but can take any
+positive value.
+The domain of $Y$ is $(0, \infty)$.
+We have
+\begin{align*}
+P(Y > y) &= P(\text{no events in an interval of length $y$}) \\
+&= \frac{e^{-\theta y} (\theta y)^0}{0!} \\
+&= e^{-\theta y}
+\end{align*}
+so
+\[F(y) = P(Y \leq y) = 1 – e^{-\theta y}, \quad y > 0.\]
+Differentiating, we obtain the pdf
+\[f(y) = \frac{d}{dy} F(y) = \theta e^{-\theta y}, \quad y > 0.\]
 
 ```{definition}
 A random variable $Y$ has *exponential* distribution if it has
@@ -24,59 +32,7 @@ for some *rate parameter* $\theta > 0$.
 We write $Y \sim \text{exponential}(\theta)$.
 ```
 
-$Y = \text{the time interval between two events}$.
-Clearly this variable cannot be negative, but can take any
-positive value.
-The domain of $Y$ is $(0, \infty)$, or $0 < y < \infty$.
-We have
-\begin{align*}
-P(Y > y) &= P(\text{no events in an interval of length $y$}) \\
-&= \frac{e^{-\theta y} (\theta y)^0}{0!} \\
-&= e^{-\theta y}
-\end{align*}
-so
-\[P(Y \leq y) = 1 – e^{-\theta y}, \quad 0 < y < \infty.\]
-$Y$ is called an *Exponential random variable*.
-
-## Cumulative distribution function and probability density function
-
-The expression $P(Y \leq y)$ above is known as the 
-*cumulative distribution function* (*cdf*) of *Y*, and
-is denoted by $F(y) = P(Y \leq y)$.
-The cdf of any random variable is bounded by $0$ and $1$ and 
-is monotonically increasing. In addition,
-for a continuous random variable it is also a continuous function.
-For an Exponential random variable, we have:
-\[F(y) = 1 – e^{-\theta y}, \quad 0 < y < \infty.\]
-
-If for a random variable $Y$ there exists a function $f(y)$ such that 
-$F(y) = \int_{-\infty}^y f (u) du$, then $f(y)$ is called
-the *probability density function* (*pdf*) of $Y$.
-If such a function exists, then it has certain properties:
-
-1. $f(y) \geq 0$ for all $y$.
-1. $\int_{-\infty}^\infty f(y) dy = 1$.
-1. $\int_a^b f(y) dy = F(b) - F(a) = P(a < Y \leq b)$. 
-
-We may find $f(y)$ from $F(y)$ by 
-\[f(y) = \frac{d}{dy} F(y)\]
-or, if we have f(y), we may find
-\[F(y) = \int_{-\infty}^y f ( u ) du.\]
-
-Typically, in many situations of practical interest, the pdf 
-is more convenient to use than the cdf.
-
-For the example concerning the time interval between events in a 
-Poisson process,
-$F(y) = 1 – e^{-\theta y}.$
-By differentiation, we find that
-\[f(y) = \frac{dF}{dy} = \theta e^{-\theta y}, \quad y>0,\] is the
-  density function of the Exponential distribution.
-  [**TODO: justify the domain**].
-
-
 ```{example}
-
  Suppose the lifetime in hours of a certain type of 
   electronic component is described by an Exponential
 random variable with rate parameter $\theta = 0.01$. 
@@ -89,59 +45,45 @@ between $y = 100$ and $y = 200$, so
 P(100 < Y \leq 200) &= \int_{100}^{200} 0.01e^{-0.01 y} dy \\
 &= e^{-1} – e^{-2} = 0.37 – 0.14 = 0.23.
 \end{align*}
-
+```
 We could find this in `R` with
 ```{r}
 pexp(200, rate = 0.01) - pexp(100, rate = 0.01)
 ```
+### The uniform distribution
+
+The uniform distribution is one of the simplest probability 
+distributions: it just places a constant density between
+some range $(a, b)$:
+
+```{definition}
+A random variable $Y$ has *normal* distribution if it has
+pdf of the form
+\[f(y) = \frac{1}{b-a}, a < y < b,\]
+for some parameters $a, b \in \mathbb{R}$, with $b > a$.
+We write $Y \sim U(a, b)$.
 ```
 
-## Normal random variables
+### The normal distribution
 
-**TODO: refer to Normal distribution rather than Normal random 
-variables, and similarly for other examples.**
+The normal distribution is probably the single most important distribution
+in statistics. The main reason for its importance is the central limit
+theorem, which you have seen before in MATH1024, and which
+we will prove in Section \@ref(clt).
 
-The most important continuous probability model is the 
-**Normal distribution**. Two examples of
-Normal distributions superimposed on observed sets of data are given 
-below. The first example shows a frequency diagram of heights of 
-young adult males while the second involves diastolic
-blood pressures of schoolboys.
-
-[**TODO: redo these or similar examples**]
-
-The observed frequencies have been approximated by a smooth curve
-which in each case is based
-on a Normal probability distribution model with appropriately 
-chosen mean and standard deviation.
-Normal random variables are unbiquitous in theoretical statistics 
-and in application areas. One
-reason for this is the central limit theorem (which you met last 
-year and which we shall prove later
-in this module).
-
-The pdf of a Normal random variable is given by
-\[f(y) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\left\{-\frac{1}{2 \sigma^2} (y - \mu)^2 \right\}, \quad -\infty < y < \infty, \]
-(where $\exp(z)$ is a convenient way of writing the exponential
-function $e^z$). Note that $\mu$ and $\sigma > 0$
-are parameters. If $Y$ is a random variable with the above pdf, 
-we will write $Y \sim N(\mu, \sigma^2)$.
-
-The pdf of a Normal random variable is the familiar “bell curve”.
-We may plot this pdf in `R`, with
-```{r}
-curve(dnorm(x, mean = 0, sd = 1), from = -5, to = 5,
-      ylab = "f(x)",
-      main = "The N(0, 1) pdf")
+```{definition}
+A random variable $Y$ has *normal* distribution if it has
+pdf of the form
+\[f(y) = \frac{1}{\sqrt{2 \pi \sigma^2}}
+\exp\left\{-\frac{1}{2 \sigma^2} (y - \mu)^2 \right\},\]
+for some parameters $\mu \in \mathbb{R}$ and $\sigma^2 > 0$.
+We write $Y \sim N(\mu, \sigma^2)$.
 ```
-**TODO: explain relationship between standard normal
-and other normal distributions. Linear combinations
-of normal remain normal.**
 
 ```{example}
 Suppose that daily water use at a factory varies about a mean of 
 $77500$ litres with standard
-deviation $5700$ litres. If demand is Normally distributed
+deviation $5700$ litres. If demand is normally distributed
 
 1. What proportion of days does the demand fall short of $70000$ litres?
 1. What proportion of days does demand exceed $90000$ litres?
@@ -174,21 +116,12 @@ small that the computer is rounding it to zero.
 Such an extreme water use is therefore surprising,
 and an
 explanation should be sought. It is possible that a
-mis-recording error has occurred, such
-as two days data being taken together, or perhaps
+ error has occurred in recording the water use, such
+as two days data being taken together. Alternatively, perhaps
 our model which assumes that 
 $X \sim N(77500, 5700^2)$ is incorrect.
 This idea of surprise at an extreme result of
 low probability, as predicted by a statistical model, 
 will be important later in this
 module and also in modules such as MATH2010 Statistical Modelling I.
-``` 
- 
-## The use of a Normal approximation to Binomial probabilities
 
-**TODO: do I have to include this?**
-
-
-## Lognormal random variables
-
-**TODO: do I have to include this?**
