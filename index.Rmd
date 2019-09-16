@@ -1,7 +1,7 @@
 --- 
 title: "MATH2011: Statistical Distribution Theory"
 author: "Dr Helen Ogden"
-date: "`r Sys.Date()`"
+date: "2019/20"
 output: bookdown::gitbook
 documentclass: book
 bibliography: [book.bib]
