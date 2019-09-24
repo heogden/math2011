@@ -7,4 +7,3 @@ documentclass: book
 description: "The course notes for MATH2011: Statistical Distribution Theory."
 ---
 
-# Preface {-}
