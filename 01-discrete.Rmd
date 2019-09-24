@@ -1,6 +1,3 @@
-# (PART) Distributions and their properties {-}
-
-# Probability distributions 
 
 ## Random variables
 
