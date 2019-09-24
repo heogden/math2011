@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 12 Bayesian inference | MATH2011: Statistical Distribution Theory</title>
+  <meta name="description" content="The course notes for MATH2011: Statistical Distribution Theory." />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 12 Bayesian inference | MATH2011: Statistical Distribution Theory" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The course notes for MATH2011: Statistical Distribution Theory." />
+  <meta name="github-repo" content="heogden/math2011" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 12 Bayesian inference | MATH2011: Statistical Distribution Theory" />
+  
+  <meta name="twitter:description" content="The course notes for MATH2011: Statistical Distribution Theory." />
+  
+
+<meta name="author" content="Dr Helen Ogden" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="inference.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MATH2011: Statistical Distribution Theory</a></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Distributions and their properties</b></span></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Probability distributions</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#random-variables"><i class="fa fa-check"></i><b>1.1</b> Random variables</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#examples-of-discrete-distributions"><i class="fa fa-check"></i><b>1.2</b> Examples of discrete distributions</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#the-bernoulli-distribution"><i class="fa fa-check"></i><b>1.2.1</b> The Bernoulli distribution</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#the-binomial-distribution"><i class="fa fa-check"></i><b>1.2.2</b> The binomial distribution</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#the-negative-binomial-distribution"><i class="fa fa-check"></i><b>1.2.3</b> The negative binomial distribution</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#poisson"><i class="fa fa-check"></i><b>1.2.4</b> The Poisson distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#examples-of-continuous-distributions"><i class="fa fa-check"></i><b>1.3</b> Examples of continuous distributions</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#the-exponential-distribution"><i class="fa fa-check"></i><b>1.3.1</b> The exponential distribution</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#the-uniform-distribution"><i class="fa fa-check"></i><b>1.3.2</b> The uniform distribution</a></li>
+<li class="chapter" data-level="1.3.3" data-path="index.html"><a href="index.html#the-normal-distribution"><i class="fa fa-check"></i><b>1.3.3</b> The normal distribution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="moments.html"><a href="moments.html"><i class="fa fa-check"></i><b>2</b> Moments</a><ul>
+<li class="chapter" data-level="2.1" data-path="moments.html"><a href="moments.html#expected-value"><i class="fa fa-check"></i><b>2.1</b> Expected value</a></li>
+<li class="chapter" data-level="2.2" data-path="moments.html"><a href="moments.html#variance"><i class="fa fa-check"></i><b>2.2</b> Variance</a></li>
+<li class="chapter" data-level="2.3" data-path="moments.html"><a href="moments.html#higher-order-moments"><i class="fa fa-check"></i><b>2.3</b> Higher-order moments</a></li>
+<li class="chapter" data-level="2.4" data-path="moments.html"><a href="moments.html#standardised-moments"><i class="fa fa-check"></i><b>2.4</b> Standardised moments</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="genfuns.html"><a href="genfuns.html"><i class="fa fa-check"></i><b>3</b> Generating functions</a><ul>
+<li class="chapter" data-level="3.1" data-path="genfuns.html"><a href="genfuns.html#the-moment-generating-function"><i class="fa fa-check"></i><b>3.1</b> The moment generating function</a></li>
+<li class="chapter" data-level="3.2" data-path="genfuns.html"><a href="genfuns.html#the-cumulant-generating-function"><i class="fa fa-check"></i><b>3.2</b> The cumulant generating function</a></li>
+<li class="chapter" data-level="3.3" data-path="genfuns.html"><a href="genfuns.html#generating-functions-under-linear-transformation"><i class="fa fa-check"></i><b>3.3</b> Generating functions under linear transformation</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html"><i class="fa fa-check"></i><b>4</b> Sums of random variables</a><ul>
+<li class="chapter" data-level="4.1" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#generating-functions-of-a-sum"><i class="fa fa-check"></i><b>4.1</b> Generating functions of a sum</a></li>
+<li class="chapter" data-level="4.2" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#closure-results-for-some-standard-distributions"><i class="fa fa-check"></i><b>4.2</b> Closure results for some standard distributions</a></li>
+<li class="chapter" data-level="4.3" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#properties-of-the-sample-mean-of-normal-observations"><i class="fa fa-check"></i><b>4.3</b> Properties of the sample mean of normal observations</a></li>
+<li class="chapter" data-level="4.4" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#clt"><i class="fa fa-check"></i><b>4.4</b> The central limit theorem</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html"><i class="fa fa-check"></i><b>5</b> Maxima and minima</a><ul>
+<li class="chapter" data-level="5.1" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#order-statistics"><i class="fa fa-check"></i><b>5.1</b> Order Statistics</a></li>
+<li class="chapter" data-level="5.2" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-cdf-of-y_n-the-largest-value-in-a-random-sample-of-size-n"><i class="fa fa-check"></i><b>5.2</b> The cdf of <span class="math inline">\(Y_{(n)}\)</span>, the largest value in a random sample of size <span class="math inline">\(n\)</span></a></li>
+<li class="chapter" data-level="5.3" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-pdf-of-the-maximum-in-the-continuous-case"><i class="fa fa-check"></i><b>5.3</b> The pdf of the maximum in the continuous case</a></li>
+<li class="chapter" data-level="5.4" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-cdf-of-y_1-the-smallest-value-in-a-random-sample-of-size-n"><i class="fa fa-check"></i><b>5.4</b> The cdf of <span class="math inline">\(Y_{(1)}\)</span>, the smallest value in a random sample of size <span class="math inline">\(n\)</span></a></li>
+<li class="chapter" data-level="5.5" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-pdf-of-the-minimum-in-the-continuous-case"><i class="fa fa-check"></i><b>5.5</b> The pdf of the minimum in the continuous case</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="gamma.html"><a href="gamma.html"><i class="fa fa-check"></i><b>6</b> The gamma distribution</a><ul>
+<li class="chapter" data-level="6.1" data-path="gamma.html"><a href="gamma.html#the-gamma-distribution"><i class="fa fa-check"></i><b>6.1</b> The gamma distribution</a></li>
+<li class="chapter" data-level="6.2" data-path="gamma.html"><a href="gamma.html#properties-of-the-gamma-distribution"><i class="fa fa-check"></i><b>6.2</b> Properties of the gamma distribution</a></li>
+<li class="chapter" data-level="6.3" data-path="gamma.html"><a href="gamma.html#chisquared"><i class="fa fa-check"></i><b>6.3</b> The chi-squared distribution</a></li>
+<li class="chapter" data-level="6.4" data-path="gamma.html"><a href="gamma.html#distribution-of-the-sample-variance"><i class="fa fa-check"></i><b>6.4</b> Distribution of the sample variance</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="unitransform.html"><a href="unitransform.html"><i class="fa fa-check"></i><b>7</b> Univariate transformations</a><ul>
+<li class="chapter" data-level="7.1" data-path="unitransform.html"><a href="unitransform.html#transformed-random-variables"><i class="fa fa-check"></i><b>7.1</b> Transformed random variables</a></li>
+<li class="chapter" data-level="7.2" data-path="unitransform.html"><a href="unitransform.html#one-to-one-transformations-of-continuous-random-variables"><i class="fa fa-check"></i><b>7.2</b> One-to-one transformations of continuous random variables</a></li>
+<li class="chapter" data-level="7.3" data-path="unitransform.html"><a href="unitransform.html#generating-samples-from-any-distribution"><i class="fa fa-check"></i><b>7.3</b> Generating samples from any distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html"><i class="fa fa-check"></i><b>8</b> Bivariate distributions</a><ul>
+<li class="chapter" data-level="8.1" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#joint-distributions"><i class="fa fa-check"></i><b>8.1</b> Joint distributions</a></li>
+<li class="chapter" data-level="8.2" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#moments-of-jointly-distributed-random-variables"><i class="fa fa-check"></i><b>8.2</b> Moments of jointly distributed random variables</a></li>
+<li class="chapter" data-level="8.3" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#the-bivariate-normal-distribution"><i class="fa fa-check"></i><b>8.3</b> The bivariate normal distribution</a></li>
+<li class="chapter" data-level="8.4" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#bivariate-moment-generating-functions"><i class="fa fa-check"></i><b>8.4</b> Bivariate moment generating functions</a></li>
+<li class="chapter" data-level="8.5" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#a-useful-property-of-covariances"><i class="fa fa-check"></i><b>8.5</b> A useful property of covariances</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html"><i class="fa fa-check"></i><b>9</b> Bivariate transformations</a><ul>
+<li class="chapter" data-level="9.1" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-transformation-theorem"><i class="fa fa-check"></i><b>9.1</b> The transformation theorem</a></li>
+<li class="chapter" data-level="9.2" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-beta-distribution"><i class="fa fa-check"></i><b>9.2</b> The beta distribution</a></li>
+<li class="chapter" data-level="9.3" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-cauchy-distribution"><i class="fa fa-check"></i><b>9.3</b> The Cauchy distribution</a></li>
+<li class="chapter" data-level="9.4" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-t-distribution"><i class="fa fa-check"></i><b>9.4</b> The <span class="math inline">\(t\)</span> distribution</a></li>
+<li class="chapter" data-level="9.5" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-f-distribution"><i class="fa fa-check"></i><b>9.5</b> The <span class="math inline">\(F\)</span> distribution</a></li>
+</ul></li>
+<li class="part"><span><b>II Statistical inference</b></span></li>
+<li class="chapter" data-level="10" data-path="estimation.html"><a href="estimation.html"><i class="fa fa-check"></i><b>10</b> Parameter estimation</a><ul>
+<li class="chapter" data-level="10.1" data-path="estimation.html"><a href="estimation.html#estimators-and-estimates"><i class="fa fa-check"></i><b>10.1</b> Estimators and estimates</a></li>
+<li class="chapter" data-level="10.2" data-path="estimation.html"><a href="estimation.html#bias"><i class="fa fa-check"></i><b>10.2</b> Bias</a></li>
+<li class="chapter" data-level="10.3" data-path="estimation.html"><a href="estimation.html#consistency"><i class="fa fa-check"></i><b>10.3</b> Consistency</a></li>
+<li class="chapter" data-level="10.4" data-path="estimation.html"><a href="estimation.html#mean-squared-error"><i class="fa fa-check"></i><b>10.4</b> Mean squared error</a></li>
+<li class="chapter" data-level="10.5" data-path="estimation.html"><a href="estimation.html#method-of-moments-estimation"><i class="fa fa-check"></i><b>10.5</b> Method of moments estimation</a></li>
+<li class="chapter" data-level="10.6" data-path="estimation.html"><a href="estimation.html#maximum-likelihood-estimation"><i class="fa fa-check"></i><b>10.6</b> Maximum likelihood estimation</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>11</b> Confidence intervals and hypothesis testing</a><ul>
+<li class="chapter" data-level="11.1" data-path="inference.html"><a href="inference.html#expressing-uncertainty-in-parameter-estimates"><i class="fa fa-check"></i><b>11.1</b> Expressing uncertainty in parameter estimates</a></li>
+<li class="chapter" data-level="11.2" data-path="inference.html"><a href="inference.html#confidence-intervals"><i class="fa fa-check"></i><b>11.2</b> Confidence intervals</a></li>
+<li class="chapter" data-level="11.3" data-path="inference.html"><a href="inference.html#hypothesis-testing"><i class="fa fa-check"></i><b>11.3</b> Hypothesis testing</a></li>
+<li class="chapter" data-level="11.4" data-path="inference.html"><a href="inference.html#two-sample-hypothesis-testing"><i class="fa fa-check"></i><b>11.4</b> Two-sample hypothesis testing</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="bayesian.html"><a href="bayesian.html"><i class="fa fa-check"></i><b>12</b> Bayesian inference</a><ul>
+<li class="chapter" data-level="12.1" data-path="bayesian.html"><a href="bayesian.html#frequentist-and-bayesian-inference"><i class="fa fa-check"></i><b>12.1</b> Frequentist and Bayesian inference</a></li>
+<li class="chapter" data-level="12.2" data-path="bayesian.html"><a href="bayesian.html#prior-and-posterior-distributions"><i class="fa fa-check"></i><b>12.2</b> Prior and posterior distributions</a></li>
+<li class="chapter" data-level="12.3" data-path="bayesian.html"><a href="bayesian.html#the-posterior-predictive-distribution"><i class="fa fa-check"></i><b>12.3</b> The posterior predictive distribution</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MATH2011: Statistical Distribution Theory</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+\(
+\newcommand{\bm}[1]{\boldsymbol{\mathbf{#1}}}
+\)
+<div id="bayesian" class="section level1">
+<h1><span class="header-section-number">Chapter 12</span> Bayesian inference</h1>
+<div id="frequentist-and-bayesian-inference" class="section level2">
+<h2><span class="header-section-number">12.1</span> Frequentist and Bayesian inference</h2>
+<p>In frequentist inference, uncertainty about a parameter value is usually expressed through a confidence interval for that parameter: an interval <span class="math inline">\([L(\bm y), U(\bm y)]\)</span> such that <span class="math display">\[P(L(\bm Y) \leq \theta \leq U(\bm Y)) = 1- \alpha.\]</span> We treat <span class="math inline">\(\theta\)</span> as fixed (but unknown), and the probabilities are in terms of the random variables <span class="math inline">\(\bm Y = (Y_1, \ldots Y_n)^T\)</span>. For instance, if we find <span class="math inline">\((1.1, 2.3)\)</span> is a <span class="math inline">\(95 \%\)</span> confidence interval for <span class="math inline">\(\theta\)</span>, this <strong>does not</strong> mean that <span class="math inline">\(P(1.1 \leq \theta \leq 2.3) = 0.95\)</span>, as we treat <span class="math inline">\(\theta\)</span> as a fixed value.</p>
+<p>By contrast, in Bayesian inference, we treat <span class="math inline">\(\theta\)</span> as a random variable, and construct a probability distribution which summarises our belief about the likely value of a parameter <span class="math inline">\(\theta\)</span>. Our belief about which values of <span class="math inline">\(\theta\)</span> are likely (the “posterior” distribution for <span class="math inline">\(\theta\)</span>) is influenced by two factors: how likely the observed data <span class="math inline">\(y_1, \ldots, y_n\)</span> were to be generated using that value of <span class="math inline">\(\theta\)</span> (the likelihood <span class="math inline">\(L(\theta; y_1, \ldots, y_n)\)</span>); and how likely we thought each value <span class="math inline">\(\theta\)</span> was before conducting the experiment (the “prior” distribution for <span class="math inline">\(\theta\)</span>).</p>
+<p>We will give a very brief overview of Bayesian inference: see MATH3044 for more details.</p>
+</div>
+<div id="prior-and-posterior-distributions" class="section level2">
+<h2><span class="header-section-number">12.2</span> Prior and posterior distributions</h2>
+<p>The first step of Bayesian inference is to express our beliefs about <span class="math inline">\(\theta\)</span> before conducting the experiment. We specify these beliefs through a probability distribution, which is called the <em>prior distribution</em>. Typically <span class="math inline">\(\theta\)</span> is a continuous random variable, so we specify the distribution through a density <span class="math inline">\(\pi(\theta)\)</span>. This idea will become clearer later on, when we consider an example.</p>
+<p>The <em>posterior distribution</em> is the probability distribution for a parameter <span class="math inline">\(\theta\)</span>, conditional on the event <span class="math inline">\(\{Y_1 = y_1, Y_2 = y_2, \ldots, Y_n = y_n\}.\)</span></p>
+<p>To find this distribution, we will use Bayes’ Theorem, which you have already seen in MATH1024:</p>
+
+<div class="theorem">
+<span id="thm:unnamed-chunk-110" class="theorem"><strong>Theorem 12.1  (Bayes’ Theorem)  </strong></span>For two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, such that <span class="math inline">\(P(B) &gt; 0\)</span>, <span class="math display">\[P(A | B) = \frac{P(B | A) P(A)}{P(B)}\]</span>
+</div>
+
+
+<div class="proof">
+<p> <span class="proof"><em>Proof. </em></span> By definition, <span class="math display">\[P(B|A) = \frac{P(A \cap B)}{P(A)}, \quad \text{if $P(A) &gt; 0$},\]</span> so <span class="math inline">\(P(A \cap B) = P(B | A) P(A)\)</span>, which holds even if <span class="math inline">\(P(A) = 0\)</span>.</p>
+So
+<span class="math display">\[\begin{align*}
+P(A|B) &amp;= \frac{P(A \cap B)}{P(B)}, \quad \text{since $P(B) &gt; 0$} \\
+&amp;= \frac{P(B | A) P(A)}{P(B)}
+\end{align*}\]</span>
+as required.
+</div>
+
+<p>We use a continuous version of Bayes’ Theorem to construct the probability distribution for the parameters <span class="math inline">\(\theta\)</span>, given <span class="math inline">\(Y_1 = y_1, \ldots, Y_n = y_n\)</span>.</p>
+If <span class="math inline">\(Y_1, \ldots, Y_n\)</span> have discrete distribution, the probability density for <span class="math inline">\(\theta\)</span>, given the event <span class="math inline">\(B = \{Y_1 = y_1, \ldots, Y_n = y_n\}\)</span> is
+<span class="math display">\[\begin{align*}
+\pi(\theta| y_1, \ldots, y_n) &amp;= \frac{P(Y_1 = y_1, \ldots, Y_n = y_n| \theta) \pi(\theta)}{P(Y_1 = y_1, \ldots, Y_n = y_n)} \\
+&amp;= \frac{L(\theta; y_1, \ldots, y_n) \pi(\theta)}{P(Y_1 = y_1, \ldots, Y_n = y_n)}
+\end{align*}\]</span>
+<p>where <span class="math display">\[P(Y_1 = y_1, \ldots, Y_n = y_1) = \int L(\theta; y_1, \ldots, y_n) \pi(\theta) d \theta,\]</span> because <span class="math display">\[\int \pi(\theta|y_1, \ldots, y_n) d\theta =
+  \frac{\int L(\theta; y_1, \ldots, y_n) \pi(\theta) d\theta}{P(Y_1 = y_1, \ldots, Y_n = y_1)}
+   = 1,\]</span> as <span class="math inline">\(\pi(\theta|y_1, \ldots, y_n)\)</span> is a probability density function.</p>
+<p>The denominator <span class="math inline">\(P(Y_1 = y_1, \ldots Y_n = y_n)\)</span> does not depend on <span class="math inline">\(\theta\)</span>, so usually we write <span class="math display">\[\pi(\theta| y_1, \ldots, y_n) \propto L(\theta; y_1, \ldots, y_n) \pi(\theta),\]</span> and if necessary find the constant of proportionality to make sure that <span class="math inline">\(\pi(\theta|y_1, \ldots y_n)\)</span> integrates to <span class="math inline">\(1\)</span>. Sometimes we recognise the pdf of a known distribution, and do not need to compute the constant.</p>
+<p>If <span class="math inline">\(Y_1, \ldots Y_n\)</span> have continuous distribution, with p.d.f. <span class="math inline">\(f(y; \theta)\)</span>, the posterior density has the same form <span class="math display">\[\pi(\theta | y_1, \ldots, y_n) \propto L(\theta; y_1, \ldots, y_n) \pi(\theta). \]</span></p>
+
+<div class="example">
+<p><span id="exm:bayesbern" class="example"><strong>Example 12.1  (Bernoulli)  </strong></span>Suppose that <span class="math inline">\(Y_1, \ldots Y_n\)</span> are independent and identically distributed, with each <span class="math inline">\(Y_i \sim \text{Bernoulli}(\theta)\)</span> where <span class="math inline">\(\theta\)</span> is an unknown parameter.</p>
+<p>To be able to conduct Bayesian inference, we need to write down a prior distribution for <span class="math inline">\(\theta\)</span>. In this case, it is convenient to choose a beta distribution <span class="math inline">\(\theta \sim \text{beta}(m_0, n_0)\)</span> for the prior, so that <span class="math display">\[\pi(\theta) \propto \theta^{m_0-1}(1 - \theta)^{n_0 - 1}.\]</span> We will see that if we make this choice, then the posterior distribution will also be a beta distribution.</p>
+The likelihood function for <span class="math inline">\(\theta\)</span> is <span class="math display">\[L(\theta; y_1, \ldots, y_n) \prod_{i=1}^n \theta^{y_i} (1 - \theta)^{1- y_i}
+= \theta^{\sum_{i=1}^n y_i} (1 - \theta)^{n - \sum_{i=1}^n y_i}.\]</span> The posterior distribution is
+<span class="math display">\[\begin{align*}
+\pi(\theta|y_1, \ldots, y_n) &amp;\propto L(\theta; y_1, \ldots, y_n) \pi(\theta) \\
+&amp;\propto \theta^{\sum_{i=1}^n y_i} (1 - \theta)^{n - \sum_{i=1}^n y_i}
+\theta^{m_0-1}(1 - \theta)^{n_0 - 1} \\
+&amp;= \theta^{\sum_{i=1}^n y_i + n_0 - 1} (1 - \theta)^{n - \sum_{i=1}^n y_i + n_0 - 1},
+\end{align*}\]</span>
+<p>which is proportional to the pdf of a <span class="math inline">\(\text{beta}\left(\sum_{i=1}^n y_i + n_0, n - \sum_{i=1}^n y_i + n_0\right)\)</span> distribution, so this is the posterior distribution. Writing <span class="math inline">\(s = \sum_{i=1}^n y_i\)</span> for the number of observed “successes”, and <span class="math inline">\(f = n - \sum_{i=1}^n y_i\)</span> for the number of observed “failures”, we have <span class="math display">\[\theta|y_1, \ldots, y_n \sim \text{beta}(s + n_0, f + m_0).\]</span> This means that we may interpret the prior distribution as equivalent to the information we would gain by seeing <span class="math inline">\(m_0\)</span> successes and <span class="math inline">\(n_0\)</span> failures.</p>
+In reality, in order to choose a sensible prior we need to know more information about the type of process we are modelling. For instance, suppose that our data are the outcomes of <span class="math inline">\(n\)</span> tennis matches between two friends, Alex and Bob, where <span class="math inline">\(Y_i = 1\)</span> denotes a victory for Alex, and <span class="math inline">\(Y_i = 0\)</span> a victory for Bob. Suppose that Alex is 25 and healthy, whereas Bob is 52 and slightly overweight. Before the matches are played, you have some prior belief about <span class="math inline">\(\theta\)</span>, the probability that Alex will win a game of tennis against Bob. The prior distribution reflects your personal beliefs: your prior may well look quite different to another person’s prior. In this example, we might suppose <span class="math inline">\(\theta \sim \text{beta}(3, 2)\)</span>. If we then observe two matches, both won by Bob (<span class="math inline">\(s = 0\)</span>, <span class="math inline">\(f = 2\)</span>), the posterior distribution will be <span class="math inline">\(\theta|\bm Y \sim \text{beta}(3, 4)\)</span>. In this case, the smaller values of <span class="math inline">\(\theta\)</span> are given a higher probability in the posterior than in the prior, because of the what we have learnt from the data:
+</div>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">curve</span>(<span class="kw">dbeta</span>(x, <span class="dv">3</span>, <span class="dv">4</span>), <span class="dv">0</span>, <span class="dv">1</span>, <span class="dt">ylab =</span> <span class="st">&quot;pi(theta)&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;theta&quot;</span>)
+<span class="kw">curve</span>(<span class="kw">dbeta</span>(x, <span class="dv">3</span>, <span class="dv">2</span>), <span class="dv">0</span>, <span class="dv">1</span>, <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">add =</span> <span class="ot">TRUE</span>)
+<span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="dt">lty =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">1</span>), <span class="kw">c</span>(<span class="st">&quot;Prior&quot;</span>, <span class="st">&quot;Posterior&quot;</span>)) </code></pre></div>
+<p><img src="MATH2011_files/figure-html/unnamed-chunk-112-1.png" width="672" /></p>
+</div>
+<div id="the-posterior-predictive-distribution" class="section level2">
+<h2><span class="header-section-number">12.3</span> The posterior predictive distribution</h2>
+<p>Suppose we wanted to predict the outcome of a new random variables <span class="math inline">\(Y_{n+1}\)</span>, assumed to have the same distribution as <span class="math inline">\(Y_1, \ldots, Y_n\)</span>.</p>
+<p>If the <span class="math inline">\(Y_i\)</span> are discrete random variables, the posterior predictive distribution is <span class="math display">\[P(Y_{n+1} = y | y_1, \ldots, y_n) = \int_\theta p(y; \theta) \pi(\theta | y_1, \ldots, y_n) d \theta. \]</span></p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-113" class="example"><strong>Example 12.2  (Bernoulli)  </strong></span>Continuing Example <a href="bayesian.html#exm:bayesbern">12.1</a>, with <span class="math inline">\(Y_i \sim \text{Bernoulli}(\theta)\)</span> and prior <span class="math inline">\(\theta \sim \text{beta}(m_0, n_0)\)</span>, recall that <span class="math inline">\(\theta|y_1, \ldots, y_n \sim \text{beta}(s + m_0, f + n_0),\)</span> where <span class="math inline">\(s = \sum_{i=1}^n y_i\)</span> and <span class="math inline">\(f = n - \sum_{i=1}^n y_i\)</span>. We have <span class="math display">\[\pi(\theta|y_1, \ldots, y_n) = \frac{1}{B(s + m_0, f + n_0)} \theta^{s + m_0 - 1}
+(1 - \theta)^{f + n_0 - 1}, \quad 0 &lt; \theta &lt; 1,\]</span> and <span class="math display">\[p(y; \theta) = \theta^y (1 - \theta)^{1 - y}, \quad y \in \{0, 1\}.\]</span> We have
+<span class="math display">\[\begin{align*}
+P(Y_{n+1} = 1 | y_1 \ldots y_n) &amp;= \int_0^1 \theta
+ \frac{1}{B(s + m_0, f + n_0)} \theta^{s + m_0 - 1}
+(1 - \theta)^{f + n_0 - 1} d\theta \\
+&amp;= \frac{1}{B(s + m_0, f + n_0)}  \int_0^1 \theta^{s + m_0}
+(1 - \theta)^{f + n_0 - 1} d \theta \\
+&amp;= \frac{B(s + m_0 + 1, f + n_0)}{B(s + m_0, f + n_0)} 
+ \int_0^1 h(\theta) d \theta \\
+ &amp; \quad \quad \text{where $h(\theta)$ the $\text{beta}(s + m_0 + 1, f + n_0)$ pdf} \\
+&amp;= \frac{\Gamma(s + m_0 + 1) \Gamma(f + n_0)}{\Gamma(s + m_0 + 1 + f + n_0)}
+ \cdot
+\frac{\Gamma(s + m_0 + f + n_0)}{\Gamma(s + m_0)\Gamma(f + n_0)} \cdot 1 \\
+&amp;= \frac{\Gamma(n + m_0 + n_0)}{\Gamma(n + m_0 + n_0 + 1)} 
+\frac{\Gamma(s + m_0 + 1)}{\Gamma(s + m_0)}  \\
+&amp;= \frac{s+m_0}{n + m_0 + n_0}.
+\end{align*}\]</span>
+In our tennis match example, with <span class="math inline">\(m_0 = 3\)</span>, <span class="math inline">\(n_0 = 2\)</span>, after observing two matches both won by Bob (<span class="math inline">\(s = 0\)</span>, <span class="math inline">\(f = 2\)</span>), our predicted probability that Alex will win the next match is <span class="math display">\[P(Y_3 = 1 | y_1, y_2) = \frac{0 + 3}{2 + 3 + 2}= \frac{3}{7}.\]</span>
+</div>
+
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="inference.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/13-bayesian.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["MATH2011.pdf", "MATH2011.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

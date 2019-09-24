@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Moments | MATH2011: Statistical Distribution Theory</title>
+  <meta name="description" content="The course notes for MATH2011: Statistical Distribution Theory." />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Moments | MATH2011: Statistical Distribution Theory" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The course notes for MATH2011: Statistical Distribution Theory." />
+  <meta name="github-repo" content="heogden/math2011" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Moments | MATH2011: Statistical Distribution Theory" />
+  
+  <meta name="twitter:description" content="The course notes for MATH2011: Statistical Distribution Theory." />
+  
+
+<meta name="author" content="Dr Helen Ogden" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="genfuns.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MATH2011: Statistical Distribution Theory</a></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Distributions and their properties</b></span></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Probability distributions</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#random-variables"><i class="fa fa-check"></i><b>1.1</b> Random variables</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#examples-of-discrete-distributions"><i class="fa fa-check"></i><b>1.2</b> Examples of discrete distributions</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#the-bernoulli-distribution"><i class="fa fa-check"></i><b>1.2.1</b> The Bernoulli distribution</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#the-binomial-distribution"><i class="fa fa-check"></i><b>1.2.2</b> The binomial distribution</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#the-negative-binomial-distribution"><i class="fa fa-check"></i><b>1.2.3</b> The negative binomial distribution</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#poisson"><i class="fa fa-check"></i><b>1.2.4</b> The Poisson distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#examples-of-continuous-distributions"><i class="fa fa-check"></i><b>1.3</b> Examples of continuous distributions</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#the-exponential-distribution"><i class="fa fa-check"></i><b>1.3.1</b> The exponential distribution</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#the-uniform-distribution"><i class="fa fa-check"></i><b>1.3.2</b> The uniform distribution</a></li>
+<li class="chapter" data-level="1.3.3" data-path="index.html"><a href="index.html#the-normal-distribution"><i class="fa fa-check"></i><b>1.3.3</b> The normal distribution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="moments.html"><a href="moments.html"><i class="fa fa-check"></i><b>2</b> Moments</a><ul>
+<li class="chapter" data-level="2.1" data-path="moments.html"><a href="moments.html#expected-value"><i class="fa fa-check"></i><b>2.1</b> Expected value</a></li>
+<li class="chapter" data-level="2.2" data-path="moments.html"><a href="moments.html#variance"><i class="fa fa-check"></i><b>2.2</b> Variance</a></li>
+<li class="chapter" data-level="2.3" data-path="moments.html"><a href="moments.html#higher-order-moments"><i class="fa fa-check"></i><b>2.3</b> Higher-order moments</a></li>
+<li class="chapter" data-level="2.4" data-path="moments.html"><a href="moments.html#standardised-moments"><i class="fa fa-check"></i><b>2.4</b> Standardised moments</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="genfuns.html"><a href="genfuns.html"><i class="fa fa-check"></i><b>3</b> Generating functions</a><ul>
+<li class="chapter" data-level="3.1" data-path="genfuns.html"><a href="genfuns.html#the-moment-generating-function"><i class="fa fa-check"></i><b>3.1</b> The moment generating function</a></li>
+<li class="chapter" data-level="3.2" data-path="genfuns.html"><a href="genfuns.html#the-cumulant-generating-function"><i class="fa fa-check"></i><b>3.2</b> The cumulant generating function</a></li>
+<li class="chapter" data-level="3.3" data-path="genfuns.html"><a href="genfuns.html#generating-functions-under-linear-transformation"><i class="fa fa-check"></i><b>3.3</b> Generating functions under linear transformation</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html"><i class="fa fa-check"></i><b>4</b> Sums of random variables</a><ul>
+<li class="chapter" data-level="4.1" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#generating-functions-of-a-sum"><i class="fa fa-check"></i><b>4.1</b> Generating functions of a sum</a></li>
+<li class="chapter" data-level="4.2" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#closure-results-for-some-standard-distributions"><i class="fa fa-check"></i><b>4.2</b> Closure results for some standard distributions</a></li>
+<li class="chapter" data-level="4.3" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#properties-of-the-sample-mean-of-normal-observations"><i class="fa fa-check"></i><b>4.3</b> Properties of the sample mean of normal observations</a></li>
+<li class="chapter" data-level="4.4" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#clt"><i class="fa fa-check"></i><b>4.4</b> The central limit theorem</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html"><i class="fa fa-check"></i><b>5</b> Maxima and minima</a><ul>
+<li class="chapter" data-level="5.1" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#order-statistics"><i class="fa fa-check"></i><b>5.1</b> Order Statistics</a></li>
+<li class="chapter" data-level="5.2" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-cdf-of-y_n-the-largest-value-in-a-random-sample-of-size-n"><i class="fa fa-check"></i><b>5.2</b> The cdf of <span class="math inline">\(Y_{(n)}\)</span>, the largest value in a random sample of size <span class="math inline">\(n\)</span></a></li>
+<li class="chapter" data-level="5.3" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-pdf-of-the-maximum-in-the-continuous-case"><i class="fa fa-check"></i><b>5.3</b> The pdf of the maximum in the continuous case</a></li>
+<li class="chapter" data-level="5.4" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-cdf-of-y_1-the-smallest-value-in-a-random-sample-of-size-n"><i class="fa fa-check"></i><b>5.4</b> The cdf of <span class="math inline">\(Y_{(1)}\)</span>, the smallest value in a random sample of size <span class="math inline">\(n\)</span></a></li>
+<li class="chapter" data-level="5.5" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-pdf-of-the-minimum-in-the-continuous-case"><i class="fa fa-check"></i><b>5.5</b> The pdf of the minimum in the continuous case</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="gamma.html"><a href="gamma.html"><i class="fa fa-check"></i><b>6</b> The gamma distribution</a><ul>
+<li class="chapter" data-level="6.1" data-path="gamma.html"><a href="gamma.html#the-gamma-distribution"><i class="fa fa-check"></i><b>6.1</b> The gamma distribution</a></li>
+<li class="chapter" data-level="6.2" data-path="gamma.html"><a href="gamma.html#properties-of-the-gamma-distribution"><i class="fa fa-check"></i><b>6.2</b> Properties of the gamma distribution</a></li>
+<li class="chapter" data-level="6.3" data-path="gamma.html"><a href="gamma.html#chisquared"><i class="fa fa-check"></i><b>6.3</b> The chi-squared distribution</a></li>
+<li class="chapter" data-level="6.4" data-path="gamma.html"><a href="gamma.html#distribution-of-the-sample-variance"><i class="fa fa-check"></i><b>6.4</b> Distribution of the sample variance</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="unitransform.html"><a href="unitransform.html"><i class="fa fa-check"></i><b>7</b> Univariate transformations</a><ul>
+<li class="chapter" data-level="7.1" data-path="unitransform.html"><a href="unitransform.html#transformed-random-variables"><i class="fa fa-check"></i><b>7.1</b> Transformed random variables</a></li>
+<li class="chapter" data-level="7.2" data-path="unitransform.html"><a href="unitransform.html#one-to-one-transformations-of-continuous-random-variables"><i class="fa fa-check"></i><b>7.2</b> One-to-one transformations of continuous random variables</a></li>
+<li class="chapter" data-level="7.3" data-path="unitransform.html"><a href="unitransform.html#generating-samples-from-any-distribution"><i class="fa fa-check"></i><b>7.3</b> Generating samples from any distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html"><i class="fa fa-check"></i><b>8</b> Bivariate distributions</a><ul>
+<li class="chapter" data-level="8.1" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#joint-distributions"><i class="fa fa-check"></i><b>8.1</b> Joint distributions</a></li>
+<li class="chapter" data-level="8.2" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#moments-of-jointly-distributed-random-variables"><i class="fa fa-check"></i><b>8.2</b> Moments of jointly distributed random variables</a></li>
+<li class="chapter" data-level="8.3" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#the-bivariate-normal-distribution"><i class="fa fa-check"></i><b>8.3</b> The bivariate normal distribution</a></li>
+<li class="chapter" data-level="8.4" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#bivariate-moment-generating-functions"><i class="fa fa-check"></i><b>8.4</b> Bivariate moment generating functions</a></li>
+<li class="chapter" data-level="8.5" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#a-useful-property-of-covariances"><i class="fa fa-check"></i><b>8.5</b> A useful property of covariances</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html"><i class="fa fa-check"></i><b>9</b> Bivariate transformations</a><ul>
+<li class="chapter" data-level="9.1" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-transformation-theorem"><i class="fa fa-check"></i><b>9.1</b> The transformation theorem</a></li>
+<li class="chapter" data-level="9.2" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-beta-distribution"><i class="fa fa-check"></i><b>9.2</b> The beta distribution</a></li>
+<li class="chapter" data-level="9.3" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-cauchy-distribution"><i class="fa fa-check"></i><b>9.3</b> The Cauchy distribution</a></li>
+<li class="chapter" data-level="9.4" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-t-distribution"><i class="fa fa-check"></i><b>9.4</b> The <span class="math inline">\(t\)</span> distribution</a></li>
+<li class="chapter" data-level="9.5" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-f-distribution"><i class="fa fa-check"></i><b>9.5</b> The <span class="math inline">\(F\)</span> distribution</a></li>
+</ul></li>
+<li class="part"><span><b>II Statistical inference</b></span></li>
+<li class="chapter" data-level="10" data-path="estimation.html"><a href="estimation.html"><i class="fa fa-check"></i><b>10</b> Parameter estimation</a><ul>
+<li class="chapter" data-level="10.1" data-path="estimation.html"><a href="estimation.html#estimators-and-estimates"><i class="fa fa-check"></i><b>10.1</b> Estimators and estimates</a></li>
+<li class="chapter" data-level="10.2" data-path="estimation.html"><a href="estimation.html#bias"><i class="fa fa-check"></i><b>10.2</b> Bias</a></li>
+<li class="chapter" data-level="10.3" data-path="estimation.html"><a href="estimation.html#consistency"><i class="fa fa-check"></i><b>10.3</b> Consistency</a></li>
+<li class="chapter" data-level="10.4" data-path="estimation.html"><a href="estimation.html#mean-squared-error"><i class="fa fa-check"></i><b>10.4</b> Mean squared error</a></li>
+<li class="chapter" data-level="10.5" data-path="estimation.html"><a href="estimation.html#method-of-moments-estimation"><i class="fa fa-check"></i><b>10.5</b> Method of moments estimation</a></li>
+<li class="chapter" data-level="10.6" data-path="estimation.html"><a href="estimation.html#maximum-likelihood-estimation"><i class="fa fa-check"></i><b>10.6</b> Maximum likelihood estimation</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>11</b> Confidence intervals and hypothesis testing</a><ul>
+<li class="chapter" data-level="11.1" data-path="inference.html"><a href="inference.html#expressing-uncertainty-in-parameter-estimates"><i class="fa fa-check"></i><b>11.1</b> Expressing uncertainty in parameter estimates</a></li>
+<li class="chapter" data-level="11.2" data-path="inference.html"><a href="inference.html#confidence-intervals"><i class="fa fa-check"></i><b>11.2</b> Confidence intervals</a></li>
+<li class="chapter" data-level="11.3" data-path="inference.html"><a href="inference.html#hypothesis-testing"><i class="fa fa-check"></i><b>11.3</b> Hypothesis testing</a></li>
+<li class="chapter" data-level="11.4" data-path="inference.html"><a href="inference.html#two-sample-hypothesis-testing"><i class="fa fa-check"></i><b>11.4</b> Two-sample hypothesis testing</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="bayesian.html"><a href="bayesian.html"><i class="fa fa-check"></i><b>12</b> Bayesian inference</a><ul>
+<li class="chapter" data-level="12.1" data-path="bayesian.html"><a href="bayesian.html#frequentist-and-bayesian-inference"><i class="fa fa-check"></i><b>12.1</b> Frequentist and Bayesian inference</a></li>
+<li class="chapter" data-level="12.2" data-path="bayesian.html"><a href="bayesian.html#prior-and-posterior-distributions"><i class="fa fa-check"></i><b>12.2</b> Prior and posterior distributions</a></li>
+<li class="chapter" data-level="12.3" data-path="bayesian.html"><a href="bayesian.html#the-posterior-predictive-distribution"><i class="fa fa-check"></i><b>12.3</b> The posterior predictive distribution</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MATH2011: Statistical Distribution Theory</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+\(
+\newcommand{\bm}[1]{\boldsymbol{\mathbf{#1}}}
+\)
+<div id="moments" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Moments</h1>
+<div id="expected-value" class="section level2">
+<h2><span class="header-section-number">2.1</span> Expected value</h2>
+<p>Suppose we have a discrete random variable <span class="math inline">\(Y\)</span> with probability function <span class="math inline">\(p(.)\)</span> with domain <span class="math inline">\(D\)</span>. Although <span class="math inline">\(p(.)\)</span> tells us everything about the properties of <span class="math inline">\(Y\)</span>, it is often useful to summarise the properties <span class="math inline">\(Y\)</span> using a few simple quantities.</p>
+<p>A simple summary of the probabilistic properties of <span class="math inline">\(Y\)</span> is the <em>expected value</em> or (population) <em>mean</em> of <span class="math inline">\(Y\)</span>, denoted by <span class="math inline">\(E(Y)\)</span> or <span class="math inline">\(\mu\)</span>, depending on the context.</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-15" class="definition"><strong>Definition 2.1  </strong></span>If <span class="math inline">\(Y\)</span> is a discrete random variable with probability function <span class="math inline">\(p(.)\)</span> and domain <span class="math inline">\(D\)</span>, the expected value of <span class="math inline">\(Y\)</span> is <span class="math display">\[\mu = E(Y) = \sum_{y \in D} y p(y).\]</span> If <span class="math inline">\(Y\)</span> is a continuous random variable with probability density function <span class="math inline">\(f(.)\)</span> and domain <span class="math inline">\(D\)</span>, the expected value of Y is: <span class="math display">\[\mu = E(Y) = \int_{-\infty}^\infty y f(y)dy = \int_D y f(y) dy.\]</span>
+</div>
+
+
+<div class="example">
+<span id="exm:bernoullimean" class="example"><strong>Example 2.1  (Expected value of the Bernoulli distribution)  </strong></span>Suppose <span class="math inline">\(Y \sim \text{Bernoulli}(\theta)\)</span>. Then <span class="math display">\[E(Y) = \sum_{y \in \{0, 1\}} y p(y) = 0 \times (1- \theta) + 1 \times \theta = \theta.\]</span>
+</div>
+
+
+<div class="example">
+<span id="exm:expmean" class="example"><strong>Example 2.2  (Expected value of the exponential distribution)  </strong></span>Suppose <span class="math inline">\(Y \sim \text{exponential}(\theta)\)</span>. Then
+<span class="math display">\[\begin{align*}
+E(Y) &amp;= \int_{0}^\infty y \theta e^{-\theta y} dy  \\
+&amp;= \frac{1}{\theta} \int_{0}^\infty t e^{-t} dt \\
+&amp;= \frac{1}{\theta} \left\{[-t e^{-t}]_0^\infty + \int_0^\infty e^{-t}dt \right\} \\
+&amp;= \frac{1}{\theta} \{0 + 1\} = \frac{1}{\theta}.
+\end{align*}\]</span>
+Note that we have shown <span class="math inline">\(\int_{0}^\infty t e^{-t} dt = 1\)</span>: this result will be useful later on.
+</div>
+
+<p>We can find the expected value of new random variable <span class="math inline">\(h(Y)\)</span> with <span class="math display">\[E[h(Y)] = \int_{-\infty}^{\infty} h(y) f(y) dy = \int_D h(y) f(y) dy\]</span> if <span class="math inline">\(Y\)</span> is a continuous random variable with pdf <span class="math inline">\(f(.)\)</span>. We may obtain a similar expression in the discrete case.</p>
+</div>
+<div id="variance" class="section level2">
+<h2><span class="header-section-number">2.2</span> Variance</h2>
+
+<div class="definition">
+<span id="def:unnamed-chunk-16" class="definition"><strong>Definition 2.2  </strong></span>The (population) variance of <span class="math inline">\(Y\)</span> is <span class="math display">\[ \text{Var}(Y) = E\left\{[Y - E(Y)]^2 \right\}.\]</span>
+</div>
+
+<p>It is easy to show that <span class="math display">\[ \text{Var}(Y) = E(Y^2) - [E(Y)]^2.\]</span> <span class="math inline">\(\text{Var}(Y)\)</span> is a measure of spread, and is often denoted by <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>We sometimes use the (population) standard deviation, which is just the square root of the variance, to return to the original scale of measurement of <span class="math inline">\(Y\)</span>.</p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-17" class="example"><strong>Example 2.3  (Variance of the Bernoulli distribution)  </strong></span>Suppose <span class="math inline">\(Y \sim \text{Bernoulli}(\theta)\)</span>. We have seen in Example <a href="moments.html#exm:bernoullimean">2.1</a> that <span class="math inline">\(E(Y) = \theta\)</span>. We have <span class="math display">\[E(Y^2) = \sum_{y \in \{0, 1\}} y^2 p(y) = 0^2 \times (1- \theta) + 1^2 \times \theta
+= \theta,\]</span> so <span class="math display">\[\text{Var}(Y) = E(Y^2) - [E(Y)]^2 = \theta - \theta^2 = \theta ( 1 - \theta).\]</span>
+</div>
+
+
+<div class="example">
+<span id="exm:expvar" class="example"><strong>Example 2.4  (Variance of the exponential distribution)  </strong></span>Suppose <span class="math inline">\(Y \sim \text{exponential}(\theta)\)</span>. We have seen in Example <a href="moments.html#exm:expmean">2.2</a> that <span class="math inline">\(E(Y) = 1/\theta\)</span>. We have
+<span class="math display">\[\begin{align*}
+E(Y^2) &amp;= \int_{0}^\infty y^2 \theta e^{-\theta y} dy  \\
+&amp;= \frac{1}{\theta^2} \int_{0}^\infty t^2 e^{-t} dt \\
+&amp;= \frac{1}{\theta} \left\{[-t^2 e^{-t}]_0^\infty + 2 \int_0^\infty t e^{-t}dt \right\} \\
+&amp;= \frac{1}{\theta^2} \{0 + 2\} = \frac{2}{\theta^2},
+\end{align*}\]</span>
+since we saw in Example <a href="moments.html#exm:expmean">2.2</a> that <span class="math inline">\(\int_0^\infty t e^{-t}dt = 1\)</span>. So <span class="math display">\[\text{Var}(Y) = E(Y^2) - [E(Y)]^2 = \frac{2}{\theta^2} - \frac{1}{\theta^2} 
+= \frac{1}{\theta^2}.\]</span>
+</div>
+
+</div>
+<div id="higher-order-moments" class="section level2">
+<h2><span class="header-section-number">2.3</span> Higher-order moments</h2>
+<p>So far we have summarised random variables using the mean and variance (or standard deviation), which measure the “location” and the “spread”. Why would we need anything more? Consider the following two density functions of two different continuous distributions:</p>
+<p><img src="MATH2011_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p>In fact, the plot on the left is the pdf of a <span class="math inline">\(N(0, 1)\)</span> distribution, and the plot on the right is the pdf of a <span class="math inline">\(\text{Uniform}(-\sqrt{3}, \sqrt{3})\)</span> distribution. Both have mean <span class="math inline">\(0\)</span> and variance <span class="math inline">\(1\)</span>, yet they look very different. They are both symmetric about <span class="math inline">\(0\)</span> (the mean) but differ in terms of “shape”.</p>
+<p>Consider two more density functions:</p>
+<p><img src="MATH2011_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p>Again both have mean <span class="math inline">\(0\)</span> and variance <span class="math inline">\(1\)</span>, yet they look very different. Neither is symmetric and they have different “shapes”.</p>
+<p>How can we capture something useful about “shape”? We use so-called <em>higher-order moments</em> — particularly the third and fourth moments. So we need a general definition of moments and it will be useful to obtain relationships between them.</p>
+<p>In what follows, we will assume our random variable <span class="math inline">\(Y\)</span> has continuous distribution. The discrete case follows by replacing the pdf by the probability function and the integral by a sum.</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-20" class="definition"><strong>Definition 2.3  </strong></span>The <em><span class="math inline">\(r\)</span>th moment about the origin</em> is <span class="math display">\[\mu_r^\prime = E(Y^r) = \int_{-\infty}^\infty y^r f(y) dy\]</span> and the <em><span class="math inline">\(r\)</span>th moment about the mean</em> is <span class="math display">\[\mu_r = E\left\{[Y – E(Y)]^r \right\} =\int_{-\infty}^\infty (y - \mu)^r f(y) dy.\]</span>
+</div>
+
+We have
+<span class="math display">\[\begin{align*}
+\mu_1^\prime &amp;= \mu = E(Y) \\
+\mu_1 &amp;= 0 \\
+\mu_2 &amp;= \text{Var}(Y).
+\end{align*}\]</span>
+<p>How about the third and fourth moments about the mean? We have <span class="math display">\[\mu_3 = E\left\{[Y - E(Y)]^3\right\} = \int_{-\infty}^\infty (y - \mu)^3 f(y) dy.\]</span></p>
+
+<div class="theorem">
+<span id="thm:mu3" class="theorem"><strong>Theorem 2.1  </strong></span>We have <span class="math display">\[\mu_3 = \mu_3^\prime - 3 \mu_2^\prime \mu + 2 \mu^3.\]</span>
+</div>
+ 
+<div class="remark">
+ <span class="remark"><em>Remark. </em></span> This formula allows us to find the third moment about the mean from the first three moments about the origin.
+</div>
+ 
+<div class="proof">
+ <span class="proof"><em>Proof. </em></span> We have <span class="math display">\[\mu_3 = E\{[Y - E(Y]^3\} = E\{(Y - \mu)^3\},\]</span> writing <span class="math inline">\(\mu = E(Y)\)</span>. Expanding, we have <span class="math display">\[(Y - \mu)^3 = Y^3 - 3 Y^2 \mu + 3 Y \mu^2  - \mu^3\]</span> and using the linearity of expectation gives
+<span class="math display">\[\begin{align*}
+\mu_3 &amp;= E(Y^3) - 3 \mu E(Y^2) + 3 \mu^2 E(Y) - \mu^3 \\
+&amp;= \mu_3^\prime - 3 \mu \mu_2^\prime + 3 \mu^2 \mu - \mu^3 \\
+&amp;= \mu_3^\prime - 3 \mu \mu_2^\prime + 2 \mu^3,
+\end{align*}\]</span>
+as required.
+</div>
+
+<p>If <span class="math inline">\(Y\)</span> has symmetric distribution then <span class="math inline">\(\mu_3 = 0\)</span>. If <span class="math inline">\(Y\)</span> has a heavier right tail than left tail then <span class="math inline">\(\mu_3 &gt; 0\)</span>, and conversely if <span class="math inline">\(Y\)</span> has a heavier left tail than right, then <span class="math inline">\(\mu_3 &lt; 0\)</span>.</p>
+Similarly, the fourth moment about the mean is <span class="math display">\[\mu_4 =  E\left\{[Y - E(Y)]^4\right\} = \int_{-\infty}^\infty (y - \mu)^4 f(y) dy.\]</span> 
+<div class="theorem">
+<span id="thm:mu4" class="theorem"><strong>Theorem 2.2  </strong></span>We have <span class="math display">\[\mu_4 = \mu_4^\prime - 4 \mu_3^\prime  \mu + 6 \mu_2^\prime \mu^2 - 3 \mu^4.\]</span>
+</div>
+ 
+<div class="remark">
+ <span class="remark"><em>Remark. </em></span> This formula allows us to find the fourth moment about the mean from the first fourth moments about the origin.
+</div>
+<p> The proof is very similar to that of <a href="moments.html#thm:mu3">2.1</a>, and we leave it as an exercise.</p>
+<p>For symmetric distributions, roughly speaking thick tails lead to higher values of <span class="math inline">\(\mu_4\)</span> than light tails.</p>
+</div>
+<div id="standardised-moments" class="section level2">
+<h2><span class="header-section-number">2.4</span> Standardised moments</h2>
+<p>Remember that the basic idea is to describe location and spread via the mean and variance and the describe “shape” in terms of the third and fourth moments. So we don’t mix up spread with shape we usually use standardised third and fourth moments about the mean.</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-24" class="definition"><strong>Definition 2.4  </strong></span>The <em>skewness</em> is <span class="math display">\[\gamma_1 = \frac{\mu_3}{\mu_2^{3/2}},\]</span> the standardised third moment about the mean.
+</div>
+ 
+<div class="definition">
+<span id="def:unnamed-chunk-25" class="definition"><strong>Definition 2.5  </strong></span>The <em>kurtosis</em> is <span class="math display">\[\gamma_2 = \frac{\mu_4}{\mu_2^2}\]</span> the standardised fourth moment about the mean
+</div>
+
+<p>The skewness and kurtosis are unchanged by linear transformations of <span class="math inline">\(Y\)</span>.</p>
+<p>Of course we could consider yet higher order moments to fine tune our understanding of <span class="math inline">\(Y\)</span>. However, we often stop at <span class="math inline">\(r = 4\)</span>. Even so, if we just want to obtain the first four moments of a distribution, this may involve a lot of (difficult!) integration. In Chapter <a href="genfuns.html#genfuns">3</a> we will find a method that allows us to find as many moments as we like but with only one integration required.</p>
+<p>We will see in Example <a href="genfuns.html#exm:cgfnormal">3.4</a> that any <span class="math inline">\(N(\mu, \sigma^2)\)</span> distribution has skewness <span class="math inline">\(\gamma_1 = 0\)</span> and kurtosis <span class="math inline">\(\gamma_2 = 3\)</span>. The kurtosis of other distributions is often compared with that of a normal distribution: if <span class="math inline">\(\gamma_2 &lt; 3\)</span>, a distribution has lighter tails than the normal distribution, while if <span class="math inline">\(\gamma_2 &gt; 3\)</span>, a distribution has heavier tails than the normal distribution.</p>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-26" class="example"><strong>Example 2.5  (Higher order Bernoulli moments)  </strong></span>Let <span class="math inline">\(Y \sim \text{Bernoulli}(\theta)\)</span>. It is easy to see that <span class="math inline">\(\mu_r^\prime = \theta\)</span>, for <span class="math inline">\(r = 1, 2, 3, \ldots\)</span>.</p>
+So, using Theorem <a href="moments.html#thm:mu3">2.1</a>, the third moment about the mean is
+<span class="math display">\[\begin{align*}
+\mu_3 &amp;= \mu_3^\prime - 3 \mu_2^\prime \mu + 2 \mu^3 \\
+&amp;= \theta - 3 \theta . \theta + 2 \theta^3 \\
+&amp;= \theta - 3 \theta^2 + 2\theta^3 \\
+&amp;= \theta (1 - \theta) (1 - 2 \theta).
+\end{align*}\]</span>
+<p>So the skewness is <span class="math display">\[\gamma_1 = \frac{\mu_3}{\mu_2^{3/2}} 
+= \frac{\theta (1 - \theta)(1 - 2 \theta)}{[\theta (1 - \theta)]^{3/2}}
+= \frac{1 - 2 \theta}{\sqrt{\theta(1 - \theta)}}.\]</span> Note that the skewness is positive if <span class="math inline">\(\theta &lt; 0.5\)</span>, zero if <span class="math inline">\(\theta = 0.5\)</span>, and negative if <span class="math inline">\(\theta &gt; 0.5\)</span>.</p>
+Using Theorem <a href="moments.html#thm:mu4">2.2</a>, the fourth moment about the mean is
+<span class="math display">\[\begin{align*}
+\mu_4 &amp;= \mu_4^\prime - 4 \mu_3^\prime \mu + 6 \mu_2^\prime \mu^2 - 3 \mu^4 \\
+&amp;= \theta - 4 \theta. \theta + 6 \theta. \theta^2 - 3 \theta^4 \\
+&amp;= \theta(1 - 4 \theta + 6 \theta^2 - 3 \theta^3) \\
+&amp;= \theta (1 - \theta) (1 - 3 \theta + 3 \theta^2).
+\end{align*}\]</span>
+So the kurtosis is <span class="math display">\[\gamma_2 = \frac{\mu_4}{\mu_2^2} = \frac{1 - 3 \theta + 3 \theta^2}{\theta (1 - \theta)}.\]</span> Note that <span class="math inline">\(\gamma_2 = 1\)</span> for <span class="math inline">\(\theta = 0.5\)</span>.
+</div>
+
+
+<div class="example">
+<p><span id="exm:homexp" class="example"><strong>Example 2.6  (Higher order exponential moments)  </strong></span> Let <span class="math inline">\(Y \sim \text{exponential}(\theta)\)</span>, with pdf <span class="math inline">\(f (y) = \theta \exp(- \theta y)\)</span> for <span class="math inline">\(y &gt; 0\)</span>. We have seen that <span class="math inline">\(E(Y) = \theta^{-1}\)</span> (Example <a href="moments.html#exm:expmean">2.2</a>) and <span class="math inline">\(E(Y^2) = 2 \theta^{-2}\)</span> (Example <a href="moments.html#exm:expvar">2.4</a>).</p>
+The third moment is
+<span class="math display">\[\begin{align*}
+\mu_3^\prime = E(Y^3) &amp;= \int_{0}^\infty y^3 \theta e^{-\theta y} dy \\
+&amp;= \frac{1}{\theta^2} \int_0^\infty t^3 e^{-t} dt \\
+&amp;= \frac{1}{\theta^3} \left\{\left[-t^3 e^{-t}\right]_0^\infty
++ 3 \int_0^\infty t^2 e^{-t} dt \right\} \\
+&amp;= \frac{1}{\theta^3} \left\{0 + 3 \times 2 \right\} = \frac{6}{\theta^3},
+\end{align*}\]</span>
+<p>where we have used the fact that <span class="math inline">\(\int_0^\infty t^2 e^{-t} dt = 2\)</span>, from Example <a href="moments.html#exm:expvar">2.4</a>. So, using Theorem <a href="moments.html#thm:mu3">2.1</a>, the third moment about the mean is <span class="math display">\[ \mu_3 = \mu_3^\prime - 3\mu_2^\prime \mu + 2 \mu^3
+= \frac{6}{\theta^3} - \frac{6}{\theta^2} \cdot \frac{1}{\theta} + \frac{2}{\theta^3}
+= \frac{2}{\theta^3}.\]</span> So the skewness is <span class="math display">\[\gamma_1 = \frac{(2/ \theta^3)}{(1/ \theta^2)^{3/2}}
+ = 2,\]</span> so the exponential distribution has the same positive skewness for all values of the rate parameter <span class="math inline">\(\theta\)</span>.</p>
+The fourth moment is
+<span class="math display">\[\begin{align*}
+ \mu_4^\prime = E(Y^4) &amp;= \int_0^\infty y^4 \theta e^{-\theta y} dy \\
+ &amp;= \frac{1}{\theta^4} \int_0^\infty t^4 e^{-t} dt \\
+ &amp;= \frac{1}{\theta^4} \left\{[-t^4 e^{-t}]_0^\infty + 
+ 4 \int_0^\infty t^3 e^{-t} dt \right\} \\
+ &amp;= \frac{1}{\theta^4} \left\{0 + 4 \times 6 \right\}
+ = \frac{24}{\theta^4},
+ \end{align*}\]</span>
+where we have used that <span class="math inline">\(\int_0^\infty t^3 e^{-t}dt = 6\)</span>, from above. So, using Theorem <a href="moments.html#thm:mu4">2.2</a>, the fourth moment about the mean is
+<span class="math display">\[\begin{align*}
+\mu_4 &amp;= \mu_4^\prime - 4 \mu_3^\prime \mu + 6 \mu_2^\prime \mu^2 - 3 \mu^4\\
+&amp;= \frac{24}{\theta^4} - 4 \cdot \frac{6}{\theta^3} \cdot \frac{1}{\theta}
++ 6 \cdot \frac{2}{\theta^2} \cdot \frac{1}{\theta^2}
+- \frac{3}{\theta^4} \\
+&amp;= \frac{9}{\theta^4}.
+\end{align*}\]</span>
+So the kurtosis is <span class="math display">\[\gamma_2 = \frac{9/\theta^4}{(1/\theta^2)^2} =  9,\]</span> which does not depend on <span class="math inline">\(\theta\)</span>. All exponential random variables are positively skewed (<span class="math inline">\(\gamma_1 = 2\)</span>), with a high kurtosis (<span class="math inline">\(\gamma_2 = 4\)</span>), meaning the exponential distribution has heavier tails than the normal distribution.
+</div>
+
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="genfuns.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/03-moments.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["MATH2011.pdf", "MATH2011.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

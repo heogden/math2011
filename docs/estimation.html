@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 10 Parameter estimation | MATH2011: Statistical Distribution Theory</title>
+  <meta name="description" content="The course notes for MATH2011: Statistical Distribution Theory." />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 10 Parameter estimation | MATH2011: Statistical Distribution Theory" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The course notes for MATH2011: Statistical Distribution Theory." />
+  <meta name="github-repo" content="heogden/math2011" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 10 Parameter estimation | MATH2011: Statistical Distribution Theory" />
+  
+  <meta name="twitter:description" content="The course notes for MATH2011: Statistical Distribution Theory." />
+  
+
+<meta name="author" content="Dr Helen Ogden" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="bivariate-transformations.html"/>
+<link rel="next" href="inference.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MATH2011: Statistical Distribution Theory</a></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Distributions and their properties</b></span></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Probability distributions</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#random-variables"><i class="fa fa-check"></i><b>1.1</b> Random variables</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#examples-of-discrete-distributions"><i class="fa fa-check"></i><b>1.2</b> Examples of discrete distributions</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#the-bernoulli-distribution"><i class="fa fa-check"></i><b>1.2.1</b> The Bernoulli distribution</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#the-binomial-distribution"><i class="fa fa-check"></i><b>1.2.2</b> The binomial distribution</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#the-negative-binomial-distribution"><i class="fa fa-check"></i><b>1.2.3</b> The negative binomial distribution</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#poisson"><i class="fa fa-check"></i><b>1.2.4</b> The Poisson distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#examples-of-continuous-distributions"><i class="fa fa-check"></i><b>1.3</b> Examples of continuous distributions</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#the-exponential-distribution"><i class="fa fa-check"></i><b>1.3.1</b> The exponential distribution</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#the-uniform-distribution"><i class="fa fa-check"></i><b>1.3.2</b> The uniform distribution</a></li>
+<li class="chapter" data-level="1.3.3" data-path="index.html"><a href="index.html#the-normal-distribution"><i class="fa fa-check"></i><b>1.3.3</b> The normal distribution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="moments.html"><a href="moments.html"><i class="fa fa-check"></i><b>2</b> Moments</a><ul>
+<li class="chapter" data-level="2.1" data-path="moments.html"><a href="moments.html#expected-value"><i class="fa fa-check"></i><b>2.1</b> Expected value</a></li>
+<li class="chapter" data-level="2.2" data-path="moments.html"><a href="moments.html#variance"><i class="fa fa-check"></i><b>2.2</b> Variance</a></li>
+<li class="chapter" data-level="2.3" data-path="moments.html"><a href="moments.html#higher-order-moments"><i class="fa fa-check"></i><b>2.3</b> Higher-order moments</a></li>
+<li class="chapter" data-level="2.4" data-path="moments.html"><a href="moments.html#standardised-moments"><i class="fa fa-check"></i><b>2.4</b> Standardised moments</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="genfuns.html"><a href="genfuns.html"><i class="fa fa-check"></i><b>3</b> Generating functions</a><ul>
+<li class="chapter" data-level="3.1" data-path="genfuns.html"><a href="genfuns.html#the-moment-generating-function"><i class="fa fa-check"></i><b>3.1</b> The moment generating function</a></li>
+<li class="chapter" data-level="3.2" data-path="genfuns.html"><a href="genfuns.html#the-cumulant-generating-function"><i class="fa fa-check"></i><b>3.2</b> The cumulant generating function</a></li>
+<li class="chapter" data-level="3.3" data-path="genfuns.html"><a href="genfuns.html#generating-functions-under-linear-transformation"><i class="fa fa-check"></i><b>3.3</b> Generating functions under linear transformation</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html"><i class="fa fa-check"></i><b>4</b> Sums of random variables</a><ul>
+<li class="chapter" data-level="4.1" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#generating-functions-of-a-sum"><i class="fa fa-check"></i><b>4.1</b> Generating functions of a sum</a></li>
+<li class="chapter" data-level="4.2" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#closure-results-for-some-standard-distributions"><i class="fa fa-check"></i><b>4.2</b> Closure results for some standard distributions</a></li>
+<li class="chapter" data-level="4.3" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#properties-of-the-sample-mean-of-normal-observations"><i class="fa fa-check"></i><b>4.3</b> Properties of the sample mean of normal observations</a></li>
+<li class="chapter" data-level="4.4" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#clt"><i class="fa fa-check"></i><b>4.4</b> The central limit theorem</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html"><i class="fa fa-check"></i><b>5</b> Maxima and minima</a><ul>
+<li class="chapter" data-level="5.1" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#order-statistics"><i class="fa fa-check"></i><b>5.1</b> Order Statistics</a></li>
+<li class="chapter" data-level="5.2" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-cdf-of-y_n-the-largest-value-in-a-random-sample-of-size-n"><i class="fa fa-check"></i><b>5.2</b> The cdf of <span class="math inline">\(Y_{(n)}\)</span>, the largest value in a random sample of size <span class="math inline">\(n\)</span></a></li>
+<li class="chapter" data-level="5.3" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-pdf-of-the-maximum-in-the-continuous-case"><i class="fa fa-check"></i><b>5.3</b> The pdf of the maximum in the continuous case</a></li>
+<li class="chapter" data-level="5.4" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-cdf-of-y_1-the-smallest-value-in-a-random-sample-of-size-n"><i class="fa fa-check"></i><b>5.4</b> The cdf of <span class="math inline">\(Y_{(1)}\)</span>, the smallest value in a random sample of size <span class="math inline">\(n\)</span></a></li>
+<li class="chapter" data-level="5.5" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-pdf-of-the-minimum-in-the-continuous-case"><i class="fa fa-check"></i><b>5.5</b> The pdf of the minimum in the continuous case</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="gamma.html"><a href="gamma.html"><i class="fa fa-check"></i><b>6</b> The gamma distribution</a><ul>
+<li class="chapter" data-level="6.1" data-path="gamma.html"><a href="gamma.html#the-gamma-distribution"><i class="fa fa-check"></i><b>6.1</b> The gamma distribution</a></li>
+<li class="chapter" data-level="6.2" data-path="gamma.html"><a href="gamma.html#properties-of-the-gamma-distribution"><i class="fa fa-check"></i><b>6.2</b> Properties of the gamma distribution</a></li>
+<li class="chapter" data-level="6.3" data-path="gamma.html"><a href="gamma.html#chisquared"><i class="fa fa-check"></i><b>6.3</b> The chi-squared distribution</a></li>
+<li class="chapter" data-level="6.4" data-path="gamma.html"><a href="gamma.html#distribution-of-the-sample-variance"><i class="fa fa-check"></i><b>6.4</b> Distribution of the sample variance</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="unitransform.html"><a href="unitransform.html"><i class="fa fa-check"></i><b>7</b> Univariate transformations</a><ul>
+<li class="chapter" data-level="7.1" data-path="unitransform.html"><a href="unitransform.html#transformed-random-variables"><i class="fa fa-check"></i><b>7.1</b> Transformed random variables</a></li>
+<li class="chapter" data-level="7.2" data-path="unitransform.html"><a href="unitransform.html#one-to-one-transformations-of-continuous-random-variables"><i class="fa fa-check"></i><b>7.2</b> One-to-one transformations of continuous random variables</a></li>
+<li class="chapter" data-level="7.3" data-path="unitransform.html"><a href="unitransform.html#generating-samples-from-any-distribution"><i class="fa fa-check"></i><b>7.3</b> Generating samples from any distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html"><i class="fa fa-check"></i><b>8</b> Bivariate distributions</a><ul>
+<li class="chapter" data-level="8.1" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#joint-distributions"><i class="fa fa-check"></i><b>8.1</b> Joint distributions</a></li>
+<li class="chapter" data-level="8.2" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#moments-of-jointly-distributed-random-variables"><i class="fa fa-check"></i><b>8.2</b> Moments of jointly distributed random variables</a></li>
+<li class="chapter" data-level="8.3" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#the-bivariate-normal-distribution"><i class="fa fa-check"></i><b>8.3</b> The bivariate normal distribution</a></li>
+<li class="chapter" data-level="8.4" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#bivariate-moment-generating-functions"><i class="fa fa-check"></i><b>8.4</b> Bivariate moment generating functions</a></li>
+<li class="chapter" data-level="8.5" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#a-useful-property-of-covariances"><i class="fa fa-check"></i><b>8.5</b> A useful property of covariances</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html"><i class="fa fa-check"></i><b>9</b> Bivariate transformations</a><ul>
+<li class="chapter" data-level="9.1" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-transformation-theorem"><i class="fa fa-check"></i><b>9.1</b> The transformation theorem</a></li>
+<li class="chapter" data-level="9.2" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-beta-distribution"><i class="fa fa-check"></i><b>9.2</b> The beta distribution</a></li>
+<li class="chapter" data-level="9.3" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-cauchy-distribution"><i class="fa fa-check"></i><b>9.3</b> The Cauchy distribution</a></li>
+<li class="chapter" data-level="9.4" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-t-distribution"><i class="fa fa-check"></i><b>9.4</b> The <span class="math inline">\(t\)</span> distribution</a></li>
+<li class="chapter" data-level="9.5" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-f-distribution"><i class="fa fa-check"></i><b>9.5</b> The <span class="math inline">\(F\)</span> distribution</a></li>
+</ul></li>
+<li class="part"><span><b>II Statistical inference</b></span></li>
+<li class="chapter" data-level="10" data-path="estimation.html"><a href="estimation.html"><i class="fa fa-check"></i><b>10</b> Parameter estimation</a><ul>
+<li class="chapter" data-level="10.1" data-path="estimation.html"><a href="estimation.html#estimators-and-estimates"><i class="fa fa-check"></i><b>10.1</b> Estimators and estimates</a></li>
+<li class="chapter" data-level="10.2" data-path="estimation.html"><a href="estimation.html#bias"><i class="fa fa-check"></i><b>10.2</b> Bias</a></li>
+<li class="chapter" data-level="10.3" data-path="estimation.html"><a href="estimation.html#consistency"><i class="fa fa-check"></i><b>10.3</b> Consistency</a></li>
+<li class="chapter" data-level="10.4" data-path="estimation.html"><a href="estimation.html#mean-squared-error"><i class="fa fa-check"></i><b>10.4</b> Mean squared error</a></li>
+<li class="chapter" data-level="10.5" data-path="estimation.html"><a href="estimation.html#method-of-moments-estimation"><i class="fa fa-check"></i><b>10.5</b> Method of moments estimation</a></li>
+<li class="chapter" data-level="10.6" data-path="estimation.html"><a href="estimation.html#maximum-likelihood-estimation"><i class="fa fa-check"></i><b>10.6</b> Maximum likelihood estimation</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>11</b> Confidence intervals and hypothesis testing</a><ul>
+<li class="chapter" data-level="11.1" data-path="inference.html"><a href="inference.html#expressing-uncertainty-in-parameter-estimates"><i class="fa fa-check"></i><b>11.1</b> Expressing uncertainty in parameter estimates</a></li>
+<li class="chapter" data-level="11.2" data-path="inference.html"><a href="inference.html#confidence-intervals"><i class="fa fa-check"></i><b>11.2</b> Confidence intervals</a></li>
+<li class="chapter" data-level="11.3" data-path="inference.html"><a href="inference.html#hypothesis-testing"><i class="fa fa-check"></i><b>11.3</b> Hypothesis testing</a></li>
+<li class="chapter" data-level="11.4" data-path="inference.html"><a href="inference.html#two-sample-hypothesis-testing"><i class="fa fa-check"></i><b>11.4</b> Two-sample hypothesis testing</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="bayesian.html"><a href="bayesian.html"><i class="fa fa-check"></i><b>12</b> Bayesian inference</a><ul>
+<li class="chapter" data-level="12.1" data-path="bayesian.html"><a href="bayesian.html#frequentist-and-bayesian-inference"><i class="fa fa-check"></i><b>12.1</b> Frequentist and Bayesian inference</a></li>
+<li class="chapter" data-level="12.2" data-path="bayesian.html"><a href="bayesian.html#prior-and-posterior-distributions"><i class="fa fa-check"></i><b>12.2</b> Prior and posterior distributions</a></li>
+<li class="chapter" data-level="12.3" data-path="bayesian.html"><a href="bayesian.html#the-posterior-predictive-distribution"><i class="fa fa-check"></i><b>12.3</b> The posterior predictive distribution</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MATH2011: Statistical Distribution Theory</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+\(
+\newcommand{\bm}[1]{\boldsymbol{\mathbf{#1}}}
+\)
+<div id="estimation" class="section level1">
+<h1><span class="header-section-number">Chapter 10</span> Parameter estimation</h1>
+<div id="estimators-and-estimates" class="section level2">
+<h2><span class="header-section-number">10.1</span> Estimators and estimates</h2>
+<p>Suppose that <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are independent identically distributed random variables, each with a distribution depending on unknown parameter(s) <span class="math inline">\(\theta\)</span>. In the continuous case, we know the density function <span class="math inline">\(f(y_i; \theta)\)</span> up to the unknown <span class="math inline">\(\theta\)</span>, and in the discrete case we have probability function <span class="math inline">\(p(y_i; \theta)\)</span>. We might be interested in estimating <span class="math inline">\(\theta\)</span> based on <span class="math inline">\(Y_1, \ldots, Y_n\)</span>.</p>
+<p>An <em>estimator</em> <span class="math inline">\(T = T(Y_1, ...,Y_n)\)</span> is just some suitable function (a “statistic”) of <span class="math inline">\(Y_1, Y_2, \ldots, Y_n\)</span>, which is used to estimate a parameter. It must not contain any unknown parameters or any unobservable quantities. For example, the sample mean <span class="math inline">\(\bar Y\)</span> is an obvious estimator for the population mean.</p>
+<p>Note that an estimator is a function of random variables and hence can itself be treated as a random variable. Once a set of data has been collected (i.e. the observed values <span class="math inline">\(y_1, y_2, \ldots ,y_n\)</span> of <span class="math inline">\(Y_1, Y_2, \ldots, Y_n\)</span> are available), then <span class="math inline">\(T(y_1, ...,y_n)\)</span> is the corresponding <em>estimate</em>. When deriving properties of <span class="math inline">\(T\)</span>, one should always work with the estimator.</p>
+<p>You have already seen several desirable properties of estimators in MATH1024, which we now review.</p>
+</div>
+<div id="bias" class="section level2">
+<h2><span class="header-section-number">10.2</span> Bias</h2>
+
+<div class="definition">
+<span id="def:unnamed-chunk-87" class="definition"><strong>Definition 10.1  </strong></span>The <em>bias</em> of an estimator <span class="math inline">\(T = T(Y_1, \ldots, Y_n)\)</span> of a parameter <span class="math inline">\(\theta\)</span> is: <span class="math display">\[B(T; \theta) = E(T) - \theta.\]</span> <span class="math inline">\(T\)</span> is said to be an <em>unbiased</em> estimator of <span class="math inline">\(\theta\)</span> if <span class="math display">\[E(T) - \theta = 0\]</span> for all possible values of <span class="math inline">\(\theta\)</span>.
+</div>
+
+
+<div class="example">
+<p><span id="exm:bernbias" class="example"><strong>Example 10.1  (Bias of estimator of Bernoulli success probability)  </strong></span>Let <span class="math inline">\(Y_1, Y_2, \ldots, Y_n\)</span> be independent and identically distributed, where each <span class="math inline">\(Y_i \sim \text{Bernoulli}(\theta)\)</span>.</p>
+<p>We know that <span class="math inline">\(E(Y_i) = \theta\)</span>, so a natural estimator of <span class="math inline">\(\theta\)</span> is <span class="math inline">\(T = \bar Y = \frac{1}{n} \sum_{i=1}^n Y_i\)</span>, the sample mean.</p>
+Here <span class="math inline">\(T\)</span> is an unbiased estimator of <span class="math inline">\(\theta\)</span>, as <span class="math display">\[E(T) = E(\bar Y) = \frac{1}{n} \sum_{i=1}^n E(Y_i) = \frac{1}{n} n \theta = \theta.\]</span>
+</div>
+
+
+<div class="example">
+<p><span id="exm:expbias" class="example"><strong>Example 10.2  (Bias of estimator of exponential rate parameter)  </strong></span>Let <span class="math inline">\(Y_1, Y_2, \ldots, Y_n\)</span> be independent and identically distributed, where each <span class="math inline">\(Y_i \sim \text{exponential}(\theta)\)</span>.</p>
+<p>We know that <span class="math inline">\(E(Y_i) = 1/\theta,\)</span> so one possible estimator for <span class="math inline">\(\theta\)</span> is <span class="math inline">\(T = 1 / \bar Y\)</span>.</p>
+<p>Since <span class="math inline">\(Y_i \sim \text{gamma}(1, \theta)\)</span>, by Propositions <a href="gamma.html#prp:gammascale">6.4</a> and <a href="gamma.html#prp:gammasum">6.5</a>, <span class="math display">\[\bar Y \sim \text{gamma}(n, n \theta).\]</span></p>
+<p>Recall from Proposition <a href="gamma.html#prp:gammamoments">6.3</a> that <span class="math inline">\(E(X) = \alpha/ \beta\)</span> if <span class="math inline">\(X \sim \text{gamma}(\alpha, \beta)\)</span>. So <span class="math inline">\(\bar Y\)</span> is an unbiased estimator of <span class="math inline">\(1/\theta\)</span>, as <span class="math display">\[E(\bar Y) = \frac{n}{n \theta} = \frac{1}{\theta}.\]</span></p>
+Given this, an obvious choice for an estimator of <span class="math inline">\(\theta\)</span> is <span class="math inline">\(T = 1 / \bar Y\)</span>. Since <span class="math inline">\(\bar Y \sim \text{gamma}(n, n \theta)\)</span>, we have
+<span class="math display">\[\begin{align*}
+E(1 / \bar Y) &amp;= \int_0^\infty \frac{1}{y} 
+\frac{(n \theta)^n}{\Gamma(n)} y^{n - 1} e^{- n \theta y} dy \\
+&amp;= \frac{(n \theta)^n}{\Gamma(n)} \int_0^\infty y^{n-2} e^{- n \theta y} dy \\
+&amp;= \frac{(n \theta)^n}{\Gamma(n)} 
+\frac{\Gamma(n-1)}{(n \theta)^{n-1}} 
+\int_0^\infty \frac{(n \theta)^{n-1}}{\Gamma(n-1)} y^{n-2} e^{- n \theta y} dy \\
+&amp;\quad \text{(integrating the $\text{gamma}(n - 1, n \theta)$ pdf)}
+\\
+&amp;= \frac{\Gamma(n-1)}{\Gamma(n)} n \theta \cdot 1  \\
+&amp;= \frac{1}{n-1} n \theta,
+\end{align*}\]</span>
+since <span class="math inline">\(\Gamma(n) = (n-1) \Gamma(n - 1)\)</span>, by Proposition <a href="gamma.html#prp:gammarecursion">6.1</a>. So the bias of <span class="math inline">\(1/\bar Y\)</span> as an estimator of <span class="math inline">\(\theta\)</span> is <span class="math display">\[B(1/\bar Y; \theta) = \frac{n}{n-1} \theta - \theta
+= \frac{1}{n-1} \theta \not = 0.\]</span> <span class="math inline">\(1/\bar Y\)</span> is not an unbiased estimator of <span class="math inline">\(\theta\)</span>, but the bias shrinks with <span class="math inline">\(n\)</span>.
+</div>
+
+</div>
+<div id="consistency" class="section level2">
+<h2><span class="header-section-number">10.3</span> Consistency</h2>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-88" class="definition"><strong>Definition 10.2  </strong></span>An estimator <span class="math inline">\(T = T(Y_1, \ldots,Y_n)\)</span> of a parameter <span class="math inline">\(\theta\)</span> is said to be a <em>consistent</em> estimator of <span class="math inline">\(\theta\)</span> if:</p>
+<ol style="list-style-type: decimal">
+<li>it is <em>asymptotically unbiased</em>: <span class="math inline">\(B(T; \theta) \rightarrow 0\)</span> as <span class="math inline">\(n \rightarrow \infty\)</span>; and</li>
+<li><span class="math inline">\(\text{Var}(T) \rightarrow 0\)</span> as <span class="math inline">\(n \rightarrow \infty\)</span>.</li>
+</ol>
+for all possible values of <span class="math inline">\(\theta\)</span>.
+</div>
+
+<p>Note that a consistent estimator can be biased, and an unbiased estimator can be inconsistent (i.e. not consistent). So consistency and unbiasedness are different types of property.</p>
+
+<div class="example">
+<p><span id="exm:bernconsist" class="example"><strong>Example 10.3  (Consistency of estimator of Bernoulli success probability)  </strong></span>Continue example <a href="estimation.html#exm:bernbias">10.1</a>, with <span class="math inline">\(Y_i \sim \text{Bernoulli}(\theta)\)</span> and <span class="math inline">\(T = \bar Y\)</span>. <span class="math inline">\(T\)</span> is a consistent estimator of <span class="math inline">\(\theta\)</span>, as:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(E(T) = E(\bar Y) = \theta\)</span>, so <span class="math inline">\(B(T; \theta) = 0\)</span>. Therefore <span class="math inline">\(B(T; \theta) \rightarrow 0\)</span> as <span class="math inline">\(n \rightarrow \infty\)</span> (any unbiased estimator is asymptotically unbiased).</li>
+<li>The variance is
+<span class="math display">\[\begin{align*}
+\text{Var}(T) &amp;= \text{Var}(\bar Y) 
+= \text{Var}\left(\frac{1}{n} \sum_{i=1}^n Y_i \right) \\
+&amp;= \frac{1}{n^2} \sum_{i=1}^n \text{Var}(Y_i) \quad
+\text{by independence} \\
+&amp;= \frac{1}{n^2} n \theta (1 - \theta) \\
+&amp;\rightarrow 0 \quad \text{as $n \rightarrow \infty$,
+for all $\theta \in [0, 1]$.}
+\end{align*}\]</span></li>
+</ol>
+</div>
+
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-89" class="example"><strong>Example 10.4  (Consistency of estimator of exponential rate parameter)  </strong></span>Continue example <a href="estimation.html#exm:expbias">10.2</a>, with <span class="math inline">\(Y_i \sim \text{exponential}(\theta)\)</span> and <span class="math inline">\(T = \frac{1}{\bar Y}\)</span>. <span class="math inline">\(T\)</span> is a consistent estimator of <span class="math inline">\(\theta\)</span>, as:</p>
+<ol style="list-style-type: decimal">
+<li>The bias of <span class="math inline">\(T\)</span> is <span class="math display">\[B(T; \theta) = \frac{1}{n-1} \theta \rightarrow 0\]</span> as <span class="math inline">\(n \rightarrow \infty\)</span>.</li>
+<li>The variance of <span class="math inline">\(T\)</span> is <span class="math inline">\(\text{Var}(T) = E(T^2) - [E(T)]^{2}\)</span>. Recall <span class="math inline">\(\bar Y \sim \text{gamma}(n, n \theta)\)</span>, so
+<span class="math display">\[\begin{align*}
+E(T^2) &amp;= E({\bar Y}^{-2})
+= \int_0^\infty \frac{1}{y^2} 
+\frac{(n \theta)^n}{\Gamma(n)} y^{n - 1} e^{- n \theta y} dy \\  &amp;= \frac{(n \theta)^n}{\Gamma(n)} \int_0^\infty y^{n-3} e^{- n \theta y} dy \\
+&amp;= \frac{(n \theta)^n}{\Gamma(n)} 
+\frac{\Gamma(n-2)}{(n \theta)^{n-2}} 
+\int_0^\infty \frac{(n \theta)^{n-2}}{\Gamma(n-2)} y^{n-3} e^{- n \theta y} dy \\
+&amp;\quad \text{(integrating the $\text{gamma}(n - 2, n \theta)$ pdf)}
+\\
+&amp;= \frac{\Gamma(n-2)}{\Gamma(n)} (n \theta)^2 \cdot 1  \\
+&amp;= \frac{1}{(n-1)(n-2)} (n \theta)^2,
+\end{align*}\]</span>
+since <span class="math inline">\(\Gamma(n) = (n-1) \Gamma(n - 1) = (n-1) (n-2) \Gamma(n-2)\)</span>, by Proposition <a href="gamma.html#prp:gammarecursion">6.1</a>. So
+<span class="math display">\[\begin{align*}
+\text{Var}(T) &amp;= E(T^2) - [E(T)]^{2} \\
+&amp;= \frac{1}{(n-1)(n-2)} (n \theta)^2 - \frac{1}{(n-1)^2} (n \theta)^2 \\ 
+&amp;= \frac{(n \theta)^2}{(n-1)^2} \left[\frac{n-1}{n-2} - 1 \right] \\
+&amp;\rightarrow 0 \quad \text{as $n \rightarrow \infty$,
+for all $\theta&gt;0$.}
+\end{align*}\]</span></li>
+</ol>
+</div>
+
+</div>
+<div id="mean-squared-error" class="section level2">
+<h2><span class="header-section-number">10.4</span> Mean squared error</h2>
+<p>If we have two unbiased estimators, <span class="math inline">\(T_1\)</span> and <span class="math inline">\(T_2\)</span>, of <span class="math inline">\(\theta\)</span> then typically we prefer the one with the smaller variance. However, having a small variance on its own is not sufficient if the estimator is biased.</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-90" class="definition"><strong>Definition 10.3  </strong></span>The <em>mean squared error</em> (or <em>MSE</em>) of an estimator <span class="math inline">\(T\)</span> of <span class="math inline">\(\theta\)</span> is <span class="math display">\[\text{MSE}(T; \theta) = E\{(T - \theta)^2\},\]</span> the mean of the squared distance of the <span class="math inline">\(T\)</span> from its target value <span class="math inline">\(\theta.\)</span>
+</div>
+
+<p>We can use the MSE to choose between competing estimators whether they are unbiased or not.</p>
+
+<div class="proposition">
+<span id="prp:biasvardecomp" class="proposition"><strong>Proposition 10.1  </strong></span>For any estimator <span class="math inline">\(T\)</span> of <span class="math inline">\(\theta\)</span>, <span class="math display">\[\text{MSE}(T; \theta) = \text{Var}(T) + \left[B(T; \theta)\right]^2.\]</span>
+</div>
+ 
+<div class="proof">
+ <span class="proof"><em>Proof. </em></span> We have
+<span class="math display">\[\begin{align*}
+\text{MSE}(T; \theta) &amp;= E\{(T - \theta)^2\} \\
+&amp;= E\{(T - E(T) + E(T) - \theta)^2\}  \\
+&amp;= E\left\{(T - E(T))^2 + 2(T - E(T))(E(T) - \theta)
++ (E(T) - \theta)^2 \right\} \\
+&amp;= E\left\{(T - E(T))^2 \right\} + 2(E(T) - \theta) 
+E\left\{T - E(T) \right\} +(E(T) - \theta)^2 \\
+&amp;= \text{Var}(T) + 2(E(T) - \theta) \cdot 0 + \left[B(T; \theta)\right]^2 \\
+&amp;= \text{Var}(T) + \left[B(T; \theta)\right]^2,
+\end{align*}\]</span>
+as required.
+</div>
+
+<p>An immediate consequence of Proposition <a href="estimation.html#prp:biasvardecomp">10.1</a> is that if <span class="math inline">\(T\)</span> is an unbiased estimator of <span class="math inline">\(\theta\)</span>, then <span class="math inline">\(\text{MSE}(T; \theta) = \text{Var}(T)\)</span>.</p>
+<p>Note that it is not possible to find a <em>uniformly</em> minimum MSE estimator, that is, an estimator which will have the lower MSE than any other estimator for all value of <span class="math inline">\(\theta\)</span>. For instance, consider the estimator <span class="math inline">\(T^* = 1\)</span>, which takes the simple (but usually bad!) strategy of estimating <span class="math inline">\(\theta\)</span> as <span class="math inline">\(1\)</span>, irrespective of the observed data. This has <strong>zero</strong> mean squared error at <span class="math inline">\(\theta = 1\)</span>, so will beat any other estimator at <span class="math inline">\(\theta = 1\)</span>. However, it will be a very bad estimator for other values of <span class="math inline">\(\theta\)</span>.</p>
+<p>It is sometimes possible to find a uniformly minimum MSE estimator within a class of “sensible” estimators.</p>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-92" class="example"><strong>Example 10.5  (Comparing estimators of the normal variance parameter)  </strong></span>Suppose that <span class="math inline">\(Y_1, Y_2, \ldots, Y_n\)</span> are independent, with each <span class="math inline">\(Y_i \sim N(\mu, \sigma^2)\)</span>, and that we wish to estimate <span class="math inline">\(\sigma^2\)</span>. Two possible choices are: <span class="math inline">\(S^2 = \frac{1}{n-1} \sum_{i=1}^n (Y_i - \bar Y)^2\)</span> and <span class="math inline">\(\frac{1}{n} \sum_{i=1}^n (Y_i - \bar Y)^2.\)</span> You can think of these as special cases of estimators of the form <span class="math display">\[T_c = c \sum_{i=1}^n (Y_i - \bar Y)^2,\]</span> where <span class="math inline">\(c\)</span> is some positive constant.</p>
+<p>Can we find a value of <span class="math inline">\(c\)</span> such that <span class="math inline">\(\text{MSE}(T_c; \sigma^2)\)</span> is minimised for all <span class="math inline">\(\sigma^2 &gt; 0\)</span>? From Theorem <a href="gamma.html#thm:S2dist">6.1</a>, <span class="math inline">\(\frac{(n-1) S^2}{\sigma^2} \sim \chi^2_{n-1}\)</span>, so <span class="math display">\[\frac{T_c}{c \sigma^2} = \frac{\sum_{i=1}^n (Y_i - \bar Y)^2}{\sigma^2} \sim \chi^2_{n-1}.\]</span> We may use this to find <span class="math inline">\(\text{MSE}(T_c; \sigma^2)\)</span> for any <span class="math inline">\(c\)</span>, and then minimise it with respect to <span class="math inline">\(c\)</span>.</p>
+By Proposition <a href="estimation.html#prp:biasvardecomp">10.1</a>, <span class="math display">\[\text{MSE}(T_c; \sigma^2) = \text{Var}(T_c) + \left[B(T_c; \sigma^2)\right]^2.\]</span> Let <span class="math inline">\(X = \frac{T_c}{c \sigma^2} \sim \chi^2_{n-1}\)</span>. Recall from Section <a href="gamma.html#chisquared">6.3</a> that <span class="math inline">\(E(X) = n - 1\)</span> and <span class="math inline">\(\text{Var}(X) = 2(n-1)\)</span>. We have <span class="math display">\[E(T_c) = E(c \sigma^2 X) = c \sigma^2 E(X) = c \sigma^2 (n-1),\]</span> so <span class="math display">\[B(T_c; \sigma^2) = \sigma^2 [c (n-1) - 1] .\]</span> The variance of <span class="math inline">\(T_c\)</span> is <span class="math display">\[\text{Var}(T_c) = \text{Var}(c \sigma^2 X) 
+= c^2 \sigma^4 \text{Var}(X) = c^2 \sigma^4 2(n-1),\]</span> so the mean squared error is
+<span class="math display">\[\begin{align*}
+\text{MSE}(T_c; \sigma^2) &amp;= c^2 \sigma^4 2(n-1) + \sigma^4[c (n-1) - 1]^2 \\
+&amp;= \sigma^4 \left[2c^2 (n-1) + c^2 (n-1)^2 - 2c(n-1) + 1\right].
+\end{align*}\]</span>
+To minimise this, for any <span class="math inline">\(\sigma^2\)</span>, we need to find <span class="math inline">\(c\)</span> to minimise <span class="math display">\[g(c) = 2c^2 (n-1) + c^2 (n-1)^2 - 2c(n-1) + 1.\]</span> Differentiating, we have <span class="math display">\[g^\prime(c) = 4c(n-1) + 2c(n-1)^2- 2(n-1),\]</span> so we want to find <span class="math inline">\(c^*\)</span> such that <span class="math inline">\(g^\prime(c^*) = 0\)</span>, or <span class="math display">\[4c^*(n-1) + 2c^*(n-1)^2- 2(n-1) = 0.\]</span> Dividing by <span class="math inline">\(2(n - 1)\)</span> and rearranging gives <span class="math inline">\(c^*(2 + n-1) = 1,\)</span> so <span class="math inline">\(c^* = \frac{1}{n+1}\)</span>. So <span class="math display">\[T_{c^*} = \frac{1}{n+1} \sum_{i=1}^n (Y_i - \bar Y)^2\]</span> has minimum mean squared error of all estimators in this class, for any value of <span class="math inline">\(\sigma^2\)</span>.
+</div>
+
+<p>Once we have come up with an estimator, we can check whether it has good properties, such as consistency or low mean squared error. However, it is not yet clear yet how we should go about finding an estimator for any given model, and it would be useful to have some general methods that will produce estimators. We will consider two general recipes for finding estimators, the method of moments, and maximum likelihood estimation.</p>
+</div>
+<div id="method-of-moments-estimation" class="section level2">
+<h2><span class="header-section-number">10.5</span> Method of moments estimation</h2>
+<p>This approach essentially formalises an argument we have met before – “if I have data from a population with mean <span class="math inline">\(\mu\)</span>, it is natural to estimate <span class="math inline">\(\mu\)</span> by the corresponding sample mean <span class="math inline">\(\bar Y\)</span>”.</p>
+<p>Suppose we have a sample of independent and identically distributed random variables <span class="math inline">\(Y_1, Y_2, \ldots,Y_n\)</span>, whose probability function or probability density function depends on <span class="math inline">\(k\)</span> unknown parameters <span class="math inline">\((\theta_1, \theta_2, \ldots, \theta_k)\)</span>. Then we may write the <span class="math inline">\(r\)</span>th population moment about the origin as a function of the parameters: <span class="math display">\[\mu_r^\prime = \mu_r^\prime(\theta_1, \theta_2, \ldots, \theta_k), \quad \text{for $r = 1, 2, 3, \ldots$.}\]</span> We write <span class="math display">\[m_r^\prime = \frac{1}{n} \sum_{i=1}^n Y_i^r\]</span> for the <span class="math inline">\(r\)</span>th sample moment, for <span class="math inline">\(r = 1, 2, 3, \ldots\)</span>.</p>
+<p>Then (assuming each of the first <span class="math inline">\(k\)</span> moments involves at least one parameter) we find values <span class="math inline">\(\tilde \theta_1, \ldots, \tilde \theta_k\)</span> such that the first <span class="math inline">\(k\)</span> sample moments match the first <span class="math inline">\(k\)</span> population moments <span class="math display">\[m_r^\prime = \mu_r^\prime(\tilde \theta_1, \tilde \theta_2, \ldots, \tilde \theta_k) \text{ for $r = 1, 2, \ldots$, k}.\]</span> We call <span class="math inline">\(\tilde \theta_1, \ldots, \tilde \theta_k\)</span> the <em>method of moments estimators</em> of of <span class="math inline">\(\theta_1, \ldots, \theta_k\)</span>.</p>
+<p>Sometimes one of the first <span class="math inline">\(k\)</span> expressions does not involve any parameters, in which case we need to add an extra simultaneous equation <span class="math display">\[m_{k+1}^\prime = \mu_{k+1}^\prime(\tilde \theta_1, \tilde \theta_2, \ldots, \tilde \theta_k)\]</span> in order to be able to solve the system of simultaneous equations for the <span class="math inline">\(k\)</span> unknowns <span class="math inline">\(\tilde \theta_1, \ldots, \tilde \theta_k\)</span> We always need at least <span class="math inline">\(k\)</span> simultaneous equations to solve for the <span class="math inline">\(k\)</span> unknowns: if any of those simultaneous equations does not provide any new information, then we need to generate more equations by matching higher-order population and sample moments, until it is possible to find a solution to the system of simultaneous equations.</p>
+<p>This will become clearer with some examples. We first begin with some simple one-parameter examples to illustrate the method.</p>
+
+<div class="example">
+<span id="exm:bernmom" class="example"><strong>Example 10.6  (Bernoulli)  </strong></span>Suppose <span class="math inline">\(Y_i \sim \text{Bernoulli}(\theta)\)</span>. We have <span class="math inline">\(\mu_1^\prime = \mu_1^\prime(\theta) = \theta\)</span>. and <span class="math inline">\(m_1 = \frac{1}{n}\sum_{i=1}^n Y_i = \bar Y\)</span>. So the method of moments estimator is <span class="math inline">\(\tilde \theta = \bar Y\)</span>.
+</div>
+
+
+<div class="example">
+<span id="exm:unnamed-chunk-93" class="example"><strong>Example 10.7  (Normal mean)  </strong></span>Suppose <span class="math inline">\(Y_i \sim N(\theta, 1)\)</span>. We have <span class="math inline">\(\mu_1^\prime = \mu_1^\prime(\theta) = \theta\)</span>, and <span class="math inline">\(m_1 = \frac{1}{n}\sum_{i=1}^n Y_i = \bar Y\)</span>. So the method of moments estimator is <span class="math inline">\(\tilde \theta = \bar Y\)</span>.
+</div>
+
+
+<div class="example">
+<span id="exm:expmom" class="example"><strong>Example 10.8  (Exponential)  </strong></span>Suppose <span class="math inline">\(Y_i \sim \text{exponential}(\theta)\)</span>. We have <span class="math inline">\(\mu_1^\prime = \mu_1^\prime(\theta) = 1/\theta,\)</span> and <span class="math inline">\(m_1 = \frac{1}{n}\sum_{i=1}^n Y_i = \bar Y\)</span>. So the method of moments estimator is <span class="math inline">\(\tilde \theta = 1/ \bar Y\)</span>.
+</div>
+
+
+<div class="example">
+<span id="exm:unnamed-chunk-94" class="example"><strong>Example 10.9  (Normal variance)  </strong></span>Suppose <span class="math inline">\(Y_i \sim N(0, \theta)\)</span>. We know that <span class="math inline">\(\mu_1^\prime = \mu_1^\prime(\theta) = 0\)</span>, which does not involve the parameter of interest. But <span class="math inline">\(\mu_2^\prime = \mu_2^\prime(\theta) = \theta\)</span>, and <span class="math inline">\(m_2^\prime = \frac{1}{n}\sum_{i=1}^n Y_i^2,\)</span> so <span class="math inline">\(\tilde \theta = \frac{1}{n} \sum_{i=1}^n Y_i^2.\)</span>
+</div>
+
+<p>We can also use method of moment estimation for models with more than one unknown parameter.</p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-95" class="example"><strong>Example 10.10  (Normal mean and variance)  </strong></span>Suppose <span class="math inline">\(Y_i \sim N(\theta_1, \theta_2)\)</span> (i.e. <span class="math inline">\(\theta_1 = \mu\)</span>, <span class="math inline">\(\theta_2 = \sigma^2\)</span> in the usual notation). The first two population moments are <span class="math inline">\(\mu_1^\prime(\theta_1, \theta_2) = \theta_1\)</span> and <span class="math display">\[\mu_2^\prime(\theta_1, \theta_2) = \text{Var}(Y) + [E(Y)]^2 = \theta_2 + \theta_1^2.\]</span> The first two sample moments are <span class="math inline">\(m_1^\prime = \bar Y\)</span> and <span class="math inline">\(m_2^\prime = \frac{1}{n}\sum_{i=1}^n Y_i^2\)</span>. So we choose <span class="math inline">\(\tilde \theta_1\)</span> and <span class="math inline">\(\tilde \theta_2\)</span> to solve <span class="math inline">\(\mu_1^\prime(\tilde \theta_1, \tilde \theta_2) = m_1^\prime\)</span> and <span class="math inline">\(\mu_2^\prime(\tilde \theta_1, \tilde \theta_2) = m_2^\prime\)</span>. So <span class="math display">\[\tilde \theta_1 = \bar Y \quad \text{and} \quad \tilde \theta_2 + \tilde \theta_1^2 = \frac{1}{n}\sum_{i=1}^n Y_i^2,\]</span> so <span class="math display">\[\tilde \theta_2 = \frac{1}{n}\sum_{i=1}^n Y_i^2 - \bar Y^2.\]</span>
+</div>
+
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-96" class="example"><strong>Example 10.11  </strong></span>Suppose <span class="math inline">\(Y_i \sim \text{gamma}(\theta_1, \theta_2)\)</span> In this notation the shape parameter is <span class="math inline">\(\alpha = \theta_1\)</span> and the rate parameter is <span class="math inline">\(\beta = \theta_2\)</span>.</p>
+By Proposition <a href="gamma.html#prp:gammamoments">6.3</a>, we have <span class="math display">\[\mu_1^\prime(\theta_1, \theta_2) = \frac{\theta_1}{\theta_2}\]</span> and
+<span class="math display">\[\begin{align*}
+\mu_2^\prime(\theta_1, \theta_2) &amp;= 
+\text{Var}(Y) + [E(Y)]^2 \\
+&amp;= \frac{\theta_1}{\theta_2^2} + \frac{\theta_1^2}{\theta_2^2} \\
+&amp;= \frac{\theta_1(1 + \theta_1)}{\theta_2^2}.
+\end{align*}\]</span>
+<p>The first two sample moments are <span class="math inline">\(m_1^\prime = \bar Y\)</span> and <span class="math inline">\(m_2^\prime = \frac{1}{n}\sum_{i=1}^n Y_i^2\)</span>.</p>
+<p>So we choose <span class="math inline">\(\tilde \theta_1\)</span> and <span class="math inline">\(\tilde \theta_2\)</span> to solve <span class="math inline">\(\mu_1^\prime(\tilde \theta_1, \tilde \theta_2) = m_1^\prime\)</span> and <span class="math inline">\(\mu_2^\prime(\tilde \theta_1, \tilde \theta_2) = m_2^\prime\)</span>. So <span class="math display">\[\frac{\tilde \theta_1}{\tilde \theta_2} = \bar Y
+\quad \text{and} \quad
+\frac{\tilde \theta_1(1 + \tilde \theta_1)}{\tilde \theta_2^2} = \frac{1}{n}\sum_{i=1}^n Y_i^2.\]</span> So <span class="math inline">\(\tilde \theta_1 = \bar Y \tilde \theta_2\)</span>, and <span class="math display">\[\frac{\bar Y \tilde \theta_2}{(1 + \bar Y \tilde \theta_2)}{\tilde \theta_2^2} = \frac{1}{n}\sum_{i=1}^n Y_i^2,\]</span> or <span class="math display">\[\bar Y \tilde{\theta}_2^{-1} + {\bar Y}^2 = \frac{1}{n}\sum_{i=1}^n Y_i^2.\]</span> Rearranging, we get <span class="math display">\[\tilde \theta_2 = \frac{\bar Y}{\frac{1}{n}\sum_{i=1}^n Y_i^2 - {\bar Y}^2},\]</span> so <span class="math display">\[\tilde \theta_1 = \bar Y \tilde \theta_2 = \frac{\bar Y^2}{\frac{1}{n}\sum_{i=1}^n Y_i^2 - {\bar Y}^2}.\]</span></p>
+</div>
+
+</div>
+<div id="maximum-likelihood-estimation" class="section level2">
+<h2><span class="header-section-number">10.6</span> Maximum likelihood estimation</h2>
+<p>Maximum likelihood estimation is a versatile method – it is the standard method in modern (frequentist) statistics – and it can be shown (see MATH3044) that maximum likelihood estimators (MLEs) have some nice optimality properties.</p>
+<p>Maximum likelihood estimation can be applied in complex situations, but in this module we will stick to the situation where <span class="math inline">\(Y_1, Y_2, \ldots, Y_n\)</span> are independent and identically distributed random variables,</p>
+The likelihood function is a function of the unknown parameters <span class="math inline">\(\theta\)</span>, which gives the joint probability (or joint probability density) of seeing the observed data <span class="math inline">\(y_1, \ldots y_n\)</span>, assuming the data were generating from the model with parameter value <span class="math inline">\(\theta\)</span>: 
+<div class="definition">
+<span id="def:unnamed-chunk-97" class="definition"><strong>Definition 10.4  </strong></span>Suppose <span class="math inline">\(Y_1, Y_2, \ldots, Y_n\)</span> are independent and identically distributed random variables, with distribution depending on a vector of unknown parameters <span class="math inline">\(\theta\)</span>. The <em>likelihood function</em> is <span class="math display">\[L(\theta; y_1, \ldots, y_n) = f(y_1 ; \theta) \times f(y_2 ; \theta) \times \ldots \times  f(y_n ; \theta),\]</span> if each <span class="math inline">\(Y_i\)</span> has continuous distribution, with probability density function <span class="math inline">\(f(y; \theta)\)</span>, or <span class="math display">\[L(\theta; y_1, \ldots, y_n) = p(y_1 ; \theta) \times p(y_2 ; \theta) \times \ldots \times p(y_n ; \theta).\]</span> if each <span class="math inline">\(Y_i\)</span> has discrete distribution, with probability function <span class="math inline">\(p(y; \theta)\)</span>.
+</div>
+
+<p>The values of the observations <span class="math inline">\(y_1, \ldots, y_n\)</span> have been observed, so these are known, and <span class="math inline">\(L(\cdot)\)</span> may be regarded as a function of the unknown <span class="math inline">\(\theta\)</span>.</p>
+<p>If <span class="math inline">\(L(\theta_1 ; y_1 , \ldots, y_n) &gt; L(\theta_2 ; y_1 , \ldots, y_n )\)</span>, we should prefer <span class="math inline">\(\theta_1\)</span> to <span class="math inline">\(\theta_2\)</span> because there is a greater likelihood that the observed data would occur with this value of <span class="math inline">\(\theta_1\)</span> than with <span class="math inline">\(\theta_2\)</span>. It follows that we should try to maximise the likelihood to find the value of <span class="math inline">\(\theta\)</span> which is most likely to have given rise to the data that were actually observed.</p>
+<p>The maximum likelihood estimate <span class="math inline">\(\hat \theta = \hat \theta(y_1, \ldots, y_n)\)</span> of <span class="math inline">\(\theta\)</span>. is the value of <span class="math inline">\(\theta\)</span> which maximises the likelihood: <span class="math display">\[\hat \theta = \arg \max_{\theta}L(\theta; y_1, \ldots, y_n)\]</span> The corresponding maximum likelihood estimator is <span class="math inline">\(\hat \theta = \hat \theta(Y_1, \ldots, Y_n)\)</span>.</p>
+<p>Since we assume that the <span class="math inline">\(Y_i\)</span> are independent and identically distributed, the likelihood is just a product of pdf or probability function terms. Maximising a sum is usually easier than maximising a product, so we often work with the log-likelihood <span class="math display">\[\log L(\theta; y_1, \ldots, y_n) = 
+  \sum_{i=1}^n \log f(y_i; \theta).\]</span></p>
+<p>The value of <span class="math inline">\(\theta\)</span> which maximises <span class="math inline">\(L(\cdot)\)</span> is the same as that which maximises <span class="math inline">\(\log L(\cdot)\)</span>, as <span class="math inline">\(L(\theta_1 ) &gt; L(\theta_2)\)</span> if and only if <span class="math inline">\(\log L(\theta_1) &gt; \log L(\theta_2)\)</span>. So we may find the MLE as by maximising <span class="math inline">\(\log L(\cdot)\)</span>: <span class="math display">\[\hat \theta = \arg \max_{\theta}\left\{\log L(\theta; y_1, \ldots, y_n)\right\}.\]</span></p>
+
+<div class="example">
+<span id="exm:unnamed-chunk-98" class="example"><strong>Example 10.12  (Bernoulli)  </strong></span>Suppose <span class="math inline">\(Y_i \sim \text{Bernoulli}(\theta)\)</span>. The likelihood is <span class="math display">\[L(\theta; y_1, \ldots, y_n) = \prod_{i=1}^n p(y_i; \theta)
+= \prod_{i=1}^n \theta^{y_i} (1 - \theta)^{1- y_i}.\]</span> Hence the log-likelihood is
+<span class="math display">\[\begin{align*}
+\log L(\theta; y_1, \ldots, y_n) &amp;= 
+\log\left(\prod_{i=1}^n \theta^{y_i} (1 - \theta)^{1- y_i}\right)\\
+&amp;= \sum_{i=1}^n \log\left(\theta^{y_i} (1 - \theta)^{1- y_i}\right) \\
+&amp;= \sum_{i=1}^n \log \theta^{y_i} + \log(1 - \theta)^{1-y_i} \\
+&amp;=  \sum_{i=1}^n y_i \log \theta + (1 - y_i) \log (1 - \theta) \\
+&amp;= \left(\sum_{i=1}^n y_i\right) \log \theta + 
+\left(n - \sum_{i=1}^n y_i\right) \log (1 - \theta).
+\end{align*}\]</span>
+<p>We now maximise <span class="math inline">\(\log L(\cdot)\)</span> as a function of <span class="math inline">\(\theta\)</span>. We attempt to find a stationary point of <span class="math inline">\(\log L(\cdot)\)</span> by differentiating and setting to zero. We have <span class="math display">\[\frac{d}{d \theta}\log L(\theta; y_1, \ldots, y_n)
+= \frac{\sum_{i=1}^n y_i}{\theta} - 
+\frac{n - \sum_{i=1}^n y_i}{1 - \theta},\]</span> and we want to find <span class="math inline">\(\hat \theta\)</span> such that <span class="math display">\[\frac{d}{d \theta}\log L(\theta; y_1, \ldots, y_n)|_{\theta = \hat \theta} = 0.\]</span> We have <span class="math display">\[\frac{\sum_{i=1}^n y_i}{\hat \theta} - 
+\frac{n - \sum_{i=1}^n y_i}{1 - \hat \theta)} = 0,\]</span> and rearranging gives that <span class="math display">\[\hat \theta = \frac{\sum_{i=1}^n y_i}{n} = \bar y\]</span> is a stationary point of the log-likelihood, provided that <span class="math inline">\(\sum_{i=1}^n y_i &gt; 0\)</span> and <span class="math inline">\(\sum_{i=1}^n y_i &lt; n\)</span>. If <span class="math inline">\(\sum_{i=1}^n y_i = 0\)</span>, then <span class="math inline">\(\log L(\theta) = n \log (1 - \theta)\)</span>, which is decreasing with <span class="math inline">\(\theta\)</span>, so <span class="math inline">\(\hat \theta = 0\)</span> is the MLE. Similarly, if <span class="math inline">\(\sum_{i=1}^n y_i = n\)</span>, then <span class="math inline">\(\log L(\theta) = n \log \theta\)</span>, which is increasing with <span class="math inline">\(\theta\)</span>, so <span class="math inline">\(\hat \theta = 1\)</span> is the MLE.</p>
+<p>If <span class="math inline">\(0 &lt; \sum_{i=1}^n y_i &lt; n\)</span>, we have shown that <span class="math inline">\(\hat \theta = \bar y\)</span> is a stationary point of the the log-likelihood, but we still need to show that it is a maximum. To do this, we need to show that <span class="math display">\[\frac{d^2}{d\theta^2} \log L(\theta;y_1, \ldots, y_n)|_{\theta = \hat \theta} &lt; 0.\]</span> We have <span class="math display">\[\frac{d^2}{d\theta^2} = -\frac{\sum_{i=1}^n y_i}{\theta^2} - 
+\frac{n - \sum_{i=1}^n y_i}{(1 - \theta)^2},\]</span> so <span class="math display">\[\frac{d^2}{d\theta^2} \log L(\theta;y_1, \ldots, y_n)|_{\theta = \hat \theta} = -\frac{\sum_{i=1}^n y_i}{\hat \theta^2} - 
+\frac{n - \sum_{i=1}^n y_i}{(1 - \hat \theta)^2}.\]</span> We know <span class="math inline">\(\hat \theta = \bar y\)</span>, so <span class="math inline">\(0 &lt; \hat \theta &lt; 1\)</span>, as we are considering the case <span class="math inline">\(0 &lt; \sum_{i=1}^n y_i &lt; n\)</span>. So <span class="math inline">\(\hat \theta&gt;0\)</span> and <span class="math inline">\(1 - \hat \theta &gt; 0\)</span>, so <span class="math display">\[\frac{d^2}{d\theta^2} \log L(\theta;y_1, \ldots, y_n)|_{\theta = \hat \theta} &lt; 0,\]</span> and <span class="math inline">\(\hat \theta = \bar Y\)</span> is the maximum likelihood estimate.</p>
+In this case, the MLE <span class="math inline">\(\hat \theta\)</span> is the same as the method of moments estimate <span class="math inline">\(\tilde \theta\)</span> we found in Example <a href="estimation.html#exm:bernmom">10.6</a>. We have already studied the properties of this estimator, so know that <span class="math inline">\(\hat \theta\)</span> is an unbiased (see Example <a href="estimation.html#exm:bernbias">10.1</a>) and consistent (see Example <a href="estimation.html#exm:bernconsist">10.3</a>) estimator of <span class="math inline">\(\theta\)</span>.
+</div>
+
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-99" class="example"><strong>Example 10.13  (Exponential)  </strong></span>Suppose the <span class="math inline">\(Y_i \sim \text{exponential}(\theta)\)</span>, so that each <span class="math inline">\(Y_i\)</span> has pdf <span class="math inline">\(f(y; \theta) = \theta e^{- \theta y}\)</span> for <span class="math inline">\(y &gt; 0\)</span>.</p>
+<p>The likelihood is <span class="math display">\[L(\theta; y_1, \ldots, y_n) = \prod_{i=1}^n f(y_i; \theta)
+= \prod_{i=1}^n \theta e^{-\theta y_i},\]</span> since we know <span class="math inline">\(y_i &gt; 0\)</span> for all <span class="math inline">\(i\)</span>.</p>
+The log-likelihood is
+<span class="math display">\[\begin{align*}
+\log L(\theta; y_1, \ldots, y_n) 
+&amp;= \sum_{i=1}^n \log\left(\theta e^{-\theta y_i}\right) \\
+&amp;= \sum_{i=1}^n \left\{\log \theta + \log\left(e^{-\theta y_i}\right) \right\} \\
+&amp;= n \log \theta - \theta \sum_{i=1}^n y_i.
+\end{align*}\]</span>
+<p>Differentiating, we have <span class="math display">\[\frac{d}{d \theta} \log L(\theta; y_1, \ldots, y_n)
+= \frac{n}{\theta} - \sum_{i=1}^n y_i,\]</span> so a stationary point of the log-likelihood <span class="math inline">\(\hat \theta\)</span> satisfies <span class="math display">\[\frac{n}{\hat \theta} - \sum_{i=1}^n y_i = 0.\]</span> Rearranging this, we get <span class="math display">\[\hat \theta = \frac{n}{\sum_{i=1}^n y_i} = \frac{1}{\bar y}.\]</span></p>
+<p>Differentiating again, we have <span class="math display">\[\frac{d^2}{d \theta^2} \log L(\theta; y_1, \ldots, y_n) = - \frac{n}{\hat \theta} &lt; 0 \quad \text{for all $\theta$},\]</span> so <span class="math inline">\(\hat \theta\)</span> is a maximum of <span class="math inline">\(\log L(\cdot)\)</span>, and hence <span class="math inline">\(\hat \theta\)</span> is the MLE.</p>
+In this case, the MLE <span class="math inline">\(\hat \theta\)</span> is the same as the method of moments estimate <span class="math inline">\(\tilde \theta\)</span> we found in Example <a href="estimation.html#exm:expmom">10.8</a>.
+</div>
+
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-100" class="example"><strong>Example 10.14  (Gamma)  </strong></span>Suppose <span class="math inline">\(Y_i \sim \text{gamma}(\theta, 1)\)</span>.</p>
+<p>To find the method of moments estimate of <span class="math inline">\(\theta\)</span>, we have <span class="math inline">\(\mu_1^\prime = E(Y_i) = \theta\)</span> and <span class="math inline">\(m_1^\prime = \bar Y\)</span>, so <span class="math inline">\(\tilde \theta = \bar Y\)</span>.</p>
+<p>To find the maximum likelihood estimate, we have <span class="math display">\[f(y; \theta) = \frac{\Gamma(\theta)} y^{\theta - 1} e^{-y},
+\quad y &gt; 0,\]</span> so the likelihood is <span class="math display">\[L(\theta; y_1, \ldots, y_n) = \prod_{i=1}^n \frac{1}{\Gamma(\theta)} \frac{\Gamma(\theta)} y_i^{\theta - 1} e^{-y_i},\]</span> since all <span class="math inline">\(y_i &gt; 0\)</span>.</p>
+The log-likelihood is
+<span class="math display">\[\begin{align*}
+\log L(\theta; y_1, \ldots, y_n) &amp;= \sum_{i=1}^n 
+\log \left(\frac{1}{\Gamma(\theta)} y_i^{\theta - 1} e^{-y_i} \right) \\
+&amp;= \sum_{i=1}^n \log\left(\frac{1}{\Gamma(\theta)}\right)
++ (\theta - 1) \sum_{i=1}^n \log y_i - \sum_{i=1}^n y_i.
+\end{align*}\]</span>
+<p>Differentiating, we have <span class="math display">\[\frac{d}{d\theta} \log L(\theta; y_1, \ldots, y_n)
+= -n \frac{d}{d \theta} \log \Gamma(\theta)
++ \sum_{i=1}^n \log y_i,\]</span> where <span class="math inline">\(\psi(\theta) = \frac{d}{d\theta} \log \Gamma(\theta)\)</span> is called the <em>digamma function</em>.</p>
+So <span class="math inline">\(\hat \theta\)</span> satisfies <span class="math display">\[-n \psi(\hat \theta) + \sum_{i=1}^n \log y_i = 0,\]</span> or
+<span class="math display" id="eq:gammascore">\[\begin{equation}
+\psi(\hat \theta) = \frac{\sum_{i=1}^n \log y_i}{n}
+\tag{10.1}
+\end{equation}\]</span>
+which has no closed-form solution for <span class="math inline">\(\hat \theta\)</span>. We could use numerical methods to find a root of <a href="estimation.html#eq:gammascore">(10.1)</a>, or to directly maximise the log-likelihood function: see MATH3044 (Statistical Inference) for details. It is very common in practice that it is not possible to write down a closed-form expression for the MLE, so we must use numerical methods.
+</div>
+
+
+<div class="example">
+<span id="exm:unnamed-chunk-101" class="example"><strong>Example 10.15  (Normal mean and variance)  </strong></span>Suppose <span class="math inline">\(Y_i \sim N(\mu, \sigma^2)\)</span>, where <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span> are both unknown parameters. We have <span class="math display">\[f(y; \mu, \sigma^2) = \frac{1}{\sqrt{2 \pi \sigma^2}}
+\exp\left\{-\frac{1}{2\sigma^2} (y - \mu)^2\right\},\]</span> so the likelihood is <span class="math display">\[L(\mu, \sigma^2; y_1, \ldots, y_n)
+= \prod_{i=1}^n \frac{1}{\sqrt{2 \pi \sigma^2}}
+\exp\left\{-\frac{1}{2\sigma^2} (y_i - \mu)^2\right\}\]</span> and the log-likelihood is
+<span class="math display">\[\begin{align*}
+\log L(\mu, \sigma^2; y_1, \ldots, y_n) 
+&amp;= \sum_{i=1}^n \log\left[ \frac{1}{\sqrt{2 \pi \sigma^2}}
+\exp\left\{-\frac{1}{2\sigma^2} (y_i - \mu)^2\right\}\right] \\
+&amp;= -\frac{n}{2} \log(2 \pi \sigma^2) - \frac{1}{2 \sigma^2}
+\sum_{i=1}^n (y_i - \mu)^2.
+\end{align*}\]</span>
+Differentiating, we obtain <span class="math display">\[\frac{\partial}{\partial \mu} \log L(\mu, \sigma^2; y_1, \ldots, y_n)
+= -\frac{1}{2 \sigma^2} \sum_{i=1}^n - 2(y_i - \mu) = 
+\frac{1}{\sigma^2} \sum_{i=1}^n (y_i - \mu)\]</span> and <span class="math display">\[\frac{\partial}{\partial \sigma^2} \log L(\mu, \sigma^2; y_1, \ldots, y_n) 
+= -\frac{n}{2 \sigma^2} + \frac{1}{2(\sigma^2)^2)} \sum_{i=1}^n (y_i - \mu)^2.\]</span>
+</div>
+<p> So stationary points <span class="math inline">\(\hat \mu\)</span> and <span class="math inline">\(\hat \sigma^2\)</span> solve <span class="math display">\[\frac{1}{\hat \sigma^2} \sum_{i=1}^n (y_i - \hat \mu) = 0\]</span> and <span class="math display">\[ -\frac{n}{2 \hat \sigma^2} + \frac{1}{2(\hat \sigma^2)^2)} \sum_{i=1}^n (y_i - \hat \mu)^2 = 0.\]</span> From the first equation, we obtain <span class="math inline">\(\hat \mu = \bar y\)</span>, so <span class="math display">\[ -\frac{n}{2 \hat \sigma^2} + \frac{1}{2(\hat \sigma^2)^2)} \sum_{i=1}^n (y_i - \bar y)^2 = 0,\]</span> and multiplying through by <span class="math inline">\(2 \hat \sigma^2\)</span> gives <span class="math display">\[ -n \hat \sigma^2 +  \sum_{i=1}^n (y_i - \bar y)^2 = 0,\]</span> so <span class="math inline">\(\hat \sigma^2 = \frac{1}{n} \sum_{i=1}^n (y_i - \bar y)^2\)</span>. In the exercises, you can check that <span class="math inline">\((\hat \mu, \hat \sigma^2)\)</span> is a maximum of the log-likelihood, so is the MLE.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="bivariate-transformations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="inference.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/11-estimation.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["MATH2011.pdf", "MATH2011.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

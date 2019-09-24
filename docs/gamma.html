@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 The gamma distribution | MATH2011: Statistical Distribution Theory</title>
+  <meta name="description" content="The course notes for MATH2011: Statistical Distribution Theory." />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 The gamma distribution | MATH2011: Statistical Distribution Theory" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The course notes for MATH2011: Statistical Distribution Theory." />
+  <meta name="github-repo" content="heogden/math2011" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 The gamma distribution | MATH2011: Statistical Distribution Theory" />
+  
+  <meta name="twitter:description" content="The course notes for MATH2011: Statistical Distribution Theory." />
+  
+
+<meta name="author" content="Dr Helen Ogden" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="maxima-and-minima.html"/>
+<link rel="next" href="unitransform.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MATH2011: Statistical Distribution Theory</a></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Distributions and their properties</b></span></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Probability distributions</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#random-variables"><i class="fa fa-check"></i><b>1.1</b> Random variables</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#examples-of-discrete-distributions"><i class="fa fa-check"></i><b>1.2</b> Examples of discrete distributions</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#the-bernoulli-distribution"><i class="fa fa-check"></i><b>1.2.1</b> The Bernoulli distribution</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#the-binomial-distribution"><i class="fa fa-check"></i><b>1.2.2</b> The binomial distribution</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#the-negative-binomial-distribution"><i class="fa fa-check"></i><b>1.2.3</b> The negative binomial distribution</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#poisson"><i class="fa fa-check"></i><b>1.2.4</b> The Poisson distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#examples-of-continuous-distributions"><i class="fa fa-check"></i><b>1.3</b> Examples of continuous distributions</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#the-exponential-distribution"><i class="fa fa-check"></i><b>1.3.1</b> The exponential distribution</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#the-uniform-distribution"><i class="fa fa-check"></i><b>1.3.2</b> The uniform distribution</a></li>
+<li class="chapter" data-level="1.3.3" data-path="index.html"><a href="index.html#the-normal-distribution"><i class="fa fa-check"></i><b>1.3.3</b> The normal distribution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="moments.html"><a href="moments.html"><i class="fa fa-check"></i><b>2</b> Moments</a><ul>
+<li class="chapter" data-level="2.1" data-path="moments.html"><a href="moments.html#expected-value"><i class="fa fa-check"></i><b>2.1</b> Expected value</a></li>
+<li class="chapter" data-level="2.2" data-path="moments.html"><a href="moments.html#variance"><i class="fa fa-check"></i><b>2.2</b> Variance</a></li>
+<li class="chapter" data-level="2.3" data-path="moments.html"><a href="moments.html#higher-order-moments"><i class="fa fa-check"></i><b>2.3</b> Higher-order moments</a></li>
+<li class="chapter" data-level="2.4" data-path="moments.html"><a href="moments.html#standardised-moments"><i class="fa fa-check"></i><b>2.4</b> Standardised moments</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="genfuns.html"><a href="genfuns.html"><i class="fa fa-check"></i><b>3</b> Generating functions</a><ul>
+<li class="chapter" data-level="3.1" data-path="genfuns.html"><a href="genfuns.html#the-moment-generating-function"><i class="fa fa-check"></i><b>3.1</b> The moment generating function</a></li>
+<li class="chapter" data-level="3.2" data-path="genfuns.html"><a href="genfuns.html#the-cumulant-generating-function"><i class="fa fa-check"></i><b>3.2</b> The cumulant generating function</a></li>
+<li class="chapter" data-level="3.3" data-path="genfuns.html"><a href="genfuns.html#generating-functions-under-linear-transformation"><i class="fa fa-check"></i><b>3.3</b> Generating functions under linear transformation</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html"><i class="fa fa-check"></i><b>4</b> Sums of random variables</a><ul>
+<li class="chapter" data-level="4.1" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#generating-functions-of-a-sum"><i class="fa fa-check"></i><b>4.1</b> Generating functions of a sum</a></li>
+<li class="chapter" data-level="4.2" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#closure-results-for-some-standard-distributions"><i class="fa fa-check"></i><b>4.2</b> Closure results for some standard distributions</a></li>
+<li class="chapter" data-level="4.3" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#properties-of-the-sample-mean-of-normal-observations"><i class="fa fa-check"></i><b>4.3</b> Properties of the sample mean of normal observations</a></li>
+<li class="chapter" data-level="4.4" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#clt"><i class="fa fa-check"></i><b>4.4</b> The central limit theorem</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html"><i class="fa fa-check"></i><b>5</b> Maxima and minima</a><ul>
+<li class="chapter" data-level="5.1" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#order-statistics"><i class="fa fa-check"></i><b>5.1</b> Order Statistics</a></li>
+<li class="chapter" data-level="5.2" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-cdf-of-y_n-the-largest-value-in-a-random-sample-of-size-n"><i class="fa fa-check"></i><b>5.2</b> The cdf of <span class="math inline">\(Y_{(n)}\)</span>, the largest value in a random sample of size <span class="math inline">\(n\)</span></a></li>
+<li class="chapter" data-level="5.3" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-pdf-of-the-maximum-in-the-continuous-case"><i class="fa fa-check"></i><b>5.3</b> The pdf of the maximum in the continuous case</a></li>
+<li class="chapter" data-level="5.4" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-cdf-of-y_1-the-smallest-value-in-a-random-sample-of-size-n"><i class="fa fa-check"></i><b>5.4</b> The cdf of <span class="math inline">\(Y_{(1)}\)</span>, the smallest value in a random sample of size <span class="math inline">\(n\)</span></a></li>
+<li class="chapter" data-level="5.5" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-pdf-of-the-minimum-in-the-continuous-case"><i class="fa fa-check"></i><b>5.5</b> The pdf of the minimum in the continuous case</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="gamma.html"><a href="gamma.html"><i class="fa fa-check"></i><b>6</b> The gamma distribution</a><ul>
+<li class="chapter" data-level="6.1" data-path="gamma.html"><a href="gamma.html#the-gamma-distribution"><i class="fa fa-check"></i><b>6.1</b> The gamma distribution</a></li>
+<li class="chapter" data-level="6.2" data-path="gamma.html"><a href="gamma.html#properties-of-the-gamma-distribution"><i class="fa fa-check"></i><b>6.2</b> Properties of the gamma distribution</a></li>
+<li class="chapter" data-level="6.3" data-path="gamma.html"><a href="gamma.html#chisquared"><i class="fa fa-check"></i><b>6.3</b> The chi-squared distribution</a></li>
+<li class="chapter" data-level="6.4" data-path="gamma.html"><a href="gamma.html#distribution-of-the-sample-variance"><i class="fa fa-check"></i><b>6.4</b> Distribution of the sample variance</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="unitransform.html"><a href="unitransform.html"><i class="fa fa-check"></i><b>7</b> Univariate transformations</a><ul>
+<li class="chapter" data-level="7.1" data-path="unitransform.html"><a href="unitransform.html#transformed-random-variables"><i class="fa fa-check"></i><b>7.1</b> Transformed random variables</a></li>
+<li class="chapter" data-level="7.2" data-path="unitransform.html"><a href="unitransform.html#one-to-one-transformations-of-continuous-random-variables"><i class="fa fa-check"></i><b>7.2</b> One-to-one transformations of continuous random variables</a></li>
+<li class="chapter" data-level="7.3" data-path="unitransform.html"><a href="unitransform.html#generating-samples-from-any-distribution"><i class="fa fa-check"></i><b>7.3</b> Generating samples from any distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html"><i class="fa fa-check"></i><b>8</b> Bivariate distributions</a><ul>
+<li class="chapter" data-level="8.1" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#joint-distributions"><i class="fa fa-check"></i><b>8.1</b> Joint distributions</a></li>
+<li class="chapter" data-level="8.2" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#moments-of-jointly-distributed-random-variables"><i class="fa fa-check"></i><b>8.2</b> Moments of jointly distributed random variables</a></li>
+<li class="chapter" data-level="8.3" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#the-bivariate-normal-distribution"><i class="fa fa-check"></i><b>8.3</b> The bivariate normal distribution</a></li>
+<li class="chapter" data-level="8.4" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#bivariate-moment-generating-functions"><i class="fa fa-check"></i><b>8.4</b> Bivariate moment generating functions</a></li>
+<li class="chapter" data-level="8.5" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#a-useful-property-of-covariances"><i class="fa fa-check"></i><b>8.5</b> A useful property of covariances</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html"><i class="fa fa-check"></i><b>9</b> Bivariate transformations</a><ul>
+<li class="chapter" data-level="9.1" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-transformation-theorem"><i class="fa fa-check"></i><b>9.1</b> The transformation theorem</a></li>
+<li class="chapter" data-level="9.2" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-beta-distribution"><i class="fa fa-check"></i><b>9.2</b> The beta distribution</a></li>
+<li class="chapter" data-level="9.3" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-cauchy-distribution"><i class="fa fa-check"></i><b>9.3</b> The Cauchy distribution</a></li>
+<li class="chapter" data-level="9.4" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-t-distribution"><i class="fa fa-check"></i><b>9.4</b> The <span class="math inline">\(t\)</span> distribution</a></li>
+<li class="chapter" data-level="9.5" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-f-distribution"><i class="fa fa-check"></i><b>9.5</b> The <span class="math inline">\(F\)</span> distribution</a></li>
+</ul></li>
+<li class="part"><span><b>II Statistical inference</b></span></li>
+<li class="chapter" data-level="10" data-path="estimation.html"><a href="estimation.html"><i class="fa fa-check"></i><b>10</b> Parameter estimation</a><ul>
+<li class="chapter" data-level="10.1" data-path="estimation.html"><a href="estimation.html#estimators-and-estimates"><i class="fa fa-check"></i><b>10.1</b> Estimators and estimates</a></li>
+<li class="chapter" data-level="10.2" data-path="estimation.html"><a href="estimation.html#bias"><i class="fa fa-check"></i><b>10.2</b> Bias</a></li>
+<li class="chapter" data-level="10.3" data-path="estimation.html"><a href="estimation.html#consistency"><i class="fa fa-check"></i><b>10.3</b> Consistency</a></li>
+<li class="chapter" data-level="10.4" data-path="estimation.html"><a href="estimation.html#mean-squared-error"><i class="fa fa-check"></i><b>10.4</b> Mean squared error</a></li>
+<li class="chapter" data-level="10.5" data-path="estimation.html"><a href="estimation.html#method-of-moments-estimation"><i class="fa fa-check"></i><b>10.5</b> Method of moments estimation</a></li>
+<li class="chapter" data-level="10.6" data-path="estimation.html"><a href="estimation.html#maximum-likelihood-estimation"><i class="fa fa-check"></i><b>10.6</b> Maximum likelihood estimation</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>11</b> Confidence intervals and hypothesis testing</a><ul>
+<li class="chapter" data-level="11.1" data-path="inference.html"><a href="inference.html#expressing-uncertainty-in-parameter-estimates"><i class="fa fa-check"></i><b>11.1</b> Expressing uncertainty in parameter estimates</a></li>
+<li class="chapter" data-level="11.2" data-path="inference.html"><a href="inference.html#confidence-intervals"><i class="fa fa-check"></i><b>11.2</b> Confidence intervals</a></li>
+<li class="chapter" data-level="11.3" data-path="inference.html"><a href="inference.html#hypothesis-testing"><i class="fa fa-check"></i><b>11.3</b> Hypothesis testing</a></li>
+<li class="chapter" data-level="11.4" data-path="inference.html"><a href="inference.html#two-sample-hypothesis-testing"><i class="fa fa-check"></i><b>11.4</b> Two-sample hypothesis testing</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="bayesian.html"><a href="bayesian.html"><i class="fa fa-check"></i><b>12</b> Bayesian inference</a><ul>
+<li class="chapter" data-level="12.1" data-path="bayesian.html"><a href="bayesian.html#frequentist-and-bayesian-inference"><i class="fa fa-check"></i><b>12.1</b> Frequentist and Bayesian inference</a></li>
+<li class="chapter" data-level="12.2" data-path="bayesian.html"><a href="bayesian.html#prior-and-posterior-distributions"><i class="fa fa-check"></i><b>12.2</b> Prior and posterior distributions</a></li>
+<li class="chapter" data-level="12.3" data-path="bayesian.html"><a href="bayesian.html#the-posterior-predictive-distribution"><i class="fa fa-check"></i><b>12.3</b> The posterior predictive distribution</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MATH2011: Statistical Distribution Theory</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+\(
+\newcommand{\bm}[1]{\boldsymbol{\mathbf{#1}}}
+\)
+<div id="gamma" class="section level1">
+<h1><span class="header-section-number">Chapter 6</span> The gamma distribution</h1>
+<div id="the-gamma-distribution" class="section level2">
+<h2><span class="header-section-number">6.1</span> The gamma distribution</h2>
+<p>In this chapter we will introduce a family of distributions known as the gamma distribution. We will see that this family contains several sub-families of distributions that arise in practical problems, including the exponential, chi-squared and Erlang distributions. The gamma distribution is also related to normal, <span class="math inline">\(t\)</span> and <span class="math inline">\(F\)</span> distributions.</p>
+<p>In practice we are often interested in modelling data which is positive, such as the time to the occurrence of an event of interest. We have seen that an Exponential distribution is one possibility to model such data, but it lacks flexibility — it only has a single parameter and we have seen that all exponential pdfs have the same shape (see Example <a href="moments.html#exm:homexp">2.6</a>). It is natural to try to generalise the exponential to a more flexible family of distributions, and the gamma distribution is one way of achieving this.</p>
+<p>Before we introduce the gamma distribution, we first need to introduce a function which is used in the pdf of the gamma distribution, to make sure that the pdf integrates to one.</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-44" class="definition"><strong>Definition 6.1  (Gamma function)  </strong></span>The <em>Gamma function</em> is defined by <span class="math display">\[\Gamma(\alpha) = \int_0^\infty x^{\alpha - 1} e^{-x} dx.\]</span>
+</div>
+
+<p>When <span class="math inline">\(\alpha = 1\)</span>, we have <span class="math display">\[\Gamma(1) = \int_0^\infty e^{-x} dx = 1.\]</span></p>
+Next, let’s prove a useful property about the Gamma function. 
+<div class="proposition">
+<span id="prp:gammarecursion" class="proposition"><strong>Proposition 6.1  </strong></span>For any <span class="math inline">\(\alpha &gt; 1\)</span>, <span class="math inline">\(\Gamma(\alpha) = (\alpha - 1) \Gamma(\alpha - 1).\)</span>
+</div>
+ 
+<div class="proof">
+ <span class="proof"><em>Proof. </em></span> We use integration by parts.
+<span class="math display">\[\begin{align*}
+\Gamma(\alpha) &amp;= \int_0^\infty x^{\alpha - 1} e^{-x} dx \\
+&amp;= \left[-x^{\alpha - 1} e^{-x}\right]_0^\infty
++ (\alpha - 1) \int_0^\infty x^{\alpha - 1} e^{-x}dx \\
+&amp;= 0 + (\alpha - 1)
+\int_0^\infty x^{(\alpha - 1) - 1} e^{-x} dx \\
+&amp;= (\alpha - 1) \Gamma(\alpha - 1)
+\end{align*}\]</span>
+since <span class="math inline">\(\alpha - 1 &gt; 0\)</span> as <span class="math inline">\(\alpha &gt; 1\)</span>.
+</div>
+
+<p>As a consequence of Proposition <a href="gamma.html#prp:gammarecursion">6.1</a> and the fact that <span class="math inline">\(\Gamma(1) = 1\)</span>, if <span class="math inline">\(\alpha\)</span> is any positive integer then <span class="math display">\[\Gamma(\alpha) = (\alpha - 1)!,\]</span> so the Gamma function can be thought of as a continuous version of the factorial function.</p>
+<p>It is also useful to know what happens to the Gamma function at half integer points, <span class="math inline">\(\Gamma(1/2)\)</span>, <span class="math inline">\(\Gamma(3/2)\)</span> and so on. It can be shown that <span class="math display">\[\Gamma(1/2) = \sqrt{\pi},\]</span> and this may be used along with the recurrence relationship (Proposition <a href="gamma.html#prp:gammarecursion">6.1</a>) to compute any other <span class="math inline">\(\Gamma(n/2)\)</span>.</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-46" class="definition"><strong>Definition 6.2  </strong></span>We say a random variable <span class="math inline">\(Y\)</span> has <em>gamma distribution</em> with <em>shape</em> parameter <span class="math inline">\(\alpha &gt; 0\)</span> and <em>rate</em> parameter <span class="math inline">\(\beta &gt; 0\)</span> if it has pdf
+<span class="math display" id="eq:gamma">\[\begin{equation}
+f(y) = \frac{\beta^\alpha}{\Gamma(\alpha)} y^{\alpha - 1} e^{-\beta y}, \quad y &gt; 0.
+\tag{6.1}
+\end{equation}\]</span>
+We write this as <span class="math inline">\(Y \sim \text{gamma}(\alpha, \beta)\)</span>.
+</div>
+
+<p>Note that the exponential distribution with rate parameter <span class="math inline">\(\beta\)</span> is a special case of the gamma distribution, with <span class="math inline">\(\alpha = 1\)</span>.</p>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-47" class="example"><strong>Example 6.1  (Time until the <span class="math inline">\(k\)</span>th event in a Poisson process)  </strong></span>Suppose we have a Poisson process with events arriving at rate <span class="math inline">\(\beta\)</span> per unit time, so that the number of events occurring in a time interval of length <span class="math inline">\(t\)</span> has <span class="math inline">\(\text{Poisson}(\beta t)\)</span> distribution. Let <span class="math inline">\(Y\)</span> be the time until the <span class="math inline">\(k\)</span>th event occurs. We claim that <span class="math inline">\(Y \sim \text{gamma}(k, \beta)\)</span>.</p>
+Let <span class="math inline">\(N_y\)</span> be the number of events in the time interval <span class="math inline">\((0, y]\)</span>. Then <span class="math inline">\(N_y \sim \text{Poisson}(\beta y)\)</span>. We have <span class="math display">\[P(Y &gt; y) = P(N_y \leq k - 1) = \sum_{n=0}^{k-1} \frac{(\beta y)^n e^{-\beta y}}{n!},\]</span> so
+<span class="math display">\[\begin{align*}
+F(y) = P(Y \leq y) &amp;= 1- P(Y &gt; y) \\
+&amp;= 1 - \sum_{n=0}^{k-1} \frac{(\beta y)^n e^{-\beta y}}{n!} \\
+&amp;= 1 - e^{-\beta y} -  \sum_{n=1}^{k-1} \frac{(\beta y)^n e^{-\beta y}}{n!}.
+\end{align*}\]</span>
+So
+<span class="math display">\[\begin{align*}
+f(y) &amp;= \frac{dF}{dy} = \beta e^{-\beta y} - 
+\sum_{n=1}^{k-1} \left\{ \frac{\beta^n y^{n-1} e^{-\beta y}}{(n-1)!} 
+- \beta \frac{(\beta y)^n}{n!} e^{-\beta y} \right\} \\
+&amp;= \beta e^{-\beta y} - \beta e^{-\beta y} 
++ \beta^2 y e^{-\beta y} - \beta^2 y e^{-\beta y}
++ \frac{\beta^3 y^2}{2!} e^{-\beta y} - \ldots + \frac{\beta (\beta y)^{k-1}}{(k-1)!} e^{-\beta y} \\
+&amp;= \frac{\beta^k}{\Gamma(k)} y^{k-1} e^{-\beta y},
+\end{align*}\]</span>
+<p>which is the pdf of a <span class="math inline">\(\text{gamma}(k, \beta)\)</span> random variable.</p>
+If <span class="math inline">\(\alpha\)</span> is an integer, as in this example, the <span class="math inline">\(\text{gamma}(\alpha, \beta)\)</span> distribution is also known as the <em>Erlang</em> distribution. The exponential distribution (with <span class="math inline">\(\alpha= 1\)</span>) is a special case of the Erlang distribution.
+</div>
+
+</div>
+<div id="properties-of-the-gamma-distribution" class="section level2">
+<h2><span class="header-section-number">6.2</span> Properties of the gamma distribution</h2>
+
+<div class="proposition">
+<span id="prp:mgfgamma" class="proposition"><strong>Proposition 6.2  </strong></span>The moment generating function of the <span class="math inline">\(\text{gamma}(\alpha, \beta)\)</span> distribution is <span class="math display">\[M_Y(t) = \left(1 - \frac{t}{\beta} \right)^{-\alpha}, \quad \text{for $t &lt; \beta$}\]</span>
+</div>
+ 
+<div class="proof">
+ <span class="proof"><em>Proof. </em></span> We have
+<span class="math display">\[\begin{align*}
+M_Y(t) = E(e^{tY}) &amp;= \int_0^\infty e^{ty} 
+\frac{\beta^\alpha}{\Gamma(\alpha)} y^{\alpha - 1} e^{-\beta y} dy \\
+&amp;= \int_0^\infty \frac{\beta^\alpha}{\Gamma(\alpha)} y^{\alpha - 1} e^{-y(\beta - t)} dy \\
+&amp;= \frac{\beta^\alpha}{(\beta - t)^\alpha} \int_0^\infty \frac{(\beta - t)^\alpha}{\Gamma(\alpha)} y^{\alpha - 1} e^{-y(\beta - t)} dy \\
+&amp;= \left(1 - \frac{t}{\beta}\right)^{-\alpha} \times 1,
+\end{align*}\]</span>
+as the final integrand is the pdf of a <span class="math inline">\(\text{gamma}(\alpha, \beta - t)\)</span> distribution, which integrates to <span class="math inline">\(1\)</span> provided that the new rate parameter <span class="math inline">\(\beta - t &gt; 0\)</span>, i.e. if <span class="math inline">\(t &lt; \beta\)</span>.
+</div>
+
+<p>The following proposition tells us that the gamma distribution is always positively skewed, but the skewness decreases as <span class="math inline">\(\alpha\)</span> increases. The gamma distribution always has larger kurtosis than the normal distribution, but the kurtosis decreases towards the kurtosis of a normal distribution (<span class="math inline">\(\gamma_2 = 3\)</span>) as <span class="math inline">\(\alpha\)</span> increases.</p>
+
+<div class="proposition">
+<span id="prp:gammamoments" class="proposition"><strong>Proposition 6.3  </strong></span>Suppose <span class="math inline">\(Y \sim \text{gamma}(\alpha, \beta)\)</span>. Then <span class="math inline">\(E(Y) = \alpha \beta^{-1}\)</span> and <span class="math inline">\(\text{Var}(Y) = \alpha \beta^{-2}\)</span>. The skewness is <span class="math inline">\(\gamma_1 = 2 \alpha^{-1/2}\)</span> and the kurtosis is <span class="math inline">\(\gamma_2 = 3 + 6 \alpha^{-1}\)</span>.
+</div>
+ 
+<div class="proof">
+<p> <span class="proof"><em>Proof. </em></span> From Proposition <a href="gamma.html#prp:mgfgamma">6.2</a>, the mgf is <span class="math inline">\(M_Y(t) = (1 - t/\beta)^{-\alpha}\)</span>, the the cgf is <span class="math inline">\(K_Y(t) = \log M_Y(t) = -\alpha \log(1 - t/\beta)\)</span>. Differentiating, we have <span class="math display">\[K_Y^{(1)}(t) = \frac{\alpha}{\beta\left(1 - \frac{t}{\beta}\right)} = \frac{\alpha}{\beta - t},\]</span> so <span class="math inline">\(E(Y) = K_Y^{(1)}(0) = \alpha \beta^{-1}\)</span>.</p>
+<p>Differentiating the cgf again, <span class="math display">\[K_Y^{(2)}(t) = \frac{d}{dt} \left[\alpha (\beta - t)^{-1}\right]
+= \alpha(\beta - t)^{-2},\]</span> so <span class="math inline">\(\mu_2 = \text{Var}(Y) = K_Y^{(2)}(0) = \alpha \beta^{-2}\)</span>.</p>
+<p>Differentiating the cgf again, <span class="math display">\[K_Y^{(3)}(t) = \frac{d}{dt} \left[\alpha (\beta - t)^{-2}\right] 
+= 2 \alpha (\beta - t)^{-3},\]</span> so the third moment about the mean is <span class="math inline">\(\mu_3 = K_Y^{(3)}(0) = 2 \alpha \beta^{-3}\)</span>. So the skewness is <span class="math display">\[\gamma_1 = \frac{\mu_3}{\mu_2^{3/2}}
+= \frac{2 \alpha \beta^{-3}}{[\alpha \beta^{-2}]^{3/2}} = 2 \alpha^{-1/2}.\]</span></p>
+Differentiating the cgf again, <span class="math display">\[K_Y^{(4)}(t) = \frac{d}{dt} \left[2 \alpha (\beta - t)^{-3}\right] 
+= 6 \alpha (\beta - t)^{-4},\]</span> so the fourth cumulant is <span class="math inline">\(\kappa_4 = 6 \alpha \beta^{-4}\)</span>. The fourth moment about the mean is <span class="math display">\[\mu_4 = \kappa_4 + 3 \mu_2^2 = 6 \alpha \beta^{-4} + 3 \alpha^2 \beta^{-4},\]</span> so the kurtosis is <span class="math display">\[\gamma_2 = \frac{\mu_4}{\mu_2^2} = 3 + \frac{6 \alpha \beta^{-4}}{\alpha^2 \beta^{-4}} = 3 + 6 \alpha^{-1},\]</span> as claimed.
+</div>
+
+<p>The gamma distribution is closed under scaling, and under summation of independent gamma distributions with a common rate parameter.</p>
+
+<div class="proposition">
+<span id="prp:gammascale" class="proposition"><strong>Proposition 6.4  </strong></span>Suppose <span class="math inline">\(Y \sim \text{gamma}(\alpha, \beta)\)</span>, and let <span class="math inline">\(Z = bY\)</span>, for some constant <span class="math inline">\(b &gt; 0\)</span>. Then <span class="math inline">\(Z \sim \text{gamma}(\alpha, \beta / b)\)</span>.
+</div>
+ 
+<div class="proof">
+ <span class="proof"><em>Proof. </em></span> By Theorem <a href="genfuns.html#thm:gflinear">3.2</a>, we have <span class="math display">\[M_Z(t) = M_Y(bt) = \left( 1 - \frac{bt}{\beta} \right)^{-\alpha}
+= \left(1 - \frac{t}{\beta/b}\right)^{-\alpha},\]</span> which is the mgf of a <span class="math inline">\(\text{gamma}(\alpha, \beta / b)\)</span> distribution. Since the mgf characterises the distribution, we have <span class="math inline">\(Z \sim \text{gamma}(\alpha, \beta / b)\)</span>.
+</div>
+
+
+<div class="proposition">
+<span id="prp:gammasum" class="proposition"><strong>Proposition 6.5  </strong></span>If <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are independent, with <span class="math inline">\(Y_i \sim \text{gamma}(\alpha_i, \beta)\)</span> then <span class="math inline">\(Z = \sum_{i=1}^n Y_i \sim \text{gamma}(\sum_{i=1}^n \alpha_i, \beta)\)</span>.
+</div>
+ 
+<div class="proof">
+ <span class="proof"><em>Proof. </em></span> By Theorem <a href="sums-of-random-variables.html#thm:mgfsum">4.1</a>, we have
+<span class="math display">\[\begin{align*}
+M_Z(t) &amp;= \prod_{i=1}^n M_{Y_i}(t) \\
+&amp;= \prod_{i=1}^n \left( 1 - \frac{t}{\beta} \right)^{-\alpha_i}
+&amp;= \left( 1 - \frac{t}{\beta} \right)^{-\sum_{i=1}^n \alpha_i},
+\end{align*}\]</span>
+which is the mgf of a <span class="math inline">\(\text{gamma}(\sum_{i=1}^n \alpha_i, \beta)\)</span> distribution. Since the mgf characterises the distribution, we have <span class="math inline">\(Z \sim \text{gamma}(\sum_{i=1}^n \alpha_i, \beta)\)</span>.
+</div>
+
+</div>
+<div id="chisquared" class="section level2">
+<h2><span class="header-section-number">6.3</span> The chi-squared distribution</h2>
+<p>The chi-squared distribution is a useful special case of the gamma distribution.</p>
+
+<div class="definition">
+<span id="def:chisquared" class="definition"><strong>Definition 6.3  </strong></span>We say a random variable <span class="math inline">\(Y\)</span> has <em>chi-squared</em> distribution with <span class="math inline">\(n\)</span> degrees of freedom if <span class="math inline">\(Y \sim \text{gamma}(n/2, 1/2)\)</span>. We write <span class="math inline">\(Y \sim \chi^2_n\)</span>.
+</div>
+<p> We can write down the properties of the chi-squared distribution by using results we have already proved about the gamma distribution.</p>
+<p>If <span class="math inline">\(Y \sim \chi^2_n\)</span>, we have <span class="math display">\[E(Y) = \frac{n/2}{1/2} = n; \qquad \text{Var}(Y) = \frac{n/2}{(1/2)^2}  = 2n.\]</span></p>
+By Proposition <a href="gamma.html#prp:gammasum">6.5</a>, if <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are independent random variables, with <span class="math inline">\(Y_i \sim \chi^2_{n_i}\)</span> then
+<span class="math display" id="eq:chisquaredsum">\[\begin{equation}
+\sum_{i=1}^n Y_i \sim \chi^2_{\sum_{i=1}^n n_i}.
+\tag{6.2}
+\end{equation}\]</span>
+<p>The <em>sum of independent chi-squared random variables</em> has chi-squared distribution with degrees of freedom given by the <em>sum of the individual degrees of freedom</em>.</p>
+The chi-squared distribution is also related to the normal distribution. 
+<div class="proposition">
+<span id="prp:chisquarednormal" class="proposition"><strong>Proposition 6.6  </strong></span>Let <span class="math inline">\(Z \sim N(0, 1)\)</span>, and let <span class="math inline">\(Y = Z^2\)</span>. Then <span class="math inline">\(Y \sim \chi^2_1\)</span>.
+</div>
+
+
+<div class="proof">
+ <span class="proof"><em>Proof. </em></span> Write <span class="math inline">\(\Phi(.)\)</span> for the cumulative distribution function of <span class="math inline">\(Z\)</span>, and <span class="math inline">\(\phi(.)\)</span> for the pdf of <span class="math inline">\(Z\)</span>, so that <span class="math display">\[\phi(z) = \frac{1}{\sqrt{2 \pi}} \exp\left(-\frac{z^2}{2}\right).\]</span> Let <span class="math inline">\(Y\)</span> have cdf <span class="math inline">\(F(.)\)</span> and pdf <span class="math inline">\(f(.)\)</span>. Then, for <span class="math inline">\(y &gt; 0\)</span>,
+<span class="math display">\[\begin{align*}
+F(y) &amp;= P(Y \leq y) = P(Z^2 \leq y) \\
+&amp;= P\left(-\sqrt{y} \leq Z \leq \sqrt{y} \right) \\
+&amp;= \Phi\left(\sqrt{y}\right) - \Phi\left(-\sqrt{y}\right).
+\end{align*}\]</span>
+So
+<span class="math display">\[\begin{align*}
+f(y) &amp;= \frac{d}{dy} F(y) 
+= \frac{1}{2 \sqrt{y}} \phi \left(\sqrt{y}\right) 
++ \frac{1}{2 \sqrt{y}} \phi \left(-\sqrt{y}\right) \\
+&amp;= \frac{1}{2 \sqrt{y}} \left\{\frac{1}{\sqrt{2 \pi}} \exp\left(-\frac{y}{2}\right) + \frac{1}{\sqrt{2 \pi}} \exp\left(-\frac{y}{2}\right) \right\} \\
+&amp;= \frac{1}{\sqrt{2}\sqrt{y}\sqrt{\pi}} \exp\left(-\frac{y}{2}\right) \\
+&amp;= \frac{y^{\frac{1}{2} - 1}}{\Gamma(1/2)} 
+\left(\frac{1}{2}\right)^{1/2} \exp\left(-\frac{y}{2}\right),
+\end{align*}\]</span>
+since <span class="math inline">\(\Gamma(1/2) = \sqrt{\pi}\)</span>. This is the pdf of a <span class="math inline">\(\text{gamma}(1/2, 1/2) \equiv \chi^2_1\)</span> distribution, as claimed.
+</div>
+ Putting together Proposition <a href="gamma.html#prp:chisquarednormal">6.6</a> and Equation <a href="gamma.html#eq:chisquaredsum">(6.2)</a> gives us a way to construct a random variable with any chi-squared distribution, given a supply of independent and identically distributed standard normal random variables: 
+<div class="proposition">
+<span id="prp:chisquaredsumnormal" class="proposition"><strong>Proposition 6.7  </strong></span>Let <span class="math inline">\(Z_1, Z_2, \ldots Z_n\)</span> be independent and identically distributed, with <span class="math inline">\(Z_i \sim N(0, 1)\)</span>, and let <span class="math inline">\(Y = \sum_{i=1}^n Z_i^2\)</span>. Then <span class="math inline">\(Y \sim \chi^2_n\)</span>.
+</div>
+ 
+<div class="proof">
+ <span class="proof"><em>Proof. </em></span> By Proposition <a href="gamma.html#prp:chisquarednormal">6.6</a>, each <span class="math inline">\(Z_i^2 \sim \chi^2_1\)</span>, and <span class="math inline">\(Z_1^2, \ldots, Z_n^2\)</span> are independent. So by Equation <a href="gamma.html#eq:chisquaredsum">(6.2)</a> with <span class="math inline">\(n_i = 1\)</span>, <span class="math inline">\(Y \sim \chi^2_{\sum_{i=1}^n 1} \equiv \chi^2_n\)</span>, as claimed.
+</div>
+
+</div>
+<div id="distribution-of-the-sample-variance" class="section level2">
+<h2><span class="header-section-number">6.4</span> Distribution of the sample variance</h2>
+<p>Suppose <span class="math inline">\(Y_1, Y_2, \ldots, Y_n\)</span> are independent identically distributed <span class="math inline">\(N(\mu, \sigma^2)\)</span> random variables. We can use observations of <span class="math inline">\(y_1, y_2, \ldots, y_n\)</span> of <span class="math inline">\(Y_1, \ldots, Y_n\)</span> to estimate <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span>. We can use the sample mean <span class="math display">\[\bar y = \frac{1}{n} \sum_{i=1}^n y_i\]</span> to estimate <span class="math inline">\(\mu\)</span>, and the sample variance <span class="math display">\[s^2 = \frac{\sum_{i=1}^n (y_i - \bar y)^2}{n-1}\]</span> to estimate <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>For any specific sample of observations, <span class="math inline">\(\bar y\)</span> and <span class="math inline">\(s^2\)</span> will take specific numerical values, but when they are defined in terms of the random variables <span class="math inline">\(Y_1 , Y_2 , \ldots, Y_n\)</span>, they too are random variables and will have distributions.</p>
+We have already seen (in Proposition <a href="sums-of-random-variables.html#prp:ybarnormal">4.1</a>) that <span class="math inline">\(\bar Y \sim N(\mu, \sigma^2/n)\)</span>. We would like to also know the distribution of the random version of the sample variance
+<span class="math display" id="eq:S2">\[\begin{equation}
+S^2 = \frac{\sum_{i=1}^n (Y_i - \bar Y)^2}{n-1}.
+\tag{6.3}
+\end{equation}\]</span>
+
+<div class="theorem">
+<span id="thm:S2dist" class="theorem"><strong>Theorem 6.1  </strong></span><span class="math inline">\(Y_1, Y_2, \ldots, Y_n\)</span> are independent identically distributed <span class="math inline">\(N(\mu, \sigma^2)\)</span> random variables, and let <span class="math inline">\(S^2\)</span> be as defined in Equation <a href="gamma.html#eq:S2">(6.3)</a>. Then <span class="math display">\[\frac{(n-1)S^2}{\sigma^2} \sim \chi^2_{n-1},\]</span> and <span class="math inline">\(S^2\)</span> and <span class="math inline">\(\bar Y\)</span> are independent.
+</div>
+
+<p>In order to prove this important result, we will need to use Cochran’s theorem, which we state here without proof.</p>
+
+<div class="theorem">
+<p><span id="thm:cochran" class="theorem"><strong>Theorem 6.2  (Cochran’s Theorem)  </strong></span>Suppose that <span class="math inline">\(U \sim \text{gamma}(\alpha_1, \beta)\)</span> and <span class="math inline">\(W \sim \text{gamma}(\alpha_1 + \alpha_2, \beta)\)</span>. If <span class="math inline">\(V = W – U\)</span>, then any one of the following implies the other two:</p>
+<ol style="list-style-type: lower-roman">
+<li><span class="math inline">\(V \sim \text{gamma}(\alpha_2, \beta)\)</span>.</li>
+<li><span class="math inline">\(V\)</span> is independent of <span class="math inline">\(U\)</span></li>
+<li><span class="math inline">\(V\)</span> is non-negative.</li>
+</ol>
+</div>
+
+<p>We use Cochran’s theorem to prove Theorem <a href="gamma.html#thm:S2dist">6.1</a>:</p>
+
+<div class="proof">
+ <span class="proof"><em>Proof</em> (Theorem <a href="gamma.html#thm:S2dist">6.1</a>). </span> The key to the proof is to write <span class="math inline">\(\sum_{i=1}^n (Y_i - \bar Y)^2\)</span> in terms of <span class="math inline">\(\sum_{i=1}^n (Y_i - \mu)^2\)</span>. We have
+<span class="math display">\[\begin{align*}
+\sum_{i=1}^n (Y_i - \mu)^2 &amp;= \sum_{i=1}^n (Y_i - \bar Y + \bar Y - \mu)^2 \\
+&amp;= \sum_{i=1}^n \left\{(Y_i - \bar Y)^2 
++ 2(Y_i - \bar Y)(\bar Y - \mu) + (\bar Y - \mu)^2 \right\} \\
+&amp;= \sum_{i=1}^n (Y_i - \bar Y)^2 + 
+2(\bar Y - \mu) \sum_{i=1}^n (Y_i - \bar Y) + n(\bar Y - \mu)^2 \\
+&amp;= \sum_{i=1}^n (Y_i - \bar Y)^2 + n(\bar Y - \mu)^2,
+\end{align*}\]</span>
+<p>as <span class="math inline">\(\sum_{i=1}^n (Y_i - \bar Y) = 0\)</span>. So <span class="math display">\[\sum_{i=1}^n (Y_i - \mu)^2  = \sum_{i=1}^n (Y_i - \bar Y)^2 - n(\bar Y - \mu)^2.\]</span> Multiplying through by <span class="math inline">\(\frac{1}{\sigma^2}\)</span> gives <span class="math display">\[\frac{1}{\sigma^2}\sum_{i=1}^n (Y_i - \mu)^2 = \frac{1}{\sigma^2}\sum_{i=1}^n (Y_i - \bar Y)^2 - \frac{n}{\sigma^2}(\bar Y - \mu)^2,\]</span> so <span class="math display">\[\frac{(n-1)S^2}{\sigma^2} 
+= \sum_{i=1}^n \left(\frac{Y_i - \mu}{\sigma}\right)^2 
+- \left(\frac{\sqrt{n}(\bar Y - \mu)}{\sigma} \right)^2.\]</span> But <span class="math inline">\((Y_i - \mu)/\sigma \sim N(0, 1)\)</span>, so <span class="math display">\[\sum_{i=1}^n \left(\frac{Y_i - \mu}{\sigma}\right)^2 
+\sim \chi^2_n\]</span> by Proposition <a href="gamma.html#prp:chisquaredsumnormal">6.7</a>. We have <span class="math inline">\(\sqrt{n}(\bar Y - \mu)/\sigma \sim N(0, 1)\)</span> by Proposition <a href="sums-of-random-variables.html#prp:ybarnormal">4.1</a>, so <span class="math display">\[\left(\frac{\sqrt{n}(\bar Y - \mu)}{\sigma} \right)^2 
+\sim \chi^2_1\]</span> by Proposition <a href="gamma.html#prp:chisquarednormal">6.6</a>.</p>
+Now we use Cochran’s Theorem (<a href="gamma.html#thm:cochran">6.2</a>), with
+<span class="math display">\[\begin{align*}
+V &amp;= \frac{(n-1) S^2}{\sigma^2} \\
+W &amp;= \sum_{i=1}^n \left(\frac{Y_i - \mu}{\sigma}\right)^2 
+\sim \chi^2_n \equiv \text{gamma}(n/2, 1/2) \\
+U &amp;= \left(\frac{\sqrt{n}(\bar Y - \mu)}{\sigma} \right)^2 
+\sim \chi^2_1 \equiv \text{gamma}(1/2, 1/2),
+\end{align*}\]</span>
+<p>so <span class="math inline">\(\alpha_1 = 1/2\)</span> and <span class="math inline">\(\alpha_1 + \alpha_2 = n/2\)</span>, so <span class="math inline">\(\alpha_2 = (n-1)/2\)</span>. We have <span class="math inline">\(\sum_{i=1}^n (Y_i - \bar Y) \geq 0\)</span>, so <span class="math inline">\(V \geq 0\)</span>, so condition (iii) in Cochran’s Theorem is met.</p>
+<p>So by (ii) of Cochran’s Theorem, <span class="math inline">\(V = \frac{(n-1) S^2}{\sigma^2}\)</span> is independent of <span class="math inline">\(U = \left(\frac{\sqrt{n}(\bar Y - \mu)}{\sigma} \right)^2\)</span>, and hence <span class="math inline">\(S^2\)</span> is independent of <span class="math inline">\(\bar Y\)</span>, as claimed.</p>
+By (i) of Cochran’s Theorem, <span class="math display">\[V = \frac{(n-1) S^2}{\sigma^2} 
+\sim \text{gamma}(\alpha_2, 1/2)
+\equiv \text{gamma}((n-1)/2, 1/2) \equiv \chi^2_{n-1},\]</span> as claimed.
+</div>
+
+A consequence of Theorem <a href="gamma.html#thm:S2dist">6.1</a> is that
+<span class="math display">\[\begin{align*}
+E(S^2) &amp;= E\left(\frac{\sigma^2}{n-1} \frac{(n-1) S^2}{\sigma^2} \right) \\
+  &amp;= \frac{\sigma^2}{n-1} E\left(\frac{(n-1) S^2}{\sigma^2} \right) \\
+  &amp;=  \frac{\sigma^2}{n-1} \cdot (n - 1) = \sigma^2,
+  \end{align*}\]</span>
+<p>where we have used that the expected value of a chi-squared random variable is its degrees of freedom. So <span class="math inline">\(S^2\)</span> is an <em>unbiased</em> estimator of <span class="math inline">\(\sigma^2\)</span>: a concept which we will revisit in Chapter <a href="estimation.html#estimation">10</a>.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="maxima-and-minima.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="unitransform.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/07-gamma.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["MATH2011.pdf", "MATH2011.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

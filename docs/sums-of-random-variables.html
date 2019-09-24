@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Sums of random variables | MATH2011: Statistical Distribution Theory</title>
+  <meta name="description" content="The course notes for MATH2011: Statistical Distribution Theory." />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Sums of random variables | MATH2011: Statistical Distribution Theory" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The course notes for MATH2011: Statistical Distribution Theory." />
+  <meta name="github-repo" content="heogden/math2011" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Sums of random variables | MATH2011: Statistical Distribution Theory" />
+  
+  <meta name="twitter:description" content="The course notes for MATH2011: Statistical Distribution Theory." />
+  
+
+<meta name="author" content="Dr Helen Ogden" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="genfuns.html"/>
+<link rel="next" href="maxima-and-minima.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MATH2011: Statistical Distribution Theory</a></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Distributions and their properties</b></span></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Probability distributions</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#random-variables"><i class="fa fa-check"></i><b>1.1</b> Random variables</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#examples-of-discrete-distributions"><i class="fa fa-check"></i><b>1.2</b> Examples of discrete distributions</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#the-bernoulli-distribution"><i class="fa fa-check"></i><b>1.2.1</b> The Bernoulli distribution</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#the-binomial-distribution"><i class="fa fa-check"></i><b>1.2.2</b> The binomial distribution</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#the-negative-binomial-distribution"><i class="fa fa-check"></i><b>1.2.3</b> The negative binomial distribution</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#poisson"><i class="fa fa-check"></i><b>1.2.4</b> The Poisson distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#examples-of-continuous-distributions"><i class="fa fa-check"></i><b>1.3</b> Examples of continuous distributions</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#the-exponential-distribution"><i class="fa fa-check"></i><b>1.3.1</b> The exponential distribution</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#the-uniform-distribution"><i class="fa fa-check"></i><b>1.3.2</b> The uniform distribution</a></li>
+<li class="chapter" data-level="1.3.3" data-path="index.html"><a href="index.html#the-normal-distribution"><i class="fa fa-check"></i><b>1.3.3</b> The normal distribution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="moments.html"><a href="moments.html"><i class="fa fa-check"></i><b>2</b> Moments</a><ul>
+<li class="chapter" data-level="2.1" data-path="moments.html"><a href="moments.html#expected-value"><i class="fa fa-check"></i><b>2.1</b> Expected value</a></li>
+<li class="chapter" data-level="2.2" data-path="moments.html"><a href="moments.html#variance"><i class="fa fa-check"></i><b>2.2</b> Variance</a></li>
+<li class="chapter" data-level="2.3" data-path="moments.html"><a href="moments.html#higher-order-moments"><i class="fa fa-check"></i><b>2.3</b> Higher-order moments</a></li>
+<li class="chapter" data-level="2.4" data-path="moments.html"><a href="moments.html#standardised-moments"><i class="fa fa-check"></i><b>2.4</b> Standardised moments</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="genfuns.html"><a href="genfuns.html"><i class="fa fa-check"></i><b>3</b> Generating functions</a><ul>
+<li class="chapter" data-level="3.1" data-path="genfuns.html"><a href="genfuns.html#the-moment-generating-function"><i class="fa fa-check"></i><b>3.1</b> The moment generating function</a></li>
+<li class="chapter" data-level="3.2" data-path="genfuns.html"><a href="genfuns.html#the-cumulant-generating-function"><i class="fa fa-check"></i><b>3.2</b> The cumulant generating function</a></li>
+<li class="chapter" data-level="3.3" data-path="genfuns.html"><a href="genfuns.html#generating-functions-under-linear-transformation"><i class="fa fa-check"></i><b>3.3</b> Generating functions under linear transformation</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html"><i class="fa fa-check"></i><b>4</b> Sums of random variables</a><ul>
+<li class="chapter" data-level="4.1" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#generating-functions-of-a-sum"><i class="fa fa-check"></i><b>4.1</b> Generating functions of a sum</a></li>
+<li class="chapter" data-level="4.2" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#closure-results-for-some-standard-distributions"><i class="fa fa-check"></i><b>4.2</b> Closure results for some standard distributions</a></li>
+<li class="chapter" data-level="4.3" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#properties-of-the-sample-mean-of-normal-observations"><i class="fa fa-check"></i><b>4.3</b> Properties of the sample mean of normal observations</a></li>
+<li class="chapter" data-level="4.4" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#clt"><i class="fa fa-check"></i><b>4.4</b> The central limit theorem</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html"><i class="fa fa-check"></i><b>5</b> Maxima and minima</a><ul>
+<li class="chapter" data-level="5.1" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#order-statistics"><i class="fa fa-check"></i><b>5.1</b> Order Statistics</a></li>
+<li class="chapter" data-level="5.2" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-cdf-of-y_n-the-largest-value-in-a-random-sample-of-size-n"><i class="fa fa-check"></i><b>5.2</b> The cdf of <span class="math inline">\(Y_{(n)}\)</span>, the largest value in a random sample of size <span class="math inline">\(n\)</span></a></li>
+<li class="chapter" data-level="5.3" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-pdf-of-the-maximum-in-the-continuous-case"><i class="fa fa-check"></i><b>5.3</b> The pdf of the maximum in the continuous case</a></li>
+<li class="chapter" data-level="5.4" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-cdf-of-y_1-the-smallest-value-in-a-random-sample-of-size-n"><i class="fa fa-check"></i><b>5.4</b> The cdf of <span class="math inline">\(Y_{(1)}\)</span>, the smallest value in a random sample of size <span class="math inline">\(n\)</span></a></li>
+<li class="chapter" data-level="5.5" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-pdf-of-the-minimum-in-the-continuous-case"><i class="fa fa-check"></i><b>5.5</b> The pdf of the minimum in the continuous case</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="gamma.html"><a href="gamma.html"><i class="fa fa-check"></i><b>6</b> The gamma distribution</a><ul>
+<li class="chapter" data-level="6.1" data-path="gamma.html"><a href="gamma.html#the-gamma-distribution"><i class="fa fa-check"></i><b>6.1</b> The gamma distribution</a></li>
+<li class="chapter" data-level="6.2" data-path="gamma.html"><a href="gamma.html#properties-of-the-gamma-distribution"><i class="fa fa-check"></i><b>6.2</b> Properties of the gamma distribution</a></li>
+<li class="chapter" data-level="6.3" data-path="gamma.html"><a href="gamma.html#chisquared"><i class="fa fa-check"></i><b>6.3</b> The chi-squared distribution</a></li>
+<li class="chapter" data-level="6.4" data-path="gamma.html"><a href="gamma.html#distribution-of-the-sample-variance"><i class="fa fa-check"></i><b>6.4</b> Distribution of the sample variance</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="unitransform.html"><a href="unitransform.html"><i class="fa fa-check"></i><b>7</b> Univariate transformations</a><ul>
+<li class="chapter" data-level="7.1" data-path="unitransform.html"><a href="unitransform.html#transformed-random-variables"><i class="fa fa-check"></i><b>7.1</b> Transformed random variables</a></li>
+<li class="chapter" data-level="7.2" data-path="unitransform.html"><a href="unitransform.html#one-to-one-transformations-of-continuous-random-variables"><i class="fa fa-check"></i><b>7.2</b> One-to-one transformations of continuous random variables</a></li>
+<li class="chapter" data-level="7.3" data-path="unitransform.html"><a href="unitransform.html#generating-samples-from-any-distribution"><i class="fa fa-check"></i><b>7.3</b> Generating samples from any distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html"><i class="fa fa-check"></i><b>8</b> Bivariate distributions</a><ul>
+<li class="chapter" data-level="8.1" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#joint-distributions"><i class="fa fa-check"></i><b>8.1</b> Joint distributions</a></li>
+<li class="chapter" data-level="8.2" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#moments-of-jointly-distributed-random-variables"><i class="fa fa-check"></i><b>8.2</b> Moments of jointly distributed random variables</a></li>
+<li class="chapter" data-level="8.3" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#the-bivariate-normal-distribution"><i class="fa fa-check"></i><b>8.3</b> The bivariate normal distribution</a></li>
+<li class="chapter" data-level="8.4" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#bivariate-moment-generating-functions"><i class="fa fa-check"></i><b>8.4</b> Bivariate moment generating functions</a></li>
+<li class="chapter" data-level="8.5" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#a-useful-property-of-covariances"><i class="fa fa-check"></i><b>8.5</b> A useful property of covariances</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html"><i class="fa fa-check"></i><b>9</b> Bivariate transformations</a><ul>
+<li class="chapter" data-level="9.1" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-transformation-theorem"><i class="fa fa-check"></i><b>9.1</b> The transformation theorem</a></li>
+<li class="chapter" data-level="9.2" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-beta-distribution"><i class="fa fa-check"></i><b>9.2</b> The beta distribution</a></li>
+<li class="chapter" data-level="9.3" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-cauchy-distribution"><i class="fa fa-check"></i><b>9.3</b> The Cauchy distribution</a></li>
+<li class="chapter" data-level="9.4" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-t-distribution"><i class="fa fa-check"></i><b>9.4</b> The <span class="math inline">\(t\)</span> distribution</a></li>
+<li class="chapter" data-level="9.5" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-f-distribution"><i class="fa fa-check"></i><b>9.5</b> The <span class="math inline">\(F\)</span> distribution</a></li>
+</ul></li>
+<li class="part"><span><b>II Statistical inference</b></span></li>
+<li class="chapter" data-level="10" data-path="estimation.html"><a href="estimation.html"><i class="fa fa-check"></i><b>10</b> Parameter estimation</a><ul>
+<li class="chapter" data-level="10.1" data-path="estimation.html"><a href="estimation.html#estimators-and-estimates"><i class="fa fa-check"></i><b>10.1</b> Estimators and estimates</a></li>
+<li class="chapter" data-level="10.2" data-path="estimation.html"><a href="estimation.html#bias"><i class="fa fa-check"></i><b>10.2</b> Bias</a></li>
+<li class="chapter" data-level="10.3" data-path="estimation.html"><a href="estimation.html#consistency"><i class="fa fa-check"></i><b>10.3</b> Consistency</a></li>
+<li class="chapter" data-level="10.4" data-path="estimation.html"><a href="estimation.html#mean-squared-error"><i class="fa fa-check"></i><b>10.4</b> Mean squared error</a></li>
+<li class="chapter" data-level="10.5" data-path="estimation.html"><a href="estimation.html#method-of-moments-estimation"><i class="fa fa-check"></i><b>10.5</b> Method of moments estimation</a></li>
+<li class="chapter" data-level="10.6" data-path="estimation.html"><a href="estimation.html#maximum-likelihood-estimation"><i class="fa fa-check"></i><b>10.6</b> Maximum likelihood estimation</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>11</b> Confidence intervals and hypothesis testing</a><ul>
+<li class="chapter" data-level="11.1" data-path="inference.html"><a href="inference.html#expressing-uncertainty-in-parameter-estimates"><i class="fa fa-check"></i><b>11.1</b> Expressing uncertainty in parameter estimates</a></li>
+<li class="chapter" data-level="11.2" data-path="inference.html"><a href="inference.html#confidence-intervals"><i class="fa fa-check"></i><b>11.2</b> Confidence intervals</a></li>
+<li class="chapter" data-level="11.3" data-path="inference.html"><a href="inference.html#hypothesis-testing"><i class="fa fa-check"></i><b>11.3</b> Hypothesis testing</a></li>
+<li class="chapter" data-level="11.4" data-path="inference.html"><a href="inference.html#two-sample-hypothesis-testing"><i class="fa fa-check"></i><b>11.4</b> Two-sample hypothesis testing</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="bayesian.html"><a href="bayesian.html"><i class="fa fa-check"></i><b>12</b> Bayesian inference</a><ul>
+<li class="chapter" data-level="12.1" data-path="bayesian.html"><a href="bayesian.html#frequentist-and-bayesian-inference"><i class="fa fa-check"></i><b>12.1</b> Frequentist and Bayesian inference</a></li>
+<li class="chapter" data-level="12.2" data-path="bayesian.html"><a href="bayesian.html#prior-and-posterior-distributions"><i class="fa fa-check"></i><b>12.2</b> Prior and posterior distributions</a></li>
+<li class="chapter" data-level="12.3" data-path="bayesian.html"><a href="bayesian.html#the-posterior-predictive-distribution"><i class="fa fa-check"></i><b>12.3</b> The posterior predictive distribution</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MATH2011: Statistical Distribution Theory</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+\(
+\newcommand{\bm}[1]{\boldsymbol{\mathbf{#1}}}
+\)
+<div id="sums-of-random-variables" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Sums of random variables</h1>
+<div id="generating-functions-of-a-sum" class="section level2">
+<h2><span class="header-section-number">4.1</span> Generating functions of a sum</h2>
+<p>In many situations in statistics we end up with situations where we are interested in understanding the properties of (possibly weighted) sums of random variables. For example, the sample mean is frequently used as a summary measure for a set of observations and it is simply a weighted sum of the observations (each observation has weight <span class="math inline">\(1/n\)</span>, where <span class="math inline">\(n\)</span> is the number of observations).</p>
+<p>It is very easy to find the moment generating function of a sum of independent random variables, given the moment generating function for each of those random variables, by using the following result:</p>
+
+<div class="theorem">
+<span id="thm:mgfsum" class="theorem"><strong>Theorem 4.1  </strong></span>Suppose <span class="math inline">\(Y_1, Y_2, \ldots Y_n\)</span> are independent random variables, where <span class="math inline">\(Y_i\)</span> has moment generating function <span class="math inline">\(M_{Y_i}(t)\)</span>, for <span class="math inline">\(i = 1, 2, \ldots, n\)</span>. Then <span class="math inline">\(Z = \sum_{i=1}^n Y_i\)</span> has moment generating function <span class="math display">\[M_Z(t) = \prod_{i=1}^n M_{Y_i}(t).\]</span>
+</div>
+ 
+<div class="remark">
+ <span class="remark"><em>Remark. </em></span> A special case of this is that if <span class="math inline">\(Y_1, Y_2, \ldots Y_n\)</span> all have the same distribution with moment generating function <span class="math inline">\(M_Y(t)\)</span>, then <span class="math inline">\(M_Z(t) = [M_Y(t)]^n\)</span>.
+</div>
+ 
+<div class="proof">
+ <span class="proof"><em>Proof. </em></span> We have
+<span class="math display">\[\begin{align*}
+M_Z(t) &amp;= E(e^{tZ}) \\
+&amp;= E\left[\exp\left(t \sum_{i=1}^n Y_i \right)\right] \\
+&amp;= E\left[\prod_{i=1}^n \exp(t Y_i)\right] \\
+&amp;= \prod_{i=1}^n E\left[\exp(t Y_i)\right], \quad \text{by independence of the $Y_i$} \\
+&amp;= \prod_{i=1}^n M_{Y_i}(t)
+\end{align*}\]</span>
+as required.
+</div>
+
+A corollary of Theorem <a href="sums-of-random-variables.html#thm:mgfsum">4.1</a> gives a similar result for cumulant generating functions: 
+<div class="theorem">
+<span id="thm:cgfsum" class="theorem"><strong>Theorem 4.2  </strong></span>Suppose <span class="math inline">\(Y_1, Y_2, \ldots Y_n\)</span> are independent random variables, where <span class="math inline">\(Y_i\)</span> has cumulant generating function <span class="math inline">\(K_{Y_i}(t)\)</span>, for <span class="math inline">\(i = 1, 2, \ldots, n\)</span>. Then <span class="math inline">\(Z = \sum_{i=1}^n Y_i\)</span> has cumulant generating function <span class="math display">\[K_Z(t) = \sum_{i=1}^n K_{Y_i}(t).\]</span>
+</div>
+ 
+<div class="proof">
+ <span class="proof"><em>Proof. </em></span> We have <span class="math display">\[K_Z(t) = \log M_Y(t) = \log \left(\prod_{i=1}^n M_{Y_i}(t) \right)\]</span> by Theorem <a href="sums-of-random-variables.html#thm:mgfsum">4.1</a>. Simplifying, we get <span class="math display">\[K_Z(t) = \sum_{i=1}^n \log M_{Y_i}(t) = \sum_{i=1}^n K_{Y_i}(t)\]</span> as required.
+</div>
+
+</div>
+<div id="closure-results-for-some-standard-distributions" class="section level2">
+<h2><span class="header-section-number">4.2</span> Closure results for some standard distributions</h2>
+<p>We can use Theorems <a href="sums-of-random-variables.html#thm:mgfsum">4.1</a> and <a href="sums-of-random-variables.html#thm:cgfsum">4.2</a> to prove some useful “closure” results for sums of independent random variables.</p>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-35" class="example"><strong>Example 4.1  (Sum of binomial random variables)  </strong></span>Suppose that <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are independent, with <span class="math inline">\(Y_i \sim \text{binomial}(n_i , \theta)\)</span>. Then we claim that <span class="math inline">\(Z = \sum_{i=1}^n Y_i \sim \text{binomial}(\sum_{i=1}^n n_i, \theta)\)</span>.</p>
+<p>From Example <a href="genfuns.html#exm:binmgf">3.1</a>, the mgf of each <span class="math inline">\(Y_i\)</span> is <span class="math display">\[M_{Y_i}(t) = (\theta e^t + 1 - \theta)^{n_i}.\]</span> By Theorem <a href="sums-of-random-variables.html#thm:mgfsum">4.1</a>, <span class="math display">\[M_Z(t) = \prod_{i=1}^n M_{Y_i}(t) = \prod_{i=1}^n (\theta e^t + 1 - \theta)^{n_i}
+= (\theta e^t + 1 - \theta)^{\sum_{i=1}^n n_i},\]</span> which is the <span class="math inline">\(\text{binomial}(\sum_{i=1}^n n_i, \theta)\)</span> mgf. Since the mgf characterises the distribution, we conclude that <span class="math inline">\(Z \sim \text{binomial}(\sum_{i=1}^n n_i, \theta)\)</span>.</p>
+As a corollary, note that if the <span class="math inline">\(Y_i\)</span> are independent <span class="math inline">\(\text{Bernoulli}(\theta)\)</span> random variables (in which case <span class="math inline">\(Y_i \sim \text{binomial}(1, \theta)\)</span>), then <span class="math inline">\(Z \sim \text{binomial}(n, \theta)\)</span>.
+</div>
+
+
+<div class="example">
+<p><span id="exm:normalsum" class="example"><strong>Example 4.2  (Sum of normal random variables)  </strong></span>Suppose that <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are independent, with <span class="math inline">\(Y_i \sim N(\mu_i, \sigma_i^2)\)</span>. Then we claim that <span class="math inline">\(Z = \sum_{i=1}^n Y_i \sim N(\sum_{i=1}^n \mu_i, \sum_{i=1}^n \sigma_i^2)\)</span>.</p>
+From Example <a href="genfuns.html#exm:cgfnormal">3.4</a>, we know that <span class="math inline">\(K_{Y_i}(t) = \mu_i t + \frac{1}{2} \sigma_i^2 t^2\)</span>. By Theorem <a href="sums-of-random-variables.html#thm:cgfsum">4.2</a>, we have
+<span class="math display">\[\begin{align*}
+K_Z(t) &amp;= \sum_{i=1}^n K_{Y_i}(t)  \\
+&amp;= \sum_{i=1}^n \left\{\mu_i t + \frac{1}{2} \sigma_i^2 t^2\right\} \\
+&amp; = \left(\sum_{i=1}^n \mu_i\right) t 
++ \frac{1}{2} \left(\sum_{i=1}^n \sigma_i^2\right) t^2
+\end{align*}\]</span>
+<p>which is the <span class="math inline">\(N(\sum_{i=1}^n \mu_i, \sum_{i=1}^n \sigma_i^2)\)</span> cgf. Since the cgf characterises the distribution, we conclude that <span class="math inline">\(Z \sim N(\sum_{i=1}^n \mu_i, \sum_{i=1}^n \sigma_i^2)\)</span>.</p>
+As a corollary, note that if the <span class="math inline">\(Y_i\)</span> are independent <span class="math inline">\(N(\mu, \sigma^2)\)</span> random variables, then <span class="math inline">\(Z \sim N(n \mu, n \sigma^2)\)</span>.
+</div>
+
+
+<div class="example">
+<span id="exm:unnamed-chunk-36" class="example"><strong>Example 4.3  (Sum of negative binomial random variables)  </strong></span>Suppose that <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are independent, with <span class="math inline">\(Y_i \sim \text{negbin}(k_i, \theta)\)</span>. Then <span class="math inline">\(Z = \sum_{i=1}^n Y_i \sim \text{negbin}(\sum_{i=1}^n k_i, \theta)\)</span>. The proof of this is left as an exercise.
+</div>
+
+
+<div class="example">
+<span id="exm:unnamed-chunk-37" class="example"><strong>Example 4.4  (Sum of Poisson random variables)  </strong></span>Suppose that <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are independent, with <span class="math inline">\(Y_i \sim \text{Poisson}(\theta_i)\)</span>. Then <span class="math inline">\(Z = \sum_{i=1}^n Y_i \sim \text{Poisson}(\sum_{i=1}^n \theta_i)\)</span>. The proof of this is left as an exercise.
+</div>
+
+</div>
+<div id="properties-of-the-sample-mean-of-normal-observations" class="section level2">
+<h2><span class="header-section-number">4.3</span> Properties of the sample mean of normal observations</h2>
+<p>We may use cumulant generating functions to derive a well-known result about the distribution of the sample mean of normal observations:</p>
+
+<div class="proposition">
+<span id="prp:ybarnormal" class="proposition"><strong>Proposition 4.1  </strong></span>Suppose that <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are independent and identically distributed, with <span class="math inline">\(Y_i \sim N(\mu, \sigma^2)\)</span>, and let <span class="math display">\[\bar Y = \frac{\sum_{i=1}^n Y_i}{n}\]</span> be the sample mean. Then <span class="math inline">\(\bar Y \sim N(\mu, \sigma^2/n)\)</span>.
+</div>
+ 
+<div class="proof">
+ <span class="proof"><em>Proof. </em></span> Let <span class="math inline">\(Z = \sum_{i=1}^n Y_i\)</span>. We have seen in Example <a href="sums-of-random-variables.html#exm:normalsum">4.2</a> that the cgf of <span class="math inline">\(Z\)</span> is <span class="math display">\[K_Z(t) = n\mu t 
++ \frac{1}{2} n \sigma^2 t^2.\]</span> We have <span class="math inline">\(\bar Y = \frac{1}{n} Z\)</span>. By Theorem <a href="genfuns.html#thm:gflinear">3.2</a> with <span class="math inline">\(a = 0\)</span> and <span class="math inline">\(b = 1/n\)</span>, <span class="math inline">\(\bar Y\)</span> has cgf
+<span class="math display">\[\begin{align*}
+K_{\bar Y}(t) &amp;= K_Z(\frac{1}{n} t) \\
+&amp;=  n\mu (\frac{1}{n} t)
++ \frac{1}{2} n \sigma^2 (\frac{1}{n} t)^2 \\
+&amp;= \mu t + \frac{1}{2} \frac{\sigma^2}{n} t^2,
+\end{align*}\]</span>
+which is the <span class="math inline">\(N(\mu, \sigma^2/n)\)</span> cgf. Since the cgf characterises the distribution, we conclude that <span class="math inline">\(\bar Y \sim N(\mu, \sigma^2/n)\)</span>.
+</div>
+
+</div>
+<div id="clt" class="section level2">
+<h2><span class="header-section-number">4.4</span> The central limit theorem</h2>
+<p>If we have <span class="math inline">\(n\)</span> independent and identically distributed <span class="math inline">\(N(\mu, \sigma^2)\)</span> random variables, we have just shown that the sample mean has <span class="math inline">\(N(\mu, \sigma^2/n)\)</span> distribution. The central limit theorem says that if <span class="math inline">\(n\)</span> is large, the sample mean has approximately this distribution even if the <span class="math inline">\(Y_i\)</span> are not normally distributed.</p>
+
+<div class="theorem">
+<span id="thm:clt" class="theorem"><strong>Theorem 4.3  (Central limit theorem)  </strong></span>Suppose that <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are independent and identically distributed, with <span class="math inline">\(E(Y_i) = \mu\)</span> and <span class="math inline">\(\text{Var}(Y_i) = \sigma^2 &lt; \infty\)</span>, and with cumulants <span class="math inline">\(\kappa_r &lt; \infty\)</span> for all <span class="math inline">\(r = 1, 2, \ldots\)</span>. Let <span class="math display">\[Z = \frac{\sqrt{n}(\bar Y - \mu)}{\sigma}\]</span> Then <span class="math inline">\(Z \rightarrow N(0, 1)\)</span> as <span class="math inline">\(n \rightarrow \infty\)</span>.
+</div>
+ 
+<div class="remark">
+ <span class="remark"><em>Remark. </em></span> If <span class="math inline">\(n\)</span> is large, the limiting distribution may be used as an approximation. If <span class="math inline">\(n\)</span> is large, then <span class="math inline">\(Z\)</span> has approximately <span class="math inline">\(N(0, 1)\)</span> distribution, or equivalently <span class="math inline">\(\bar Y\)</span> has approximately <span class="math inline">\(N(\mu, \sigma^2/n)\)</span> distribution.
+</div>
+ 
+<div class="proof">
+<p> <span class="proof"><em>Proof. </em></span> From Example <a href="genfuns.html#exm:cgfnormal">3.4</a>, a <span class="math inline">\(N(0, 1)\)</span> random variable has second cumulant <span class="math inline">\(1\)</span> and all other cumulants are <span class="math inline">\(0\)</span>. So in our sketch proof, we aim to show that the cumulants of <span class="math inline">\(Z\)</span> have the same structure as <span class="math inline">\(n \rightarrow \infty\)</span>. Let the <span class="math inline">\(r\)</span>th cumulant of <span class="math inline">\(Z\)</span> be <span class="math inline">\(\kappa_r^*\)</span>. We will show that <span class="math inline">\(\kappa_1^* = 0\)</span>, <span class="math inline">\(\kappa_2^* = 1\)</span>, and <span class="math inline">\(\kappa_r^* \rightarrow 0\)</span> as <span class="math inline">\(n \rightarrow \infty\)</span>.</p>
+<p>Since the <span class="math inline">\(Y_i\)</span> are identically distributed, we write <span class="math inline">\(K_{Y_i}(t) = K_Y(t)\)</span>. Then, by Theorem <a href="sums-of-random-variables.html#thm:cgfsum">4.2</a>, we have <span class="math display">\[K_{\sum_{i=1}^n Y_i}(t) = n K_Y(t).\]</span> By Theorem <a href="genfuns.html#thm:gflinear">3.2</a> with <span class="math inline">\(a =0\)</span>, <span class="math inline">\(b = 1/n\)</span>, <span class="math display">\[K_{\bar Y}(t) = K_{\sum_{i=1}^n Y_i}\left(\frac{t}{n}\right) 
+= n K_Y\left(\frac{t}{n}\right).\]</span></p>
+<p>Now let <span class="math inline">\(c = \sqrt{n} / \sigma\)</span> and <span class="math inline">\(d = - \sqrt{n} \mu / \sigma\)</span>, so that <span class="math inline">\(Z = d + c \bar Y\)</span>. By Theorem <a href="genfuns.html#thm:gflinear">3.2</a>, we have <span class="math display">\[K_Z(t) = K\bar Y(ct) + dt = n K_Y(ct/n) + dt,\]</span> and we have written the cgf of <span class="math inline">\(Z\)</span> in terms of the cgf of the original random variables.</p>
+Differentiating with respect to <span class="math inline">\(t\)</span>, we get <span class="math display">\[K_Z^{(1)}(t) = n K_Y^{(1)}\left(\frac{ct}{n}\right) \frac{c}{n} + d\]</span> and <span class="math display">\[K_Z^{(2)}(t) = n K_Y^{(2)}\left(\frac{ct}{n}\right) \frac{c^2}{n^2}.\]</span> So the first cumulant of <span class="math inline">\(Z\)</span> is
+<span class="math display">\[\begin{align*}
+\kappa_1^* &amp;= K_Z^{(1)}(0) = n K_Y^{(1)}(0) \frac{c}{n} + d \\
+&amp; = n \kappa_1 \frac{c}{n} + d = \kappa_1 c + d \\
+&amp;= \frac{\mu \sqrt{n}}{\sigma} - \frac{\sqrt{n} \mu}{\sigma} = 0,
+\end{align*}\]</span>
+<p>where we have used that <span class="math inline">\(\kappa_1 = E(Y) = \mu\)</span>.</p>
+The second cumulant of <span class="math inline">\(Z\)</span> is
+<span class="math display">\[\begin{align*}
+\kappa_2^* &amp;= K_Z^{(2)}(0) = n K_Y^{(2)}(0) \frac{c^2}{n^2} \\
+&amp;= \kappa_2 \frac{c^2}{n} \\
+&amp;= \sigma^2 \frac{n}{\sigma^2 n} = 1, 
+\end{align*}\]</span>
+<p>where we have used that <span class="math inline">\(\kappa_2 = \text{Var}(Y) = \sigma^2\)</span>.</p>
+For <span class="math inline">\(r \geq 3\)</span> we have <span class="math display">\[K_Z^{(r)}(t) = n K^{(r)}\left(\frac{ct}{n}\right) \frac{c^r}{n^r},\]</span> so the <span class="math inline">\(r\)</span>th cumulant of <span class="math inline">\(Z\)</span> is
+<span class="math display">\[\begin{align*}
+\kappa_r^* &amp;= K_Z^{(r)}(0) = n \kappa_r \frac{c^r}{n^r} \\
+&amp;= n \kappa_r \frac{n^{r/2}}{n^r \sigma^r} \\
+&amp;= \frac{\kappa_r}{n^{r/2 - 1} \sigma^r} \rightarrow 0
+\end{align*}\]</span>
+<p>as <span class="math inline">\(r \geq 3\)</span>, so <span class="math inline">\(r/2 - 1 &gt; 0\)</span>.</p>
+<p>Hence <span class="math inline">\(Z \rightarrow N(0, 1)\)</span> as <span class="math inline">\(n \rightarrow \infty\)</span>.</p>
+In order to make the proof fully rigorous, we would need to define what we mean by “convergence in distribution” more carefully, and to show that convergence of all cumulants of <span class="math inline">\(Z\)</span> to the cumulants of the limiting distribution implies this convergence in distribution.
+</div>
+
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="genfuns.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="maxima-and-minima.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/05-sum.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["MATH2011.pdf", "MATH2011.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 8 Bivariate distributions | MATH2011: Statistical Distribution Theory</title>
+  <meta name="description" content="The course notes for MATH2011: Statistical Distribution Theory." />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 8 Bivariate distributions | MATH2011: Statistical Distribution Theory" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The course notes for MATH2011: Statistical Distribution Theory." />
+  <meta name="github-repo" content="heogden/math2011" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 8 Bivariate distributions | MATH2011: Statistical Distribution Theory" />
+  
+  <meta name="twitter:description" content="The course notes for MATH2011: Statistical Distribution Theory." />
+  
+
+<meta name="author" content="Dr Helen Ogden" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="unitransform.html"/>
+<link rel="next" href="bivariate-transformations.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MATH2011: Statistical Distribution Theory</a></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Distributions and their properties</b></span></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Probability distributions</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#random-variables"><i class="fa fa-check"></i><b>1.1</b> Random variables</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#examples-of-discrete-distributions"><i class="fa fa-check"></i><b>1.2</b> Examples of discrete distributions</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#the-bernoulli-distribution"><i class="fa fa-check"></i><b>1.2.1</b> The Bernoulli distribution</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#the-binomial-distribution"><i class="fa fa-check"></i><b>1.2.2</b> The binomial distribution</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#the-negative-binomial-distribution"><i class="fa fa-check"></i><b>1.2.3</b> The negative binomial distribution</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#poisson"><i class="fa fa-check"></i><b>1.2.4</b> The Poisson distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#examples-of-continuous-distributions"><i class="fa fa-check"></i><b>1.3</b> Examples of continuous distributions</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#the-exponential-distribution"><i class="fa fa-check"></i><b>1.3.1</b> The exponential distribution</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#the-uniform-distribution"><i class="fa fa-check"></i><b>1.3.2</b> The uniform distribution</a></li>
+<li class="chapter" data-level="1.3.3" data-path="index.html"><a href="index.html#the-normal-distribution"><i class="fa fa-check"></i><b>1.3.3</b> The normal distribution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="moments.html"><a href="moments.html"><i class="fa fa-check"></i><b>2</b> Moments</a><ul>
+<li class="chapter" data-level="2.1" data-path="moments.html"><a href="moments.html#expected-value"><i class="fa fa-check"></i><b>2.1</b> Expected value</a></li>
+<li class="chapter" data-level="2.2" data-path="moments.html"><a href="moments.html#variance"><i class="fa fa-check"></i><b>2.2</b> Variance</a></li>
+<li class="chapter" data-level="2.3" data-path="moments.html"><a href="moments.html#higher-order-moments"><i class="fa fa-check"></i><b>2.3</b> Higher-order moments</a></li>
+<li class="chapter" data-level="2.4" data-path="moments.html"><a href="moments.html#standardised-moments"><i class="fa fa-check"></i><b>2.4</b> Standardised moments</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="genfuns.html"><a href="genfuns.html"><i class="fa fa-check"></i><b>3</b> Generating functions</a><ul>
+<li class="chapter" data-level="3.1" data-path="genfuns.html"><a href="genfuns.html#the-moment-generating-function"><i class="fa fa-check"></i><b>3.1</b> The moment generating function</a></li>
+<li class="chapter" data-level="3.2" data-path="genfuns.html"><a href="genfuns.html#the-cumulant-generating-function"><i class="fa fa-check"></i><b>3.2</b> The cumulant generating function</a></li>
+<li class="chapter" data-level="3.3" data-path="genfuns.html"><a href="genfuns.html#generating-functions-under-linear-transformation"><i class="fa fa-check"></i><b>3.3</b> Generating functions under linear transformation</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html"><i class="fa fa-check"></i><b>4</b> Sums of random variables</a><ul>
+<li class="chapter" data-level="4.1" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#generating-functions-of-a-sum"><i class="fa fa-check"></i><b>4.1</b> Generating functions of a sum</a></li>
+<li class="chapter" data-level="4.2" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#closure-results-for-some-standard-distributions"><i class="fa fa-check"></i><b>4.2</b> Closure results for some standard distributions</a></li>
+<li class="chapter" data-level="4.3" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#properties-of-the-sample-mean-of-normal-observations"><i class="fa fa-check"></i><b>4.3</b> Properties of the sample mean of normal observations</a></li>
+<li class="chapter" data-level="4.4" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#clt"><i class="fa fa-check"></i><b>4.4</b> The central limit theorem</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html"><i class="fa fa-check"></i><b>5</b> Maxima and minima</a><ul>
+<li class="chapter" data-level="5.1" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#order-statistics"><i class="fa fa-check"></i><b>5.1</b> Order Statistics</a></li>
+<li class="chapter" data-level="5.2" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-cdf-of-y_n-the-largest-value-in-a-random-sample-of-size-n"><i class="fa fa-check"></i><b>5.2</b> The cdf of <span class="math inline">\(Y_{(n)}\)</span>, the largest value in a random sample of size <span class="math inline">\(n\)</span></a></li>
+<li class="chapter" data-level="5.3" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-pdf-of-the-maximum-in-the-continuous-case"><i class="fa fa-check"></i><b>5.3</b> The pdf of the maximum in the continuous case</a></li>
+<li class="chapter" data-level="5.4" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-cdf-of-y_1-the-smallest-value-in-a-random-sample-of-size-n"><i class="fa fa-check"></i><b>5.4</b> The cdf of <span class="math inline">\(Y_{(1)}\)</span>, the smallest value in a random sample of size <span class="math inline">\(n\)</span></a></li>
+<li class="chapter" data-level="5.5" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-pdf-of-the-minimum-in-the-continuous-case"><i class="fa fa-check"></i><b>5.5</b> The pdf of the minimum in the continuous case</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="gamma.html"><a href="gamma.html"><i class="fa fa-check"></i><b>6</b> The gamma distribution</a><ul>
+<li class="chapter" data-level="6.1" data-path="gamma.html"><a href="gamma.html#the-gamma-distribution"><i class="fa fa-check"></i><b>6.1</b> The gamma distribution</a></li>
+<li class="chapter" data-level="6.2" data-path="gamma.html"><a href="gamma.html#properties-of-the-gamma-distribution"><i class="fa fa-check"></i><b>6.2</b> Properties of the gamma distribution</a></li>
+<li class="chapter" data-level="6.3" data-path="gamma.html"><a href="gamma.html#chisquared"><i class="fa fa-check"></i><b>6.3</b> The chi-squared distribution</a></li>
+<li class="chapter" data-level="6.4" data-path="gamma.html"><a href="gamma.html#distribution-of-the-sample-variance"><i class="fa fa-check"></i><b>6.4</b> Distribution of the sample variance</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="unitransform.html"><a href="unitransform.html"><i class="fa fa-check"></i><b>7</b> Univariate transformations</a><ul>
+<li class="chapter" data-level="7.1" data-path="unitransform.html"><a href="unitransform.html#transformed-random-variables"><i class="fa fa-check"></i><b>7.1</b> Transformed random variables</a></li>
+<li class="chapter" data-level="7.2" data-path="unitransform.html"><a href="unitransform.html#one-to-one-transformations-of-continuous-random-variables"><i class="fa fa-check"></i><b>7.2</b> One-to-one transformations of continuous random variables</a></li>
+<li class="chapter" data-level="7.3" data-path="unitransform.html"><a href="unitransform.html#generating-samples-from-any-distribution"><i class="fa fa-check"></i><b>7.3</b> Generating samples from any distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html"><i class="fa fa-check"></i><b>8</b> Bivariate distributions</a><ul>
+<li class="chapter" data-level="8.1" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#joint-distributions"><i class="fa fa-check"></i><b>8.1</b> Joint distributions</a></li>
+<li class="chapter" data-level="8.2" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#moments-of-jointly-distributed-random-variables"><i class="fa fa-check"></i><b>8.2</b> Moments of jointly distributed random variables</a></li>
+<li class="chapter" data-level="8.3" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#the-bivariate-normal-distribution"><i class="fa fa-check"></i><b>8.3</b> The bivariate normal distribution</a></li>
+<li class="chapter" data-level="8.4" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#bivariate-moment-generating-functions"><i class="fa fa-check"></i><b>8.4</b> Bivariate moment generating functions</a></li>
+<li class="chapter" data-level="8.5" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#a-useful-property-of-covariances"><i class="fa fa-check"></i><b>8.5</b> A useful property of covariances</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html"><i class="fa fa-check"></i><b>9</b> Bivariate transformations</a><ul>
+<li class="chapter" data-level="9.1" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-transformation-theorem"><i class="fa fa-check"></i><b>9.1</b> The transformation theorem</a></li>
+<li class="chapter" data-level="9.2" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-beta-distribution"><i class="fa fa-check"></i><b>9.2</b> The beta distribution</a></li>
+<li class="chapter" data-level="9.3" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-cauchy-distribution"><i class="fa fa-check"></i><b>9.3</b> The Cauchy distribution</a></li>
+<li class="chapter" data-level="9.4" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-t-distribution"><i class="fa fa-check"></i><b>9.4</b> The <span class="math inline">\(t\)</span> distribution</a></li>
+<li class="chapter" data-level="9.5" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-f-distribution"><i class="fa fa-check"></i><b>9.5</b> The <span class="math inline">\(F\)</span> distribution</a></li>
+</ul></li>
+<li class="part"><span><b>II Statistical inference</b></span></li>
+<li class="chapter" data-level="10" data-path="estimation.html"><a href="estimation.html"><i class="fa fa-check"></i><b>10</b> Parameter estimation</a><ul>
+<li class="chapter" data-level="10.1" data-path="estimation.html"><a href="estimation.html#estimators-and-estimates"><i class="fa fa-check"></i><b>10.1</b> Estimators and estimates</a></li>
+<li class="chapter" data-level="10.2" data-path="estimation.html"><a href="estimation.html#bias"><i class="fa fa-check"></i><b>10.2</b> Bias</a></li>
+<li class="chapter" data-level="10.3" data-path="estimation.html"><a href="estimation.html#consistency"><i class="fa fa-check"></i><b>10.3</b> Consistency</a></li>
+<li class="chapter" data-level="10.4" data-path="estimation.html"><a href="estimation.html#mean-squared-error"><i class="fa fa-check"></i><b>10.4</b> Mean squared error</a></li>
+<li class="chapter" data-level="10.5" data-path="estimation.html"><a href="estimation.html#method-of-moments-estimation"><i class="fa fa-check"></i><b>10.5</b> Method of moments estimation</a></li>
+<li class="chapter" data-level="10.6" data-path="estimation.html"><a href="estimation.html#maximum-likelihood-estimation"><i class="fa fa-check"></i><b>10.6</b> Maximum likelihood estimation</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>11</b> Confidence intervals and hypothesis testing</a><ul>
+<li class="chapter" data-level="11.1" data-path="inference.html"><a href="inference.html#expressing-uncertainty-in-parameter-estimates"><i class="fa fa-check"></i><b>11.1</b> Expressing uncertainty in parameter estimates</a></li>
+<li class="chapter" data-level="11.2" data-path="inference.html"><a href="inference.html#confidence-intervals"><i class="fa fa-check"></i><b>11.2</b> Confidence intervals</a></li>
+<li class="chapter" data-level="11.3" data-path="inference.html"><a href="inference.html#hypothesis-testing"><i class="fa fa-check"></i><b>11.3</b> Hypothesis testing</a></li>
+<li class="chapter" data-level="11.4" data-path="inference.html"><a href="inference.html#two-sample-hypothesis-testing"><i class="fa fa-check"></i><b>11.4</b> Two-sample hypothesis testing</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="bayesian.html"><a href="bayesian.html"><i class="fa fa-check"></i><b>12</b> Bayesian inference</a><ul>
+<li class="chapter" data-level="12.1" data-path="bayesian.html"><a href="bayesian.html#frequentist-and-bayesian-inference"><i class="fa fa-check"></i><b>12.1</b> Frequentist and Bayesian inference</a></li>
+<li class="chapter" data-level="12.2" data-path="bayesian.html"><a href="bayesian.html#prior-and-posterior-distributions"><i class="fa fa-check"></i><b>12.2</b> Prior and posterior distributions</a></li>
+<li class="chapter" data-level="12.3" data-path="bayesian.html"><a href="bayesian.html#the-posterior-predictive-distribution"><i class="fa fa-check"></i><b>12.3</b> The posterior predictive distribution</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MATH2011: Statistical Distribution Theory</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+\(
+\newcommand{\bm}[1]{\boldsymbol{\mathbf{#1}}}
+\)
+<div id="bivariate-distributions" class="section level1">
+<h1><span class="header-section-number">Chapter 8</span> Bivariate distributions</h1>
+<div id="joint-distributions" class="section level2">
+<h2><span class="header-section-number">8.1</span> Joint distributions</h2>
+<p>There are many situations where random variables vary simultaneously, for example:</p>
+<ul>
+<li>height and weight of individuals in a population</li>
+<li>systolic and diastolic blood pressure of individuals in a population</li>
+<li>value of Sterling and the Euro in US Dollars today at 12.00 GMT</li>
+</ul>
+<p>In these cases and in many other situations, the variables are not independent so we need to consider their <em>joint behaviour</em>.</p>
+<p>Under some circumstances it might be possible to assume or to deduce that the variables do not depend on each other, i.e. that they are independent. We need to define the joint probabilistic behaviour of two random variables. We could define these terms for either discrete or continuous random variables. However, we give the definitions in terms of continuous random variables with obvious extensions to the discrete or other cases.</p>
+<p>We could generalise these results when we have several random variables (giving so-called multivariate models) but here we shall concentrate on the simplest case of two random variables (the bivariate case).</p>
+<p>Suppose <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> vary together with joint probability density function <span class="math inline">\(f(y_1 , y_2)\)</span>. The function <span class="math inline">\(f\)</span> has the following properties:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(f(y_1, y_2) \geq 0\)</span> for all <span class="math inline">\(y_1, y_2\)</span>.</li>
+<li><span class="math inline">\(\int_{a_1}^{b_1} \int_{a_2}^{b_2} f(y_1, y_2) dy_1 dy_2 = P(a_1 &lt; Y_1 \leq b_1 \text{ and } a_2 &lt; Y_2 \leq b_2)\)</span>.</li>
+</ol>
+<p>An immediate corollary is that <span class="math inline">\(\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(y_1, y_2) dy_1 dy_2 = 1\)</span>.</p>
+<p>We will give some examples shortly, but first we set up some more functions of interest.</p>
+<p>The <em>marginal</em> probability density function of <span class="math inline">\(Y_1\)</span> is given by integrating out <span class="math inline">\(Y_2\)</span> , i.e. <span class="math display">\[f_1(y_1) = \int_{-\infty}^\infty f(y_1, y_2) dy_2.\]</span> This essentially gives the probabilistic behaviour of <span class="math inline">\(Y_1\)</span> ignoring <span class="math inline">\(Y_2\)</span>. Similarly, the marginal pdf of <span class="math inline">\(Y_2\)</span> is <span class="math display">\[f_2(y_2) = \int_{-\infty}^\infty f(y_1, y_2) dy_1.\]</span></p>
+<p>We define the <em>conditional</em> probability density function of <span class="math inline">\(Y_2\)</span> given that <span class="math inline">\(Y_1 = y_1\)</span> as <span class="math display">\[f(y_2 | y_1) = \frac{f(y_1, y_2)}{f_1(y_1)},\]</span> assuming that <span class="math inline">\(f_1(y_1) &gt; 0\)</span>.</p>
+<p>If <span class="math inline">\(f(y_1 ,y_2) = f_1(y_1) f_2(y_2)\)</span> for all <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span>, then <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> are said to be <em>independent</em>. In that case, If <span class="math inline">\(f(y_2 | y_1) = f_2(y_2)\)</span>, for all <span class="math inline">\(y_2\)</span>, and all <span class="math inline">\(y_1\)</span> with <span class="math inline">\(f_1(y_1) &gt; 0\)</span>, which is an equivalent definition of independence.</p>
+
+<div class="example">
+<p><span id="exm:bv1" class="example"><strong>Example 8.1  </strong></span>Suppose that <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> have joint pdf [f(y_1 , y_2) = 1⁄4, \text{for <span class="math inline">\(-1&lt; y_1 &lt;1\)</span> and <span class="math inline">\(-1 &lt; y_2 &lt; 1\)</span>. We now derive the marginal and conditional pdfs.</p>
+<p>The marginal pdf of <span class="math inline">\(Y_1\)</span> is <span class="math display">\[f_1(y_1) = \int_{-\infty}^\infty f(y_1, y_2) dy_2 
+= \int_-1^1 \frac{1}{4} dy_2 = \frac{1}{2} \quad \text{for $-1 &lt; y_1 &lt; 1$},\]</span> so <span class="math inline">\(Y_1 \sim U(-1, 1)\)</span>. By symmetry, <span class="math inline">\(Y_2 \sim U(-1, 1)\)</span>.</p>
+The conditional pdf of <span class="math inline">\(Y_2 | Y_1 = y_1\)</span> is
+<span class="math display">\[\begin{align*}
+f(y_2 | y_1) &amp;= \frac{f(y_1, y_2)}{f_1(y_1)} \quad 
+\text{for $-1 &lt; y_1 &lt; 1$, $-1 &lt; y_2 &lt; 1$} \\
+&amp;= \frac{1/4}{1/2} = \frac{1}{2}.
+\end{align*}\]</span>
+Hence if <span class="math inline">\(-1 &lt; y_1 &lt; 1\)</span>, then <span class="math inline">\(Y_2 | Y_1 = y_1 \sim U(-1, 1)\)</span>. Knowing the value of <span class="math inline">\(Y_1\)</span> does not change the distribution of <span class="math inline">\(Y_2\)</span>. This means that <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> are independent.
+</div>
+
+
+<div class="example">
+<p><span id="exm:bv2" class="example"><strong>Example 8.2  </strong></span>Suppose that <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> have joint pdf <span class="math display">\[f(y_1 , y_2) = 1⁄\pi, \quad \text{for $y_1^2 + y_2^2 &lt; 1$.}\]</span> We now derive the marginal and conditional pdfs.</p>
+The marginal pdf of <span class="math inline">\(Y_1\)</span> is
+<span class="math display">\[\begin{align*}
+f_1(y_1) &amp;= \int_{-\infty}^\infty f(y_1, y_2) dy_2 \\
+&amp;= \int_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}} \frac{1}{\pi} dy_2 \\
+&amp;= \frac{2}{\pi} \sqrt{1 - y_1^2}, \quad \text{for $-1 &lt; y_1 &lt; 1$.}
+\end{align*}\]</span>
+<p>Similarly, the marginal pdf of <span class="math inline">\(Y_2\)</span> is <span class="math display">\[f_2(y_2) = \frac{2}{\pi} \sqrt{1 - y_2^2}, \quad \text{for $-1 &lt; y_2 &lt; 1$.}\]</span></p>
+The conditional pdf of <span class="math inline">\(Y_2 | Y_1 = y_1\)</span> is <span class="math display">\[f(y_2 | y_1) = \frac{1/\pi}{2\sqrt{1 - y_1^2}/\pi} 
+= \frac{1}{2\sqrt{1 - y_1^2}} \quad 
+\text{for $-\sqrt{1 - y_1^2} &lt; y_2 &lt; \sqrt{1 - y_1^2}$},\]</span> provided that <span class="math inline">\(-1 &lt; y_1 &lt; 1\)</span>, so <span class="math inline">\(Y_2 | Y_1 = y_1 \sim U(-\sqrt{1 - y_1^2}, \sqrt{1 - y_1^2}).\)</span> Knowing that <span class="math inline">\(Y_1 = y_1\)</span> gives us information about the behaviour of <span class="math inline">\(Y_2\)</span>. This means that <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> are not independent, as <span class="math inline">\(f(y_2 | y_1) \not = f(y_2).\)</span>
+</div>
+
+</div>
+<div id="moments-of-jointly-distributed-random-variables" class="section level2">
+<h2><span class="header-section-number">8.2</span> Moments of jointly distributed random variables</h2>
+<p>For any general function <span class="math inline">\(g(Y_1, Y_2)\)</span> of <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span>, the expectation of <span class="math inline">\(g(Y_1, Y_2)\)</span> is defined as <span class="math display">\[E\left\{g(Y_1, Y_2)\right\}
+= \int_{-\infty}^\infty \int_{-\infty}^\infty g(y_1, y_2) f(y_1, y_2) dy_1 dy_2. \]</span></p>
+<p>Applying this with <span class="math inline">\(g(Y_1, Y_2) = Y_1\)</span>, we have <span class="math display">\[E(Y_1) = \int_{-\infty}^\infty \int_{-\infty}^\infty y_1 f(y_1, y_2) dy_1 dy_2,\]</span> and similarly <span class="math display">\[E(Y_2) = \int_{-\infty}^\infty \int_{-\infty}^\infty y_2 f(y_1, y_2) dy_1 dy_2.\]</span></p>
+Since <span class="math inline">\(f(y_1, y_2) = f_1(y_1) f(y_2 | y_1)\)</span>,
+<span class="math display">\[\begin{align*}
+E(Y_1) &amp;= \int_{-\infty}^\infty y_1 f(y_1) \left\{\int_{-\infty}^\infty  f(y_2 | y_1) dy_2 \right\} dy_1 \\
+&amp;= \int_{-\infty}^\infty y_1 f_1(y_1)  dy_1,
+\end{align*}\]</span>
+<p>which is our usual definition of the expected value of a single random variable with (marginal) pdf <span class="math inline">\(f_1(.)\)</span>.</p>
+<p>In general <span class="math display">\[E\left\{g(Y_1)\right\} = \int_{-\infty}^\infty g(y_1) f_1(y_1)  dy_1,\]</span> and <span class="math display">\[E\left\{g(Y_2)\right\} = \int_{-\infty}^\infty g(y_2) f_2(y_2)  dy_2.\]</span></p>
+Letting <span class="math inline">\(g(Y_1, Y_2) = Y_1 Y_2\)</span>, we have
+<span class="math display">\[\begin{align*}
+E(Y_1 Y_2) &amp;= \int_{-\infty}^\infty \int_{-\infty}^\infty y_1 y_2 f(y_1, y_2) dy_1 dy_2 \\
+&amp;= \int_{-\infty}^\infty \int_{-\infty}^\infty y_1 y_2 f_1(y_1) f(y_2| y_1) dy_1 dy_2 \\
+&amp;= \int_{-\infty}^\infty y_1 f_1(y_1) \int_{-\infty}^\infty y_2 f(y_2 | y_1) dy_2 dy_1.
+\end{align*}\]</span>
+<p>This involves the <em>conditional expectation</em> of <span class="math inline">\(Y_2 | Y_1 = y_1\)</span>, <span class="math display">\[E(Y_2 | Y_1 = y_1) = \int_{-\infty}^\infty y_2 f(y_2 | y_1) dy_2 .\]</span></p>
+If <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> are <em>independent</em>,
+<span class="math display">\[\begin{align*}
+E(Y_1 Y_2) &amp;= \int_{-\infty}^\infty \int_{-\infty}^\infty y_1 y_2 f_1(y_1) f_2(y_2) dy_1 dy_2 \\
+&amp;= \int_{-\infty}^\infty y_1 f_1(y_1)  dy_1 \int_{-\infty}^\infty y_2 f_2(y_2)  dy_2 \\
+&amp;= E(Y_1) E(Y_2).
+\end{align*}\]</span>
+<p>If <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> are independent, then this relationship holds. It might also hold in special circumstances even when the variables are not independent, for example when both $E(Y_1 Y_2) and <span class="math inline">\(E(Y_1)\)</span> are zero.</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-64" class="definition"><strong>Definition 8.1  </strong></span>The <em>covariance</em> of <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> is <span class="math display">\[\text{Cov}(Y_1, Y_2) = E\left\{ [Y_1 - E(Y_1)][Y_2 - E(Y_2)] \right\}.\]</span>
+</div>
+
+We may rewrite the expression for the covariance as
+<span class="math display">\[\begin{align*}
+\text{Cov}(Y_1, Y_2) &amp;= E\left\{[Y_1 - E(Y_1)][Y_2 - E(Y_2)] \right\} \\
+&amp;= E\left\{ Y_1 Y_2 - E(Y_1) Y_2 - E(Y_2) Y_1 + E(Y_1) E(Y_2) \right\} \\
+&amp;= E(Y_1 Y_2) - E(Y_1) E(Y_2) - E(Y_2) E(Y_1) + E(Y_1) E(Y_2) \\
+&amp;= E(Y_1 Y_2) - E(Y_1) E(Y_2).
+\end{align*}\]</span>
+<p>The covariance of a variable with itself is <span class="math display">\[\text{Cov}(Y_1, Y_1) = E \left\{[Y_1 - E(Y_1)]^2 \right\} = \text{Var}(Y_1).\]</span></p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-65" class="definition"><strong>Definition 8.2  </strong></span>The <em>correlation</em> of <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> is <span class="math display">\[\text{Corr}(Y_1, Y_2) = \frac{\text{Cov}(Y_1, Y_2)}{\sqrt{\text{Var}(Y_1) \text{Var}(Y_2)}}.\]</span>
+</div>
+
+
+<div class="example">
+<span id="exm:unnamed-chunk-66" class="example"><strong>Example 8.3  </strong></span>Returning to Example <a href="bivariate-distributions.html#exm:bv2">8.2</a> with <span class="math inline">\(f(y_1, y_2) = 1/\pi\)</span> for <span class="math inline">\(y_1^2 + y_2^2 &lt; 1\)</span>, we already showed that <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> are not independent. By symmetry, we have $E(Y_1) = E(Y_2) = E(Y_2 | Y_1 = y_1) = 0, so <span class="math display">\[\text{Cov}(Y_1, Y_2) = E(Y_1 Y_2) - E(Y_1)E(Y_2) = E(Y_1 Y_2).\]</span> Now
+<span class="math display">\[\begin{align*}
+E(Y_1 Y_2) &amp;= \int_{-\infty}^\infty \int_{-\infty}^\infty
+y_1 y_2 f(y_1, y_2) dy_2 dy_1 \\
+&amp;= \frac{1}{\pi} \int_{-1}^1 \int_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}}
+y_1 y_2 dy_2 dy_1 \\
+&amp;= \frac{1}{\pi} y_1 \left(\int_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}}\right) y_2 dy_2 \\
+&amp;= \frac{1}{\pi} y_1 \left[\frac{y_2^2}{2}\right]_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}} y_2 dy_2 \\
+&amp;= 0,
+\end{align*}\]</span>
+<p>so <span class="math inline">\(\text{Cov}(Y_1, Y_2) = 0\)</span>, even though <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> are <strong>not</strong> independent.</p>
+This example shows that even though <span class="math display">\[\text{$Y_1$ and $Y_2$ independent} \; \Rightarrow \; \text{Cov}(Y_1, Y_2) = 0,\]</span> in general the reverse does not hold, so <span class="math display">\[\text{Cov}(Y_1, Y_2) = 0  \; \not\Rightarrow \; \text{$Y_1$ and $Y_2$ independent.}\]</span>
+</div>
+
+
+<div class="proposition">
+<span id="prp:unnamed-chunk-67" class="proposition"><strong>Proposition 8.1  </strong></span>For any two random variables <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> <span class="math display">\[\text{Var}(Y_1 + Y_2) = \text{Var}(Y_1) + \text{Var}(Y_2) + 
+2 \text{Cov}(Y_1, Y_2).\]</span>
+</div>
+ 
+<div class="proof">
+ <span class="proof"><em>Proof. </em></span> We have <span class="math display">\[\text{Var}(Y_1 + Y_2) = E\left[(Y_1 + Y_2)^2\right] - 
+\left[E(Y_1 + Y_2)\right]^2,\]</span> where
+<span class="math display">\[\begin{align*}
+E\left[(Y_1 + Y_2)^2\right] &amp;= \int_{-\infty}^\infty \int_{-\infty}^\infty (y_1 + y_2)^2
+f(y_1, y_2) dy_1 dy_2 \\
+&amp;= E(Y_1^2) + 2 E(Y_1 Y_2) + E(Y_2^2)
+\end{align*}\]</span>
+and <span class="math display">\[E(Y_1 + Y_2) = E(Y_1) + E(Y_2).\]</span> So
+<span class="math display">\[\begin{align*}
+\text{Var}(Y_1 + Y_2) &amp;= E(Y_1^2) + 2 E(Y_1 Y_2) + E(Y_2^2) 
+- \left[E(Y_1) + E(Y_2)\right]^2 \\
+&amp;= E(Y_1^2) - E(Y_1)^2 + E(Y_2^2) - E(Y_2)^2 + 2 \left[E(Y_1 Y_2) - E(Y_1)E(Y_2)\right] \\
+&amp;= \text{Var}(Y_1) + \text{Var}(Y_2) + 2 \text{Cov}(Y_1, Y_2)
+\end{align*}\]</span>
+as claimed.
+</div>
+
+</div>
+<div id="the-bivariate-normal-distribution" class="section level2">
+<h2><span class="header-section-number">8.3</span> The bivariate normal distribution</h2>
+
+<div class="definition">
+<span id="def:unnamed-chunk-69" class="definition"><strong>Definition 8.3  </strong></span>The random variables <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> are said to have a <em>bivariate normal distribution</em> if they have joint probability density function <span class="math display">\[f(y_1, y_2) = (2 \pi)^{-1} {\det(\bm \Sigma)}^{-1/2} \exp\left\{ - \frac{1}{2}(\bm y - \bm \mu)^T \bm \Sigma^{-1}(\bm y - \bm \mu)\right\},
+\quad \text{for $y_1, y_2 \in \mathbb{R}$},\]</span> where we write <span class="math inline">\(\bm y = (y_1, y_2)^T\)</span>, and where <span class="math inline">\(\bm \mu = (\mu_1, \mu_2)^T\)</span> is a vector of means, and <span class="math inline">\(\bm \Sigma\)</span> is a <span class="math inline">\(2 \times 2\)</span> symmetric positive definite matrix. We write <span class="math inline">\(\bm Y = (Y_1, Y_2)^T \sim N_2(\bm \mu, \bm \Sigma)\)</span>.
+</div>
+
+We often write out the elements of the <span class="math inline">\(2 \times 2\)</span> matrix <span class="math inline">\(\bm \Sigma\)</span> as
+<span class="math display" id="eq:sigma">\[\begin{equation}
+\bm \Sigma = \begin{pmatrix}
+  \sigma_1^2 &amp; \rho \sigma_1 \sigma_2 \\
+  \rho \sigma_1 \sigma_2 &amp; \sigma_2^2
+  \end{pmatrix}.
+\tag{8.1}
+\end{equation}\]</span>
+<p>The marginal pdf of <span class="math inline">\(Y_1\)</span> is <span class="math display">\[f_1(y_1) = \int_{-\infty}^\infty f(y_1, y_2) dy_2,\]</span> which reduces to <span class="math display">\[f_1(y_1) = \frac{1}{\sqrt{2 \pi \sigma_1^2}} \exp\left\{- \frac{1}{2 \sigma_1^2} (y_1 - \mu_1)^2\right\},\]</span> so marginally <span class="math inline">\(Y_1 \sim N(\mu_1, \sigma_1^2)\)</span>. Similarly <span class="math inline">\(Y_2 \sim N(\mu_2, \sigma_2^2)\)</span>.</p>
+<p>We may interpret the parameters of the bivariate normal distribution, as <span class="math inline">\(\mu_1 = E(Y_1)\)</span>, <span class="math inline">\(\mu_2 = E(Y_2)\)</span>, <span class="math inline">\(\sigma_1^2 = \text{Var}(Y_1)\)</span>, <span class="math inline">\(\sigma_2^2 = \text{Var}(Y_2)\)</span>. We may also show that <span class="math inline">\(\text{Cov}(Y_1, Y_2) = \rho \sigma_1 \sigma_2\)</span>, so <span class="math inline">\(\rho = \text{Corr}(Y_1, Y_2)\)</span>.</p>
+<p>The conditional distribution of <span class="math inline">\(Y_1\)</span> given <span class="math inline">\(Y_2 = y_2\)</span> is <span class="math display">\[f(y_1 | y_2) = \frac{f(y_1, y_2)}{f_2(y_2)},\]</span> which reduces to <span class="math display">\[f(y_1 | y_2) =  \frac{1}{\sqrt{2 \pi \sigma_1^2 (1 - \rho)^2}}
+\exp\left\{ - \frac{1}{2 \sigma_1^2 (1 - \rho)^2} 
+\left(y_1 - \mu_1 - 
+\frac{\rho \sigma_1(y_2 - \mu_2)}{\sigma_2}\right)^2\right\}\]</span></p>
+<p>This means that <span class="math display">\[Y_1 | Y_2 = y_2 \sim N\left(\mu_1 + \frac{\rho \sigma_1(y_2 - \mu_2)}{\sigma_2},
+  \sigma_1^2 (1 - \rho)^2\right).\]</span> If <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> are uncorrelated (<span class="math inline">\(\rho = 0\)</span>), knowing the value of <span class="math inline">\(Y_2\)</span> does not change the distribution of <span class="math inline">\(Y_1\)</span>, so <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> are independent. If <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> are correlated (<span class="math inline">\(\rho \not = 0\)</span>), the distribution of <span class="math inline">\(Y_1 | Y_2 = y_2\)</span> is different from the distribution of <span class="math inline">\(Y_1\)</span>.</p>
+</div>
+<div id="bivariate-moment-generating-functions" class="section level2">
+<h2><span class="header-section-number">8.4</span> Bivariate moment generating functions</h2>
+
+<div class="definition">
+<span id="def:unnamed-chunk-70" class="definition"><strong>Definition 8.4  </strong></span>The moment generating function of the bivariate distribution of <span class="math inline">\(Y_1, Y_2\)</span> is <span class="math display">\[M_{Y_1, Y_2}(t_1, t_2) = E\left\{\exp(t_1 Y_1 + t_2 Y_2) \right\}\]</span>
+</div>
+<p> As in the univariate case, the moment generating function is useful for proving properties about what happens to the distribution of random variables under linear transformations.</p>
+
+<div class="example">
+<p><span id="exm:bvnmgf" class="example"><strong>Example 8.4  (Bivariate normal mgf)  </strong></span>If <span class="math inline">\(\bm Y = (Y_1, Y_2)^T \sim N_2(\bm \mu, \bm \Sigma)\)</span>, then <span class="math display">\[M_{Y_1, Y_2}(t_1, t_2) = \exp(\bm \mu^T \bm t + \frac{1}{2} \bm t^T \bm \Sigma \bm t),\]</span> where <span class="math inline">\(\bm t = (t_1, t_2)^T\)</span>.</p>
+Now let <span class="math inline">\(X_1 = a Y_1 + b Y_2\)</span>, where <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are given constants. Then
+<span class="math display">\[\begin{align*}
+M_{X_1}(t) &amp;= E \left\{ t(a Y_1 + b Y_2) \right\} \\
+&amp;= M_{Y_1, Y_2}(at, bt) \\
+&amp;= \exp\left\{(a \mu_1 + b \mu_2) t + \frac{1}{2} (a^2 \sigma_1^2 + 2 a b \rho \sigma_1\sigma_2 + b^2 \sigma_2^2) t^2\right\},
+\end{align*}\]</span>
+<p>where we have used the components of <span class="math inline">\(\bm \Sigma\)</span> as in Equation <a href="bivariate-distributions.html#eq:sigma">(8.1)</a>. So <span class="math display">\[X_1 \sim N(\mu_1 + \mu_2, a^2 \sigma_1^2 + 2 a b \rho\sigma_1 \sigma_2 + b^2 \sigma_2^2).\]</span></p>
+<p>With <span class="math inline">\(a = 1\)</span> and <span class="math inline">\(b = 1\)</span>, <span class="math display">\[Y_1 + Y_2 \sim  N(\mu_1 + \mu_2, \sigma_1^2 + 2 \rho\sigma_1 \sigma_2 + \sigma_2^2).\]</span></p>
+With <span class="math inline">\(a = 1\)</span> and <span class="math inline">\(b = -1\)</span>, <span class="math display">\[Y_1 - Y_2 \sim N(\mu_1 - \mu_2, \sigma_1^2 - 2 \rho \sigma_1 \sigma_2 + \sigma_2^2).\]</span>
+</div>
+
+</div>
+<div id="a-useful-property-of-covariances" class="section level2">
+<h2><span class="header-section-number">8.5</span> A useful property of covariances</h2>
+
+<div class="theorem">
+<span id="thm:covsums" class="theorem"><strong>Theorem 8.1  </strong></span>Suppose <span class="math inline">\(V_i\)</span>, <span class="math inline">\(i = 1,\ldots, m\)</span> and <span class="math inline">\(W_j\)</span>, <span class="math inline">\(j = 1, \ldots, n\)</span> are random variables, and <span class="math inline">\(a_i\)</span>, <span class="math inline">\(i = 1, \ldots, m\)</span> and <span class="math inline">\(j = 1, \ldots, n\)</span> are constants. Then <span class="math display">\[\text{Cov}\left(\sum_{i=1}^m a_i V_i, \sum_{j=1}^n b_j W_j \right)
+= \sum_{i=1}^m \sum_{j=1}^n a_i b_j \text{Cov}(V_i, W_j).\]</span>
+</div>
+
+
+<div class="proof">
+ <span class="proof"><em>Proof. </em></span> 
+<span class="math display">\[\begin{align*}
+\text{Cov}\left(\sum_{i=1}^m a_i V_i, \sum_{j=1}^n b_j W_j \right)
+&amp;= E \left\{\left[ \sum_{i=1}^m a_i V_i - E\left(\sum_{i=1}^m a_i V_i\right) \right] \left[ \sum_{j=1}^n b_j W_j - E\left(\sum_{j=1}^n b_j W_j\right) \right] \right\} \\
+&amp;= E \left\{\left[ \sum_{i=1}^m a_i \left(V_i -  E(V_i)\right)\right] \left[ \sum_{j=1}^n b_j \left(W_j - E(W_j)\right) \right] \right\} \\
+&amp;= \sum_{i=1}^m \sum_{j=1}^n a_i b_j E\left\{\left[V_i - E(V_i)\right]\left[W_j - E(W_j)\right] \right\} \\
+&amp;= \sum_{i=1}^m \sum_{j=1}^n a_i b_j \text{Cov}(V_i, W_j),
+\end{align*}\]</span>
+as required.
+</div>
+
+
+<div class="example">
+<span id="exm:unnamed-chunk-72" class="example"><strong>Example 8.5  </strong></span>Continuing from Example <a href="bivariate-distributions.html#exm:bvnmgf">8.4</a>, we consider <span class="math inline">\(X_1 = Y_1 + Y_2\)</span> and <span class="math inline">\(X_2 = Y_1 - Y_2\)</span>. Since <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are normally distributed, we know that <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are independent if <span class="math inline">\(\text{Cov}(X_1, X_2) = 0\)</span>. Applying Theorem <a href="bivariate-distributions.html#thm:covsums">8.1</a> with <span class="math inline">\(m = n = 2\)</span>, <span class="math inline">\(V_i = W_i = Y_i\)</span>, <span class="math inline">\(a_1 = a_2 = 1\)</span>, <span class="math inline">\(b_1 = 1\)</span> and <span class="math inline">\(b_2 = -1\)</span>, we get <span class="math display">\[\text{Cov}(X_1, X_2) = \text{Cov}(Y_1, Y_1) - \text{Cov}(Y_1, Y_2) + \text{Cov}(Y_1, Y_2) - \text{Cov}(Y_2, Y_2) = \sigma_1^2 - \sigma_2^2.\]</span> So <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are independent if <span class="math inline">\(\sigma_1^2 = \sigma_2^2\)</span>.
+</div>
+
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="unitransform.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bivariate-transformations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/09-bivariate.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["MATH2011.pdf", "MATH2011.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

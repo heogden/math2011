@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 11 Confidence intervals and hypothesis testing | MATH2011: Statistical Distribution Theory</title>
+  <meta name="description" content="The course notes for MATH2011: Statistical Distribution Theory." />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 11 Confidence intervals and hypothesis testing | MATH2011: Statistical Distribution Theory" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="The course notes for MATH2011: Statistical Distribution Theory." />
+  <meta name="github-repo" content="heogden/math2011" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 11 Confidence intervals and hypothesis testing | MATH2011: Statistical Distribution Theory" />
+  
+  <meta name="twitter:description" content="The course notes for MATH2011: Statistical Distribution Theory." />
+  
+
+<meta name="author" content="Dr Helen Ogden" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="estimation.html"/>
+<link rel="next" href="bayesian.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MATH2011: Statistical Distribution Theory</a></li>
+
+<li class="divider"></li>
+<li class="part"><span><b>I Distributions and their properties</b></span></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Probability distributions</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#random-variables"><i class="fa fa-check"></i><b>1.1</b> Random variables</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#examples-of-discrete-distributions"><i class="fa fa-check"></i><b>1.2</b> Examples of discrete distributions</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#the-bernoulli-distribution"><i class="fa fa-check"></i><b>1.2.1</b> The Bernoulli distribution</a></li>
+<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#the-binomial-distribution"><i class="fa fa-check"></i><b>1.2.2</b> The binomial distribution</a></li>
+<li class="chapter" data-level="1.2.3" data-path="index.html"><a href="index.html#the-negative-binomial-distribution"><i class="fa fa-check"></i><b>1.2.3</b> The negative binomial distribution</a></li>
+<li class="chapter" data-level="1.2.4" data-path="index.html"><a href="index.html#poisson"><i class="fa fa-check"></i><b>1.2.4</b> The Poisson distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#examples-of-continuous-distributions"><i class="fa fa-check"></i><b>1.3</b> Examples of continuous distributions</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#the-exponential-distribution"><i class="fa fa-check"></i><b>1.3.1</b> The exponential distribution</a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#the-uniform-distribution"><i class="fa fa-check"></i><b>1.3.2</b> The uniform distribution</a></li>
+<li class="chapter" data-level="1.3.3" data-path="index.html"><a href="index.html#the-normal-distribution"><i class="fa fa-check"></i><b>1.3.3</b> The normal distribution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="moments.html"><a href="moments.html"><i class="fa fa-check"></i><b>2</b> Moments</a><ul>
+<li class="chapter" data-level="2.1" data-path="moments.html"><a href="moments.html#expected-value"><i class="fa fa-check"></i><b>2.1</b> Expected value</a></li>
+<li class="chapter" data-level="2.2" data-path="moments.html"><a href="moments.html#variance"><i class="fa fa-check"></i><b>2.2</b> Variance</a></li>
+<li class="chapter" data-level="2.3" data-path="moments.html"><a href="moments.html#higher-order-moments"><i class="fa fa-check"></i><b>2.3</b> Higher-order moments</a></li>
+<li class="chapter" data-level="2.4" data-path="moments.html"><a href="moments.html#standardised-moments"><i class="fa fa-check"></i><b>2.4</b> Standardised moments</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="genfuns.html"><a href="genfuns.html"><i class="fa fa-check"></i><b>3</b> Generating functions</a><ul>
+<li class="chapter" data-level="3.1" data-path="genfuns.html"><a href="genfuns.html#the-moment-generating-function"><i class="fa fa-check"></i><b>3.1</b> The moment generating function</a></li>
+<li class="chapter" data-level="3.2" data-path="genfuns.html"><a href="genfuns.html#the-cumulant-generating-function"><i class="fa fa-check"></i><b>3.2</b> The cumulant generating function</a></li>
+<li class="chapter" data-level="3.3" data-path="genfuns.html"><a href="genfuns.html#generating-functions-under-linear-transformation"><i class="fa fa-check"></i><b>3.3</b> Generating functions under linear transformation</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html"><i class="fa fa-check"></i><b>4</b> Sums of random variables</a><ul>
+<li class="chapter" data-level="4.1" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#generating-functions-of-a-sum"><i class="fa fa-check"></i><b>4.1</b> Generating functions of a sum</a></li>
+<li class="chapter" data-level="4.2" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#closure-results-for-some-standard-distributions"><i class="fa fa-check"></i><b>4.2</b> Closure results for some standard distributions</a></li>
+<li class="chapter" data-level="4.3" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#properties-of-the-sample-mean-of-normal-observations"><i class="fa fa-check"></i><b>4.3</b> Properties of the sample mean of normal observations</a></li>
+<li class="chapter" data-level="4.4" data-path="sums-of-random-variables.html"><a href="sums-of-random-variables.html#clt"><i class="fa fa-check"></i><b>4.4</b> The central limit theorem</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html"><i class="fa fa-check"></i><b>5</b> Maxima and minima</a><ul>
+<li class="chapter" data-level="5.1" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#order-statistics"><i class="fa fa-check"></i><b>5.1</b> Order Statistics</a></li>
+<li class="chapter" data-level="5.2" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-cdf-of-y_n-the-largest-value-in-a-random-sample-of-size-n"><i class="fa fa-check"></i><b>5.2</b> The cdf of <span class="math inline">\(Y_{(n)}\)</span>, the largest value in a random sample of size <span class="math inline">\(n\)</span></a></li>
+<li class="chapter" data-level="5.3" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-pdf-of-the-maximum-in-the-continuous-case"><i class="fa fa-check"></i><b>5.3</b> The pdf of the maximum in the continuous case</a></li>
+<li class="chapter" data-level="5.4" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-cdf-of-y_1-the-smallest-value-in-a-random-sample-of-size-n"><i class="fa fa-check"></i><b>5.4</b> The cdf of <span class="math inline">\(Y_{(1)}\)</span>, the smallest value in a random sample of size <span class="math inline">\(n\)</span></a></li>
+<li class="chapter" data-level="5.5" data-path="maxima-and-minima.html"><a href="maxima-and-minima.html#the-pdf-of-the-minimum-in-the-continuous-case"><i class="fa fa-check"></i><b>5.5</b> The pdf of the minimum in the continuous case</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="gamma.html"><a href="gamma.html"><i class="fa fa-check"></i><b>6</b> The gamma distribution</a><ul>
+<li class="chapter" data-level="6.1" data-path="gamma.html"><a href="gamma.html#the-gamma-distribution"><i class="fa fa-check"></i><b>6.1</b> The gamma distribution</a></li>
+<li class="chapter" data-level="6.2" data-path="gamma.html"><a href="gamma.html#properties-of-the-gamma-distribution"><i class="fa fa-check"></i><b>6.2</b> Properties of the gamma distribution</a></li>
+<li class="chapter" data-level="6.3" data-path="gamma.html"><a href="gamma.html#chisquared"><i class="fa fa-check"></i><b>6.3</b> The chi-squared distribution</a></li>
+<li class="chapter" data-level="6.4" data-path="gamma.html"><a href="gamma.html#distribution-of-the-sample-variance"><i class="fa fa-check"></i><b>6.4</b> Distribution of the sample variance</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="unitransform.html"><a href="unitransform.html"><i class="fa fa-check"></i><b>7</b> Univariate transformations</a><ul>
+<li class="chapter" data-level="7.1" data-path="unitransform.html"><a href="unitransform.html#transformed-random-variables"><i class="fa fa-check"></i><b>7.1</b> Transformed random variables</a></li>
+<li class="chapter" data-level="7.2" data-path="unitransform.html"><a href="unitransform.html#one-to-one-transformations-of-continuous-random-variables"><i class="fa fa-check"></i><b>7.2</b> One-to-one transformations of continuous random variables</a></li>
+<li class="chapter" data-level="7.3" data-path="unitransform.html"><a href="unitransform.html#generating-samples-from-any-distribution"><i class="fa fa-check"></i><b>7.3</b> Generating samples from any distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html"><i class="fa fa-check"></i><b>8</b> Bivariate distributions</a><ul>
+<li class="chapter" data-level="8.1" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#joint-distributions"><i class="fa fa-check"></i><b>8.1</b> Joint distributions</a></li>
+<li class="chapter" data-level="8.2" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#moments-of-jointly-distributed-random-variables"><i class="fa fa-check"></i><b>8.2</b> Moments of jointly distributed random variables</a></li>
+<li class="chapter" data-level="8.3" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#the-bivariate-normal-distribution"><i class="fa fa-check"></i><b>8.3</b> The bivariate normal distribution</a></li>
+<li class="chapter" data-level="8.4" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#bivariate-moment-generating-functions"><i class="fa fa-check"></i><b>8.4</b> Bivariate moment generating functions</a></li>
+<li class="chapter" data-level="8.5" data-path="bivariate-distributions.html"><a href="bivariate-distributions.html#a-useful-property-of-covariances"><i class="fa fa-check"></i><b>8.5</b> A useful property of covariances</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html"><i class="fa fa-check"></i><b>9</b> Bivariate transformations</a><ul>
+<li class="chapter" data-level="9.1" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-transformation-theorem"><i class="fa fa-check"></i><b>9.1</b> The transformation theorem</a></li>
+<li class="chapter" data-level="9.2" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-beta-distribution"><i class="fa fa-check"></i><b>9.2</b> The beta distribution</a></li>
+<li class="chapter" data-level="9.3" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-cauchy-distribution"><i class="fa fa-check"></i><b>9.3</b> The Cauchy distribution</a></li>
+<li class="chapter" data-level="9.4" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-t-distribution"><i class="fa fa-check"></i><b>9.4</b> The <span class="math inline">\(t\)</span> distribution</a></li>
+<li class="chapter" data-level="9.5" data-path="bivariate-transformations.html"><a href="bivariate-transformations.html#the-f-distribution"><i class="fa fa-check"></i><b>9.5</b> The <span class="math inline">\(F\)</span> distribution</a></li>
+</ul></li>
+<li class="part"><span><b>II Statistical inference</b></span></li>
+<li class="chapter" data-level="10" data-path="estimation.html"><a href="estimation.html"><i class="fa fa-check"></i><b>10</b> Parameter estimation</a><ul>
+<li class="chapter" data-level="10.1" data-path="estimation.html"><a href="estimation.html#estimators-and-estimates"><i class="fa fa-check"></i><b>10.1</b> Estimators and estimates</a></li>
+<li class="chapter" data-level="10.2" data-path="estimation.html"><a href="estimation.html#bias"><i class="fa fa-check"></i><b>10.2</b> Bias</a></li>
+<li class="chapter" data-level="10.3" data-path="estimation.html"><a href="estimation.html#consistency"><i class="fa fa-check"></i><b>10.3</b> Consistency</a></li>
+<li class="chapter" data-level="10.4" data-path="estimation.html"><a href="estimation.html#mean-squared-error"><i class="fa fa-check"></i><b>10.4</b> Mean squared error</a></li>
+<li class="chapter" data-level="10.5" data-path="estimation.html"><a href="estimation.html#method-of-moments-estimation"><i class="fa fa-check"></i><b>10.5</b> Method of moments estimation</a></li>
+<li class="chapter" data-level="10.6" data-path="estimation.html"><a href="estimation.html#maximum-likelihood-estimation"><i class="fa fa-check"></i><b>10.6</b> Maximum likelihood estimation</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="inference.html"><a href="inference.html"><i class="fa fa-check"></i><b>11</b> Confidence intervals and hypothesis testing</a><ul>
+<li class="chapter" data-level="11.1" data-path="inference.html"><a href="inference.html#expressing-uncertainty-in-parameter-estimates"><i class="fa fa-check"></i><b>11.1</b> Expressing uncertainty in parameter estimates</a></li>
+<li class="chapter" data-level="11.2" data-path="inference.html"><a href="inference.html#confidence-intervals"><i class="fa fa-check"></i><b>11.2</b> Confidence intervals</a></li>
+<li class="chapter" data-level="11.3" data-path="inference.html"><a href="inference.html#hypothesis-testing"><i class="fa fa-check"></i><b>11.3</b> Hypothesis testing</a></li>
+<li class="chapter" data-level="11.4" data-path="inference.html"><a href="inference.html#two-sample-hypothesis-testing"><i class="fa fa-check"></i><b>11.4</b> Two-sample hypothesis testing</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="bayesian.html"><a href="bayesian.html"><i class="fa fa-check"></i><b>12</b> Bayesian inference</a><ul>
+<li class="chapter" data-level="12.1" data-path="bayesian.html"><a href="bayesian.html#frequentist-and-bayesian-inference"><i class="fa fa-check"></i><b>12.1</b> Frequentist and Bayesian inference</a></li>
+<li class="chapter" data-level="12.2" data-path="bayesian.html"><a href="bayesian.html#prior-and-posterior-distributions"><i class="fa fa-check"></i><b>12.2</b> Prior and posterior distributions</a></li>
+<li class="chapter" data-level="12.3" data-path="bayesian.html"><a href="bayesian.html#the-posterior-predictive-distribution"><i class="fa fa-check"></i><b>12.3</b> The posterior predictive distribution</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MATH2011: Statistical Distribution Theory</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+\(
+\newcommand{\bm}[1]{\boldsymbol{\mathbf{#1}}}
+\)
+<div id="inference" class="section level1">
+<h1><span class="header-section-number">Chapter 11</span> Confidence intervals and hypothesis testing</h1>
+<div id="expressing-uncertainty-in-parameter-estimates" class="section level2">
+<h2><span class="header-section-number">11.1</span> Expressing uncertainty in parameter estimates</h2>
+<p>Suppose that <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are independent identically distributed random variables, each with a distribution depending on unknown parameter <span class="math inline">\(\theta\)</span>, and let <span class="math inline">\(y_1, \ldots, y_n\)</span> be corresponding observed values.</p>
+<p>In Chapter <a href="estimation.html#estimation">10</a>, we have seen how to find an estimate of <span class="math inline">\(\theta\)</span> given <span class="math inline">\(y_1, \ldots, y_n\)</span>. However, an important part of statistical inference is to express our level of uncertainty in this estimate. This could be done by writing down an interval containing a range of values of <span class="math inline">\(\theta\)</span> which could plausibly have generated the data. Alternatively, we might be interested in testing if some particular value of <span class="math inline">\(\theta\)</span> could plausibly have generated the observed data.</p>
+</div>
+<div id="confidence-intervals" class="section level2">
+<h2><span class="header-section-number">11.2</span> Confidence intervals</h2>
+<p>Write <span class="math inline">\(\bm Y = (Y_1, \ldots, Y_n)^T\)</span> and <span class="math inline">\(\bm y = (y_1, \ldots, y_n)^T\)</span>.</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-102" class="definition"><strong>Definition 11.1  </strong></span>A <span class="math inline">\(100(1- \alpha)\%\)</span> <em>confidence interval</em> for <span class="math inline">\(\theta\)</span> is an interval <span class="math inline">\([L(\bm y), U(\bm y)]\)</span> such that <span class="math display">\[P\left(L(\bm Y) \leq \theta \leq U(\bm Y)\right) = 1 - \alpha.\]</span>
+</div>
+
+<p>Often, we take <span class="math inline">\(\alpha = 0.05\)</span>, and obtain a <span class="math inline">\(95\%\)</span> confidence interval. This means that if we were to generate a large number of datasets from the model with some fixed value of <span class="math inline">\(\theta\)</span>, and find a <span class="math inline">\(95\%\)</span> confidence interval for each dataset, approximately <span class="math inline">\(95\%\)</span> of those intervals would contain the true value of <span class="math inline">\(\theta\)</span>.</p>
+
+<div class="example">
+<p><span id="exm:cinormmean" class="example"><strong>Example 11.1  (Normal mean, known variance)  </strong></span>Suppose that <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are independent and identically distributed, with each <span class="math inline">\(Y_i \sim N(\mu, \sigma^2)\)</span>, where <span class="math inline">\(\mu\)</span> is an unknown parameter, but the value of <span class="math inline">\(\sigma^2\)</span> is known. Suppose that we require a <span class="math inline">\(95 \%\)</span> confidence interval for <span class="math inline">\(\mu\)</span>.</p>
+We know (by Proposition <a href="sums-of-random-variables.html#prp:ybarnormal">4.1</a>) that <span class="math inline">\(\bar Y \sim N(\mu, \sigma^2 / n)\)</span>, so <span class="math inline">\(\frac{\sqrt{n}(\bar Y - \mu)}{\sigma} \sim N(0, 1)\)</span>, so <span class="math display">\[P\left(z_{0.025} \leq \frac{\sqrt{n}(\bar Y - \mu)}{\sigma} \leq z_{0.975}\right) = 0.95.\]</span> where <span class="math inline">\(z_{p}\)</span> is the <span class="math inline">\(p\)</span>-quantile of the standard normal distribution, so that <span class="math inline">\(P(X \leq z_p) = p\)</span> if <span class="math inline">\(X \sim N(0, 1)\)</span>. We can find these quantiles in <code>R</code>:
+</div>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qnorm</span>(<span class="fl">0.025</span>)</code></pre></div>
+<pre><code>## [1] -1.959964</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qnorm</span>(<span class="fl">0.975</span>)</code></pre></div>
+<pre><code>## [1] 1.959964</code></pre>
+<p>Notice that <span class="math inline">\(z_{p} = - z_{1 - p}\)</span>, because the standard normal distribution is symmetric about zero.</p>
+<p>By “making <span class="math inline">\(\mu\)</span> the subject of the inequality” we can rearrange this probability statement to give <span class="math display">\[P\left(\bar Y - \frac{1.96 \sigma}{\sqrt{n}} \leq 
+\mu \leq \bar Y + \frac{1.96 \sigma}{\sqrt{n}} \right) = 0.95.\]</span> If we replace the end-points of the inequality with their sample equivalents, we get a <span class="math inline">\(95 \%\)</span> confidence interval <span class="math display">\[\left[\bar y - \frac{1.96 \sigma}{\sqrt{n}}, 
+\bar y + \frac{1.96 \sigma}{\sqrt{n}} \right]\]</span> for <span class="math inline">\(\mu\)</span>.</p>
+
+<div class="example">
+<p><span id="exm:cinormmeanunknownsigma" class="example"><strong>Example 11.2  (Normal mean, unknown variance)  </strong></span>Suppose that <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are independent and identically distributed, with each <span class="math inline">\(Y_i \sim N(\mu, \sigma^2)\)</span>, where <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span> are both unknown parameters. Suppose that we require a <span class="math inline">\(95 \%\)</span> confidence interval for <span class="math inline">\(\mu\)</span>.</p>
+We estimate <span class="math inline">\(\sigma^2\)</span> by <span class="math inline">\(S^2 = \frac{1}{n-1} \sum_{i=1}^n (Y_i - \bar Y)^2\)</span> and then proceed as in Example <a href="inference.html#exm:cinormmean">11.1</a>, taking care to replace the normal quantile with a corresponding quantile from the relevant <span class="math inline">\(t\)</span> distribution, as we know (by Proposition <a href="bivariate-transformations.html#prp:ybart">9.4</a>) that <span class="math display">\[\frac{\sqrt{n}(\bar Y - \mu)}{S} \sim t_{n-1}.\]</span> We have <span class="math display">\[P(t_{n-1, 0.025} \leq \frac{\sqrt{n}(\bar Y - \mu)}{\sigma} \leq t_{n-1, 0.975}) = 0.95.\]</span> where <span class="math inline">\(t_{n-1, p}\)</span> is the <span class="math inline">\(p\)</span>-quantile of the <span class="math inline">\(t_{n-1}\)</span> distribution, so that <span class="math inline">\(P(X \leq t_{n-1, p}) = p\)</span> if <span class="math inline">\(X \sim t_{n-1}\)</span>. We can find these quantiles in <code>R</code>, e.g. if <span class="math inline">\(n = 10\)</span>:
+</div>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qt</span>(<span class="fl">0.025</span>, <span class="dt">df =</span> <span class="dv">9</span>)</code></pre></div>
+<pre><code>## [1] -2.262157</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qt</span>(<span class="fl">0.975</span>, <span class="dt">df =</span> <span class="dv">9</span>)</code></pre></div>
+<pre><code>## [1] 2.262157</code></pre>
+<p>Again, <span class="math inline">\(t_{p, n-1} = - t_{1 - p, n-1}\)</span>, because the <span class="math inline">\(t\)</span> distribution is symmetric about zero. So we have <span class="math display">\[P\left(-t_{n-1, 0.975} \leq \frac{\sqrt{n}(\bar Y - \mu)}{\sigma} \leq t_{n-1, 0.975}\right) = 0.95.\]</span> and rearranging this to “make <span class="math inline">\(\mu\)</span> the subject” gives <span class="math display">\[P\left(\bar Y - \frac{t_{n-1, 0.975} S}{\sqrt{n}} \leq 
+\mu \leq \bar Y + \frac{t_{n-1, 0.975} S}{\sqrt{n}} \right) = 0.95.\]</span> Replacing the end points with their sample versions <span class="math display">\[\left[\bar y - \frac{t_{n-1, 0.975} s}{\sqrt{n}},
+\bar y + \frac{t_{n-1, 0.975} s}{\sqrt{n}} \right]\]</span> is a <span class="math inline">\(95\%\)</span> confidence interval for <span class="math inline">\(\mu\)</span>.</p>
+<p>We always have <span class="math inline">\(t_{n-1, 0.975} &gt; z_{0.975} = 1.96\)</span>, so the confidence interval when <span class="math inline">\(\sigma^2\)</span> is unknown will be wider than it would be if <span class="math inline">\(\sigma^2\)</span> was known: this makes sense, as we have to account for some additional uncertainty. For large <span class="math inline">\(n\)</span>, <span class="math inline">\(t_{n-1, 0.975} \approx 1.96\)</span>, as the <span class="math inline">\(t_{n-1}\)</span> approaches a standard normal distribution as <span class="math inline">\(n\)</span> increases.</p>
+
+<div class="example">
+<p><span id="exm:cinormvariance" class="example"><strong>Example 11.3  (Normal variance)  </strong></span>Suppose that <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are independent and identically distributed, with each <span class="math inline">\(Y_i \sim N(\mu, \sigma^2)\)</span>, where <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span> are both unknown parameters. Suppose that we require a <span class="math inline">\(95 \%\)</span> confidence interval for <span class="math inline">\(\sigma^2\)</span>.</p>
+We may estimate <span class="math inline">\(\sigma^2\)</span> by <span class="math inline">\(S^2\)</span>. By Theorem <a href="gamma.html#thm:S2dist">6.1</a>, we know <span class="math display">\[\frac{n-1}{\sigma^2} S^2 \sim \chi^2_{n-1},\]</span> so <span class="math display">\[P\left(c_{n-1, 0.025} \leq \frac{n-1}{\sigma^2} S^2 
+\leq c_{n-1, 0.975}\right) = 0.95,\]</span> where <span class="math inline">\(c_{n-1, p}\)</span> is the <span class="math inline">\(p\)</span>-quantile of the <span class="math inline">\(\chi^2_{n-1}\)</span> distribution, so that <span class="math inline">\(P(X \leq c_{n-1, p}) = p\)</span> if <span class="math inline">\(X \sim \chi^2_{n-1}\)</span>. We can find these quantiles in <code>R</code>, e.g. if <span class="math inline">\(n = 10\)</span>:
+</div>
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qchisq</span>(<span class="fl">0.025</span>, <span class="dt">df =</span> <span class="dv">9</span>)</code></pre></div>
+<pre><code>## [1] 2.700389</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qchisq</span>(<span class="fl">0.975</span>, <span class="dt">df =</span> <span class="dv">9</span>)</code></pre></div>
+<pre><code>## [1] 19.02277</code></pre>
+<p>Since chi-squared distribution has positive domain, all quantiles are positive, and <span class="math inline">\(c_{p, n-1} \not = - c_{1 - p, n-1}\)</span>. Rearranging to “make <span class="math inline">\(\sigma^2\)</span> the subject” gives <span class="math display">\[P\left(\frac{(n-1) S^2}{c_{n-1, 0.975}} \leq \sigma^2
+  \leq \frac{(n-1) S^2}{c_{n-1, 0.025}}\right) = 0.95\]</span> so <span class="math display">\[\left[\frac{(n-1) s^2}{c_{n-1, 0.975}}, \frac{(n-1) s^2}{c_{n-1, 0.025}}\right]\]</span> is a <span class="math inline">\(95\%\)</span> confidence interval for <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>From this we can obtain a corresponding confidence interval for <span class="math inline">\(\sigma\)</span> if we prefer, as <span class="math display">\[P\left(\frac{\sqrt{n-1} S}{\sqrt{c_{n-1, 0.975}}} \leq \sigma
+  \leq \frac{\sqrt{n-1} S}{\sqrt{c_{n-1, 0.025}}}\right) = 0.95\]</span> so <span class="math display">\[\left[\frac{\sqrt{n-1} s}{\sqrt{c_{n-1, 0.975}}},
+  \frac{\sqrt{n-1} s}{\sqrt{c_{n-1, 0.025}}}\right]\]</span> is a <span class="math inline">\(95\%\)</span> confidence interval for <span class="math inline">\(\sigma\)</span>.</p>
+<p>All of our examples of confidence intervals have been for unknown parameters of a normal distribution. We have been able to find these confidence intervals because of the results we have proved earlier about the distributions of <span class="math inline">\(\bar Y\)</span> and <span class="math inline">\(S^2\)</span>, which are natural estimators of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span>. For other distributions, the distribution of an estimator of <span class="math inline">\(\theta\)</span> (such as the maximum likelihood estimator <span class="math inline">\(\hat \theta\)</span>) may be more complicated, which makes constructing confidence intervals more challenging. It turns out that for large <span class="math inline">\(n\)</span>, the distribution of the maximum likelihood estimator is close to a normal distribution (see MATH3044), which is very useful in practice to construct confidence intervals for a wide range of models.</p>
+</div>
+<div id="hypothesis-testing" class="section level2">
+<h2><span class="header-section-number">11.3</span> Hypothesis testing</h2>
+<p>In classical hypothesis testing we aim to choose between two competing hypotheses about a parameter of interest. The hypotheses are called the null hypothesis (<span class="math inline">\(H_0\)</span>) and the alternative hypothesis (<span class="math inline">\(H_1\)</span>). The null and alternative hypotheses are regarded somewhat differently – the null hypothesis will be rejected in favour of the alternative hypothesis only if there is strong evidence against it.</p>
+<p>For now we will only consider a <strong>simple</strong> null hypothesis, which is one which specifies a single value for the parameter of interest.</p>
+<p>We either reject <span class="math inline">\(H_0\)</span> in favour of <span class="math inline">\(H_1\)</span>, or we do not reject <span class="math inline">\(H_0\)</span>. There are two types of error we can make:</p>
+<ul>
+<li>We reject <span class="math inline">\(H_0\)</span> when <span class="math inline">\(H_0\)</span> is true (Type I error)</li>
+<li>We do not reject <span class="math inline">\(H_0\)</span> when <span class="math inline">\(H_1\)</span> is true (Type II error)</li>
+</ul>
+<p>In classical hypothesis testing we choose the Type I error probability we work at (the <strong>significance level</strong>) and design our test so that the Type II error probability is suitably small (i.e. choose a large enough sample size <span class="math inline">\(n\)</span>.)</p>
+<p>In any given situation we need a <strong>test statistic</strong> – a quantity whose distribution is known when <span class="math inline">\(H_0\)</span> is true. We reject <span class="math inline">\(H_0\)</span> if the value of the test statistic is “extreme” relative to the distribution of the test statistic under <span class="math inline">\(H_0\)</span>, otherwise we do not reject <span class="math inline">\(H_0\)</span>. The threshold for what counts as “extreme” depends on the specified significance level of the test.</p>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-106" class="example"><strong>Example 11.4  (Normal mean, known variance)  </strong></span>As in Example <a href="inference.html#exm:cinormmean">11.1</a>, suppose that <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are independent and identically distributed, with each <span class="math inline">\(Y_i \sim N(\mu, \sigma^2)\)</span>, where <span class="math inline">\(\mu\)</span> is an unknown parameter, but the value of <span class="math inline">\(\sigma^2\)</span> is known.</p>
+<p>Suppose that we wish to test that null hypothesis <span class="math inline">\(H_0: \mu = \mu_0\)</span>, where <span class="math inline">\(\mu_0\)</span> is a fixed value chosen in advance of collecting the data. We take <span class="math inline">\(H_1\)</span> to be the complement of <span class="math inline">\(H_0\)</span>, so <span class="math inline">\(H_1: \mu \not = \mu_0\)</span>.</p>
+We construct the test statistic <span class="math display">\[Z = \frac{\sqrt{n}(\bar Y - \mu_0)}{\sigma}.\]</span> If <span class="math inline">\(H_0\)</span> is true then <span class="math inline">\(Z \sim N(0, 1)\)</span>. For our observed data the observed value of <span class="math inline">\(Z\)</span> is <span class="math display">\[z =  \frac{\sqrt{n}(\bar y - \mu_0)}{\sigma}.\]</span> To construct a hypothesis test at significance level <span class="math inline">\(\alpha = 0.05\)</span> we should only reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(|z| &gt; z_{0.975} = 1.96\)</span>. So if <span class="math inline">\(z &gt; 1.96\)</span> or <span class="math inline">\(z &lt; -1.96\)</span>, we reject <span class="math inline">\(H_0\)</span>. Otherwise, we do not reject <span class="math inline">\(H_0\)</span>.
+</div>
+
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-107" class="example"><strong>Example 11.5  (Normal mean, unknown variance)  </strong></span>As in Example <a href="inference.html#exm:cinormmeanunknownsigma">11.2</a>, suppose that <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are independent and identically distributed, with each <span class="math inline">\(Y_i \sim N(\mu, \sigma^2)\)</span>, where <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span> are both unknown parameters. Suppose we are interested in testing the null <span class="math inline">\(H_0: \mu = \mu_0\)</span> against the alternative <span class="math inline">\(H_1: \mu \not = \mu_0\)</span>.</p>
+We estimate <span class="math inline">\(\sigma^2\)</span> by <span class="math inline">\(S^2\)</span>, and construct the test statistic <span class="math display">\[T = \frac{\sqrt{n}(\bar Y - \mu_0)}{S}.\]</span> If <span class="math inline">\(H_0\)</span> is true then <span class="math inline">\(T \sim t_{n-1}\)</span>. For our observed data the observed value of <span class="math inline">\(T\)</span> is <span class="math display">\[t =  \frac{\sqrt{n}(\bar y - \mu_0)}{s}.\]</span> To construct a hypothesis test at significance level <span class="math inline">\(\alpha = 0.05\)</span> we should only reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(|t| &gt; t_{n-1, 0.975} = 1.96\)</span>. So if <span class="math inline">\(t &gt; t_{n-1, 0.975}\)</span> or <span class="math inline">\(z &lt; -t_{n-1, 0.975}\)</span>, we reject <span class="math inline">\(H_0\)</span>. Otherwise, we do not reject <span class="math inline">\(H_0\)</span>.
+</div>
+
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-108" class="example"><strong>Example 11.6  (Normal variance)  </strong></span>As in Example <a href="inference.html#exm:cinormvariance">11.3</a>, suppose that <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are independent and identically distributed, with each <span class="math inline">\(Y_i \sim N(\mu, \sigma^2)\)</span>, where <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span> are both unknown parameters. Suppose we are interested in testing the null <span class="math inline">\(H_0: \sigma^2 = \sigma^2_0\)</span> against the alternative <span class="math inline">\(H_1: \sigma^2 \not = \sigma^2_0\)</span>.</p>
+We estimate <span class="math inline">\(\sigma^2\)</span> by <span class="math inline">\(S^2\)</span>, and construct the test statistic <span class="math display">\[C = \frac{(n-1) S^2}{\sigma_0^2}.\]</span> If <span class="math inline">\(H_0\)</span> is true then <span class="math inline">\(C \sim \chi^2_{n-1}\)</span>. For our observed data the observed value of <span class="math inline">\(C\)</span> is <span class="math display">\[c =  \frac{(n-1) s^2}{\sigma_0^2}.\]</span> To construct a hypothesis test at significance level <span class="math inline">\(\alpha = 0.05\)</span> we should only reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(c &lt; c_{n-1, 0.025}\)</span> or <span class="math inline">\(c &gt; c_{n-1, 0.975}\)</span>. Otherwise, we do not reject <span class="math inline">\(H_0\)</span>.
+</div>
+
+</div>
+<div id="two-sample-hypothesis-testing" class="section level2">
+<h2><span class="header-section-number">11.4</span> Two-sample hypothesis testing</h2>
+<p>In many practical situations, such as clinical trials, we have two independent groups of subjects under study and wish to understand the relative effects of two “treatments” on some response of interest. For instance, in a classical two-armed clinical trial, there are two treatments of interest, such as an active treatment and a placebo, or old and new treatments, and we wish to know whether there is a difference in responses between the two treatment groups.</p>
+
+<div class="example">
+<p><span id="exm:twosamplet" class="example"><strong>Example 11.7  (Classical two-sample <span class="math inline">\(t\)</span>-test)  </strong></span>Suppose we have two sets of samples <span class="math display">\[X_1, \ldots, X_{m} \sim N(\mu_1, \sigma^2) \quad \text{and} \quad
+Y_1, \ldots, Y_{n} \sim N(\mu_2, \sigma^2),\]</span> where all the random variables are independent.</p>
+<p>Write <span class="math inline">\(\delta = \mu_1 - \mu_2\)</span>. We would like to test the null <span class="math inline">\(H_0: \delta = \delta_0\)</span>, for some prespecified value of the difference between treatments, against the alternative <span class="math inline">\(H_1: \delta \not = \delta_0\)</span>). Often <span class="math inline">\(\delta_0 = 0\)</span>, in which case we are testing if there is any difference in distribution of the response between the two treatment groups.</p>
+We know that <span class="math inline">\(\bar X \sim N(\mu_1, \sigma^2/m)\)</span> and <span class="math inline">\(\bar Y \sim N(\mu_2, \sigma^2/n)\)</span>, and <span class="math inline">\(\bar X\)</span> and <span class="math inline">\(\bar Y\)</span> are independent, so <span class="math display">\[\bar X - \bar Y \sim N\left(\mu_1 - \mu_2, 
+\frac{\sigma^2}{m}+ \frac{\sigma^2}{n}\right).\]</span> Under <span class="math inline">\(H_0\)</span>, <span class="math inline">\(\bar X - \bar Y \sim N(\delta_0, \sigma^2/m+ \sigma^2/n),\)</span> or
+<span class="math display" id="eq:twosampleknownsigma">\[\begin{equation}
+\frac{\bar X - \bar Y - \delta_0}{\sigma^2/m+ \sigma^2/n}
+\sim N(0, 1),
+\tag{11.1}
+\end{equation}\]</span>
+<p>but we cannot use this as a test statistic, because it depends on the unknown <span class="math inline">\(\sigma^2\)</span>.</p>
+<p>We estimate <span class="math inline">\(\sigma^2\)</span> based on all the samples combined, by <span class="math display">\[S_c^2 = \frac{\sum_{i=1}^{m} (X_i - \bar X)^2 + 
+\sum_{i=1}^{n}(Y_i - \bar Y)^2}{m + n - 2}.\]</span> We choose the denominator <span class="math inline">\(m + n - 2\)</span> to make this an unbiased estimator of <span class="math inline">\(\sigma^2\)</span>: since <span class="math inline">\(\sum_{i=1}^{m} (X_i - \bar X)^2 \sim \sigma^2 \chi^2_{m - 1}\)</span> and <span class="math inline">\(\sum_{i=1}^{n} (Y_i - \bar Y)^2 \sim \sigma^2 \chi^2_{n - 1}\)</span>, and these two quantities are independent, their sum has <span class="math inline">\(\sigma^2 \chi^2_{m + n - 2}\)</span> distribution. So <span class="math display">\[\frac{(m + n - 2)S_c^2}{\sigma^2} \sim \chi^2_{m + n - 2}.\]</span></p>
+<p>Replacing <span class="math inline">\(\sigma^2\)</span> by <span class="math inline">\(S_c^2\)</span> in Equation <a href="inference.html#eq:twosampleknownsigma">(11.1)</a>, we get <span class="math display">\[T = \frac{\bar X - \bar Y - \delta_0}{S_c^2 / m+ S_c^2 / n}
+\sim t_{m + n - 2}\]</span> under <span class="math inline">\(H_0\)</span>. For our observed data the observed value of <span class="math inline">\(T\)</span> is <span class="math display">\[t = \frac{\bar x - \bar y - \delta_0}{s_c^2 / m+ s_c^2 / n}.\]</span></p>
+To construct a hypothesis test at significance level <span class="math inline">\(\alpha = 0.05\)</span> we should only reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(|t| &gt; t_{n-1, 0.975} = 1.96\)</span>. So if <span class="math inline">\(t &gt; t_{n-1, 0.975}\)</span> or <span class="math inline">\(z &lt; -t_{n-1, 0.975}\)</span>, we reject <span class="math inline">\(H_0\)</span>. Otherwise, we do not reject <span class="math inline">\(H_0\)</span>.
+</div>
+
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-109" class="example"><strong>Example 11.8  (<span class="math inline">\(F\)</span>-test for equality of variances)  </strong></span>In the classical two-sample <span class="math inline">\(t\)</span>-test (Example <a href="inference.html#exm:twosamplet">11.7</a>), an assumption is made that the (population) variances of the two groups are equal. We might want to test whether this assumption appears to be reasonable, given the data. To do this, we now assume that each <span class="math inline">\(X_i \sim N(\mu_1, \sigma_1^2)\)</span> and each <span class="math inline">\(Y_i \sim N(\mu_2, \sigma_2^2)\)</span>, and test the null hypothesis <span class="math inline">\(H_0: \sigma_1^2 = \sigma_2^2\)</span> against the alternative <span class="math inline">\(H_1: \sigma_1^2 \not = \sigma_2^2\)</span>.</p>
+We estimate <span class="math inline">\(\sigma_1^2\)</span> by <span class="math display">\[S_1^2 = \frac{1}{m - 1} \sum_{i=1}^{m} (X_i - \bar X)^2\]</span> and <span class="math inline">\(\sigma_2^2\)</span> by <span class="math display">\[S_2^2 = \frac{1}{m - 1} \sum_{i=1}^{m} (Y_i - \bar Y)^2.\]</span> Let <span class="math display">\[F = \frac{S_1^2}{S_2^2}\]</span> Under <span class="math inline">\(H_0\)</span>, by Proposition <a href="bivariate-transformations.html#prp:ftest">9.6</a>, we know that <span class="math inline">\(F \sim F_{m-1, n-1}.\)</span> For our observed data the observed value of <span class="math inline">\(F\)</span> is <span class="math display">\[f = \frac{s_1^2}{s_2^2}.\]</span> To construct a hypothesis test at significance level <span class="math inline">\(\alpha = 0.05\)</span> we should only reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(f &lt; f_{m-1, n-1, 0.025}\)</span> or <span class="math inline">\(f &gt; f_{m-1, n-1, 0.975}\)</span>, where <span class="math inline">\(f_{m-1, n-1, p}\)</span> is the <span class="math inline">\(p\)</span>-quantile of an <span class="math inline">\(F_{m-1, n-1}\)</span> distribution. Otherwise, we do not reject <span class="math inline">\(H_0\)</span>.
+</div>
+
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="estimation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bayesian.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/12-inference.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["MATH2011.pdf", "MATH2011.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
