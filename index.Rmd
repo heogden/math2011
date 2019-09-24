@@ -4,6 +4,7 @@ author: "Dr Helen Ogden"
 date: "2019/20"
 output: bookdown::gitbook
 documentclass: book
+github-repo: heogden/math2011
 description: "The course notes for MATH2011: Statistical Distribution Theory."
 ---
 
