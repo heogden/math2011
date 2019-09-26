@@ -57,7 +57,7 @@ distributions: it just places a constant density between
 some range $(a, b)$:
 
 ```{definition}
-A random variable $Y$ has *normal* distribution if it has
+A random variable $Y$ has *uniform* distribution if it has
 pdf of the form
 \[f(y) = \frac{1}{b-a}, a < y < b,\]
 for some parameters $a, b \in \mathbb{R}$, with $b > a$.
