@@ -6,7 +6,7 @@ bookdown::gitbook:
         <li><a href="./">MATH2011: Statistical Distribution Theory</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    edit: https://github.com/rstudio/bookdown-demo/edit/master/%s
+    edit: https://github.com/heogden/math2011/edit/master/%s
     download: ["pdf", "epub"]
   includes:
     before_body: preamble-mathjax.tex
