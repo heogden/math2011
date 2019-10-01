@@ -135,7 +135,7 @@ The *$r$th moment about the origin* is
 \[\mu_r^\prime = E(Y^r) = \int_{-\infty}^\infty y^r f(y) dy\]
 and the 
 *$r$th moment about the mean* is
-\[\mu_r = E\left\{[Y – E(Y)]^r \right\} =\int_{-\infty}^\infty (y - \mu)^r f(y) dy.\]
+\[\mu_r = E\left\{[Y - E(Y)]^r \right\} =\int_{-\infty}^\infty (y - \mu)^r f(y) dy.\]
 ```
 
 We have

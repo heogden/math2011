@@ -343,7 +343,7 @@ proof.
 ```{theorem, cochran, name = "Cochran's Theorem"}
 Suppose that $U \sim \text{gamma}(\alpha_1, \beta)$
 and $W \sim \text{gamma}(\alpha_1 + \alpha_2, \beta)$.
-If $V = W – U$, then any one of the following implies the other two:
+If $V = W - U$, then any one of the following implies the other two:
 
 i) $V \sim \text{gamma}(\alpha_2, \beta)$.
 ii) $V$ is independent of $U$

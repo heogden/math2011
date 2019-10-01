@@ -34,7 +34,7 @@ and
 
 A *Bernoulli trial* is an experiment with just two possible 
 outcomes 'success' and 'failure' which
-occur with probabilities $\theta$ and $1– \theta$ respectively, 
+occur with probabilities $\theta$ and $1- \theta$ respectively, 
 where $\theta$ is the success probability. The indicator of success
 in a Bernoulli trial has Bernoulli distribution.
 

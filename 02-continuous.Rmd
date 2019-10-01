@@ -20,7 +20,7 @@ P(Y > y) &= P(\text{no events in an interval of length $y$}) \\
 &= e^{-\theta y}
 \end{align*}
 so
-\[F(y) = P(Y \leq y) = 1 – e^{-\theta y}, \quad y > 0.\]
+\[F(y) = P(Y \leq y) = 1 - e^{-\theta y}, \quad y > 0.\]
 Differentiating, we obtain the pdf
 \[f(y) = \frac{d}{dy} F(y) = \theta e^{-\theta y}, \quad y > 0.\]
 
@@ -43,7 +43,7 @@ The probability is the area under the curve $f(y) = 0.01 e^{-0.01 y}$
 between $y = 100$ and $y = 200$, so
 \begin{align*}
 P(100 < Y \leq 200) &= \int_{100}^{200} 0.01e^{-0.01 y} dy \\
-&= e^{-1} – e^{-2} = 0.37 – 0.14 = 0.23.
+&= e^{-1} - e^{-2} = 0.37 - 0.14 = 0.23.
 \end{align*}
 ```
 We could find this in `R` with

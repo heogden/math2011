@@ -196,7 +196,7 @@ distribution}\label{the-bernoulli-distribution}
 
 A \emph{Bernoulli trial} is an experiment with just two possible
 outcomes `success' and `failure' which occur with probabilities
-\(\theta\) and \(1– \theta\) respectively, where \(\theta\) is the
+\(\theta\) and \(1- \theta\) respectively, where \(\theta\) is the
 success probability. The indicator of success in a Bernoulli trial has
 Bernoulli distribution.
 
@@ -298,7 +298,7 @@ P(Y > y) &= P(\text{no events in an interval of length $y$}) \\
 &= e^{-\theta y}
 \end{align*}
 
-so \[F(y) = P(Y \leq y) = 1 – e^{-\theta y}, \quad y > 0.\]
+so \[F(y) = P(Y \leq y) = 1 - e^{-\theta y}, \quad y > 0.\]
 Differentiating, we obtain the pdf
 \[f(y) = \frac{d}{dy} F(y) = \theta e^{-\theta y}, \quad y > 0.\]
 
@@ -322,7 +322,7 @@ between \(y = 100\) and \(y = 200\), so
 
 \begin{align*}
 P(100 < Y \leq 200) &= \int_{100}^{200} 0.01e^{-0.01 y} dy \\
-&= e^{-1} – e^{-2} = 0.37 – 0.14 = 0.23.
+&= e^{-1} - e^{-2} = 0.37 - 0.14 = 0.23.
 \end{align*}
 \EndKnitrBlock{example} We could find this in \texttt{R} with
 
@@ -570,7 +570,7 @@ probability function and the integral by a sum.
 }The \emph{\(r\)th moment about the origin} is
 \[\mu_r^\prime = E(Y^r) = \int_{-\infty}^\infty y^r f(y) dy\] and the
 \emph{\(r\)th moment about the mean} is
-\[\mu_r = E\left\{[Y – E(Y)]^r \right\} =\int_{-\infty}^\infty (y - \mu)^r f(y) dy.\]
+\[\mu_r = E\left\{[Y - E(Y)]^r \right\} =\int_{-\infty}^\infty (y - \mu)^r f(y) dy.\]
 \EndKnitrBlock{definition}
 
 We have
@@ -1832,7 +1832,7 @@ theorem, which we state here without proof.
 \protect\hypertarget{thm:cochran}{}{\label{thm:cochran} \iffalse (Cochran's
 Theorem) \fi{} }Suppose that \(U \sim \text{gamma}(\alpha_1, \beta)\)
 and \(W \sim \text{gamma}(\alpha_1 + \alpha_2, \beta)\). If
-\(V = W – U\), then any one of the following implies the other two:
+\(V = W - U\), then any one of the following implies the other two:
 
 \begin{enumerate}
 \def\labelenumi{\roman{enumi})}

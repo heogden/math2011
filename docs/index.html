@@ -227,7 +227,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">1.2</span> Examples of discrete distributions</h2>
 <div id="the-bernoulli-distribution" class="section level3">
 <h3><span class="header-section-number">1.2.1</span> The Bernoulli distribution</h3>
-<p>A <em>Bernoulli trial</em> is an experiment with just two possible outcomes ‘success’ and ‘failure’ which occur with probabilities <span class="math inline">\(\theta\)</span> and <span class="math inline">\(1– \theta\)</span> respectively, where <span class="math inline">\(\theta\)</span> is the success probability. The indicator of success in a Bernoulli trial has Bernoulli distribution.</p>
+<p>A <em>Bernoulli trial</em> is an experiment with just two possible outcomes ‘success’ and ‘failure’ which occur with probabilities <span class="math inline">\(\theta\)</span> and <span class="math inline">\(1- \theta\)</span> respectively, where <span class="math inline">\(\theta\)</span> is the success probability. The indicator of success in a Bernoulli trial has Bernoulli distribution.</p>
 
 <div class="definition">
 <span id="def:unnamed-chunk-1" class="definition"><strong>Definition 1.1  </strong></span>A discrete random variables <span class="math inline">\(Y\)</span> has <em>Bernoulli</em> distribution if it has probability function of the form <span class="math display">\[p(y) = \theta^y (1- \theta)^{1-y}, \quad y = 0, 1,\]</span> for some <span class="math inline">\(0 &lt; \theta &lt; 1\)</span>. We write <span class="math inline">\(Y \sim \text{Bernoulli}(\theta)\)</span>.
@@ -284,7 +284,7 @@ P(Y &gt; y) &amp;= P(\text{no events in an interval of length $y$}) \\
 &amp;= \frac{e^{-\theta y} (\theta y)^0}{0!} \\
 &amp;= e^{-\theta y}
 \end{align*}\]</span>
-<p>so <span class="math display">\[F(y) = P(Y \leq y) = 1 – e^{-\theta y}, \quad y &gt; 0.\]</span> Differentiating, we obtain the pdf <span class="math display">\[f(y) = \frac{d}{dy} F(y) = \theta e^{-\theta y}, \quad y &gt; 0.\]</span></p>
+<p>so <span class="math display">\[F(y) = P(Y \leq y) = 1 - e^{-\theta y}, \quad y &gt; 0.\]</span> Differentiating, we obtain the pdf <span class="math display">\[f(y) = \frac{d}{dy} F(y) = \theta e^{-\theta y}, \quad y &gt; 0.\]</span></p>
 
 <div class="definition">
 <span id="def:unnamed-chunk-6" class="definition"><strong>Definition 1.6  </strong></span>A random variable <span class="math inline">\(Y\)</span> has <em>exponential</em> distribution if it has pdf of the form <span class="math display">\[f(y) = \theta e^{-\theta y}, \quad y &gt; 0,\]</span> for some <em>rate parameter</em> <span class="math inline">\(\theta &gt; 0\)</span>. We write <span class="math inline">\(Y \sim \text{exponential}(\theta)\)</span>.
@@ -296,7 +296,7 @@ P(Y &gt; y) &amp;= P(\text{no events in an interval of length $y$}) \\
 The probability is the area under the curve <span class="math inline">\(f(y) = 0.01 e^{-0.01 y}\)</span> between <span class="math inline">\(y = 100\)</span> and <span class="math inline">\(y = 200\)</span>, so
 <span class="math display">\[\begin{align*}
 P(100 &lt; Y \leq 200) &amp;= \int_{100}^{200} 0.01e^{-0.01 y} dy \\
-&amp;= e^{-1} – e^{-2} = 0.37 – 0.14 = 0.23.
+&amp;= e^{-1} - e^{-2} = 0.37 - 0.14 = 0.23.
 \end{align*}\]</span>
 </div>
 <p> We could find this in <code>R</code> with</p>
