@@ -594,8 +594,8 @@ moment about the mean from the first three moments about the origin.
 \EndKnitrBlock{remark} \BeginKnitrBlock{proof}
 
 \iffalse{} {Proof. } \fi{}We have
-\[\mu_3 = E\{[Y - E(Y]^3\} = E\{(Y - \mu)^3\},\] writing \(\mu = E(Y)\).
-Expanding, we have
+\[\mu_3 = E\{[Y - E(Y)]^3\} = E\{(Y - \mu)^3\},\] writing
+\(\mu = E(Y)\). Expanding, we have
 \[(Y - \mu)^3 = Y^3 - 3 Y^2 \mu + 3 Y \mu^2  - \mu^3\] and using the
 linearity of expectation gives
 
@@ -709,7 +709,7 @@ The third moment is
 
 \begin{align*}
 \mu_3^\prime = E(Y^3) &= \int_{0}^\infty y^3 \theta e^{-\theta y} dy \\
-&= \frac{1}{\theta^2} \int_0^\infty t^3 e^{-t} dt \\
+&= \frac{1}{\theta^3} \int_0^\infty t^3 e^{-t} dt \\
 &= \frac{1}{\theta^3} \left\{\left[-t^3 e^{-t}\right]_0^\infty
 + 3 \int_0^\infty t^2 e^{-t} dt \right\} \\
 &= \frac{1}{\theta^3} \left\{0 + 3 \times 2 \right\} = \frac{6}{\theta^3},
@@ -750,7 +750,7 @@ So, using Theorem \ref{thm:mu4}, the fourth moment about the mean is
 So the kurtosis is
 \[\gamma_2 = \frac{9/\theta^4}{(1/\theta^2)^2} =  9,\] which does not
 depend on \(\theta\). All exponential random variables are positively
-skewed (\(\gamma_1 = 2\)), with a high kurtosis (\(\gamma_2 = 4\)),
+skewed (\(\gamma_1 = 2\)), with a high kurtosis (\(\gamma_2 = 9\)),
 meaning the exponential distribution has heavier tails than the normal
 distribution.
 \EndKnitrBlock{example}
@@ -863,7 +863,7 @@ We get \[E(Y^2) = M_Y^{(2)}(0) = n (n - 1) \theta^2 +  n \theta,\] so
 &= -n \theta^2 + n \theta = n \theta(1 - \theta),
 \end{align*}
 
-as expected.
+as expected.b
 \EndKnitrBlock{example}
 
 \BeginKnitrBlock{example}[Normal mgf]

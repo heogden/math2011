@@ -300,7 +300,7 @@ We have
 </div>
  
 <div class="proof">
- <span class="proof"><em>Proof. </em></span> We have <span class="math display">\[\mu_3 = E\{[Y - E(Y]^3\} = E\{(Y - \mu)^3\},\]</span> writing <span class="math inline">\(\mu = E(Y)\)</span>. Expanding, we have <span class="math display">\[(Y - \mu)^3 = Y^3 - 3 Y^2 \mu + 3 Y \mu^2  - \mu^3\]</span> and using the linearity of expectation gives
+ <span class="proof"><em>Proof. </em></span> We have <span class="math display">\[\mu_3 = E\{[Y - E(Y)]^3\} = E\{(Y - \mu)^3\},\]</span> writing <span class="math inline">\(\mu = E(Y)\)</span>. Expanding, we have <span class="math display">\[(Y - \mu)^3 = Y^3 - 3 Y^2 \mu + 3 Y \mu^2  - \mu^3\]</span> and using the linearity of expectation gives
 <span class="math display">\[\begin{align*}
 \mu_3 &amp;= E(Y^3) - 3 \mu E(Y^2) + 3 \mu^2 E(Y) - \mu^3 \\
 &amp;= \mu_3^\prime - 3 \mu \mu_2^\prime + 3 \mu^2 \mu - \mu^3 \\
@@ -365,7 +365,7 @@ So the kurtosis is <span class="math display">\[\gamma_2 = \frac{\mu_4}{\mu_2^2}
 The third moment is
 <span class="math display">\[\begin{align*}
 \mu_3^\prime = E(Y^3) &amp;= \int_{0}^\infty y^3 \theta e^{-\theta y} dy \\
-&amp;= \frac{1}{\theta^2} \int_0^\infty t^3 e^{-t} dt \\
+&amp;= \frac{1}{\theta^3} \int_0^\infty t^3 e^{-t} dt \\
 &amp;= \frac{1}{\theta^3} \left\{\left[-t^3 e^{-t}\right]_0^\infty
 + 3 \int_0^\infty t^2 e^{-t} dt \right\} \\
 &amp;= \frac{1}{\theta^3} \left\{0 + 3 \times 2 \right\} = \frac{6}{\theta^3},
@@ -391,7 +391,7 @@ where we have used that <span class="math inline">\(\int_0^\infty t^3 e^{-t}dt =
 - \frac{3}{\theta^4} \\
 &amp;= \frac{9}{\theta^4}.
 \end{align*}\]</span>
-So the kurtosis is <span class="math display">\[\gamma_2 = \frac{9/\theta^4}{(1/\theta^2)^2} =  9,\]</span> which does not depend on <span class="math inline">\(\theta\)</span>. All exponential random variables are positively skewed (<span class="math inline">\(\gamma_1 = 2\)</span>), with a high kurtosis (<span class="math inline">\(\gamma_2 = 4\)</span>), meaning the exponential distribution has heavier tails than the normal distribution.
+So the kurtosis is <span class="math display">\[\gamma_2 = \frac{9/\theta^4}{(1/\theta^2)^2} =  9,\]</span> which does not depend on <span class="math inline">\(\theta\)</span>. All exponential random variables are positively skewed (<span class="math inline">\(\gamma_1 = 2\)</span>), with a high kurtosis (<span class="math inline">\(\gamma_2 = 9\)</span>), meaning the exponential distribution has heavier tails than the normal distribution.
 </div>
 
 
