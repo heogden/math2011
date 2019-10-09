@@ -10,4 +10,6 @@
 - p16, Example 2.6. In the second line of the display for $\mu_3^\prime$, should be
  $\frac{1}{\theta^3}$ outside of the integral, not $\frac{1}{\theta^2}$.
 - p17, Example 2.6. In the last line, kurtosis should be $\gamma_2 = 9$, not $\gamma_2 = 4$.
+- p20, Proof of Theorem 3.1. The last line should conclude $M_Y^{(r)}(0) = \mu_r^\prime$,
+not $\mu_r$.
 - p40, Theorem 6.1 (Cochran's Theorem), missing minus sign. Should define $V = W - U$, rather than $V = WU$.
