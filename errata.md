@@ -12,4 +12,5 @@
 - p17, Example 2.6. In the last line, kurtosis should be $\gamma_2 = 9$, not $\gamma_2 = 4$.
 - p20, Proof of Theorem 3.1. The last line should conclude $M_Y^{(r)}(0) = \mu_r^\prime$,
 not $\mu_r$.
+- p23, Example 3.4. Should get $\mu_4 = 3 \sigma^4$, not $3 \sigma^2$.
 - p40, Theorem 6.1 (Cochran's Theorem), missing minus sign. Should define $V = W - U$, rather than $V = WU$.
