@@ -208,7 +208,7 @@ The third moment about the mean is $\mu_3 = 0$, so the
 skewness is $\gamma_1 = 0$ for all normal random variables.
 
 The fourth moment about the mean is 
-$\mu_4 = \kappa_4 + 3 \kappa_2^2 = 0 + 3 \sigma^2$,
+$\mu_4 = \kappa_4 + 3 \kappa_2^2 = 0 + 3 \sigma^4$,
 so the kurtosis is $\gamma_2 = 3$ for all normal random variables.
 ```
 
