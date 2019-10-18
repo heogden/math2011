@@ -20,7 +20,7 @@ sample median is defined as
 \[ [y_{(n/2)} + y_{(n/2+1)}]/2.\]
 We shall concentrate, however, on two particular order statistics: 
 $y_{(1)}$, the sample
-minimum, and y_{(n)}, the sample maximum. 
+minimum, and $y_{(n)}$, the sample maximum. 
 We define the corresponding random variables
 $Y_{(1)} = \min\{Y_1, \ldots, Y_n\}$ and
 $Y_{(n)} = \max\{Y_1 , \ldots, Y_n \}$.
