@@ -99,7 +99,7 @@ so
 &=  n (n - 1) \theta^2 +  n \theta - (n \theta)^2 \\
 &= -n \theta^2 + n \theta = n \theta(1 - \theta),
 \end{align*}
-as expected.b
+as expected.
 ```
 
 ```{example, normalmgf, name = "Normal mgf"}
