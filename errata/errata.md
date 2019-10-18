@@ -13,5 +13,8 @@
 - p20, Proof of Theorem 3.1. The last line should conclude $M_Y^{(r)}(0) = \mu_r^\prime$,
 not $\mu_r$.
 - p23, Example 3.4. Should get $\mu_4 = 3 \sigma^4$, not $3 \sigma^2$.
+- p31, Section 5.1. The defining property of the order statistics should be
+\[y_{(1)} \leq y_{(2)} \leq \ldots \leq y_{(n)}\] not
+\[y_{(1)} < y_{(2)} < \ldots < y_{(n)}.\]
 - p31, Section 5.1. The notation for the sample maximum on line 10  has not been rendered correctly: this should be $y_{(n)}$, not y_{(n)}.
 - p40, Theorem 6.1 (Cochran's Theorem), missing minus sign. Should define $V = W - U$, rather than $V = WU$.
