@@ -393,7 +393,7 @@ U &= \left(\frac{\sqrt{n}(\bar Y - \mu)}{\sigma} \right)^2
 \end{align*}
 so $\alpha_1  = 1/2$ and $\alpha_1 + \alpha_2 = n/2$, so
 $\alpha_2 = (n-1)/2$.
-We have $\sum_{i=1}^n (Y_i - \bar Y) \geq 0$, so
+We have $\sum_{i=1}^n (Y_i - \bar Y)^2 \geq 0$, so
 $V \geq 0$, so condition (iii) in Cochran's Theorem is met.
 
 So by (ii) of Cochran's Theorem, 

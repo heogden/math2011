@@ -18,3 +18,5 @@ not $\mu_r$.
 \[y_{(1)} < y_{(2)} < \ldots < y_{(n)}.\]
 - p31, Section 5.1. The notation for the sample maximum on line 10  has not been rendered correctly: this should be $y_{(n)}$, not y_{(n)}.
 - p40, Theorem 6.1 (Cochran's Theorem), missing minus sign. Should define $V = W - U$, rather than $V = WU$.
+- p41, Proof of Theorem 6.1. We need to use the fact that
+$\sum_{i=1}^n (Y_i - \bar Y)^2 \geq 0$, rather than $\sum_{i=1}^n (Y_i - \bar Y) \geq 0$.

@@ -303,7 +303,7 @@ as the final integrand is the pdf of a <span class="math inline">\(\text{gamma}(
 </div>
  
 <div class="proof">
-<p> <span class="proof"><em>Proof. </em></span> From Proposition <a href="gamma.html#prp:mgfgamma">6.2</a>, the mgf is <span class="math inline">\(M_Y(t) = (1 - t/\beta)^{-\alpha}\)</span>, the the cgf is <span class="math inline">\(K_Y(t) = \log M_Y(t) = -\alpha \log(1 - t/\beta)\)</span>. Differentiating, we have <span class="math display">\[K_Y^{(1)}(t) = \frac{\alpha}{\beta\left(1 - \frac{t}{\beta}\right)} = \frac{\alpha}{\beta - t},\]</span> so <span class="math inline">\(E(Y) = K_Y^{(1)}(0) = \alpha \beta^{-1}\)</span>.</p>
+<p> <span class="proof"><em>Proof. </em></span> From Proposition <a href="gamma.html#prp:mgfgamma">6.2</a>, the mgf is <span class="math inline">\(M_Y(t) = (1 - t/\beta)^{-\alpha}\)</span>, so the cgf is <span class="math inline">\(K_Y(t) = \log M_Y(t) = -\alpha \log(1 - t/\beta)\)</span>. Differentiating, we have <span class="math display">\[K_Y^{(1)}(t) = \frac{\alpha}{\beta\left(1 - \frac{t}{\beta}\right)} = \frac{\alpha}{\beta - t},\]</span> so <span class="math inline">\(E(Y) = K_Y^{(1)}(0) = \alpha \beta^{-1}\)</span>.</p>
 <p>Differentiating the cgf again, <span class="math display">\[K_Y^{(2)}(t) = \frac{d}{dt} \left[\alpha (\beta - t)^{-1}\right]
 = \alpha(\beta - t)^{-2},\]</span> so <span class="math inline">\(\mu_2 = \text{Var}(Y) = K_Y^{(2)}(0) = \alpha \beta^{-2}\)</span>.</p>
 <p>Differentiating the cgf again, <span class="math display">\[K_Y^{(3)}(t) = \frac{d}{dt} \left[\alpha (\beta - t)^{-2}\right] 
@@ -440,7 +440,7 @@ W &amp;= \sum_{i=1}^n \left(\frac{Y_i - \mu}{\sigma}\right)^2
 U &amp;= \left(\frac{\sqrt{n}(\bar Y - \mu)}{\sigma} \right)^2 
 \sim \chi^2_1 \equiv \text{gamma}(1/2, 1/2),
 \end{align*}\]</span>
-<p>so <span class="math inline">\(\alpha_1 = 1/2\)</span> and <span class="math inline">\(\alpha_1 + \alpha_2 = n/2\)</span>, so <span class="math inline">\(\alpha_2 = (n-1)/2\)</span>. We have <span class="math inline">\(\sum_{i=1}^n (Y_i - \bar Y) \geq 0\)</span>, so <span class="math inline">\(V \geq 0\)</span>, so condition (iii) in Cochran’s Theorem is met.</p>
+<p>so <span class="math inline">\(\alpha_1 = 1/2\)</span> and <span class="math inline">\(\alpha_1 + \alpha_2 = n/2\)</span>, so <span class="math inline">\(\alpha_2 = (n-1)/2\)</span>. We have <span class="math inline">\(\sum_{i=1}^n (Y_i - \bar Y)^2 \geq 0\)</span>, so <span class="math inline">\(V \geq 0\)</span>, so condition (iii) in Cochran’s Theorem is met.</p>
 <p>So by (ii) of Cochran’s Theorem, <span class="math inline">\(V = \frac{(n-1) S^2}{\sigma^2}\)</span> is independent of <span class="math inline">\(U = \left(\frac{\sqrt{n}(\bar Y - \mu)}{\sigma} \right)^2\)</span>, and hence <span class="math inline">\(S^2\)</span> is independent of <span class="math inline">\(\bar Y\)</span>, as claimed.</p>
 By (i) of Cochran’s Theorem, <span class="math display">\[V = \frac{(n-1) S^2}{\sigma^2} 
 \sim \text{gamma}(\alpha_2, 1/2)
