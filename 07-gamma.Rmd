@@ -156,7 +156,7 @@ $\gamma_2 = 3 + 6 \alpha^{-1}$.
 ```
 ```{proof}
 From Proposition \@ref(prp:mgfgamma), the mgf is
-$M_Y(t) = (1 - t/\beta)^{-\alpha}$, the the cgf is
+$M_Y(t) = (1 - t/\beta)^{-\alpha}$, so the cgf is
 $K_Y(t) = \log M_Y(t) = -\alpha \log(1 - t/\beta)$.
 Differentiating, we have
 \[K_Y^{(1)}(t) = \frac{\alpha}{\beta\left(1 - \frac{t}{\beta}\right)} = \frac{\alpha}{\beta - t},\]
