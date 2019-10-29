@@ -153,7 +153,7 @@ has cdf
 \[G_1(y) = 1 - [1 - F(y)]^n = 1 - e^{-n \theta y}\]
 and pdf
 \[g_1(y) = \frac{d}{dy} G_1(y) = n \theta e^{-n \theta y}.\]
-So the the distribution of the smallest value in an Exponential random sample of size $n$
+So the distribution of the smallest value in an Exponential random sample of size $n$
 with rate parameter $\theta$ (i.e. with mean value $1/\theta$)
 is also an Exponential random variable but
 with rate parameter $n \theta$ (i.e. with mean value $1/(n\theta)$).
