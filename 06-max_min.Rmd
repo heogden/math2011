@@ -148,7 +148,7 @@ pdf
 \[f(y) = \theta e^{-\theta y}, \quad 0 < y < \infty\]
 and cdf
 \[F(y) = \int_0^{y} f(u) du = 1 - e^{-\theta y}.\]
-Then $Y_{(1)} = \min\{Y_{(1)}, \ldots, Y_{(n)}$
+Then $Y_{(1)} = \min\{Y_{(1)}, \ldots, Y_{(n)}\}$
 has cdf
 \[G_1(y) = 1 - [1 - F(y)]^n = 1 - e^{-n \theta y}\]
 and pdf
