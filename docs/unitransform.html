@@ -236,7 +236,7 @@ which is the pdf of a <span class="math inline">\(U(0, 1)\)</span> distribution.
 <p><span id="exm:trans2" class="example"><strong>Example 7.2  </strong></span>Suppose <span class="math inline">\(Y \sim U(0, 1)\)</span>. Let <span class="math inline">\(U = -\log{Y}\)</span>. What is the distribution of <span class="math inline">\(U\)</span>?</p>
 Let <span class="math inline">\(G(.)\)</span> and <span class="math inline">\(g(.)\)</span> be the cdf and pdf of <span class="math inline">\(U\)</span>. We have
 <span class="math display">\[\begin{align*}
-G(u) &amp;= P(U \leq u) = P(\log Y \leq u) \\
+G(u) &amp;= P(U \leq u) = P(-\log Y \leq u) \\
 &amp;= P(\log Y \geq -u) = P(Y \geq e^{-u}) \\
 &amp;= 1 - P(Y &lt; e^{-u}) = 1 - F(e^{-u}) \\
 &amp;= 1 - e^{-u}, \quad \text{for $0 &lt; u &lt; \infty$.}
