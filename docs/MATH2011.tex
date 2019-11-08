@@ -2202,7 +2202,7 @@ properties:
 \item
   \(f(y_1, y_2) \geq 0\) for all \(y_1, y_2\).
 \item
-  \(\int_{a_1}^{b_1} \int_{a_2}^{b_2} f(y_1, y_2) dy_1 dy_2 = P(a_1 < Y_1 \leq b_1 \text{ and } a_2 < Y_2 \leq b_2)\).
+  \(\int_{a_2}^{b_2} \int_{a_1}^{b_1} f(y_1, y_2) dy_1 dy_2 = P(a_1 < Y_1 \leq b_1 \text{ and } a_2 < Y_2 \leq b_2)\).
 \end{enumerate}
 
 An immediate corollary is that
@@ -2224,19 +2224,19 @@ given that \(Y_1 = y_1\) as
 \(f_1(y_1) > 0\).
 
 If \(f(y_1 ,y_2) = f_1(y_1) f_2(y_2)\) for all \(y_1\) and \(y_2\), then
-\(Y_1\) and \(Y_2\) are said to be \emph{independent}. In that case, If
+\(Y_1\) and \(Y_2\) are said to be \emph{independent}. In that case,
 \(f(y_2 | y_1) = f_2(y_2)\), for all \(y_2\), and all \(y_1\) with
 \(f_1(y_1) > 0\), which is an equivalent definition of independence.
 
 \BeginKnitrBlock{example}
 \protect\hypertarget{exm:bv1}{}{\label{exm:bv1} }Suppose that \(Y_1\) and
-\(Y_2\) have joint pdf {[}f(y\_1 , y\_2) = 1⁄4,
-\quad \textbackslash{}text\{for \(-1< y_1 <1\) and \(-1 < y_2 < 1\). We
-now derive the marginal and conditional pdfs.
+\(Y_2\) have joint pdf
+\[f(y_1 , y_2) = 1⁄4, \quad \text{for $-1< y_1 <1$
+and $-1 < y_2 < 1$}\]. We now derive the marginal and conditional pdfs.
 
 The marginal pdf of \(Y_1\) is
 \[f_1(y_1) = \int_{-\infty}^\infty f(y_1, y_2) dy_2 
-= \int_-1^1 \frac{1}{4} dy_2 = \frac{1}{2} \quad \text{for $-1 < y_1 < 1$},\]
+= \int_{-1}^{1} \frac{1}{4} dy_2 = \frac{1}{2} \quad \text{for $-1 < y_1 < 1$},\]
 so \(Y_1 \sim U(-1, 1)\). By symmetry, \(Y_2 \sim U(-1, 1)\).
 
 The conditional pdf of \(Y_2 | Y_1 = y_1\) is
@@ -2255,8 +2255,8 @@ Knowing the value of \(Y_1\) does not change the distribution of
 \BeginKnitrBlock{example}
 \protect\hypertarget{exm:bv2}{}{\label{exm:bv2} }Suppose that \(Y_1\) and
 \(Y_2\) have joint pdf
-\[f(y_1 , y_2) = 1⁄\pi, \quad \text{for $y_1^2 + y_2^2 < 1$.}\] We now
-derive the marginal and conditional pdfs.
+\[f(y_1 , y_2) = \frac{1}{\pi}, \quad \text{for $y_1^2 + y_2^2 < 1$.}\]
+We now derive the marginal and conditional pdfs.
 
 The marginal pdf of \(Y_1\) is
 
@@ -2329,7 +2329,7 @@ E(Y_1 Y_2) &= \int_{-\infty}^\infty \int_{-\infty}^\infty y_1 y_2 f_1(y_1) f_2(y
 
 If \(Y_1\) and \(Y_2\) are independent, then this relationship holds. It
 might also hold in special circumstances even when the variables are not
-independent, for example when both \$E(Y\_1 Y\_2) and \(E(Y_1)\) are
+independent, for example when both \(E(Y_1 Y_2)\) and \(E(Y_1)\) are
 zero.
 
 \BeginKnitrBlock{definition}
@@ -2360,8 +2360,8 @@ The covariance of a variable with itself is
 \protect\hypertarget{exm:unnamed-chunk-66}{}{\label{exm:unnamed-chunk-66}
 }Returning to Example \ref{exm:bv2} with \(f(y_1, y_2) = 1/\pi\) for
 \(y_1^2 + y_2^2 < 1\), we already showed that \(Y_1\) and \(Y_2\) are
-not independent. By symmetry, we have \$E(Y\_1) = E(Y\_2) = E(Y\_2
-\textbar{} Y\_1 = y\_1) = 0, so
+not independent. By symmetry, we have
+\(E(Y_1) = E(Y_2) = E(Y_2 | Y_1 = y_1) = 0\), so
 \[\text{Cov}(Y_1, Y_2) = E(Y_1 Y_2) - E(Y_1)E(Y_2) = E(Y_1 Y_2).\] Now
 
 \begin{align*}
@@ -2369,8 +2369,10 @@ E(Y_1 Y_2) &= \int_{-\infty}^\infty \int_{-\infty}^\infty
 y_1 y_2 f(y_1, y_2) dy_2 dy_1 \\
 &= \frac{1}{\pi} \int_{-1}^1 \int_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}}
 y_1 y_2 dy_2 dy_1 \\
-&= \frac{1}{\pi} y_1 \left(\int_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}}\right) y_2 dy_2 \\
-&= \frac{1}{\pi} y_1 \left[\frac{y_2^2}{2}\right]_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}} y_2 dy_2 \\
+&= \frac{1}{\pi} \int_{-1}^1 y_1 \left(\int_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}} y_2 dy_2\right) dy_1 \\
+&= \frac{1}{\pi} \int_{-1}^1 y_1 \left[\frac{y_2^2}{2}\right]_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}} dy_1 \\
+&= \frac{1}{\pi} \int_{-1}^1 y_1 \left[\frac{y_2^2}{2}\right]_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}} dy_1 \\
+&= \frac{1}{\pi} \int_{-1}^1 y_1 \times 0  dy_1 \\
 &= 0,
 \end{align*}
 

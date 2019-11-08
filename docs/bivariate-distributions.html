@@ -225,18 +225,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Suppose <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> vary together with joint probability density function <span class="math inline">\(f(y_1 , y_2)\)</span>. The function <span class="math inline">\(f\)</span> has the following properties:</p>
 <ol style="list-style-type: decimal">
 <li><span class="math inline">\(f(y_1, y_2) \geq 0\)</span> for all <span class="math inline">\(y_1, y_2\)</span>.</li>
-<li><span class="math inline">\(\int_{a_1}^{b_1} \int_{a_2}^{b_2} f(y_1, y_2) dy_1 dy_2 = P(a_1 &lt; Y_1 \leq b_1 \text{ and } a_2 &lt; Y_2 \leq b_2)\)</span>.</li>
+<li><span class="math inline">\(\int_{a_2}^{b_2} \int_{a_1}^{b_1} f(y_1, y_2) dy_1 dy_2 = P(a_1 &lt; Y_1 \leq b_1 \text{ and } a_2 &lt; Y_2 \leq b_2)\)</span>.</li>
 </ol>
 <p>An immediate corollary is that <span class="math inline">\(\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(y_1, y_2) dy_1 dy_2 = 1\)</span>.</p>
 <p>We will give some examples shortly, but first we set up some more functions of interest.</p>
 <p>The <em>marginal</em> probability density function of <span class="math inline">\(Y_1\)</span> is given by integrating out <span class="math inline">\(Y_2\)</span> , i.e. <span class="math display">\[f_1(y_1) = \int_{-\infty}^\infty f(y_1, y_2) dy_2.\]</span> This essentially gives the probabilistic behaviour of <span class="math inline">\(Y_1\)</span> ignoring <span class="math inline">\(Y_2\)</span>. Similarly, the marginal pdf of <span class="math inline">\(Y_2\)</span> is <span class="math display">\[f_2(y_2) = \int_{-\infty}^\infty f(y_1, y_2) dy_1.\]</span></p>
 <p>We define the <em>conditional</em> probability density function of <span class="math inline">\(Y_2\)</span> given that <span class="math inline">\(Y_1 = y_1\)</span> as <span class="math display">\[f(y_2 | y_1) = \frac{f(y_1, y_2)}{f_1(y_1)},\]</span> assuming that <span class="math inline">\(f_1(y_1) &gt; 0\)</span>.</p>
-<p>If <span class="math inline">\(f(y_1 ,y_2) = f_1(y_1) f_2(y_2)\)</span> for all <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span>, then <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> are said to be <em>independent</em>. In that case, If <span class="math inline">\(f(y_2 | y_1) = f_2(y_2)\)</span>, for all <span class="math inline">\(y_2\)</span>, and all <span class="math inline">\(y_1\)</span> with <span class="math inline">\(f_1(y_1) &gt; 0\)</span>, which is an equivalent definition of independence.</p>
+<p>If <span class="math inline">\(f(y_1 ,y_2) = f_1(y_1) f_2(y_2)\)</span> for all <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span>, then <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> are said to be <em>independent</em>. In that case, <span class="math inline">\(f(y_2 | y_1) = f_2(y_2)\)</span>, for all <span class="math inline">\(y_2\)</span>, and all <span class="math inline">\(y_1\)</span> with <span class="math inline">\(f_1(y_1) &gt; 0\)</span>, which is an equivalent definition of independence.</p>
 
 <div class="example">
-<p><span id="exm:bv1" class="example"><strong>Example 8.1  </strong></span>Suppose that <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> have joint pdf [f(y_1 , y_2) = 1⁄4, \text{for <span class="math inline">\(-1&lt; y_1 &lt;1\)</span> and <span class="math inline">\(-1 &lt; y_2 &lt; 1\)</span>. We now derive the marginal and conditional pdfs.</p>
+<p><span id="exm:bv1" class="example"><strong>Example 8.1  </strong></span>Suppose that <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> have joint pdf <span class="math display">\[f(y_1 , y_2) = 1⁄4, \quad \text{for $-1&lt; y_1 &lt;1$
+and $-1 &lt; y_2 &lt; 1$}\]</span>. We now derive the marginal and conditional pdfs.</p>
 <p>The marginal pdf of <span class="math inline">\(Y_1\)</span> is <span class="math display">\[f_1(y_1) = \int_{-\infty}^\infty f(y_1, y_2) dy_2 
-= \int_-1^1 \frac{1}{4} dy_2 = \frac{1}{2} \quad \text{for $-1 &lt; y_1 &lt; 1$},\]</span> so <span class="math inline">\(Y_1 \sim U(-1, 1)\)</span>. By symmetry, <span class="math inline">\(Y_2 \sim U(-1, 1)\)</span>.</p>
+= \int_{-1}^{1} \frac{1}{4} dy_2 = \frac{1}{2} \quad \text{for $-1 &lt; y_1 &lt; 1$},\]</span> so <span class="math inline">\(Y_1 \sim U(-1, 1)\)</span>. By symmetry, <span class="math inline">\(Y_2 \sim U(-1, 1)\)</span>.</p>
 The conditional pdf of <span class="math inline">\(Y_2 | Y_1 = y_1\)</span> is
 <span class="math display">\[\begin{align*}
 f(y_2 | y_1) &amp;= \frac{f(y_1, y_2)}{f_1(y_1)} \quad 
@@ -248,7 +249,7 @@ Hence if <span class="math inline">\(-1 &lt; y_1 &lt; 1\)</span>, then <span cla
 
 
 <div class="example">
-<p><span id="exm:bv2" class="example"><strong>Example 8.2  </strong></span>Suppose that <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> have joint pdf <span class="math display">\[f(y_1 , y_2) = 1⁄\pi, \quad \text{for $y_1^2 + y_2^2 &lt; 1$.}\]</span> We now derive the marginal and conditional pdfs.</p>
+<p><span id="exm:bv2" class="example"><strong>Example 8.2  </strong></span>Suppose that <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> have joint pdf <span class="math display">\[f(y_1 , y_2) = \frac{1}{\pi}, \quad \text{for $y_1^2 + y_2^2 &lt; 1$.}\]</span> We now derive the marginal and conditional pdfs.</p>
 The marginal pdf of <span class="math inline">\(Y_1\)</span> is
 <span class="math display">\[\begin{align*}
 f_1(y_1) &amp;= \int_{-\infty}^\infty f(y_1, y_2) dy_2 \\
@@ -287,7 +288,7 @@ E(Y_1 Y_2) &amp;= \int_{-\infty}^\infty \int_{-\infty}^\infty y_1 y_2 f_1(y_1) f
 &amp;= \int_{-\infty}^\infty y_1 f_1(y_1)  dy_1 \int_{-\infty}^\infty y_2 f_2(y_2)  dy_2 \\
 &amp;= E(Y_1) E(Y_2).
 \end{align*}\]</span>
-<p>If <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> are independent, then this relationship holds. It might also hold in special circumstances even when the variables are not independent, for example when both $E(Y_1 Y_2) and <span class="math inline">\(E(Y_1)\)</span> are zero.</p>
+<p>If <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> are independent, then this relationship holds. It might also hold in special circumstances even when the variables are not independent, for example when both <span class="math inline">\(E(Y_1 Y_2)\)</span> and <span class="math inline">\(E(Y_1)\)</span> are zero.</p>
 
 <div class="definition">
 <span id="def:unnamed-chunk-64" class="definition"><strong>Definition 8.1  </strong></span>The <em>covariance</em> of <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> is <span class="math display">\[\text{Cov}(Y_1, Y_2) = E\left\{ [Y_1 - E(Y_1)][Y_2 - E(Y_2)] \right\}.\]</span>
@@ -308,14 +309,16 @@ We may rewrite the expression for the covariance as
 
 
 <div class="example">
-<span id="exm:unnamed-chunk-66" class="example"><strong>Example 8.3  </strong></span>Returning to Example <a href="bivariate-distributions.html#exm:bv2">8.2</a> with <span class="math inline">\(f(y_1, y_2) = 1/\pi\)</span> for <span class="math inline">\(y_1^2 + y_2^2 &lt; 1\)</span>, we already showed that <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> are not independent. By symmetry, we have $E(Y_1) = E(Y_2) = E(Y_2 | Y_1 = y_1) = 0, so <span class="math display">\[\text{Cov}(Y_1, Y_2) = E(Y_1 Y_2) - E(Y_1)E(Y_2) = E(Y_1 Y_2).\]</span> Now
+<span id="exm:unnamed-chunk-66" class="example"><strong>Example 8.3  </strong></span>Returning to Example <a href="bivariate-distributions.html#exm:bv2">8.2</a> with <span class="math inline">\(f(y_1, y_2) = 1/\pi\)</span> for <span class="math inline">\(y_1^2 + y_2^2 &lt; 1\)</span>, we already showed that <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> are not independent. By symmetry, we have <span class="math inline">\(E(Y_1) = E(Y_2) = E(Y_2 | Y_1 = y_1) = 0\)</span>, so <span class="math display">\[\text{Cov}(Y_1, Y_2) = E(Y_1 Y_2) - E(Y_1)E(Y_2) = E(Y_1 Y_2).\]</span> Now
 <span class="math display">\[\begin{align*}
 E(Y_1 Y_2) &amp;= \int_{-\infty}^\infty \int_{-\infty}^\infty
 y_1 y_2 f(y_1, y_2) dy_2 dy_1 \\
 &amp;= \frac{1}{\pi} \int_{-1}^1 \int_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}}
 y_1 y_2 dy_2 dy_1 \\
-&amp;= \frac{1}{\pi} y_1 \left(\int_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}}\right) y_2 dy_2 \\
-&amp;= \frac{1}{\pi} y_1 \left[\frac{y_2^2}{2}\right]_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}} y_2 dy_2 \\
+&amp;= \frac{1}{\pi} \int_{-1}^1 y_1 \left(\int_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}} y_2 dy_2\right) dy_1 \\
+&amp;= \frac{1}{\pi} \int_{-1}^1 y_1 \left[\frac{y_2^2}{2}\right]_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}} dy_1 \\
+&amp;= \frac{1}{\pi} \int_{-1}^1 y_1 \left[\frac{y_2^2}{2}\right]_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}} dy_1 \\
+&amp;= \frac{1}{\pi} \int_{-1}^1 y_1 \times 0  dy_1 \\
 &amp;= 0,
 \end{align*}\]</span>
 <p>so <span class="math inline">\(\text{Cov}(Y_1, Y_2) = 0\)</span>, even though <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> are <strong>not</strong> independent.</p>

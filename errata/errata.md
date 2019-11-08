@@ -21,3 +21,19 @@ not $\mu_r$.
 - p41, Proof of Theorem 6.1. We need to use the fact that
 $\sum_{i=1}^n (Y_i - \bar Y)^2 \geq 0$, rather than $\sum_{i=1}^n (Y_i - \bar Y) \geq 0$.
 - p44, Example 7.2, missing minus sign. In first line of display, should be $P(-\log(Y) \leq u)$, not $P(\log(Y) \leq u)$.
+- p49, Properties of $f(y_1, y_2)$. The limits on the integrals in property 2 should
+be swapped: $y_1$ should be integrated from $a_1$ to $b_1$ and $y_2$ from $a_2$ to $b_2$.
+- p50, Example 8.1. The limits on the integral have not been rendered correctly: this should be $\int_{-1}^{1} \frac{1}{4} dy_2$.
+- p50, Example 8.2. The joint pdf should be $1/{\pi}$ not $1 \pi$.
+- p51, Example 8.3. The integration over $y_1$ should not disappear half way down the display, and the term $y_2 dy_2$ should not appear on the penultimate line. In full, the display should be
+\begin{align*}
+E(Y_1 Y_2) &= \int_{-\infty}^\infty \int_{-\infty}^\infty
+y_1 y_2 f(y_1, y_2) dy_2 dy_1 \\
+&= \frac{1}{\pi} \int_{-1}^1 \int_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}}
+y_1 y_2 dy_2 dy_1 \\
+&= \frac{1}{\pi} \int_{-1}^1 y_1 \left(\int_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}} y_2 dy_2\right) dy_1 \\
+&= \frac{1}{\pi} \int_{-1}^1 y_1 \left[\frac{y_2^2}{2}\right]_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}} dy_1 \\
+&= \frac{1}{\pi} \int_{-1}^1 y_1 \left[\frac{y_2^2}{2}\right]_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}} dy_1 \\
+&= \frac{1}{\pi} \int_{-1}^1 y_1 \times 0  dy_1 \\
+&= 0,
+\end{align*}

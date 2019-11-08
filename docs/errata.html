@@ -210,6 +210,21 @@ $(document).ready(function () {
 <li>p40, Theorem 6.1 (Cochran’s Theorem), missing minus sign. Should define <span class="math inline">\(V = W - U\)</span>, rather than <span class="math inline">\(V = WU\)</span>.</li>
 <li>p41, Proof of Theorem 6.1. We need to use the fact that <span class="math inline">\(\sum_{i=1}^n (Y_i - \bar Y)^2 \geq 0\)</span>, rather than <span class="math inline">\(\sum_{i=1}^n (Y_i - \bar Y) \geq 0\)</span>.</li>
 <li>p44, Example 7.2, missing minus sign. In first line of display, should be <span class="math inline">\(P(-\log(Y) \leq u)\)</span>, not <span class="math inline">\(P(\log(Y) \leq u)\)</span>.</li>
+<li>p49, Properties of <span class="math inline">\(f(y_1, y_2)\)</span>. The limits on the integrals in property 2 should be swapped: <span class="math inline">\(y_1\)</span> should be integrated from <span class="math inline">\(a_1\)</span> to <span class="math inline">\(b_1\)</span> and <span class="math inline">\(y_2\)</span> from <span class="math inline">\(a_2\)</span> to <span class="math inline">\(b_2\)</span>.</li>
+<li>p50, Example 8.1. The limits on the integral have not been rendered correctly: this should be <span class="math inline">\(\int_{-1}^{1} \frac{1}{4} dy_2\)</span>.</li>
+<li>p50, Example 8.2. The joint pdf should be <span class="math inline">\(1/{\pi}\)</span> not <span class="math inline">\(1 \pi\)</span>.</li>
+<li>p51, Example 8.3. The integration over <span class="math inline">\(y_1\)</span> should not disappear half way down the display, and the term <span class="math inline">\(y_2 dy_2\)</span> should not appear on the penultimate line. In full, the display should be
+<span class="math display">\[\begin{align*}
+E(Y_1 Y_2) &amp;= \int_{-\infty}^\infty \int_{-\infty}^\infty
+y_1 y_2 f(y_1, y_2) dy_2 dy_1 \\
+&amp;= \frac{1}{\pi} \int_{-1}^1 \int_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}}
+y_1 y_2 dy_2 dy_1 \\
+&amp;= \frac{1}{\pi} \int_{-1}^1 y_1 \left(\int_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}} y_2 dy_2\right) dy_1 \\
+&amp;= \frac{1}{\pi} \int_{-1}^1 y_1 \left[\frac{y_2^2}{2}\right]_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}} dy_1 \\
+&amp;= \frac{1}{\pi} \int_{-1}^1 y_1 \left[\frac{y_2^2}{2}\right]_{-\sqrt{1 - y_1^2}}^{\sqrt{1 - y_1^2}} dy_1 \\
+&amp;= \frac{1}{\pi} \int_{-1}^1 y_1 \times 0  dy_1 \\
+&amp;= 0,
+\end{align*}\]</span></li>
 </ul>
 </div>
 
