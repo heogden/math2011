@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 Bivariate transformations | MATH2011: Statistical Distribution Theory</title>
   <meta name="description" content="The course notes for MATH2011: Statistical Distribution Theory." />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 Bivariate transformations | MATH2011: Statistical Distribution Theory" />
   <meta property="og:type" content="book" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="bivariate-distributions.html">
-<link rel="next" href="estimation.html">
+<link rel="prev" href="bivariate-distributions.html"/>
+<link rel="next" href="estimation.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -213,7 +213,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">Chapter 9</span> Bivariate transformations</h1>
 <div id="the-transformation-theorem" class="section level2">
 <h2><span class="header-section-number">9.1</span> The transformation theorem</h2>
-<p>In Chapter <a href="unitransform.html#unitransform">7</a> we considered transformations of a single random variable. In this chapter we will generalise to the case of transforming two random variables. As examples we will derive several important distributions distributions – the Beta and Cauchy, <span class="math inline">\(t\)</span> and <span class="math inline">\(F\)</span> distributions.</p>
+<p>In Chapter <a href="unitransform.html#unitransform">7</a> we considered transformations of a single random variable. In this chapter we will generalise to the case of transforming two random variables. As examples we will derive several important distributions distributions – the beta, Cauchy, <span class="math inline">\(t\)</span> and <span class="math inline">\(F\)</span> distributions.</p>
 <p>We have already seen in Theorem <a href="unitransform.html#thm:unitrans">7.1</a> how to find the pdf of a one-to-one transformation of a random variable. We extend this result to find the pdf for a transformation of two random variables.</p>
 
 <div class="theorem">
@@ -240,7 +240,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
  We will see one use of the beta distribution in Chapter <a href="bayesian.html#bayesian">12</a>. We may obtain the beta distribution by transforming a pair of gamma random variables with the same rate parameter: 
 <div class="proposition">
-<span id="prp:unnamed-chunk-74" class="proposition"><strong>Proposition 9.1  </strong></span>Suppose that <span class="math inline">\(Y_1 \sim \text{gamma}(m, \beta)\)</span>, <span class="math inline">\(Y_2 \sim \gamma(n, \beta)\)</span>, and that <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> are independent. Then we claim that <span class="math display">\[U_1 = \frac{Y_1}{Y_1 + Y_2} \sim \text{beta}(m, n).\]</span>
+<span id="prp:unnamed-chunk-74" class="proposition"><strong>Proposition 9.1  </strong></span>Suppose that <span class="math inline">\(Y_1 \sim \text{gamma}(m, \beta)\)</span>, <span class="math inline">\(Y_2 \sim \text{gamma}(n, \beta)\)</span>, and that <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> are independent. Then we claim that <span class="math display">\[U_1 = \frac{Y_1}{Y_1 + Y_2} \sim \text{beta}(m, n).\]</span>
 </div>
  
 <div class="proof">
@@ -310,7 +310,7 @@ f(y_1, y_2) &amp;= \frac{1}{\sqrt{2 \pi}} \exp\left(-\frac{y_1^2}{2}\right)
   &amp;= \frac{1}{2 \pi} \exp \left(-\frac{y_1^2 + y_2^2}{2} \right),
   \quad y_1, y_2 \in \mathbb{R}.
 \end{align*}\]</span>
-<p>The inverse transformations are <span class="math display">\[Y_1 = U_1 U_2, \quad Y_2 = U_2,\]</span> and the <span class="math inline">\(U_1\)</span> and <span class="math inline">\(U_2\)</span> is clearly <span class="math inline">\(U_1 \in \mathbb{R}\)</span>, <span class="math inline">\(U_2 \in \mathbb{R}\)</span>.</p>
+<p>The inverse transformations are <span class="math display">\[Y_1 = U_1 U_2, \quad Y_2 = U_2,\]</span> and the domain of <span class="math inline">\(U_1\)</span> and <span class="math inline">\(U_2\)</span> is clearly <span class="math inline">\(U_1 \in \mathbb{R}\)</span>, <span class="math inline">\(U_2 \in \mathbb{R}\)</span>.</p>
 <p>The Jacobian matrix is <span class="math display">\[\bm J = \begin{pmatrix}
   u_2 &amp; * \\
   0 &amp; 1
@@ -556,8 +556,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

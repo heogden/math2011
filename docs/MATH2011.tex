@@ -21,7 +21,6 @@
 \usepackage{microtype}
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
 \hypersetup{unicode=true,
             pdftitle={MATH2011: Statistical Distribution Theory},
@@ -2553,7 +2552,7 @@ So \(X_1\) and \(X_2\) are independent if \(\sigma_1^2 = \sigma_2^2\).
 In Chapter \ref{unitransform} we considered transformations of a single
 random variable. In this chapter we will generalise to the case of
 transforming two random variables. As examples we will derive several
-important distributions distributions -- the Beta and Cauchy, \(t\) and
+important distributions distributions -- the beta, Cauchy, \(t\) and
 \(F\) distributions.
 
 We have already seen in Theorem \ref{thm:unitrans} how to find the pdf
@@ -2612,7 +2611,7 @@ parameter: \BeginKnitrBlock{proposition}
 
 \protect\hypertarget{prp:unnamed-chunk-74}{}{\label{prp:unnamed-chunk-74}
 }Suppose that \(Y_1 \sim \text{gamma}(m, \beta)\),
-\(Y_2 \sim \gamma(n, \beta)\), and that \(Y_1\) and \(Y_2\) are
+\(Y_2 \sim \text{gamma}(n, \beta)\), and that \(Y_1\) and \(Y_2\) are
 independent. Then we claim that
 \[U_1 = \frac{Y_1}{Y_1 + Y_2} \sim \text{beta}(m, n).\]
 \EndKnitrBlock{proposition} \BeginKnitrBlock{proof}
@@ -2745,7 +2744,7 @@ f(y_1, y_2) &= \frac{1}{\sqrt{2 \pi}} \exp\left(-\frac{y_1^2}{2}\right)
 \end{align*}
 
 The inverse transformations are \[Y_1 = U_1 U_2, \quad Y_2 = U_2,\] and
-the \(U_1\) and \(U_2\) is clearly \(U_1 \in \mathbb{R}\),
+the domain of \(U_1\) and \(U_2\) is clearly \(U_1 \in \mathbb{R}\),
 \(U_2 \in \mathbb{R}\).
 
 The Jacobian matrix is \[\bm J = \begin{pmatrix}

@@ -7,6 +7,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -83,7 +84,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -157,18 +157,6 @@ summary {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 
 
@@ -225,6 +213,8 @@ y_1 y_2 dy_2 dy_1 \\
 &amp;= \frac{1}{\pi} \int_{-1}^1 y_1 \times 0  dy_1 \\
 &amp;= 0,
 \end{align*}\]</span></li>
+<li>p58, Proposition 9.1. The distribution of <span class="math inline">\(Y_2\)</span> should be <span class="math inline">\(\text{gamma}(n, \beta)\)</span> not <span class="math inline">\(\gamma(n, \beta)\)</span>.</li>
+<li>p60, proof of Proposition 9.2, mising word. Should be “the domain of <span class="math inline">\(U_1\)</span> and <span class="math inline">\(U_2\)</span> is clearly <span class="math inline">\(U_1 \in \mathbb{R}\)</span>” rather than “the of <span class="math inline">\(U_1\)</span> and <span class="math inline">\(U_2\)</span> is clearly <span class="math inline">\(U_1 \in \mathbb{R}\)</span>”.</li>
 </ul>
 </div>
 
@@ -245,6 +235,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

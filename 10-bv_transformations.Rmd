@@ -7,7 +7,7 @@ of a single random variable. In this
 chapter we will generalise to the case of transforming two
 random variables. As examples we will derive several important 
 distributions distributions -- the
-Beta and Cauchy, $t$ and $F$ distributions.
+beta, Cauchy, $t$ and $F$ distributions.
 
 We have already seen in Theorem \@ref(thm:unitrans)
 how to find the pdf of a one-to-one transformation
@@ -61,7 +61,7 @@ We will see one use of the beta distribution in Chapter \@ref(bayesian).
 We may obtain the beta distribution by transforming a pair of gamma random
 variables with the same rate parameter:
 ```{proposition}
-Suppose that $Y_1 \sim \text{gamma}(m, \beta)$, $Y_2 \sim \gamma(n, \beta)$,
+Suppose that $Y_1 \sim \text{gamma}(m, \beta)$, $Y_2 \sim \text{gamma}(n, \beta)$,
 and that $Y_1$ and $Y_2$ are independent.
 Then we claim that 
 \[U_1 = \frac{Y_1}{Y_1 + Y_2} \sim \text{beta}(m, n).\]
@@ -192,7 +192,8 @@ f(y_1, y_2) &= \frac{1}{\sqrt{2 \pi}} \exp\left(-\frac{y_1^2}{2}\right)
 
 The inverse transformations are
 \[Y_1 = U_1 U_2, \quad Y_2 = U_2,\]
-and the $U_1$ and $U_2$ is clearly $U_1 \in \mathbb{R}$,
+and the domain of 
+$U_1$ and $U_2$ is clearly $U_1 \in \mathbb{R}$,
 $U_2 \in \mathbb{R}$.
 
 The Jacobian matrix is

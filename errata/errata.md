@@ -37,3 +37,7 @@ y_1 y_2 dy_2 dy_1 \\
 &= \frac{1}{\pi} \int_{-1}^1 y_1 \times 0  dy_1 \\
 &= 0,
 \end{align*}
+- p58, Proposition 9.1. The distribution of $Y_2$ should be $\text{gamma}(n, \beta)$ not $\gamma(n, \beta)$.
+- p60, proof of Proposition 9.2, mising word. Should be "the domain of 
+$U_1$ and $U_2$ is clearly $U_1 \in \mathbb{R}$" rather than 
+"the of $U_1$ and $U_2$ is clearly $U_1 \in \mathbb{R}$".
