@@ -41,3 +41,7 @@ y_1 y_2 dy_2 dy_1 \\
 - p60, proof of Proposition 9.2, mising word. Should be "the domain of 
 $U_1$ and $U_2$ is clearly $U_1 \in \mathbb{R}$" rather than 
 "the of $U_1$ and $U_2$ is clearly $U_1 \in \mathbb{R}$".
+- p60, proof of Proposition 9.2. On final line of page, should be $\frac{|u_2|}{2 \pi} \exp \left(-\frac{u_2^2(1 + u_1^2)}{2} \right)$ not $\frac{|u_2|}{2 \pi} \exp \left(-\frac{u_2^2(1 + u_2^2)}{2} \right)$.
+- p60, proof of Proposition 9.2, second line of display for $g_1(u_1)$.
+Should be $\frac{1}{2 \pi}  \int_{-\infty}^\infty |u_2| \exp \left(-\frac{u_2^2(1 + u_1^2)}{2} \right)  du_2$ not  $\frac{1}{2 \pi}  \int_{-\infty}^\infty |u_2| \exp \left(-\frac{u_2^2(1 + u_2^2)}{2} \right)  du_2$.
+- p62, Proposition 9.2, $Y_k$ should be $Y_2$ in the definition of $U_1$.

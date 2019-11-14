@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 Bivariate transformations | MATH2011: Statistical Distribution Theory</title>
   <meta name="description" content="The course notes for MATH2011: Statistical Distribution Theory." />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 Bivariate transformations | MATH2011: Statistical Distribution Theory" />
   <meta property="og:type" content="book" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="bivariate-distributions.html"/>
-<link rel="next" href="estimation.html"/>
+<link rel="prev" href="bivariate-distributions.html">
+<link rel="next" href="estimation.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -319,13 +319,13 @@ So the joint pdf of <span class="math inline">\(U_1\)</span> and <span class="ma
 <span class="math display">\[\begin{align*}
 g(u_1, u_2) &amp;= \frac{1}{2 \pi} \exp \left(-\frac{u_1^2 u_2^2 + u_2^2}{2} \right) 
 \cdot |u_2| \\
-&amp;= \frac{|u_2|}{2 \pi} \exp \left(-\frac{u_2^2(1 + u_2^2)}{2} \right) 
+&amp;= \frac{|u_2|}{2 \pi} \exp \left(-\frac{u_2^2(1 + u_1^2)}{2} \right) 
 \end{align*}\]</span>
 <p>for <span class="math inline">\(u_1, u_2 \in \mathbb{R}\)</span>.</p>
 We integrate out <span class="math inline">\(u_2\)</span> in order to obtain the marginal pdf of <span class="math inline">\(U_1\)</span>
 <span class="math display">\[\begin{align*}
 g_1(u_1) &amp;= \int_{-\infty}^\infty g(u_1, u_2) du_2 \\
-&amp;= \frac{1}{2 \pi}  \int_{-\infty}^\infty |u_2| \exp \left(-\frac{u_2^2(1 + u_2^2)}{2} \right)  du_2 \\
+&amp;= \frac{1}{2 \pi}  \int_{-\infty}^\infty |u_2| \exp \left(-\frac{u_2^2(1 + u_1^2)}{2} \right)  du_2 \\
 &amp;= 2 \times \frac{1}{2 \pi} 
 \int_{0}^\infty u_2 \exp \left(-\frac{c u_2^2}{2} \right)  du_2,  \; \text{with $c = 1 + u_1^2$} \\
 &amp;= \frac{1}{\pi} \left[-\frac{1}{c} \exp\left(-\frac{c u_2^2}{2}\right)\right]_0^\infty \\
@@ -356,7 +356,7 @@ which is the Cauchy pdf, so <span class="math inline">\(U_1\)</span> has Cauchy 
 <p>We obtain the <span class="math inline">\(t\)</span> distribution as a ratio of a standard normal random variable, and a the square root of a chi-squared random variable divided by its degrees of freedom. Although this sounds complicated, this makes the <span class="math inline">\(t\)</span> distribution important in practice, as we will soon see.</p>
 
 <div class="proposition">
-<span id="prp:tconstruct" class="proposition"><strong>Proposition 9.3  </strong></span>Suppose that <span class="math inline">\(Y_1 \sim N(0, 1)\)</span> and <span class="math inline">\(Y_2 \sim \chi^2_k\)</span>, and that <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> are independent. Then <span class="math display">\[U_1 = \frac{Y_1}{\sqrt{Y_k/k}} \sim t_k.\]</span>
+<span id="prp:tconstruct" class="proposition"><strong>Proposition 9.3  </strong></span>Suppose that <span class="math inline">\(Y_1 \sim N(0, 1)\)</span> and <span class="math inline">\(Y_2 \sim \chi^2_k\)</span>, and that <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> are independent. Then <span class="math display">\[U_1 = \frac{Y_1}{\sqrt{Y_2/k}} \sim t_k.\]</span>
 </div>
  
 <div class="proof">
@@ -556,9 +556,8 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

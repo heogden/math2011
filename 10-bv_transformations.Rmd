@@ -209,7 +209,7 @@ So the joint pdf of $U_1$ and $U_2$ is
 \begin{align*}
 g(u_1, u_2) &= \frac{1}{2 \pi} \exp \left(-\frac{u_1^2 u_2^2 + u_2^2}{2} \right) 
 \cdot |u_2| \\
-&= \frac{|u_2|}{2 \pi} \exp \left(-\frac{u_2^2(1 + u_2^2)}{2} \right) 
+&= \frac{|u_2|}{2 \pi} \exp \left(-\frac{u_2^2(1 + u_1^2)}{2} \right) 
 \end{align*}
 for $u_1, u_2 \in \mathbb{R}$.
 
@@ -217,7 +217,7 @@ We integrate out $u_2$ in order to obtain the marginal
 pdf of $U_1$
 \begin{align*}
 g_1(u_1) &= \int_{-\infty}^\infty g(u_1, u_2) du_2 \\
-&= \frac{1}{2 \pi}  \int_{-\infty}^\infty |u_2| \exp \left(-\frac{u_2^2(1 + u_2^2)}{2} \right)  du_2 \\
+&= \frac{1}{2 \pi}  \int_{-\infty}^\infty |u_2| \exp \left(-\frac{u_2^2(1 + u_1^2)}{2} \right)  du_2 \\
 &= 2 \times \frac{1}{2 \pi} 
 \int_{0}^\infty u_2 \exp \left(-\frac{c u_2^2}{2} \right)  du_2,  \; \text{with $c = 1 + u_1^2$} \\
 &= \frac{1}{\pi} \left[-\frac{1}{c} \exp\left(-\frac{c u_2^2}{2}\right)\right]_0^\infty \\
@@ -266,7 +266,7 @@ soon see.
 Suppose that $Y_1 \sim N(0, 1)$ and $Y_2 \sim \chi^2_k$,
 and that $Y_1$ and $Y_2$ are independent.
 Then 
-\[U_1 = \frac{Y_1}{\sqrt{Y_k/k}} \sim t_k.\]
+\[U_1 = \frac{Y_1}{\sqrt{Y_2/k}} \sim t_k.\]
 ```
 ```{proof}
 In order to use Theorem \@ref(thm:bvtrans) to 
