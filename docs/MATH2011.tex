@@ -2456,13 +2456,13 @@ may also show that \(\text{Cov}(Y_1, Y_2) = \rho \sigma_1 \sigma_2\), so
 The conditional distribution of \(Y_1\) given \(Y_2 = y_2\) is
 \[f(y_1 | y_2) = \frac{f(y_1, y_2)}{f_2(y_2)},\] which reduces to
 \[f(y_1 | y_2) =  \frac{1}{\sqrt{2 \pi \sigma_1^2 (1 - \rho)^2}}
-\exp\left\{ - \frac{1}{2 \sigma_1^2 (1 - \rho)^2} 
+\exp\left\{ - \frac{1}{2 \sigma_1^2 (1 - \rho^2)} 
 \left(y_1 - \mu_1 - 
 \frac{\rho \sigma_1(y_2 - \mu_2)}{\sigma_2}\right)^2\right\}\]
 
 This means that
 \[Y_1 | Y_2 = y_2 \sim N\left(\mu_1 + \frac{\rho \sigma_1(y_2 - \mu_2)}{\sigma_2},
-  \sigma_1^2 (1 - \rho)^2\right).\] If \(Y_1\) and \(Y_2\) are
+  \sigma_1^2 (1 - \rho^2)\right).\] If \(Y_1\) and \(Y_2\) are
 uncorrelated (\(\rho = 0\)), knowing the value of \(Y_2\) does not
 change the distribution of \(Y_1\), so \(Y_1\) and \(Y_2\) are
 independent. If \(Y_1\) and \(Y_2\) are correlated (\(\rho \not = 0\)),
