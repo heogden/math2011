@@ -256,7 +256,7 @@ $k \rightarrow \infty$, $t_k \rightarrow N(0, 1)$.
 When $k=1$, the $t_1$ distribution is the Cauchy distribution.
 
 We obtain the $t$ distribution as a ratio of
-a standard normal random variable, and a the square
+a standard normal random variable, and the square
 root of a chi-squared random variable divided by its
 degrees of freedom. Although this sounds complicated, this
 makes the $t$ distribution important in practice, as we will
@@ -300,7 +300,7 @@ so $\det \bm J = \sqrt{u_2/k} > 0$.
 So the joint pdf of $U_1$ and $U_2$ is
 \begin{align*}
 g(u_1, u_2) &=  \frac{1}{\sqrt{2 \pi}} \exp\Big(-\frac{u_1^2 u_2}{2 k} \Big)
-  \frac{y_2^{k/2 - 1}}{\Gamma(k/2) 2^{k/2}} \exp\Big(-\frac{u_2}{2}\Big) \sqrt{\frac{u_2}{k}} \\
+  \frac{u_2^{k/2 - 1}}{\Gamma(k/2) 2^{k/2}} \exp\Big(-\frac{u_2}{2}\Big) \sqrt{\frac{u_2}{k}} \\
     &= \frac{{u_2}^{(k-1)/2}}{2^{(k+1)/2}\sqrt{\pi} \, \Gamma(k/2) \sqrt{k}}
 	\exp\Big\{-\frac{u_2}{2} \Big(\frac{u_1^2}{k} + 1 \Big)\Big\}, \quad u_1 \in \mathbb{R},
   u_2 >0.

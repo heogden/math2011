@@ -353,7 +353,7 @@ which is the Cauchy pdf, so <span class="math inline">\(U_1\)</span> has Cauchy 
        <span class="dt">legend =</span> <span class="kw">c</span>(<span class="st">&quot;N(0, 1) pdf&quot;</span>, <span class="st">&quot;t_2 pdf&quot;</span>, <span class="st">&quot;t_5 pdf&quot;</span>))</code></pre></div>
 <p><img src="MATH2011_files/figure-html/unnamed-chunk-81-1.png" width="672" /></p>
 <p>The <span class="math inline">\(t_k\)</span> distribution has heavier tails than the <span class="math inline">\(N(0, 1)\)</span> distribution, but as <span class="math inline">\(k \rightarrow \infty\)</span>, <span class="math inline">\(t_k \rightarrow N(0, 1)\)</span>. When <span class="math inline">\(k=1\)</span>, the <span class="math inline">\(t_1\)</span> distribution is the Cauchy distribution.</p>
-<p>We obtain the <span class="math inline">\(t\)</span> distribution as a ratio of a standard normal random variable, and a the square root of a chi-squared random variable divided by its degrees of freedom. Although this sounds complicated, this makes the <span class="math inline">\(t\)</span> distribution important in practice, as we will soon see.</p>
+<p>We obtain the <span class="math inline">\(t\)</span> distribution as a ratio of a standard normal random variable, and the square root of a chi-squared random variable divided by its degrees of freedom. Although this sounds complicated, this makes the <span class="math inline">\(t\)</span> distribution important in practice, as we will soon see.</p>
 
 <div class="proposition">
 <span id="prp:tconstruct" class="proposition"><strong>Proposition 9.3  </strong></span>Suppose that <span class="math inline">\(Y_1 \sim N(0, 1)\)</span> and <span class="math inline">\(Y_2 \sim \chi^2_k\)</span>, and that <span class="math inline">\(Y_1\)</span> and <span class="math inline">\(Y_2\)</span> are independent. Then <span class="math display">\[U_1 = \frac{Y_1}{\sqrt{Y_2/k}} \sim t_k.\]</span>
@@ -375,7 +375,7 @@ which is the Cauchy pdf, so <span class="math inline">\(U_1\)</span> has Cauchy 
 So the joint pdf of <span class="math inline">\(U_1\)</span> and <span class="math inline">\(U_2\)</span> is
 <span class="math display">\[\begin{align*}
 g(u_1, u_2) &amp;=  \frac{1}{\sqrt{2 \pi}} \exp\Big(-\frac{u_1^2 u_2}{2 k} \Big)
-  \frac{y_2^{k/2 - 1}}{\Gamma(k/2) 2^{k/2}} \exp\Big(-\frac{u_2}{2}\Big) \sqrt{\frac{u_2}{k}} \\
+  \frac{u_2^{k/2 - 1}}{\Gamma(k/2) 2^{k/2}} \exp\Big(-\frac{u_2}{2}\Big) \sqrt{\frac{u_2}{k}} \\
     &amp;= \frac{{u_2}^{(k-1)/2}}{2^{(k+1)/2}\sqrt{\pi} \, \Gamma(k/2) \sqrt{k}}
     \exp\Big\{-\frac{u_2}{2} \Big(\frac{u_1^2}{k} + 1 \Big)\Big\}, \quad u_1 \in \mathbb{R},
   u_2 &gt;0.
