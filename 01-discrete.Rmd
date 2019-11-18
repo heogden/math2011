@@ -56,7 +56,7 @@ distribution.
 ```{definition}
 A discrete random variables $Y$ has *binomial* distribution 
 if it has probability function of the form
-\[p(y) = \binom{n}{y} \theta^x (1 - \theta)^{n-y}, \quad y = 0, 1, \ldots, n,\]
+\[p(y) = \binom{n}{y} \theta^y (1 - \theta)^{n-y}, \quad y = 0, 1, \ldots, n,\]
 for some $n \in \mathbb{N}$ and $0 < \theta < 1$. We write
 $Y \sim \text{binomial}(n, \theta)$.
 ```
@@ -65,8 +65,8 @@ $Y \sim \text{binomial}(n, \theta)$.
 
 Suppose we undertake a sequence of independent Bernoulli trials, 
 each with success probability $\theta$.
-Let $X$ be the number failures that occur before the $k$th success.
-Then $X$ has *negative binomial* distribution.
+Let $Y$ be the number failures that occur before the $k$th success.
+Then $Y$ has *negative binomial* distribution.
 ```{definition}
 A discrete random variables $Y$ has *negative binomial* distribution 
 if it has probability function of the form

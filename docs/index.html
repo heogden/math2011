@@ -239,13 +239,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Suppose we undertake a fixed number, <span class="math inline">\(n\)</span>, of independent Bernoulli trials, each with success probability <span class="math inline">\(\theta\)</span>. Let <span class="math inline">\(Y\)</span> be the number of successes in these <span class="math inline">\(n\)</span> trials. Then <span class="math inline">\(Y\)</span> has <em>binomial</em> distribution.</p>
 
 <div class="definition">
-<span id="def:unnamed-chunk-2" class="definition"><strong>Definition 1.2  </strong></span>A discrete random variables <span class="math inline">\(Y\)</span> has <em>binomial</em> distribution if it has probability function of the form <span class="math display">\[p(y) = \binom{n}{y} \theta^x (1 - \theta)^{n-y}, \quad y = 0, 1, \ldots, n,\]</span> for some <span class="math inline">\(n \in \mathbb{N}\)</span> and <span class="math inline">\(0 &lt; \theta &lt; 1\)</span>. We write <span class="math inline">\(Y \sim \text{binomial}(n, \theta)\)</span>.
+<span id="def:unnamed-chunk-2" class="definition"><strong>Definition 1.2  </strong></span>A discrete random variables <span class="math inline">\(Y\)</span> has <em>binomial</em> distribution if it has probability function of the form <span class="math display">\[p(y) = \binom{n}{y} \theta^y (1 - \theta)^{n-y}, \quad y = 0, 1, \ldots, n,\]</span> for some <span class="math inline">\(n \in \mathbb{N}\)</span> and <span class="math inline">\(0 &lt; \theta &lt; 1\)</span>. We write <span class="math inline">\(Y \sim \text{binomial}(n, \theta)\)</span>.
 </div>
 
 </div>
 <div id="the-negative-binomial-distribution" class="section level3">
 <h3><span class="header-section-number">1.2.3</span> The negative binomial distribution</h3>
-Suppose we undertake a sequence of independent Bernoulli trials, each with success probability <span class="math inline">\(\theta\)</span>. Let <span class="math inline">\(X\)</span> be the number failures that occur before the <span class="math inline">\(k\)</span>th success. Then <span class="math inline">\(X\)</span> has <em>negative binomial</em> distribution. 
+Suppose we undertake a sequence of independent Bernoulli trials, each with success probability <span class="math inline">\(\theta\)</span>. Let <span class="math inline">\(Y\)</span> be the number failures that occur before the <span class="math inline">\(k\)</span>th success. Then <span class="math inline">\(Y\)</span> has <em>negative binomial</em> distribution. 
 <div class="definition">
 <span id="def:unnamed-chunk-3" class="definition"><strong>Definition 1.3  </strong></span>A discrete random variables <span class="math inline">\(Y\)</span> has <em>negative binomial</em> distribution if it has probability function of the form <span class="math display">\[p(y) = \binom{k + y - 1}{y} (1 - \theta)^y \theta^k, \quad
   y = 0, 1, \ldots,
