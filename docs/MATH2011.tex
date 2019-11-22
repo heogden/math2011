@@ -228,7 +228,7 @@ for some \(n \in \mathbb{N}\) and \(0 < \theta < 1\). We write
 distribution}\label{the-negative-binomial-distribution}
 
 Suppose we undertake a sequence of independent Bernoulli trials, each
-with success probability \(\theta\). Let \(Y\) be the number failures
+with success probability \(\theta\). Let \(Y\) be the number of failures
 that occur before the \(k\)th success. Then \(Y\) has \emph{negative
 binomial} distribution. \BeginKnitrBlock{definition}
 
@@ -3359,7 +3359,7 @@ such that the first \(k\) sample moments match the first \(k\)
 population moments
 \[m_r^\prime = \mu_r^\prime(\tilde \theta_1, \tilde \theta_2, \ldots, \tilde \theta_k) \text{ for $r = 1, 2, \ldots$, k}.\]
 We call \(\tilde \theta_1, \ldots, \tilde \theta_k\) the \emph{method of
-moments estimators} of of \(\theta_1, \ldots, \theta_k\).
+moments estimators} of \(\theta_1, \ldots, \theta_k\).
 
 Sometimes one of the first \(k\) expressions does not involve any
 parameters, in which case we need to add an extra simultaneous equation
@@ -3552,7 +3552,7 @@ differentiating and setting to zero. We have
 \(\hat \theta\) such that
 \[\frac{d}{d \theta}\log L(\theta; y_1, \ldots, y_n)|_{\theta = \hat \theta} = 0.\]
 We have \[\frac{\sum_{i=1}^n y_i}{\hat \theta} - 
-\frac{n - \sum_{i=1}^n y_i}{1 - \hat \theta)} = 0,\] and rearranging
+\frac{n - \sum_{i=1}^n y_i}{1 - \hat \theta} = 0,\] and rearranging
 gives that \[\hat \theta = \frac{\sum_{i=1}^n y_i}{n} = \bar y\] is a
 stationary point of the log-likelihood, provided that
 \(\sum_{i=1}^n y_i > 0\) and \(\sum_{i=1}^n y_i < n\). If
@@ -3567,7 +3567,8 @@ If \(0 < \sum_{i=1}^n y_i < n\), we have shown that
 log-likelihood, but we still need to show that it is a maximum. To do
 this, we need to show that
 \[\frac{d^2}{d\theta^2} \log L(\theta;y_1, \ldots, y_n)|_{\theta = \hat \theta} < 0.\]
-We have \[\frac{d^2}{d\theta^2} = -\frac{\sum_{i=1}^n y_i}{\theta^2} - 
+We have
+\[\frac{d^2}{d\theta^2} \log L(\theta;y_1, \ldots, y_n) = -\frac{\sum_{i=1}^n y_i}{\theta^2} - 
 \frac{n - \sum_{i=1}^n y_i}{(1 - \theta)^2},\] so
 \[\frac{d^2}{d\theta^2} \log L(\theta;y_1, \ldots, y_n)|_{\theta = \hat \theta} = -\frac{\sum_{i=1}^n y_i}{\hat \theta^2} - 
 \frac{n - \sum_{i=1}^n y_i}{(1 - \hat \theta)^2}.\] We know

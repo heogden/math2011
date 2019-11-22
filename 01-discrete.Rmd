@@ -65,7 +65,7 @@ $Y \sim \text{binomial}(n, \theta)$.
 
 Suppose we undertake a sequence of independent Bernoulli trials, 
 each with success probability $\theta$.
-Let $Y$ be the number failures that occur before the $k$th success.
+Let $Y$ be the number of failures that occur before the $k$th success.
 Then $Y$ has *negative binomial* distribution.
 ```{definition}
 A discrete random variables $Y$ has *negative binomial* distribution 

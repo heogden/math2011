@@ -298,7 +298,7 @@ for $r = 1, 2, 3, \ldots$.
 Then (assuming each of the first $k$ moments involves at least one parameter) we find values $\tilde \theta_1, \ldots, \tilde \theta_k$ such that the first $k$ sample moments match the first $k$ population moments
 \[m_r^\prime = \mu_r^\prime(\tilde \theta_1, \tilde \theta_2, \ldots, \tilde \theta_k) \text{ for $r = 1, 2, \ldots$, k}.\]
 We call  $\tilde \theta_1, \ldots, \tilde \theta_k$ 
-the *method of moments estimators* of
+the *method of moments estimators*
 of $\theta_1, \ldots, \theta_k$.
 
 Sometimes one of the first $k$ expressions does not involve any parameters, in which case we need to add an extra simultaneous equation
@@ -498,7 +498,7 @@ and we want to find $\hat \theta$ such that
 \[\frac{d}{d \theta}\log L(\theta; y_1, \ldots, y_n)|_{\theta = \hat \theta} = 0.\] 
 We have
 \[\frac{\sum_{i=1}^n y_i}{\hat \theta} - 
-\frac{n - \sum_{i=1}^n y_i}{1 - \hat \theta)} = 0,\]
+\frac{n - \sum_{i=1}^n y_i}{1 - \hat \theta} = 0,\]
 and rearranging gives that
 \[\hat \theta = \frac{\sum_{i=1}^n y_i}{n} = \bar y\]
 is a stationary point of the log-likelihood,
@@ -515,7 +515,7 @@ the log-likelihood, but we still need to show that it is a
 maximum. To do this, we need to show that
 \[\frac{d^2}{d\theta^2} \log L(\theta;y_1, \ldots, y_n)|_{\theta = \hat \theta} < 0.\]
 We have
-\[\frac{d^2}{d\theta^2} = -\frac{\sum_{i=1}^n y_i}{\theta^2} - 
+\[\frac{d^2}{d\theta^2} \log L(\theta;y_1, \ldots, y_n) = -\frac{\sum_{i=1}^n y_i}{\theta^2} - 
 \frac{n - \sum_{i=1}^n y_i}{(1 - \theta)^2},\]
 so 
 \[\frac{d^2}{d\theta^2} \log L(\theta;y_1, \ldots, y_n)|_{\theta = \hat \theta} = -\frac{\sum_{i=1}^n y_i}{\hat \theta^2} - 
