@@ -580,10 +580,10 @@ have $\mu_1^\prime = E(Y_i) = \theta$ and $m_1^\prime = \bar Y$,
 so $\tilde \theta = \bar Y$.
 
 To find the maximum likelihood estimate, we have
-\[f(y; \theta) = \frac{\Gamma(\theta)} y^{\theta - 1} e^{-y},
+\[f(y; \theta) = \frac{1}{\Gamma(\theta)} y^{\theta - 1} e^{-y},
 \quad y > 0,\]
 so the likelihood is
-\[L(\theta; y_1, \ldots, y_n) = \prod_{i=1}^n \frac{1}{\Gamma(\theta)} \frac{\Gamma(\theta)} y_i^{\theta - 1} e^{-y_i},\]
+\[L(\theta; y_1, \ldots, y_n) = \prod_{i=1}^n \frac{1}{\Gamma(\theta)}  y_i^{\theta - 1} e^{-y_i},\]
 since all $y_i > 0$.
 
 The log-likelihood is

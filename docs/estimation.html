@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 Parameter estimation | MATH2011: Statistical Distribution Theory</title>
   <meta name="description" content="The course notes for MATH2011: Statistical Distribution Theory." />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 Parameter estimation | MATH2011: Statistical Distribution Theory" />
   <meta property="og:type" content="book" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="bivariate-transformations.html">
-<link rel="next" href="inference.html">
+<link rel="prev" href="bivariate-transformations.html"/>
+<link rel="next" href="inference.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -474,8 +474,8 @@ In this case, the MLE <span class="math inline">\(\hat \theta\)</span> is the sa
 <div class="example">
 <p><span id="exm:unnamed-chunk-100" class="example"><strong>Example 10.14  (Gamma)  </strong></span>Suppose <span class="math inline">\(Y_i \sim \text{gamma}(\theta, 1)\)</span>.</p>
 <p>To find the method of moments estimate of <span class="math inline">\(\theta\)</span>, we have <span class="math inline">\(\mu_1^\prime = E(Y_i) = \theta\)</span> and <span class="math inline">\(m_1^\prime = \bar Y\)</span>, so <span class="math inline">\(\tilde \theta = \bar Y\)</span>.</p>
-<p>To find the maximum likelihood estimate, we have <span class="math display">\[f(y; \theta) = \frac{\Gamma(\theta)} y^{\theta - 1} e^{-y},
-\quad y &gt; 0,\]</span> so the likelihood is <span class="math display">\[L(\theta; y_1, \ldots, y_n) = \prod_{i=1}^n \frac{1}{\Gamma(\theta)} \frac{\Gamma(\theta)} y_i^{\theta - 1} e^{-y_i},\]</span> since all <span class="math inline">\(y_i &gt; 0\)</span>.</p>
+<p>To find the maximum likelihood estimate, we have <span class="math display">\[f(y; \theta) = \frac{1}{\Gamma(\theta)} y^{\theta - 1} e^{-y},
+\quad y &gt; 0,\]</span> so the likelihood is <span class="math display">\[L(\theta; y_1, \ldots, y_n) = \prod_{i=1}^n \frac{1}{\Gamma(\theta)}  y_i^{\theta - 1} e^{-y_i},\]</span> since all <span class="math inline">\(y_i &gt; 0\)</span>.</p>
 The log-likelihood is
 <span class="math display">\[\begin{align*}
 \log L(\theta; y_1, \ldots, y_n) &amp;= \sum_{i=1}^n 
@@ -574,8 +574,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
