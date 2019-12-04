@@ -53,7 +53,7 @@ $y_2$ should be $u_2$.
 - p75, Example 10.11. In the second display, $\frac{\bar Y \tilde \theta_2}{(1 + \bar Y \tilde \theta_2)}{\tilde \theta_2^2}$ should be $\frac{\bar Y \tilde \theta_2 (1 + \bar Y \tilde \theta_2)}{\tilde \theta_2^2}$.
 - p77, Example 10.12. In second display, $\frac{d^2}{d\theta^2}$ should be
 $\frac{d^2}{d\theta^2} \log L(\theta;y_1, \ldots, y_n)$.
- p78, Example 10.14. The pdf and likelihood are incorrect. They should be \[f(y; \theta) = \frac{1}{\Gamma(\theta)} y^{\theta - 1} e^{-y},
+- p78, Example 10.14. The pdf and likelihood are incorrect. They should be \[f(y; \theta) = \frac{1}{\Gamma(\theta)} y^{\theta - 1} e^{-y},
 \quad y > 0,\]
 and
 \[L(\theta; y_1, \ldots, y_n) = \prod_{i=1}^n \frac{1}{\Gamma(\theta)}  y_i^{\theta - 1} e^{-y_i}.\]
