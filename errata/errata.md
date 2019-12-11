@@ -65,3 +65,8 @@ in the denominator: it should be
 \[\frac{\bar X - \bar Y - \delta_0}{\sqrt{\sigma^2/m+ \sigma^2/n}}.\]
 Similarly, the definitions of $T$ and $t$ (top of p86) should have square roots
 in the denominator.
+- p86, Example 11.7. The conclusion about when to reject $H_0$ has been
+mistakenly copied from Example 11.5. It should be: 
+"we should only reject $H_0$ if $|t| > t_{m+n-2, 0.975}$.
+So if $t > t_{m+n-2, 0.975}$ or $t < -t_{m+n-2, 0.975}$,
+we reject $H_0$."

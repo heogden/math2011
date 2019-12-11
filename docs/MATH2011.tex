@@ -4071,9 +4071,9 @@ value of \(T\) is
 \[t = \frac{\bar x - \bar y - \delta_0}{\sqrt{s_c^2 / m+ s_c^2 / n}}.\]
 
 To construct a hypothesis test at significance level \(\alpha = 0.05\)
-we should only reject \(H_0\) if \(|t| > t_{n-1, 0.975} = 1.96\). So if
-\(t > t_{n-1, 0.975}\) or \(z < -t_{n-1, 0.975}\), we reject \(H_0\).
-Otherwise, we do not reject \(H_0\).
+we should only reject \(H_0\) if \(|t| > t_{m+n-2, 0.975}\). So if
+\(t > t_{m+n-2, 0.975}\) or \(t < -t_{m+n-2, 0.975}\), we reject
+\(H_0\). Otherwise, we do not reject \(H_0\).
 \EndKnitrBlock{example}
 
 \BeginKnitrBlock{example}[$F$-test for equality of variances]
