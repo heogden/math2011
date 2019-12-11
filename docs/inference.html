@@ -313,15 +313,15 @@ Y_1, \ldots, Y_{n} \sim N(\mu_2, \sigma^2),\]</span> where all the random variab
 We know that <span class="math inline">\(\bar X \sim N(\mu_1, \sigma^2/m)\)</span> and <span class="math inline">\(\bar Y \sim N(\mu_2, \sigma^2/n)\)</span>, and <span class="math inline">\(\bar X\)</span> and <span class="math inline">\(\bar Y\)</span> are independent, so <span class="math display">\[\bar X - \bar Y \sim N\left(\mu_1 - \mu_2, 
 \frac{\sigma^2}{m}+ \frac{\sigma^2}{n}\right).\]</span> Under <span class="math inline">\(H_0\)</span>, <span class="math inline">\(\bar X - \bar Y \sim N(\delta_0, \sigma^2/m+ \sigma^2/n),\)</span> or
 <span class="math display" id="eq:twosampleknownsigma">\[\begin{equation}
-\frac{\bar X - \bar Y - \delta_0}{\sigma^2/m+ \sigma^2/n}
+\frac{\bar X - \bar Y - \delta_0}{\sqrt{\sigma^2/m+ \sigma^2/n}}
 \sim N(0, 1),
 \tag{11.1}
 \end{equation}\]</span>
 <p>but we cannot use this as a test statistic, because it depends on the unknown <span class="math inline">\(\sigma^2\)</span>.</p>
 <p>We estimate <span class="math inline">\(\sigma^2\)</span> based on all the samples combined, by <span class="math display">\[S_c^2 = \frac{\sum_{i=1}^{m} (X_i - \bar X)^2 + 
 \sum_{i=1}^{n}(Y_i - \bar Y)^2}{m + n - 2}.\]</span> We choose the denominator <span class="math inline">\(m + n - 2\)</span> to make this an unbiased estimator of <span class="math inline">\(\sigma^2\)</span>: since <span class="math inline">\(\sum_{i=1}^{m} (X_i - \bar X)^2 \sim \sigma^2 \chi^2_{m - 1}\)</span> and <span class="math inline">\(\sum_{i=1}^{n} (Y_i - \bar Y)^2 \sim \sigma^2 \chi^2_{n - 1}\)</span>, and these two quantities are independent, their sum has <span class="math inline">\(\sigma^2 \chi^2_{m + n - 2}\)</span> distribution. So <span class="math display">\[\frac{(m + n - 2)S_c^2}{\sigma^2} \sim \chi^2_{m + n - 2}.\]</span></p>
-<p>Replacing <span class="math inline">\(\sigma^2\)</span> by <span class="math inline">\(S_c^2\)</span> in Equation <a href="inference.html#eq:twosampleknownsigma">(11.1)</a>, we get <span class="math display">\[T = \frac{\bar X - \bar Y - \delta_0}{S_c^2 / m+ S_c^2 / n}
-\sim t_{m + n - 2}\]</span> under <span class="math inline">\(H_0\)</span>. For our observed data the observed value of <span class="math inline">\(T\)</span> is <span class="math display">\[t = \frac{\bar x - \bar y - \delta_0}{s_c^2 / m+ s_c^2 / n}.\]</span></p>
+<p>Replacing <span class="math inline">\(\sigma^2\)</span> by <span class="math inline">\(S_c^2\)</span> in Equation <a href="inference.html#eq:twosampleknownsigma">(11.1)</a>, we get <span class="math display">\[T = \frac{\bar X - \bar Y - \delta_0}{\sqrt{S_c^2 / m+ S_c^2 / n}}
+\sim t_{m + n - 2}\]</span> under <span class="math inline">\(H_0\)</span>. For our observed data the observed value of <span class="math inline">\(T\)</span> is <span class="math display">\[t = \frac{\bar x - \bar y - \delta_0}{\sqrt{s_c^2 / m+ s_c^2 / n}}.\]</span></p>
 To construct a hypothesis test at significance level <span class="math inline">\(\alpha = 0.05\)</span> we should only reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(|t| &gt; t_{n-1, 0.975} = 1.96\)</span>. So if <span class="math inline">\(t &gt; t_{n-1, 0.975}\)</span> or <span class="math inline">\(z &lt; -t_{n-1, 0.975}\)</span>, we reject <span class="math inline">\(H_0\)</span>. Otherwise, we do not reject <span class="math inline">\(H_0\)</span>.
 </div>
 

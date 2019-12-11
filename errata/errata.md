@@ -60,3 +60,8 @@ and
 - p84, Example 11.5. It is not true that $t_{n-1, 0.975} = 1.96$ as claimed (the
 quantiles vary according to $n$), and $z < -t_{n-1, 0.975}$ should be 
 $t < -t_{n-1, 0.975}$.
+- p85--86, Example 11.7. (11.1) is missing a square root sign
+in the denominator: it should be
+\[\frac{\bar X - \bar Y - \delta_0}{\sqrt{\sigma^2/m+ \sigma^2/n}}.\]
+Similarly, the definitions of $T$ and $t$ (top of p86) should have square roots
+in the denominator.

@@ -300,7 +300,7 @@ Under $H_0$,
 $\bar X - \bar Y \sim N(\delta_0, \sigma^2/m+ \sigma^2/n),$
 or
 \begin{equation}
-\frac{\bar X - \bar Y - \delta_0}{\sigma^2/m+ \sigma^2/n}
+\frac{\bar X - \bar Y - \delta_0}{\sqrt{\sigma^2/m+ \sigma^2/n}}
 \sim N(0, 1),
 (\#eq:twosampleknownsigma)
 \end{equation}
@@ -321,11 +321,11 @@ $\sigma^2 \chi^2_{m + n - 2}$ distribution. So
 
 Replacing $\sigma^2$ by $S_c^2$ in Equation \@ref(eq:twosampleknownsigma),
 we get
-\[T = \frac{\bar X - \bar Y - \delta_0}{S_c^2 / m+ S_c^2 / n}
+\[T = \frac{\bar X - \bar Y - \delta_0}{\sqrt{S_c^2 / m+ S_c^2 / n}}
 \sim t_{m + n - 2}\]
 under $H_0$.
 For our observed data the observed value of $T$ is 
-\[t = \frac{\bar x - \bar y - \delta_0}{s_c^2 / m+ s_c^2 / n}.\]
+\[t = \frac{\bar x - \bar y - \delta_0}{\sqrt{s_c^2 / m+ s_c^2 / n}}.\]
 
 To construct a hypothesis test at significance level $\alpha = 0.05$
 we should only reject $H_0$ if $|t| > t_{n-1, 0.975} = 1.96$.
