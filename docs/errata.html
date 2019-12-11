@@ -7,7 +7,6 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -84,6 +83,7 @@ code {
 }
 img {
   max-width:100%;
+  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -157,6 +157,18 @@ summary {
 }
 </style>
 
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
 <!-- code folding -->
 
 
@@ -225,6 +237,7 @@ y_1 y_2 dy_2 dy_1 \\
 <li>p77, Example 10.12. In second display, <span class="math inline">\(\frac{d^2}{d\theta^2}\)</span> should be <span class="math inline">\(\frac{d^2}{d\theta^2} \log L(\theta;y_1, \ldots, y_n)\)</span>.</li>
 <li>p78, Example 10.14. The pdf and likelihood are incorrect. They should be <span class="math display">\[f(y; \theta) = \frac{1}{\Gamma(\theta)} y^{\theta - 1} e^{-y},
 \quad y &gt; 0,\]</span> and <span class="math display">\[L(\theta; y_1, \ldots, y_n) = \prod_{i=1}^n \frac{1}{\Gamma(\theta)}  y_i^{\theta - 1} e^{-y_i}.\]</span></li>
+<li>p84, Example 11.5. It is not true that <span class="math inline">\(t_{n-1, 0.975} = 1.96\)</span> as claimed (the quantiles vary according to <span class="math inline">\(n\)</span>), and <span class="math inline">\(z &lt; -t_{n-1, 0.975}\)</span> should be <span class="math inline">\(t &lt; -t_{n-1, 0.975}\)</span>.</li>
 </ul>
 </div>
 
@@ -245,23 +258,6 @@ $(document).ready(function () {
 
 
 </script>
-
-<!-- tabsets -->
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
-<!-- code folding -->
-
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

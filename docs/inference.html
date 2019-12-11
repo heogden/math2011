@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 11 Confidence intervals and hypothesis testing | MATH2011: Statistical Distribution Theory</title>
   <meta name="description" content="The course notes for MATH2011: Statistical Distribution Theory." />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 11 Confidence intervals and hypothesis testing | MATH2011: Statistical Distribution Theory" />
   <meta property="og:type" content="book" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="estimation.html"/>
-<link rel="next" href="bayesian.html"/>
+<link rel="prev" href="estimation.html">
+<link rel="next" href="bayesian.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -264,7 +264,7 @@ We may estimate <span class="math inline">\(\sigma^2\)</span> by <span class="ma
 <pre><code>## [1] 2.700389</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qchisq</span>(<span class="fl">0.975</span>, <span class="dt">df =</span> <span class="dv">9</span>)</code></pre></div>
 <pre><code>## [1] 19.02277</code></pre>
-<p>Since chi-squared distribution has positive domain, all quantiles are positive, and <span class="math inline">\(c_{p, n-1} \not = - c_{1 - p, n-1}\)</span>. Rearranging to “make <span class="math inline">\(\sigma^2\)</span> the subject” gives <span class="math display">\[P\left(\frac{(n-1) S^2}{c_{n-1, 0.975}} \leq \sigma^2
+<p>Since the chi-squared distribution has positive domain, all quantiles are positive, and <span class="math inline">\(c_{p, n-1} \not = - c_{1 - p, n-1}\)</span>. Rearranging to “make <span class="math inline">\(\sigma^2\)</span> the subject” gives <span class="math display">\[P\left(\frac{(n-1) S^2}{c_{n-1, 0.975}} \leq \sigma^2
   \leq \frac{(n-1) S^2}{c_{n-1, 0.025}}\right) = 0.95\]</span> so <span class="math display">\[\left[\frac{(n-1) s^2}{c_{n-1, 0.975}}, \frac{(n-1) s^2}{c_{n-1, 0.025}}\right]\]</span> is a <span class="math inline">\(95\%\)</span> confidence interval for <span class="math inline">\(\sigma^2\)</span>.</p>
 <p>From this we can obtain a corresponding confidence interval for <span class="math inline">\(\sigma\)</span> if we prefer, as <span class="math display">\[P\left(\frac{\sqrt{n-1} S}{\sqrt{c_{n-1, 0.975}}} \leq \sigma
   \leq \frac{\sqrt{n-1} S}{\sqrt{c_{n-1, 0.025}}}\right) = 0.95\]</span> so <span class="math display">\[\left[\frac{\sqrt{n-1} s}{\sqrt{c_{n-1, 0.975}}},
@@ -292,7 +292,7 @@ We construct the test statistic <span class="math display">\[Z = \frac{\sqrt{n}(
 
 <div class="example">
 <p><span id="exm:unnamed-chunk-107" class="example"><strong>Example 11.5  (Normal mean, unknown variance)  </strong></span>As in Example <a href="inference.html#exm:cinormmeanunknownsigma">11.2</a>, suppose that <span class="math inline">\(Y_1, \ldots, Y_n\)</span> are independent and identically distributed, with each <span class="math inline">\(Y_i \sim N(\mu, \sigma^2)\)</span>, where <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span> are both unknown parameters. Suppose we are interested in testing the null <span class="math inline">\(H_0: \mu = \mu_0\)</span> against the alternative <span class="math inline">\(H_1: \mu \not = \mu_0\)</span>.</p>
-We estimate <span class="math inline">\(\sigma^2\)</span> by <span class="math inline">\(S^2\)</span>, and construct the test statistic <span class="math display">\[T = \frac{\sqrt{n}(\bar Y - \mu_0)}{S}.\]</span> If <span class="math inline">\(H_0\)</span> is true then <span class="math inline">\(T \sim t_{n-1}\)</span>. For our observed data the observed value of <span class="math inline">\(T\)</span> is <span class="math display">\[t =  \frac{\sqrt{n}(\bar y - \mu_0)}{s}.\]</span> To construct a hypothesis test at significance level <span class="math inline">\(\alpha = 0.05\)</span> we should only reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(|t| &gt; t_{n-1, 0.975} = 1.96\)</span>. So if <span class="math inline">\(t &gt; t_{n-1, 0.975}\)</span> or <span class="math inline">\(z &lt; -t_{n-1, 0.975}\)</span>, we reject <span class="math inline">\(H_0\)</span>. Otherwise, we do not reject <span class="math inline">\(H_0\)</span>.
+We estimate <span class="math inline">\(\sigma^2\)</span> by <span class="math inline">\(S^2\)</span>, and construct the test statistic <span class="math display">\[T = \frac{\sqrt{n}(\bar Y - \mu_0)}{S}.\]</span> If <span class="math inline">\(H_0\)</span> is true then <span class="math inline">\(T \sim t_{n-1}\)</span>. For our observed data the observed value of <span class="math inline">\(T\)</span> is <span class="math display">\[t =  \frac{\sqrt{n}(\bar y - \mu_0)}{s}.\]</span> To construct a hypothesis test at significance level <span class="math inline">\(\alpha = 0.05\)</span> we should only reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(|t| &gt; t_{n-1, 0.975}\)</span>. So if <span class="math inline">\(t &gt; t_{n-1, 0.975}\)</span> or <span class="math inline">\(t &lt; -t_{n-1, 0.975}\)</span>, we reject <span class="math inline">\(H_0\)</span>. Otherwise, we do not reject <span class="math inline">\(H_0\)</span>.
 </div>
 
 
@@ -392,9 +392,8 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

@@ -57,3 +57,6 @@ $\frac{d^2}{d\theta^2} \log L(\theta;y_1, \ldots, y_n)$.
 \quad y > 0,\]
 and
 \[L(\theta; y_1, \ldots, y_n) = \prod_{i=1}^n \frac{1}{\Gamma(\theta)}  y_i^{\theta - 1} e^{-y_i}.\]
+- p84, Example 11.5. It is not true that $t_{n-1, 0.975} = 1.96$ as claimed (the
+quantiles vary according to $n$), and $z < -t_{n-1, 0.975}$ should be 
+$t < -t_{n-1, 0.975}$.

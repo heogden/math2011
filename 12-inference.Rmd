@@ -133,7 +133,7 @@ We can find these quantiles in `R`, e.g. if $n = 10$:
 qchisq(0.025, df = 9)
 qchisq(0.975, df = 9)
 ```
-Since chi-squared distribution has positive domain, all quantiles are
+Since the chi-squared distribution has positive domain, all quantiles are
 positive, and $c_{p, n-1} \not = - c_{1 - p, n-1}$.
 Rearranging to "make $\sigma^2$ the subject" gives
 \[P\left(\frac{(n-1) S^2}{c_{n-1, 0.975}} \leq \sigma^2
@@ -236,8 +236,8 @@ If $H_0$ is true then $T \sim t_{n-1}$.
 For our observed data the observed value of $T$ is 
 \[t =  \frac{\sqrt{n}(\bar y - \mu_0)}{s}.\]
 To construct a hypothesis test at significance level $\alpha = 0.05$
-we should only reject $H_0$ if $|t| > t_{n-1, 0.975} = 1.96$.
-So if $t > t_{n-1, 0.975}$ or $z < -t_{n-1, 0.975}$,
+we should only reject $H_0$ if $|t| > t_{n-1, 0.975}$.
+So if $t > t_{n-1, 0.975}$ or $t < -t_{n-1, 0.975}$,
 we reject $H_0$. Otherwise, we do not
 reject $H_0$.
 ```
