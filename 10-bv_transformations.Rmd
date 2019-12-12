@@ -342,7 +342,7 @@ for the mean of normal random variables in Chapter \@ref(inference):
 
 ```{proposition, ybart}
 Suppose that $Y_1, Y_2, \ldots, Y_n$, are independent and identically
-distributed, with each $Y_i \sim N(0, 1)$.
+distributed, with each $Y_i \sim N(\mu, \sigma^2)$.
 Let $\bar Y$ and $S^2$ be the usual sample mean and sample variance.
 Then
 \[\frac{\sqrt{n}(\bar Y - \mu)}{S} \sim t_{n-1}.\]

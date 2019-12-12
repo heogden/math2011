@@ -21,7 +21,6 @@
 \usepackage{microtype}
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
 \hypersetup{unicode=true,
             pdftitle={MATH2011: Statistical Distribution Theory},
@@ -2894,8 +2893,8 @@ Chapter \ref{inference}:
 \BeginKnitrBlock{proposition}
 \protect\hypertarget{prp:ybart}{}{\label{prp:ybart} }Suppose that
 \(Y_1, Y_2, \ldots, Y_n\), are independent and identically distributed,
-with each \(Y_i \sim N(0, 1)\). Let \(\bar Y\) and \(S^2\) be the usual
-sample mean and sample variance. Then
+with each \(Y_i \sim N(\mu, \sigma^2)\). Let \(\bar Y\) and \(S^2\) be
+the usual sample mean and sample variance. Then
 \[\frac{\sqrt{n}(\bar Y - \mu)}{S} \sim t_{n-1}.\]
 \EndKnitrBlock{proposition}
 

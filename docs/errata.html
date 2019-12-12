@@ -7,6 +7,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -83,7 +84,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -157,18 +157,6 @@ summary {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 
 
@@ -233,6 +221,7 @@ y_1 y_2 dy_2 dy_1 \\
 <li>p60, proof of Proposition 9.2, second line of display for <span class="math inline">\(g_1(u_1)\)</span>. Should be <span class="math inline">\(\frac{1}{2 \pi} \int_{-\infty}^\infty |u_2| \exp \left(-\frac{u_2^2(1 + u_1^2)}{2} \right) du_2\)</span> not <span class="math inline">\(\frac{1}{2 \pi} \int_{-\infty}^\infty |u_2| \exp \left(-\frac{u_2^2(1 + u_2^2)}{2} \right) du_2\)</span>.</li>
 <li>p62, Proposition 9.3, <span class="math inline">\(Y_k\)</span> should be <span class="math inline">\(Y_2\)</span> in the definition of <span class="math inline">\(U_1\)</span>.</li>
 <li>p63, proof of Proposition 9. In the first line of the display for <span class="math inline">\(g(u_1, u_2)\)</span>, <span class="math inline">\(y_2\)</span> should be <span class="math inline">\(u_2\)</span>.</li>
+<li>p63, Proposition 9.4. Should assume <span class="math inline">\(Y_i \sim N(\mu, \sigma^2)\)</span>, not <span class="math inline">\(Y_i \sim N(0, 1)\)</span>.</li>
 <li>p75, Example 10.11. In the second display, <span class="math inline">\(\frac{\bar Y \tilde \theta_2}{(1 + \bar Y \tilde \theta_2)}{\tilde \theta_2^2}\)</span> should be <span class="math inline">\(\frac{\bar Y \tilde \theta_2 (1 + \bar Y \tilde \theta_2)}{\tilde \theta_2^2}\)</span>.</li>
 <li>p77, Example 10.12. In second display, <span class="math inline">\(\frac{d^2}{d\theta^2}\)</span> should be <span class="math inline">\(\frac{d^2}{d\theta^2} \log L(\theta;y_1, \ldots, y_n)\)</span>.</li>
 <li>p78, Example 10.14. The pdf and likelihood are incorrect. They should be <span class="math display">\[f(y; \theta) = \frac{1}{\Gamma(\theta)} y^{\theta - 1} e^{-y},
@@ -260,6 +249,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

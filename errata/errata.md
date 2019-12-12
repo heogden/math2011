@@ -50,6 +50,8 @@ Should be $\frac{1}{2 \pi}  \int_{-\infty}^\infty |u_2| \exp \left(-\frac{u_2^2(
 - p62, Proposition 9.3, $Y_k$ should be $Y_2$ in the definition of $U_1$.
 - p63, proof of Proposition 9. In the first line of the display for $g(u_1, u_2)$,
 $y_2$ should be $u_2$.
+- p63, Proposition 9.4. Should assume $Y_i \sim N(\mu, \sigma^2)$,
+not $Y_i \sim N(0, 1)$.
 - p75, Example 10.11. In the second display, $\frac{\bar Y \tilde \theta_2}{(1 + \bar Y \tilde \theta_2)}{\tilde \theta_2^2}$ should be $\frac{\bar Y \tilde \theta_2 (1 + \bar Y \tilde \theta_2)}{\tilde \theta_2^2}$.
 - p77, Example 10.12. In second display, $\frac{d^2}{d\theta^2}$ should be
 $\frac{d^2}{d\theta^2} \log L(\theta;y_1, \ldots, y_n)$.
