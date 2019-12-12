@@ -70,3 +70,5 @@ mistakenly copied from Example 11.5. It should be:
 "we should only reject $H_0$ if $|t| > t_{m+n-2, 0.975}$.
 So if $t > t_{m+n-2, 0.975}$ or $t < -t_{m+n-2, 0.975}$,
 we reject $H_0$."
+- p86, Example 11.8. In the definition of $S_2^2$, $m$ should be $n$ (the
+sample size for the $Y_i$.

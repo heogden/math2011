@@ -348,7 +348,7 @@ the alternative $H_1: \sigma_1^2 \not = \sigma_2^2$.
 We estimate $\sigma_1^2$ by
 \[S_1^2 = \frac{1}{m - 1} \sum_{i=1}^{m} (X_i - \bar X)^2\]
 and $\sigma_2^2$ by 
-\[S_2^2 = \frac{1}{m - 1} \sum_{i=1}^{m} (Y_i - \bar Y)^2.\]
+\[S_2^2 = \frac{1}{n - 1} \sum_{i=1}^{n} (Y_i - \bar Y)^2.\]
 Let \[F = \frac{S_1^2}{S_2^2}\]
 Under $H_0$, by Proposition \@ref(prp:ftest),  we know that
 $F \sim F_{m-1, n-1}.$
