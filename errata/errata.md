@@ -74,3 +74,5 @@ So if $t > t_{m+n-2, 0.975}$ or $t < -t_{m+n-2, 0.975}$,
 we reject $H_0$."
 - p86, Example 11.8. In the definition of $S_2^2$, $m$ should be $n$ (the
 sample size for the $Y_i$.
+- p88. $P(Y_1 = y_1, \ldots, Y_n = y_1)$ should be
+$P(Y_1 = y_1, \ldots, Y_n = y_n).$

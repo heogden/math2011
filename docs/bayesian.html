@@ -244,8 +244,8 @@ If <span class="math inline">\(Y_1, \ldots, Y_n\)</span> have discrete distribut
 \pi(\theta| y_1, \ldots, y_n) &amp;= \frac{P(Y_1 = y_1, \ldots, Y_n = y_n| \theta) \pi(\theta)}{P(Y_1 = y_1, \ldots, Y_n = y_n)} \\
 &amp;= \frac{L(\theta; y_1, \ldots, y_n) \pi(\theta)}{P(Y_1 = y_1, \ldots, Y_n = y_n)}
 \end{align*}\]</span>
-<p>where <span class="math display">\[P(Y_1 = y_1, \ldots, Y_n = y_1) = \int L(\theta; y_1, \ldots, y_n) \pi(\theta) d \theta,\]</span> because <span class="math display">\[\int \pi(\theta|y_1, \ldots, y_n) d\theta =
-  \frac{\int L(\theta; y_1, \ldots, y_n) \pi(\theta) d\theta}{P(Y_1 = y_1, \ldots, Y_n = y_1)}
+<p>where <span class="math display">\[P(Y_1 = y_1, \ldots, Y_n = y_n) = \int L(\theta; y_1, \ldots, y_n) \pi(\theta) d \theta,\]</span> because <span class="math display">\[\int \pi(\theta|y_1, \ldots, y_n) d\theta =
+  \frac{\int L(\theta; y_1, \ldots, y_n) \pi(\theta) d\theta}{P(Y_1 = y_1, \ldots, Y_n = y_n)}
    = 1,\]</span> as <span class="math inline">\(\pi(\theta|y_1, \ldots, y_n)\)</span> is a probability density function.</p>
 <p>The denominator <span class="math inline">\(P(Y_1 = y_1, \ldots Y_n = y_n)\)</span> does not depend on <span class="math inline">\(\theta\)</span>, so usually we write <span class="math display">\[\pi(\theta| y_1, \ldots, y_n) \propto L(\theta; y_1, \ldots, y_n) \pi(\theta),\]</span> and if necessary find the constant of proportionality to make sure that <span class="math inline">\(\pi(\theta|y_1, \ldots y_n)\)</span> integrates to <span class="math inline">\(1\)</span>. Sometimes we recognise the pdf of a known distribution, and do not need to compute the constant.</p>
 <p>If <span class="math inline">\(Y_1, \ldots Y_n\)</span> have continuous distribution, with p.d.f. <span class="math inline">\(f(y; \theta)\)</span>, the posterior density has the same form <span class="math display">\[\pi(\theta | y_1, \ldots, y_n) \propto L(\theta; y_1, \ldots, y_n) \pi(\theta). \]</span></p>
