@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Generating functions | MATH2011: Statistical Distribution Theory</title>
   <meta name="description" content="The course notes for MATH2011: Statistical Distribution Theory." />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Generating functions | MATH2011: Statistical Distribution Theory" />
   <meta property="og:type" content="book" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="moments.html"/>
-<link rel="next" href="sums-of-random-variables.html"/>
+<link rel="prev" href="moments.html">
+<link rel="next" href="sums-of-random-variables.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -355,11 +355,11 @@ M_Z(t) &amp;= E(e^{tZ})
 = E(e^{t (a + bY)})
 = E(e^{at} e^{btY})\\
 &amp;= e^{at} E(e^{(bt)Y})
-= e^{at} M_Y(t).
+= e^{at} M_Y(bt).
 \end{align*}\]</span>
 So the cumulant generating function of <span class="math inline">\(Z\)</span> is <span class="math display">\[K_Z(t) = \log M_Z(t) 
-= \log \left\{e^{at} M_Y(t)\right\}
-= at + \log M_Y(t)
+= \log \left\{e^{at} M_Y(bt)\right\}
+= at + \log M_Y(bt)
 = at + K_Y(bt)\]</span> as required.
 </div>
 
@@ -446,9 +446,8 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

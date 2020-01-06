@@ -229,12 +229,12 @@ M_Z(t) &= E(e^{tZ})
 = E(e^{t (a + bY)})
 = E(e^{at} e^{btY})\\
 &= e^{at} E(e^{(bt)Y})
-= e^{at} M_Y(t).
+= e^{at} M_Y(bt).
 \end{align*}
 So the cumulant generating function of $Z$ is
 \[K_Z(t) = \log M_Z(t) 
-= \log \left\{e^{at} M_Y(t)\right\}
-= at + \log M_Y(t)
+= \log \left\{e^{at} M_Y(bt)\right\}
+= at + \log M_Y(bt)
 = at + K_Y(bt)\]
 as required.
 ```
